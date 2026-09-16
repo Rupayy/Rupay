@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width,
+               initial-scale=1.0,
+               maximum-scale=1.0,
+               user-scalable=no">
+
+<meta name="theme-color" content="#050b14">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta name="description"
+      content="Rupay secure digital platform login">
+
+<title>Rupay — Secure Login</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    font-family:Inter,-apple-system,BlinkMacSystemFont,
+    "Segoe UI",Roboto,Arial,sans-serif;
+    color:#fff;
+    background:
+        radial-gradient(circle at 20% 10%,
+        rgba(0,153,255,.12),transparent 28%),
+        radial-gradient(circle at 80% 90%,
+        rgba(0,255,180,.08),transparent 28%),
+        #050b14;
+    overflow-x:hidden;
+}
+
+.background{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:0;
+}
+
+.glow{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(80px);
+    opacity:.22;
+}
+
+.glow.one{
+    width:260px;
+    height:260px;
+    background:#008cff;
+    top:-80px;
+    left:-70px;
+}
+
+.glow.two{
+    width:280px;
+    height:280px;
+    background:#00d5a0;
+    right:-100px;
+    bottom:-100px;
+}
+
+.grid{
+    position:absolute;
+    inset:0;
+    background-image:
+        linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+    background-size:40px 40px;
+    mask-image:linear-gradient(to bottom,black,transparent 90%);
+}
+
+.app{
+    position:relative;
+    z-index:1;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px 16px;
+}
+
+.auth-card{
+    width:100%;
+    max-width:430px;
+    padding:34px 28px 28px;
+    border:1px solid rgba(255,255,255,.09);
+    background:
+        linear-gradient(145deg,
+        rgba(20,31,47,.92),
+        rgba(7,15,27,.94));
+    border-radius:28px;
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.45),
+        inset 0 1px 0 rgba(255,255,255,.05);
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+    animation:cardIn .7s ease;
+}
+
+@keyframes cardIn{
+    from{
+        opacity:0;
+        transform:translateY(25px) scale(.98);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+.brand{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.logo{
+    width:66px;
+    height:66px;
+    margin:0 auto 16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:20px;
+    font-size:34px;
+    font-weight:900;
+    color:#fff;
+    background:linear-gradient(145deg,#0a9cff,#0067ff);
+    box-shadow:
+        0 12px 35px rgba(0,130,255,.30),
+        inset 0 1px 0 rgba(255,255,255,.3);
+    transform:rotate(-2deg);
+}
+
+.logo span{
+    transform:rotate(2deg);
+}
+
+.brand h1{
+    font-size:28px;
+    letter-spacing:-.8px;
+    font-weight:800;
+}
+
+.brand p{
+    margin-top:7px;
+    color:#91a0b4;
+    font-size:13px;
+}
+
+.form-group{
+    margin-bottom:17px;
+}
+
+.label{
+    display:block;
+    margin-bottom:8px;
+    font-size:12px;
+    font-weight:700;
+    color:#b7c2d1;
+    letter-spacing:.2px;
+}
+
+.input-wrap{
+    position:relative;
+}
+
+.input{
+    width:100%;
+    height:56px;
+    padding:0 48px 0 16px;
+    border-radius:15px;
+    outline:none;
+    border:1px solid rgba(255,255,255,.09);
+    background:rgba(255,255,255,.045);
+    color:#fff;
+    font-size:15px;
+    transition:
+        border-color .25s ease,
+        background .25s ease,
+        box-shadow .25s ease;
+}
+
+.input::placeholder{
+    color:#657386;
+}
+
+.input:focus{
+    border-color:rgba(0,150,255,.65);
+    background:rgba(0,130,255,.06);
+    box-shadow:0 0 0 4px rgba(0,140,255,.09);
+}
+
+.password-toggle{
+    position:absolute;
+    right:8px;
+    top:50%;
+    transform:translateY(-50%);
+    width:40px;
+    height:40px;
+    border:none;
+    border-radius:12px;
+    background:transparent;
+    color:#7e8ca0;
+    cursor:pointer;
+    font-size:17px;
+}
+
+.password-toggle:active{
+    transform:translateY(-50%) scale(.92);
+}
+
+/* REMEMBER LOGIN */
+
+.remember-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin:2px 2px 17px;
+}
+
+.remember-left{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    color:#8d9bad;
+    font-size:12px;
+    cursor:pointer;
+}
+
+.remember-left input{
+    width:17px;
+    height:17px;
+    accent-color:#078dff;
+    cursor:pointer;
+}
+
+.clear-login{
+    border:none;
+    background:transparent;
+    color:#66778c;
+    font-size:11px;
+    cursor:pointer;
+    padding:5px;
+}
+
+.clear-login:hover{
+    color:#ff8995;
+}
+
+.login-btn{
+    width:100%;
+    height:56px;
+    margin-top:5px;
+    border:none;
+    border-radius:15px;
+    cursor:pointer;
+    color:white;
+    font-size:15px;
+    font-weight:800;
+    background:linear-gradient(135deg,#0b9cff,#006eff);
+    box-shadow:0 12px 30px rgba(0,115,255,.24);
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        opacity .2s ease;
+}
+
+.login-btn:hover{
+    box-shadow:0 16px 38px rgba(0,115,255,.34);
+    transform:translateY(-1px);
+}
+
+.login-btn:active{
+    transform:scale(.985);
+}
+
+.login-btn.loading{
+    pointer-events:none;
+    opacity:.75;
+}
+
+.loader{
+    display:none;
+    width:20px;
+    height:20px;
+    margin:auto;
+    border:3px solid rgba(255,255,255,.3);
+    border-top-color:white;
+    border-radius:50%;
+    animation:spin .7s linear infinite;
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg);}
+}
+
+.divider{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin:24px 0;
+}
+
+.divider::before,
+.divider::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:rgba(255,255,255,.08);
+}
+
+.divider span{
+    color:#667489;
+    font-size:11px;
+}
+
+.create-btn{
+    width:100%;
+    height:54px;
+    border-radius:15px;
+    border:1px solid rgba(255,255,255,.11);
+    background:rgba(255,255,255,.035);
+    color:#e7edf5;
+    font-size:14px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.2s ease;
+}
+
+.create-btn:hover{
+    background:rgba(255,255,255,.07);
+    border-color:rgba(255,255,255,.18);
+}
+
+.create-btn:active{
+    transform:scale(.985);
+}
+
+.security{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    margin-top:22px;
+    color:#657386;
+    font-size:11px;
+}
+
+.security-icon{
+    width:15px;
+    height:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:rgba(0,210,155,.12);
+    color:#20d7a7;
+    font-size:9px;
+}
+
+.message{
+    display:none;
+    margin-bottom:17px;
+    padding:13px 14px;
+    border-radius:13px;
+    font-size:12px;
+    line-height:1.5;
+}
+
+.message.error{
+    display:block;
+    color:#ffb5bc;
+    background:rgba(255,55,75,.08);
+    border:1px solid rgba(255,55,75,.16);
+}
+
+.message.success{
+    display:block;
+    color:#a8f3d8;
+    background:rgba(0,210,155,.08);
+    border:1px solid rgba(0,210,155,.15);
+}
+
+.package-page{
+    display:none;
+    text-align:center;
+}
+
+.package-page.active{
+    display:block;
+    animation:pageIn .45s ease;
+}
+
+.login-page.hidden{
+    display:none;
+}
+
+@keyframes pageIn{
+    from{
+        opacity:0;
+        transform:translateX(15px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+.package-icon{
+    width:72px;
+    height:72px;
+    margin:0 auto 18px;
+    border-radius:22px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    background:rgba(0,140,255,.12);
+    border:1px solid rgba(0,140,255,.16);
+}
+
+.package-page h2{
+    font-size:24px;
+    margin-bottom:9px;
+}
+
+.package-page p{
+    color:#8d9caf;
+    font-size:13px;
+    line-height:1.6;
+    margin-bottom:25px;
+}
+
+.buy-btn{
+    width:100%;
+    height:55px;
+    border:none;
+    border-radius:15px;
+    color:#fff;
+    background:linear-gradient(135deg,#00b98a,#00a675);
+    font-weight:800;
+    cursor:pointer;
+    box-shadow:0 12px 30px rgba(0,190,140,.18);
+    transition:.2s ease;
+}
+
+.buy-btn:hover{
+    transform:translateY(-1px);
+}
+
+.buy-btn:active{
+    transform:scale(.985);
+}
+
+.back-btn{
+    width:100%;
+    margin-top:12px;
+    height:52px;
+    border-radius:15px;
+    border:1px solid rgba(255,255,255,.09);
+    background:transparent;
+    color:#aab6c6;
+    cursor:pointer;
+    font-weight:700;
+}
+
+.footer{
+    text-align:center;
+    margin-top:20px;
+    color:#566478;
+    font-size:10px;
+    line-height:1.6;
+}
+
+.saved-badge{
+    display:none;
+    margin:0 auto 16px;
+    width:max-content;
+    max-width:100%;
+    padding:7px 11px;
+    border-radius:20px;
+    background:rgba(0,210,155,.08);
+    border:1px solid rgba(0,210,155,.14);
+    color:#77dfbf;
+    font-size:10px;
+}
+
+.saved-badge.show{
+    display:block;
+}
+
+@media(max-width:480px){
+
+    .app{
+        padding:15px;
+    }
+
+    .auth-card{
+        padding:29px 20px 23px;
+        border-radius:24px;
+    }
+
+    .brand h1{
+        font-size:25px;
+    }
+
+    .logo{
+        width:60px;
+        height:60px;
+        font-size:30px;
+    }
+
+    .input,
+    .login-btn{
+        height:54px;
+    }
+}
+
+@media(min-width:900px){
+
+    .auth-card{
+        max-width:450px;
+    }
+}
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms!important;
+        animation-iteration-count:1!important;
+        scroll-behavior:auto!important;
+        transition-duration:.01ms!important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background">
+    <div class="glow one"></div>
+    <div class="glow two"></div>
+    <div class="grid"></div>
+</div>
+
+<main class="app">
+
+<section class="auth-card">
+
+<!-- =====================================================
+     LOGIN PAGE
+====================================================== -->
+
+<div id="loginPage" class="login-page">
+
+    <div class="brand">
+
+        <div class="logo">
+            <span>₹</span>
+        </div>
+
+        <h1>Rupay</h1>
+
+        <p>Secure Digital Platform</p>
+
+    </div>
+
+    <!-- SAVED LOGIN STATUS -->
+
+    <div id="savedBadge" class="saved-badge">
+        ✓ Saved login credentials detected
+    </div>
+
+    <!-- MESSAGE -->
+
+    <div id="message"
+         class="message"
+         role="alert">
+    </div>
+
+    <!-- LOGIN FORM -->
+
+    <form id="loginForm"
+          autocomplete="on">
+
+        <!-- PACKAGE ID -->
+
+        <div class="form-group">
+
+            <label class="label"
+                   for="packageId">
+                Package ID
+            </label>
+
+            <div class="input-wrap">
+
+                <input
+                    id="packageId"
+                    class="input"
+                    type="text"
+                    placeholder="Enter your Package ID"
+                    autocomplete="username"
+                    spellcheck="false"
+                    required>
+
+            </div>
+
+        </div>
+
+        <!-- PASSWORD -->
+
+        <div class="form-group">
+
+            <label class="label"
+                   for="password">
+                Password
+            </label>
+
+            <div class="input-wrap">
+
+                <input
+                    id="password"
+                    class="input"
+                    type="password"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required>
+
+                <button
+                    type="button"
+                    id="passwordToggle"
+                    class="password-toggle"
+                    aria-label="Show password">
+                    ◉
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- REMEMBER LOGIN -->
+
+        <div class="remember-row">
+
+            <label class="remember-left">
+
+                <input
+                    type="checkbox"
+                    id="rememberLogin"
+                    checked>
+
+                <span>Remember my login</span>
+
+            </label>
+
+            <button
+                type="button"
+                id="clearLogin"
+                class="clear-login">
+                Clear saved login
+            </button>
+
+        </div>
+
+        <!-- LOGIN -->
+
+        <button
+            id="loginBtn"
+            class="login-btn"
+            type="submit">
+
+            <span id="loginText">
+                Login
+            </span>
+
+            <span id="loader"
+                  class="loader">
+            </span>
+
+        </button>
+
+    </form>
+
+    <div class="divider">
+        <span>NEW USER?</span>
+    </div>
+
+    <button
+        id="createAccountBtn"
+        class="create-btn"
+        type="button">
+
+        Create an Account
+
+    </button>
+
+    <div class="security">
+
+        <span class="security-icon">
+            ✓
+        </span>
+
+        Secure platform access
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     CREATE ACCOUNT / BUY PACKAGE
+====================================================== -->
+
+<div id="packagePage"
+     class="package-page">
+
+    <div class="package-icon">
+        💳
+    </div>
+
+    <h2>
+        Create Your Account
+    </h2>
+
+    <p>
+        To create an account, first choose and
+        purchase a Rupay package.
+    </p>
+
+    <button
+        id="buyPackageBtn"
+        class="buy-btn"
+        type="button">
+
+        Buy a Package
+
+    </button>
+
+    <button
+        id="backBtn"
+        class="back-btn"
+        type="button">
+
+        ← Back to Login
+
+    </button>
+
+</div>
+
+<div class="footer">
+    © 2026 Rupay. All rights reserved.
+</div>
+
+</section>
+
+</main>
+
+
+<script>
+/* =========================================================
+   RUPAY LOGIN SYSTEM
+========================================================= */
+
+/*
+    DEMO LOGIN DETAILS
+
+    Package ID : Rupays04
+    Password   : Grow41st
+
+    IMPORTANT:
+    This example uses localStorage only for convenience.
+    Do NOT use client-side credentials for real secure
+    authentication or real payment accounts.
+*/
+
+const VALID_PACKAGE_ID = "Rupays04";
+const VALID_PASSWORD = "Grow41st";
+
+
+/* =========================================================
+   STORAGE KEY
+========================================================= */
+
+const STORAGE_KEY = "rupay_saved_login_v1";
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const loginPage =
+    document.getElementById("loginPage");
+
+const packagePage =
+    document.getElementById("packagePage");
+
+const loginForm =
+    document.getElementById("loginForm");
+
+const packageId =
+    document.getElementById("packageId");
+
+const password =
+    document.getElementById("password");
+
+const message =
+    document.getElementById("message");
+
+const loginBtn =
+    document.getElementById("loginBtn");
+
+const loginText =
+    document.getElementById("loginText");
+
+const loader =
+    document.getElementById("loader");
+
+const passwordToggle =
+    document.getElementById("passwordToggle");
+
+const createAccountBtn =
+    document.getElementById("createAccountBtn");
+
+const buyPackageBtn =
+    document.getElementById("buyPackageBtn");
+
+const backBtn =
+    document.getElementById("backBtn");
+
+const rememberLogin =
+    document.getElementById("rememberLogin");
+
+const clearLogin =
+    document.getElementById("clearLogin");
+
+const savedBadge =
+    document.getElementById("savedBadge");
+
+
+/* =========================================================
+   MESSAGE SYSTEM
+========================================================= */
+
+function showMessage(text,type){
+
+    message.textContent = text;
+
+    message.className =
+        "message " + type;
+}
+
+
+function clearMessage(){
+
+    message.textContent = "";
+
+    message.className = "message";
+}
+
+
+/* =========================================================
+   SAVE LOGIN
+========================================================= */
+
+function saveLoginCredentials(id,pass){
+
+    try{
+
+        const credentials = {
+            packageId:id,
+            password:pass
+        };
+
+        localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify(credentials)
+        );
+
+    }catch(error){
+
+        console.log(
+            "Unable to save login credentials."
+        );
+    }
+}
+
+
+/* =========================================================
+   GET SAVED LOGIN
+========================================================= */
+
+function getSavedLogin(){
+
+    try{
+
+        const saved =
+            localStorage.getItem(STORAGE_KEY);
+
+        if(!saved){
+            return null;
+        }
+
+        const credentials =
+            JSON.parse(saved);
+
+        if(
+            !credentials ||
+            !credentials.packageId ||
+            !credentials.password
+        ){
+            return null;
+        }
+
+        return credentials;
+
+    }catch(error){
+
+        return null;
+    }
+}
+
+
+/* =========================================================
+   CLEAR SAVED LOGIN
+========================================================= */
+
+function removeSavedLogin(){
+
+    try{
+
+        localStorage.removeItem(
+            STORAGE_KEY
+        );
+
+    }catch(error){
+
+        console.log(
+            "Unable to clear saved login."
+        );
+    }
+
+    packageId.value = "";
+    password.value = "";
+
+    savedBadge.classList.remove("show");
+
+    clearMessage();
+
+    rememberLogin.checked = true;
+
+    packageId.focus();
+}
+
+
+/* =========================================================
+   LOAD SAVED LOGIN
+========================================================= */
+
+function loadSavedLogin(){
+
+    const saved =
+        getSavedLogin();
+
+    if(!saved){
+        return;
+    }
+
+    packageId.value =
+        saved.packageId;
+
+    password.value =
+        saved.password;
+
+    rememberLogin.checked = true;
+
+    savedBadge.classList.add("show");
+}
+
+
+/* =========================================================
+   PASSWORD SHOW / HIDE
+========================================================= */
+
+passwordToggle.addEventListener(
+    "click",
+    function(){
+
+        if(password.type === "password"){
+
+            password.type = "text";
+
+            passwordToggle.textContent = "◌";
+
+            passwordToggle.setAttribute(
+                "aria-label",
+                "Hide password"
+            );
+
+        }else{
+
+            password.type = "password";
+
+            passwordToggle.textContent = "◉";
+
+            passwordToggle.setAttribute(
+                "aria-label",
+                "Show password"
+            );
+        }
+    }
+);
+
+
+/* =========================================================
+   CLEAR LOGIN BUTTON
+========================================================= */
+
+clearLogin.addEventListener(
+    "click",
+    function(){
+
+        const saved =
+            getSavedLogin();
+
+        if(!saved){
+
+            showMessage(
+                "There is no saved login to clear.",
+                "error"
+            );
+
+            return;
+        }
+
+        removeSavedLogin();
+
+        showMessage(
+            "Saved login credentials have been cleared.",
+            "success"
+        );
+    }
+);
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+loginForm.addEventListener(
+    "submit",
+    function(event){
+
+        event.preventDefault();
+
+        clearMessage();
+
+        const enteredId =
+            packageId.value.trim();
+
+        const enteredPassword =
+            password.value;
+
+
+        /* EMPTY CHECK */
+
+        if(
+            !enteredId ||
+            !enteredPassword
+        ){
+
+            showMessage(
+                "Please enter your Package ID and password.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        /* START LOADING */
+
+        loginBtn.classList.add("loading");
+
+        loginText.style.display = "none";
+
+        loader.style.display = "block";
+
+
+        /*
+            Authentication simulation.
+        */
+
+        setTimeout(
+            function(){
+
+                /* CORRECT LOGIN */
+
+                if(
+                    enteredId === VALID_PACKAGE_ID &&
+                    enteredPassword === VALID_PASSWORD
+                ){
+
+                    /*
+                        SAVE CREDENTIALS
+
+                        Only save when Remember my login
+                        is enabled.
+                    */
+
+                    if(rememberLogin.checked){
+
+                        saveLoginCredentials(
+                            enteredId,
+                            enteredPassword
+                        );
+
+                    }else{
+
+                        removeSavedLogin();
+                    }
+
+
+                    savedBadge.classList.add("show");
+
+
+                    showMessage(
+                        "Login successful. Opening your dashboard...",
+                        "success"
+                    );
+
+
+                    /*
+                        DASHBOARD
+
+                        Make sure this file exists:
+
+                        Dashbro.html
+                    */
+
+                    setTimeout(
+                        function(){
+
+                            window.location.href =
+                                "Dashbro.html";
+
+                        },
+                        700
+                    );
+
+
+                }else{
+
+                    /* WRONG LOGIN */
+
+                    loginBtn.classList.remove(
+                        "loading"
+                    );
+
+                    loginText.style.display =
+                        "inline";
+
+                    loader.style.display =
+                        "none";
+
+                    showMessage(
+                        "Wrong Package ID or password. Please check your details and try again.",
+                        "error"
+                    );
+
+                    /*
+                        Clear only password after
+                        failed authentication.
+                    */
+
+                    password.value = "";
+
+                    password.focus();
+                }
+
+            },
+            650
+        );
+    }
+);
+
+
+/* =========================================================
+   CREATE ACCOUNT
+========================================================= */
+
+createAccountBtn.addEventListener(
+    "click",
+    function(){
+
+        clearMessage();
+
+        loginPage.classList.add(
+            "hidden"
+        );
+
+        packagePage.classList.add(
+            "active"
+        );
+    }
+);
+
+
+/* =========================================================
+   BACK TO LOGIN
+========================================================= */
+
+backBtn.addEventListener(
+    "click",
+    function(){
+
+        packagePage.classList.remove(
+            "active"
+        );
+
+        loginPage.classList.remove(
+            "hidden"
+        );
+
+        setTimeout(
+            function(){
+
+                packageId.focus();
+
+            },
+            150
+        );
+    }
+);
+
+
+/* =========================================================
+   BUY PACKAGE
+========================================================= */
+
+buyPackageBtn.addEventListener(
+    "click",
+    function(){
+
+        window.location.href =
+            "Rupay.html";
+    }
+);
+
+
+/* =========================================================
+   ENTER KEY SUPPORT
+========================================================= */
+
+packageId.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Enter"){
+
+            event.preventDefault();
+
+            password.focus();
+        }
+    }
+);
+
+
+/* =========================================================
+   PAGE SHOW / BACK BUTTON
+========================================================= */
+
+window.addEventListener(
+    "pageshow",
+    function(){
+
+        loginBtn.classList.remove(
+            "loading"
+        );
+
+        loginText.style.display =
+            "inline";
+
+        loader.style.display =
+            "none";
+    }
+);
+
+
+/* =========================================================
+   INITIALIZATION
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        /*
+            Load previously saved credentials.
+        */
+
+        loadSavedLogin();
+
+        /*
+            If saved credentials are available,
+            automatically attempt login.
+        */
+
+        const saved =
+            getSavedLogin();
+
+        if(
+            saved &&
+            saved.packageId &&
+            saved.password
+        ){
+
+            /*
+                Small delay allows the login page
+                to render before automatic login.
+            */
+
+            setTimeout(
+                function(){
+
+                    loginForm.requestSubmit();
+
+                },
+                500
+            );
+
+        }else{
+
+            packageId.focus();
+        }
+    }
+);
+
+
+/* =========================================================
+   FRONTEND ERROR HANDLING
+========================================================= */
+
+window.addEventListener(
+    "error",
+    function(){
+
+        console.log(
+            "Rupay interface error detected."
+        );
+    }
+);
+</script>
+
+</body>
+</html>
