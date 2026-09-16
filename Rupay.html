@@ -20,7 +20,8 @@
 
 /* =========================================================
    RUPAY — PROFESSIONAL RESPONSIVE PLATFORM
-   SINGLE FILE: HTML + CSS + JAVASCRIPT
+   FULL SINGLE FILE
+   PACKAGE CARDS PROFESSIONALLY MANAGED
    ========================================================= */
 
 :root {
@@ -101,8 +102,6 @@ body {
 }
 
 
-/* Background light */
-
 body::before {
     content: "";
 
@@ -150,7 +149,6 @@ header {
         blur(20px);
 }
 
-
 .navbar {
     width:
         min(1180px, 92%);
@@ -191,7 +189,6 @@ header {
     letter-spacing: -.5px;
 }
 
-
 .brand-logo {
     width: 43px;
     height: 43px;
@@ -205,8 +202,6 @@ header {
 
     border:
         1px solid rgba(255,255,255,.07);
-
-    /* NO LOGO ANIMATION */
 }
 
 
@@ -222,7 +217,6 @@ header {
     gap: 24px;
 }
 
-
 .nav-links a {
     position: relative;
 
@@ -237,7 +231,6 @@ header {
     transition:
         color .2s ease;
 }
-
 
 .nav-links a:not(.btn)::after {
     content: "";
@@ -257,16 +250,13 @@ header {
         width .2s ease;
 }
 
-
 .nav-links a:hover {
     color: white;
 }
 
-
 .nav-links a:hover::after {
     width: 100%;
 }
-
 
 .menu-btn {
     display: none;
@@ -285,15 +275,6 @@ header {
     height: 42px;
 
     border-radius: 12px;
-
-    transition:
-        background .2s ease;
-}
-
-
-.menu-btn:active {
-    background:
-        rgba(255,255,255,.07);
 }
 
 
@@ -308,18 +289,15 @@ header {
     margin: auto;
 }
 
-
 section {
     padding: 85px 0;
 }
-
 
 .section-title {
     text-align: center;
 
     margin-bottom: 45px;
 }
-
 
 .section-title .small {
     display: inline-block;
@@ -335,7 +313,6 @@ section {
     font-weight: 800;
 }
 
-
 .section-title h2 {
     font-size:
         clamp(30px, 5vw, 46px);
@@ -346,7 +323,6 @@ section {
 
     letter-spacing: -1.5px;
 }
-
 
 .section-title p {
     color: var(--muted);
@@ -397,18 +373,15 @@ section {
         border-color .2s ease;
 }
 
-
 .btn:hover {
     transform:
         translateY(-2px);
 }
 
-
 .btn:active {
     transform:
         translateY(0);
 }
-
 
 .btn-primary {
     color: #001018;
@@ -428,13 +401,11 @@ section {
         rgba(0,212,255,.14);
 }
 
-
 .btn-primary:hover {
     box-shadow:
         0 15px 38px
         rgba(0,212,255,.22);
 }
-
 
 .btn-secondary {
     color: white;
@@ -442,7 +413,6 @@ section {
     background:
         rgba(255,255,255,.055);
 }
-
 
 .btn-secondary:hover {
     background:
@@ -472,7 +442,6 @@ section {
     overflow: hidden;
 }
 
-
 .hero-content {
     width: 100%;
 
@@ -480,11 +449,6 @@ section {
 
     margin: auto;
 }
-
-
-/* =========================================================
-   HERO LOGO
-   ========================================================= */
 
 .hero-logo {
     width: 105px;
@@ -508,17 +472,7 @@ section {
 
         0 20px 60px
         rgba(0,212,255,.12);
-
-    /*
-       IMPORTANT:
-       No animation here.
-    */
 }
-
-
-/* =========================================================
-   HERO TITLE
-   ========================================================= */
 
 .hero h1 {
     font-size:
@@ -551,7 +505,6 @@ section {
         );
 }
 
-
 .hero-subtitle {
     margin:
         26px auto;
@@ -564,7 +517,6 @@ section {
 
     font-size: 16px;
 }
-
 
 .hero-buttons {
     display: flex;
@@ -590,7 +542,6 @@ section {
     gap: 15px;
 }
 
-
 .stat-card {
     padding: 25px;
 
@@ -610,7 +561,6 @@ section {
         background .2s ease;
 }
 
-
 .stat-card:hover {
     transform:
         translateY(-4px);
@@ -622,7 +572,6 @@ section {
         rgba(0,212,255,.18);
 }
 
-
 .stat-card strong {
     display: block;
 
@@ -630,7 +579,6 @@ section {
 
     margin-bottom: 5px;
 }
-
 
 .stat-card span {
     color: var(--muted);
@@ -640,181 +588,357 @@ section {
 
 
 /* =========================================================
-   PACKAGES
+   ⭐ PROFESSIONAL PACKAGE SECTION
    ========================================================= */
+
+#packages {
+    position: relative;
+}
+
+
+/* Package grid */
 
 .packages {
     display: grid;
 
     grid-template-columns:
-        repeat(3, 1fr);
+        repeat(3, minmax(0, 1fr));
 
-    gap: 22px;
+    gap: 24px;
+
+    align-items: stretch;
 }
 
+
+/* =========================================================
+   PACKAGE CARD
+   ========================================================= */
 
 .package {
     position: relative;
 
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+
     overflow: hidden;
 
-    padding: 18px;
+    padding: 12px;
 
     border-radius:
-        var(--radius);
+        26px;
 
     border:
-        1px solid var(--border);
+        1px solid
+        rgba(255,255,255,.10);
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.055),
-            rgba(255,255,255,.022)
+            rgba(19,35,56,.94),
+            rgba(8,17,30,.94)
         );
 
     box-shadow:
-        var(--shadow);
+        0 18px 55px
+        rgba(0,0,0,.30);
 
     transition:
-        transform .25s ease,
-        border-color .25s ease,
-        background .25s ease;
+        transform .28s ease,
+        border-color .28s ease,
+        box-shadow .28s ease;
 }
 
 
+/* Hover */
+
 .package:hover {
     transform:
-        translateY(-6px);
+        translateY(-8px);
 
     border-color:
         rgba(0,212,255,.30);
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.075),
-            rgba(255,255,255,.03)
-        );
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,.40),
+        0 0 35px
+        rgba(0,212,255,.05);
 }
 
+
+/* Featured */
 
 .package.featured {
     border-color:
         rgba(108,99,255,.48);
+
+    box-shadow:
+        0 22px 65px
+        rgba(108,99,255,.10);
+}
+
+.package.featured:hover {
+    border-color:
+        rgba(108,99,255,.72);
 }
 
 
-.package-badge {
-    position: absolute;
+/* =========================================================
+   PACKAGE IMAGE AREA
+   ========================================================= */
 
-    top: 14px;
-    right: 14px;
+.package-image-wrap {
+    position: relative;
 
-    z-index: 2;
+    width: 100%;
 
-    padding:
-        6px 10px;
+    overflow: hidden;
 
-    border-radius: 30px;
-
-    font-size: 10px;
-
-    font-weight: 900;
+    border-radius: 20px;
 
     background:
-        rgba(108,99,255,.20);
+        linear-gradient(
+            145deg,
+            #101f34,
+            #091321
+        );
 
-    color:
-        #c9c5ff;
+    aspect-ratio: 16 / 8.8;
 
     border:
         1px solid
-        rgba(108,99,255,.18);
+        rgba(255,255,255,.07);
 }
 
+
+/* Image */
 
 .package-image {
     width: 100%;
 
-    height: 110px;
-
-    border-radius: 18px;
-
-    object-fit: cover;
+    height: 100%;
 
     display: block;
 
+    object-fit: cover;
+
+    object-position: center;
+
+    transition:
+        transform .45s ease;
+}
+
+
+/* Image hover zoom */
+
+.package:hover .package-image {
+    transform:
+        scale(1.035);
+}
+
+
+/* Image dark overlay */
+
+.package-image-wrap::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
     background:
-        #101c2e;
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,0) 45%,
+            rgba(0,0,0,.18)
+        );
+}
+
+
+/* =========================================================
+   BADGES
+   ========================================================= */
+
+.package-badge {
+    position: absolute;
+
+    top: 23px;
+    right: 23px;
+
+    z-index: 5;
+
+    padding:
+        7px 12px;
+
+    border-radius:
+        999px;
+
+    font-size: 9px;
+
+    letter-spacing:
+        .8px;
+
+    font-weight: 950;
+
+    color: white;
+
+    background:
+        rgba(108,99,255,.88);
 
     border:
         1px solid
-        rgba(255,255,255,.05);
+        rgba(255,255,255,.18);
+
+    box-shadow:
+        0 8px 20px
+        rgba(0,0,0,.25);
+
+    backdrop-filter:
+        blur(12px);
 }
 
+
+/* =========================================================
+   PACKAGE CONTENT
+   ========================================================= */
 
 .package-content {
+    display: flex;
+
+    flex-direction: column;
+
+    flex: 1;
+
     padding:
-        20px 5px 5px;
+        21px 8px 8px;
 }
 
+
+/* Package title */
 
 .package-content h3 {
     font-size: 21px;
 
-    margin-bottom: 10px;
+    line-height: 1.25;
+
+    margin-bottom: 9px;
+
+    letter-spacing:
+        -.3px;
 }
 
+
+/* Description */
 
 .package-content p {
     color: var(--muted);
 
     font-size: 13px;
 
-    line-height: 1.6;
+    line-height: 1.65;
 
-    margin-bottom: 17px;
+    margin-bottom: 16px;
 
-    min-height: 42px;
+    min-height: 43px;
 }
 
+
+/* =========================================================
+   PRICE
+   ========================================================= */
 
 .price {
-    font-size: 27px;
+    display: flex;
 
-    font-weight: 900;
+    align-items: baseline;
 
-    margin-bottom: 18px;
+    gap: 6px;
+
+    font-size: 28px;
+
+    line-height: 1;
+
+    font-weight: 950;
+
+    letter-spacing:
+        -.8px;
+
+    margin-bottom: 20px;
 }
-
 
 .price small {
     color: var(--muted);
 
-    font-size: 12px;
+    font-size: 11px;
 
-    font-weight: 500;
+    font-weight: 600;
+
+    letter-spacing: 0;
 }
 
+
+/* =========================================================
+   PACKAGE BUTTONS
+   ========================================================= */
 
 .package-buttons {
     display: grid;
 
     grid-template-columns:
-        1fr 1fr;
+        1fr 1.18fr;
 
     gap: 9px;
-}
 
+    margin-top: auto;
+}
 
 .package-buttons .btn {
     min-height: 45px;
 
     padding:
-        0 10px;
+        0 9px;
 
     font-size: 12px;
+
+    border-radius:
+        12px;
+}
+
+
+/* =========================================================
+   PACKAGE BOTTOM ACCENT
+   ========================================================= */
+
+.package::before {
+    content: "";
+
+    position: absolute;
+
+    left: 18%;
+
+    right: 18%;
+
+    bottom: -30px;
+
+    height: 55px;
+
+    background:
+        rgba(0,212,255,.08);
+
+    filter:
+        blur(28px);
+
+    pointer-events: none;
+}
+
+.package.featured::before {
+    background:
+        rgba(108,99,255,.12);
 }
 
 
@@ -831,7 +955,6 @@ section {
     gap: 25px;
 }
 
-
 .about-card {
     padding: 30px;
 
@@ -845,13 +968,11 @@ section {
         var(--card);
 }
 
-
 .about-card h3 {
     margin-bottom: 20px;
 
     font-size: 24px;
 }
-
 
 .about-text {
     color: var(--muted);
@@ -872,7 +993,6 @@ section {
     gap: 14px;
 }
 
-
 .feature {
     display: flex;
 
@@ -888,23 +1008,8 @@ section {
         rgba(255,255,255,.035);
 
     border:
-        1px solid
-        transparent;
-
-    transition:
-        background .2s ease,
-        border-color .2s ease;
+        1px solid transparent;
 }
-
-
-.feature:hover {
-    background:
-        rgba(255,255,255,.055);
-
-    border-color:
-        rgba(255,255,255,.06);
-}
-
 
 .feature-icon {
     width: 40px;
@@ -928,13 +1033,11 @@ section {
     font-size: 19px;
 }
 
-
 .feature strong {
     display: block;
 
     font-size: 14px;
 }
-
 
 .feature span {
     display: block;
@@ -960,7 +1063,6 @@ section {
     gap: 25px;
 }
 
-
 .online-card,
 .chart-card {
     background:
@@ -975,7 +1077,6 @@ section {
     padding: 28px;
 }
 
-
 .online-number {
     font-size: 54px;
 
@@ -987,7 +1088,6 @@ section {
     letter-spacing: -2px;
 }
 
-
 .online-status {
     color:
         var(--green);
@@ -996,7 +1096,6 @@ section {
 
     font-weight: 800;
 }
-
 
 .pulse {
     display: inline-block;
@@ -1033,11 +1132,9 @@ section {
     margin-bottom: 20px;
 }
 
-
 .chart-title h3 {
     font-size: 18px;
 }
-
 
 .demo-label {
     font-size: 10px;
@@ -1055,7 +1152,6 @@ section {
 
     white-space: nowrap;
 }
-
 
 canvas {
     width: 100%;
@@ -1079,7 +1175,6 @@ canvas {
     gap: 18px;
 }
 
-
 .contact-card {
     padding: 27px;
 
@@ -1092,21 +1187,7 @@ canvas {
         1px solid var(--border);
 
     text-align: center;
-
-    transition:
-        transform .2s ease,
-        border-color .2s ease;
 }
-
-
-.contact-card:hover {
-    transform:
-        translateY(-4px);
-
-    border-color:
-        rgba(0,212,255,.20);
-}
-
 
 .contact-icon {
     font-size: 28px;
@@ -1114,11 +1195,9 @@ canvas {
     margin-bottom: 15px;
 }
 
-
 .contact-card h3 {
     margin-bottom: 8px;
 }
-
 
 .contact-card p {
     color: var(--muted);
@@ -1127,7 +1206,6 @@ canvas {
 
     line-height: 1.6;
 }
-
 
 .contact-card a {
     color:
@@ -1159,7 +1237,6 @@ canvas {
     text-align: center;
 }
 
-
 .license span {
     display: block;
 
@@ -1188,7 +1265,6 @@ footer {
         rgba(0,0,0,.15);
 }
 
-
 .footer-grid {
     display: grid;
 
@@ -1197,7 +1273,6 @@ footer {
 
     gap: 30px;
 }
-
 
 .footer-brand p {
     color: var(--muted);
@@ -1211,11 +1286,9 @@ footer {
     margin-top: 12px;
 }
 
-
 .footer-column h4 {
     margin-bottom: 14px;
 }
-
 
 .footer-column a {
     display: block;
@@ -1227,16 +1300,7 @@ footer {
     font-size: 13px;
 
     margin: 10px 0;
-
-    transition:
-        color .2s ease;
 }
-
-
-.footer-column a:hover {
-    color: white;
-}
-
 
 .footer-bottom {
     margin-top: 30px;
@@ -1258,7 +1322,6 @@ footer {
 
 /* =========================================================
    FLOATING CONTROLS
-   BACK BUTTON REMOVED
    ========================================================= */
 
 .floating-controls {
@@ -1275,8 +1338,7 @@ footer {
     flex-direction: column;
 
     gap: 9px;
-}
-
+}.
 
 .float-btn {
     width: 44px;
@@ -1298,25 +1360,6 @@ footer {
 
     backdrop-filter:
         blur(15px);
-
-    transition:
-        transform .2s ease,
-        background .2s ease;
-}
-
-
-.float-btn:hover {
-    transform:
-        scale(1.07);
-
-    background:
-        rgba(20,38,60,.95);
-}
-
-
-.float-btn:active {
-    transform:
-        scale(.96);
 }
 
 
@@ -1362,7 +1405,6 @@ footer {
         transform .25s ease;
 }
 
-
 .toast.show {
     opacity: 1;
 
@@ -1372,29 +1414,26 @@ footer {
 
 
 /* =========================================================
-   RESPONSIVE — TABLET
+   TABLET
    ========================================================= */
 
-@media(max-width: 900px) {
+@media(max-width: 1000px) {
 
     .packages {
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(2, minmax(0, 1fr));
     }
-
 
     .stats {
         grid-template-columns:
             repeat(2, 1fr);
     }
 
-
     .about-grid,
     .live-box {
         grid-template-columns:
             1fr;
     }
-
 
     .footer-grid {
         grid-template-columns:
@@ -1404,7 +1443,7 @@ footer {
 
 
 /* =========================================================
-   RESPONSIVE — MOBILE
+   MOBILE
    ========================================================= */
 
 @media(max-width: 650px) {
@@ -1413,18 +1452,15 @@ footer {
         padding: 65px 0;
     }
 
-
     .navbar {
         min-height: 64px;
     }
-
 
     .menu-btn {
         display: grid;
 
         place-items: center;
     }
-
 
     .nav-links {
         position: absolute;
@@ -1451,27 +1487,15 @@ footer {
         align-items: stretch;
 
         gap: 4px;
-
-        box-shadow:
-            0 20px 50px
-            rgba(0,0,0,.35);
     }
-
 
     .nav-links.active {
         display: flex;
     }
 
-
     .nav-links a {
         padding: 12px;
     }
-
-
-    .nav-links .btn {
-        margin-top: 5px;
-    }
-
 
     .hero {
         min-height:
@@ -1481,12 +1505,10 @@ footer {
             55px 0;
     }
 
-
     .hero h1 {
         letter-spacing:
             -3px;
     }
-
 
     .hero-logo {
         width: 255px;
@@ -1495,14 +1517,12 @@ footer {
         border-radius: 24px;
     }
 
-
     .hero-subtitle {
         font-size: 14px;
 
         padding:
             0 10px;
     }
-
 
     .hero-buttons {
         width: 100%;
@@ -1511,7 +1531,6 @@ footer {
             0 10px;
     }
 
-
     .hero-buttons .btn {
         width: 100%;
 
@@ -1519,38 +1538,84 @@ footer {
     }
 
 
-    .packages,
+    /* =====================================================
+       MOBILE PACKAGE CARD
+       ===================================================== */
+
+    .packages {
+        grid-template-columns:
+            1fr;
+
+        gap: 18px;
+    }
+
+    .package {
+        padding: 10px;
+
+        border-radius:
+            22px;
+    }
+
+    .package-image-wrap {
+        aspect-ratio:
+            16 / 9;
+
+        border-radius:
+            17px;
+    }
+
+    .package-content {
+        padding:
+            18px 7px 7px;
+    }
+
+    .package-content h3 {
+        font-size: 20px;
+    }
+
+    .package-content p {
+        min-height:
+            auto;
+
+        margin-bottom:
+            15px;
+    }
+
+    .price {
+        font-size:
+            26px;
+
+        margin-bottom:
+            17px;
+    }
+
+    .package-buttons .btn {
+        min-height:
+            46px;
+    }
+
+
     .contact-grid {
         grid-template-columns:
             1fr;
     }
 
-
     .stats {
         gap: 10px;
     }
-
 
     .stat-card {
         padding:
             18px 10px;
     }
 
-
     .stat-card strong {
         font-size: 23px;
     }
 
-
-    .package-image {
-        height: 210px;
-    }
-
-
     .online-number {
         font-size: 45px;
     }
-
 
     .chart-title {
         align-items:
@@ -1560,18 +1625,16 @@ footer {
             column;
     }
 
-
     .chart-card,
     .online-card {
-        padding: 22px;
+        padding:
+            22px;
     }
-
 
     .footer-grid {
         grid-template-columns:
             1fr;
     }
-
 
     .floating-controls {
         bottom: 14px;
@@ -1592,15 +1655,14 @@ footer {
             1fr;
     }
 
-
     .package-buttons {
         grid-template-columns:
-            1fr;
+            1fr 1fr;
     }
 
-
     .hero h1 {
-        font-size: 55px;
+        font-size:
+            55px;
     }
 }
 
@@ -1640,65 +1702,55 @@ footer {
 
 <nav class="navbar">
 
-    <a href="#home"
-       class="brand">
+<a href="#home"
+   class="brand">
 
-        <img
-            src="https://raw.githubusercontent.com/soulpari21-hue/Rupay/refs/heads/main/1789472698527.png"
-            class="brand-logo"
-            alt="Rupay Logo"
-            onerror="this.style.display='none';"
-        >
+    <img
+        src="https://raw.githubusercontent.com/soulpari21-hue/Rupay/refs/heads/main/1789472698527.png"
+        class="brand-logo"
+        alt="Rupay Logo"
+        onerror="this.style.display='none';"
+    >
 
-        <span>Rupay</span>
+    <span>Rupay</span>
+
+</a>
+
+
+<button
+    class="menu-btn"
+    id="menuBtn"
+    aria-label="Open navigation menu"
+    aria-expanded="false">
+
+    ☰
+
+</button>
+
+
+<div
+    class="nav-links"
+    id="navLinks">
+
+    <a href="#home">Home</a>
+
+    <a href="#packages">Packages</a>
+
+    <a href="#about">About</a>
+
+    <a href="#stats">Activity</a>
+
+    <a href="#contact">Contact</a>
+
+    <a
+        href="Login.html"
+        class="btn btn-primary">
+
+        Login
 
     </a>
 
-
-    <button
-        class="menu-btn"
-        id="menuBtn"
-        aria-label="Open navigation menu"
-        aria-expanded="false">
-
-        ☰
-
-    </button>
-
-
-    <div
-        class="nav-links"
-        id="navLinks">
-
-        <a href="#home">
-            Home
-        </a>
-
-        <a href="#packages">
-            Packages
-        </a>
-
-        <a href="#about">
-            About
-        </a>
-
-        <a href="#stats">
-            Activity
-        </a>
-
-        <a href="#contact">
-            Contact
-        </a>
-
-        <a
-            href="Login.html"
-            class="btn btn-primary">
-
-            Login
-
-        </a>
-
-    </div>
+</div>
 
 </nav>
 
@@ -1724,51 +1776,49 @@ footer {
 
 <div class="hero-content">
 
-
-    <img
-        src="https://raw.githubusercontent.com/soulpari21-hue/Rupay/refs/heads/main/1789472698527.png"
-        alt="Rupay Logo"
-        class="hero-logo"
-        onerror="this.style.display='none';"
-    >
-
-
-    <h1>
-        Rupay
-    </h1>
+<img
+    src="https://raw.githubusercontent.com/soulpari21-hue/Rupay/refs/heads/main/1789472698527.png"
+    alt="Rupay Logo"
+    class="hero-logo"
+    onerror="this.style.display='none';"
+>
 
 
-    <p class="hero-subtitle">
-
-        A modern digital platform designed with
-        simplicity, speed and a professional experience
-        in mind. Explore packages, manage your account
-        and stay connected through one smooth platform.
-
-    </p>
+<h1>
+    Rupay
+</h1>
 
 
-    <div class="hero-buttons">
+<p class="hero-subtitle">
 
-        <a
-            href="Login.html"
-            class="btn btn-primary">
+    A modern digital platform designed with
+    simplicity, speed and a professional experience
+    in mind. Explore packages, manage your account
+    and stay connected through one smooth platform.
 
-            Login →
-
-        </a>
+</p>
 
 
-        <a
-            href="#packages"
-            class="btn btn-secondary">
+<div class="hero-buttons">
 
-            Explore Packages
+<a
+    href="Login.html"
+    class="btn btn-primary">
 
-        </a>
+    Login →
 
-    </div>
+</a>
 
+
+<a
+    href="#packages"
+    class="btn btn-secondary">
+
+    Explore Packages
+
+</a>
+
+</div>
 
 </div>
 
@@ -1787,58 +1837,56 @@ footer {
 
 <div class="stats">
 
+<div class="stat-card">
 
-    <div class="stat-card">
+    <strong id="userCount">
+        1,284
+    </strong>
 
-        <strong id="userCount">
-            1,284
-        </strong>
+    <span>
+        Online Users
+    </span>
 
-        <span>
-            Online Users
-        </span>
-
-    </div>
-
-
-    <div class="stat-card">
-
-        <strong>
-            24/7
-        </strong>
-
-        <span>
-            Support Availability
-        </span>
-
-    </div>
+</div>
 
 
-    <div class="stat-card">
+<div class="stat-card">
 
-        <strong>
-            5+
-        </strong>
+    <strong>
+        24/7
+    </strong>
 
-        <span>
-            Packages
-        </span>
+    <span>
+        Support Availability
+    </span>
 
-    </div>
+</div>
 
 
-    <div class="stat-card">
+<div class="stat-card">
 
-        <strong>
-            Fast
-        </strong>
+    <strong>
+        5+
+    </strong>
 
-        <span>
-            Platform Experience
-        </span>
+    <span>
+        Packages
+    </span>
 
-    </div>
+</div>
 
+
+<div class="stat-card">
+
+    <strong>
+        Fast
+    </strong>
+
+    <span>
+        Platform Experience
+    </span>
+
+</div>
 
 </div>
 
@@ -1848,7 +1896,7 @@ footer {
 
 
 <!-- =======================================================
-     PACKAGES
+     ⭐ PACKAGE LIST
      ======================================================= -->
 
 <section id="packages">
@@ -1858,17 +1906,17 @@ footer {
 
 <div class="section-title">
 
-    <span class="small">
-        Choose Your Plan
-    </span>
+<span class="small">
+    Choose Your Plan
+</span>
 
-    <h2>
-        Rupay Packages
-    </h2>
+<h2>
+    Rupay Packages
+</h2>
 
-    <p>
-        Select a package that matches your requirements.
-    </p>
+<p>
+    Select a package that matches your requirements.
+</p>
 
 </div>
 
@@ -1876,284 +1924,322 @@ footer {
 <div class="packages">
 
 
-<!-- PACKAGE 1 -->
+<!-- =====================================================
+     PACKAGE 1
+     ===================================================== -->
 
 <article class="package">
 
-    <img
-        src="package1.jpg"
-        alt="Normal Package"
-        class="package-image"
-        onerror="
+<div class="package-image-wrap">
+
+<img
+    src="package1.jpg"
+    alt="Normal Package"
+    class="package-image"
+    loading="lazy"
+    onerror="
         this.src='https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/1789429227825.jpg';
-        "
-    >
+    "
+>
+
+</div>
 
 
-    <div class="package-content">
+<div class="package-content">
 
-        <h3>
-            Normal Package
-        </h3>
+<h3>
+    Normal Package
+</h3>
 
-        <p>
-            Entry-level package for users who want
-            a simple starting option.
-        </p>
+<p>
+    Entry-level package for users who want
+    a simple starting option.
+</p>
 
-        <div class="price">
-            NPR 450/-
-        </div>
+<div class="price">
+    NPR 450
+    <small>/ package</small>
+</div>
 
-        <div class="package-buttons">
+<div class="package-buttons">
 
-            <a
-                href="About.html"
-                class="btn btn-secondary">
+<a
+    href="About.html"
+    class="btn btn-secondary">
 
-                About
+    About
 
-            </a>
+</a>
 
-            <a
-                href="Buy.html?package=normal"
-                class="btn btn-primary">
+<a
+    href="Buy.html?package=normal"
+    class="btn btn-primary">
 
-                Buy Now
+    Buy Now
 
-            </a>
+</a>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
 </article>
 
 
-<!-- PACKAGE 2 -->
+<!-- =====================================================
+     PACKAGE 2
+     ===================================================== -->
 
 <article class="package">
 
-    <img
-        src="package2.jpg"
-        alt="Silver Package"
-        class="package-image"
-        onerror="
+<div class="package-image-wrap">
+
+<img
+    src="package2.jpg"
+    alt="Silver Package"
+    class="package-image"
+    loading="lazy"
+    onerror="
         this.src='https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/1789429403401.jpg';
-        "
-    >
+    "
+>
+
+</div>
 
 
-    <div class="package-content">
+<div class="package-content">
 
-        <h3>
-            Silver Package
-        </h3>
+<h3>
+    Silver Package
+</h3>
 
-        <p>
-            A balanced package with additional
-            platform features.
-        </p>
+<p>
+    A balanced package with additional
+    platform features.
+</p>
 
-        <div class="price">
-            NPR 870/-
-        </div>
+<div class="price">
+    NPR 870
+    <small>/ package</small>
+</div>
 
-        <div class="package-buttons">
+<div class="package-buttons">
 
-            <a
-                href="About.html"
-                class="btn btn-secondary">
+<a
+    href="About.html"
+    class="btn btn-secondary">
 
-                About
+    About
 
-            </a>
+</a>
 
-            <a
-                href="Buy.html?package=silver"
-                class="btn btn-primary">
+<a
+    href="Buy.html?package=silver"
+    class="btn btn-primary">
 
-                Buy Now
+    Buy Now
 
-            </a>
+</a>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
 </article>
 
 
-<!-- PACKAGE 3 -->
+<!-- =====================================================
+     PACKAGE 3
+     ===================================================== -->
 
-<article
-    class="package featured">
+<article class="package featured">
 
-    <span class="package-badge">
-        POPULAR
-    </span>
+<span class="package-badge">
+    POPULAR
+</span>
 
 
-    <img
-        src="package3.jpg"
-        alt="Gold Package"
-        class="package-image"
-        onerror="
+<div class="package-image-wrap">
+
+<img
+    src="package3.jpg"
+    alt="Gold Package"
+    class="package-image"
+    loading="lazy"
+    onerror="
         this.src='https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/1789429462939.jpg';
-        "
-    >
+    "
+>
+
+</div>
 
 
-    <div class="package-content">
+<div class="package-content">
 
-        <h3>
-            Gold Package
-        </h3>
+<h3>
+    Gold Package
+</h3>
 
-        <p>
-            A premium package designed for users
-            looking for more features.
-        </p>
+<p>
+    A premium package designed for users
+    looking for more features.
+</p>
 
-        <div class="price">
-            NPR 1,230/-
-        </div>
+<div class="price">
+    NPR 1,230
+    <small>/ package</small>
+</div>
 
-        <div class="package-buttons">
+<div class="package-buttons">
 
-            <a
-                href="About.html"
-                class="btn btn-secondary">
+<a
+    href="About.html"
+    class="btn btn-secondary">
 
-                About
+    About
 
-            </a>
+</a>
 
-            <a
-                href="Buy.html?package=gold"
-                class="btn btn-primary">
+<a
+    href="Buy.html?package=gold"
+    class="btn btn-primary">
 
-                Buy Now
+    Buy Now
 
-            </a>
+</a>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
 </article>
 
 
-<!-- PACKAGE 4 -->
+<!-- =====================================================
+     PACKAGE 4
+     ===================================================== -->
 
 <article class="package">
 
-    <img
-        src="package4.jpg"
-        alt="Pro4x Package"
-        class="package-image"
-        onerror="
+<div class="package-image-wrap">
+
+<img
+    src="package4.jpg"
+    alt="Pro4x Package"
+    class="package-image"
+    loading="lazy"
+    onerror="
         this.src='https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/1789429595150.jpg';
-        "
-    >
+    "
+>
+
+</div>
 
 
-    <div class="package-content">
+<div class="package-content">
 
-        <h3>
-            Pro4x Package
-        </h3>
+<h3>
+    Pro4x Package
+</h3>
 
-        <p>
-            Advanced package for users who need
-            an expanded platform experience.
-        </p>
+<p>
+    Advanced package for users who need
+    an expanded platform experience.
+</p>
 
-        <div class="price">
-            NPR 1,550/-
-        </div>
+<div class="price">
+    NPR 1,550
+    <small>/ package</small>
+</div>
 
-        <div class="package-buttons">
+<div class="package-buttons">
 
-            <a
-                href="About.html"
-                class="btn btn-secondary">
+<a
+    href="About.html"
+    class="btn btn-secondary">
 
-                About
+    About
 
-            </a>
+</a>
 
-            <a
-                href="Buy.html?package=pro4x"
-                class="btn btn-primary">
+<a
+    href="Buy.html?package=pro4x"
+    class="btn btn-primary">
 
-                Buy Now
+    Buy Now
 
-            </a>
+</a>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
 </article>
 
 
-<!-- PACKAGE 5 -->
+<!-- =====================================================
+     PACKAGE 5
+     ===================================================== -->
 
-<article
-    class="package featured">
+<article class="package featured">
 
-    <span class="package-badge">
-        PREMIUM
-    </span>
+<span class="package-badge">
+    PREMIUM
+</span>
 
 
-    <img
-        src="package5.jpg"
-        alt="Rupay7x Pro Package"
-        class="package-image"
-        onerror="
+<div class="package-image-wrap">
+
+<img
+    src="package5.jpg"
+    alt="Rupay7x Pro Package"
+    class="package-image"
+    loading="lazy"
+    onerror="
         this.src='https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/1789429749959.jpg';
-        "
-    >
+    "
+>
+
+</div>
 
 
-    <div class="package-content">
+<div class="package-content">
 
-        <h3>
-            Rupay7x Pro
-        </h3>
+<h3>
+    Rupay7x Pro
+</h3>
 
-        <p>
-            Our highest listed package with a
-            premium platform experience.
-        </p>
+<p>
+    Our highest listed package with a
+    premium platform experience.
+</p>
 
-        <div class="price">
-            NPR 2,350/-
-        </div>
+<div class="price">
+    NPR 2,350
+    <small>/ package</small>
+</div>
 
-        <div class="package-buttons">
+<div class="package-buttons">
 
-            <a
-                href="About.html"
-                class="btn btn-secondary">
+<a
+    href="About.html"
+    class="btn btn-secondary">
 
-                About
+    About
 
-            </a>
+</a>
 
-            <a
-                href="Buy.html?package=rupay7x"
-                class="btn btn-primary">
+<a
+    href="Buy.html?package=rupay7x"
+    class="btn btn-primary">
 
-                Buy Now
+    Buy Now
 
-            </a>
+</a>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
 </article>
 
@@ -2173,21 +2259,20 @@ footer {
 
 <div class="container">
 
-
 <div class="section-title">
 
-    <span class="small">
-        Why Rupay
-    </span>
+<span class="small">
+    Why Rupay
+</span>
 
-    <h2>
-        Built For A Better Experience
-    </h2>
+<h2>
+    Built For A Better Experience
+</h2>
 
-    <p>
-        Simple design, responsive technology and
-        useful platform features.
-    </p>
+<p>
+    Simple design, responsive technology and
+    useful platform features.
+</p>
 
 </div>
 
@@ -2197,150 +2282,147 @@ footer {
 
 <div class="about-card">
 
-    <h3>
-        About Rupay
-    </h3>
+<h3>
+    About Rupay
+</h3>
 
+<p class="about-text">
 
-    <p class="about-text">
+    Rupay is designed as a modern digital platform
+    experience focused on accessibility, smooth
+    navigation and a clean user interface.
 
-        Rupay is designed as a modern digital platform
-        experience focused on accessibility, smooth
-        navigation and a clean user interface.
+</p>
 
-    </p>
+<br>
 
+<p class="about-text">
 
-    <br>
+    Replace this text with your company's actual
+    description, registration information,
+    business details and terms.
 
-
-    <p class="about-text">
-
-        Replace this text with your company's actual
-        description, registration information,
-        business details and terms.
-
-    </p>
+</p>
 
 </div>
 
 
 <div class="about-card">
 
-    <h3>
-        Platform Features
-    </h3>
+<h3>
+    Platform Features
+</h3>
 
 
-    <div class="features">
+<div class="features">
 
 
-        <div class="feature">
+<div class="feature">
 
-            <div class="feature-icon">
-                ⚡
-            </div>
+<div class="feature-icon">
+    ⚡
+</div>
 
-            <div>
+<div>
 
-                <strong>
-                    Fast Experience
-                </strong>
+<strong>
+    Fast Experience
+</strong>
 
-                <span>
-                    Optimized responsive interface
-                </span>
+<span>
+    Optimized responsive interface
+</span>
 
-            </div>
+</div>
 
-        </div>
-
-
-        <div class="feature">
-
-            <div class="feature-icon">
-                🕐
-            </div>
-
-            <div>
-
-                <strong>
-                    24Hr Support
-                </strong>
-
-                <span>
-                    Support information available anytime
-                </span>
-
-            </div>
-
-        </div>
+</div>
 
 
-        <div class="feature">
+<div class="feature">
 
-            <div class="feature-icon">
-                🎁
-            </div>
+<div class="feature-icon">
+    🕐
+</div>
 
-            <div>
+<div>
 
-                <strong>
-                    Cashback
-                </strong>
+<strong>
+    24Hr Support
+</strong>
 
-                <span>
-                    Promotional cashback can be configured
-                </span>
+<span>
+    Support information available anytime
+</span>
 
-            </div>
+</div>
 
-        </div>
-
-
-        <div class="feature">
-
-            <div class="feature-icon">
-                🔐
-            </div>
-
-            <div>
-
-                <strong>
-                    Secure Account
-                </strong>
-
-                <span>
-                    Account security features
-                </span>
-
-            </div>
-
-        </div>
+</div>
 
 
-        <div class="feature">
+<div class="feature">
 
-            <div class="feature-icon">
-                📱
-            </div>
+<div class="feature-icon">
+    🎁
+</div>
 
-            <div>
+<div>
 
-                <strong>
-                    Any Device
-                </strong>
+<strong>
+    Cashback
+</strong>
 
-                <span>
-                    Mobile, iOS, tablet and desktop
-                </span>
+<span>
+    Promotional cashback can be configured
+</span>
 
-            </div>
+</div>
 
-        </div>
+</div>
 
 
-    </div>
+<div class="feature">
+
+<div class="feature-icon">
+    🔐
+</div>
+
+<div>
+
+<strong>
+    Secure Account
+</strong>
+
+<span>
+    Account security features
+</span>
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-icon">
+    📱
+</div>
+
+<div>
+
+<strong>
+    Any Device
+</strong>
+
+<span>
+    Mobile, iOS, tablet and desktop
+</span>
+
+</div>
+
+</div>
+
+
+</div>
 
 </div>
 
@@ -2359,20 +2441,19 @@ footer {
 
 <div class="container">
 
-
 <div class="section-title">
 
-    <span class="small">
-        Live Activity
-    </span>
+<span class="small">
+    Live Activity
+</span>
 
-    <h2>
-        Platform Activity
-    </h2>
+<h2>
+    Platform Activity
+</h2>
 
-    <p>
-        Example dashboard visualization.
-    </p>
+<p>
+    Example dashboard visualization.
+</p>
 
 </div>
 
@@ -2382,82 +2463,80 @@ footer {
 
 <div class="online-card">
 
-    <div class="online-status">
+<div class="online-status">
 
-        <span class="pulse"></span>
+<span class="pulse"></span>
 
-        LIVE STATUS
+LIVE STATUS
 
-    </div>
-
-
-    <div
-        class="online-number"
-        id="onlineUsers">
-
-        1,284
-
-    </div>
+</div>
 
 
-    <p style="
-        color:var(--muted);
-        font-size:13px;
-        line-height:1.7;
+<div
+    class="online-number"
+    id="onlineUsers">
+
+    1,284
+
+</div>
+
+
+<p style="
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.7;
+">
+
+    Users currently displayed in this
+    demonstration interface.
+
+</p>
+
+
+<div style="
+    margin-top:25px;
+    height:7px;
+    background:#162438;
+    border-radius:20px;
+    overflow:hidden;
+">
+
+<div
+    id="activityBar"
+    style="
+        height:100%;
+        width:72%;
+        background:
+            linear-gradient(
+                90deg,
+                #00d4ff,
+                #6c63ff
+            );
     ">
+</div>
 
-        Users currently displayed in this
-        demonstration interface.
-
-    </p>
-
-
-    <div style="
-        margin-top:25px;
-        height:7px;
-        background:#162438;
-        border-radius:20px;
-        overflow:hidden;
-    ">
-
-        <div
-            id="activityBar"
-            style="
-                height:100%;
-                width:72%;
-                background:
-                    linear-gradient(
-                        90deg,
-                        #00d4ff,
-                        #6c63ff
-                    );
-            ">
-        </div>
-
-    </div>
+</div>
 
 </div>
 
 
 <div class="chart-card">
 
-    <div class="chart-title">
+<div class="chart-title">
 
-        <h3>
-            Activity Flow
-        </h3>
+<h3>
+    Activity Flow
+</h3>
 
-        <span class="demo-label">
-            DEMO DATA
-        </span>
-
-    </div>
-
-
-    <canvas id="activityChart"></canvas>
+<span class="demo-label">
+    DEMO DATA
+</span>
 
 </div>
 
+<canvas id="activityChart"></canvas>
+
+</div>
 
 </div>
 
@@ -2474,55 +2553,52 @@ footer {
 
 <div class="container">
 
-
 <div class="section-title">
 
-    <span class="small">
-        Market View
-    </span>
+<span class="small">
+    Market View
+</span>
 
-    <h2>
-        Trading Chart
-    </h2>
+<h2>
+    Trading Chart
+</h2>
 
-    <p>
-        Illustrative chart only — values below are
-        demonstration data and are not guaranteed returns.
-    </p>
+<p>
+    Illustrative chart only — values below are
+    demonstration data and are not guaranteed returns.
+</p>
 
 </div>
 
 
 <div class="chart-card">
 
-    <div class="chart-title">
+<div class="chart-title">
 
-        <h3>
-            Illustrative Profit Rate
-        </h3>
+<h3>
+    Illustrative Profit Rate
+</h3>
 
-        <span class="demo-label">
-            NOT REAL RETURNS
-        </span>
+<span class="demo-label">
+    NOT REAL RETURNS
+</span>
 
-    </div>
+</div>
 
+<canvas id="profitChart"></canvas>
 
-    <canvas id="profitChart"></canvas>
+<p style="
+    color:#73859c;
+    font-size:11px;
+    margin-top:15px;
+    line-height:1.6;
+">
 
+    This chart is a visual demonstration.
+    Actual financial performance can vary and
+    should only be shown using verified real data.
 
-    <p style="
-        color:#73859c;
-        font-size:11px;
-        margin-top:15px;
-        line-height:1.6;
-    ">
-
-        This chart is a visual demonstration.
-        Actual financial performance can vary and
-        should only be shown using verified real data.
-
-    </p>
+</p>
 
 </div>
 
@@ -2539,21 +2615,20 @@ footer {
 
 <div class="container">
 
-
 <div class="section-title">
 
-    <span class="small">
-        Get In Touch
-    </span>
+<span class="small">
+    Get In Touch
+</span>
 
-    <h2>
-        Contact Us
-    </h2>
+<h2>
+    Contact Us
+</h2>
 
-    <p>
-        Replace the sample contact details below
-        with your actual business information.
-    </p>
+<p>
+    Replace the sample contact details below
+    with your actual business information.
+</p>
 
 </div>
 
@@ -2563,104 +2638,104 @@ footer {
 
 <div class="contact-card">
 
-    <div class="contact-icon">
-        💬
-    </div>
+<div class="contact-icon">
+    💬
+</div>
 
-    <h3>
-        WhatsApp
-    </h3>
+<h3>
+    WhatsApp
+</h3>
 
-    <p>
-        Customer support
-    </p>
+<p>
+    Customer support
+</p>
 
-    <br>
+<br>
 
-    <a
-        href="https://wa.me/9779800000000"
-        target="_blank"
-        rel="noopener">
+<a
+    href="https://wa.me/9779800000000"
+    target="_blank"
+    rel="noopener">
 
-        +977 9800000000
+    +977 9800000000
 
-    </a>
+</a>
 
 </div>
 
 
 <div class="contact-card">
 
-    <div class="contact-icon">
-        ✉️
-    </div>
+<div class="contact-icon">
+    ✉️
+</div>
 
-    <h3>
-        Email
-    </h3>
+<h3>
+    Email
+</h3>
 
-    <p>
-        General enquiries
-    </p>
+<p>
+    General enquiries
+</p>
 
-    <br>
+<br>
 
-    <a href="mailto:support@yourdomain.com">
+<a href="mailto:support@yourdomain.com">
 
-        support@yourdomain.com
+    support@yourdomain.com
 
-    </a>
+</a>
 
 </div>
 
 
 <div class="contact-card">
 
-    <div class="contact-icon">
-        🛡️
-    </div>
-
-    <h3>
-        License
-    </h3>
-
-    <p>
-        Business registration / license
-        information
-    </p>
-
-    <br>
-
-    <strong style="font-size:13px;">
-        LICENSE: ADD-YOUR-REAL-ID
-    </strong>
-
+<div class="contact-icon">
+    🛡️
 </div>
 
+<h3>
+    License
+</h3>
+
+<p>
+    Business registration / license
+    information
+</p>
+
+<br>
+
+<strong style="font-size:13px;">
+
+    LICENSE: ADD-YOUR-REAL-ID
+
+</strong>
+
+</div>
 
 </div>
 
 
 <div class="license">
 
-    <strong>
-        🔒 Security & Compliance
-    </strong>
+<strong>
+    🔒 Security & Compliance
+</strong>
 
-    <span>
+<span>
 
-        Add your real company registration,
-        financial authorization and security
-        certifications here if applicable.
+    Add your real company registration,
+    financial authorization and security
+    certifications here if applicable.
 
-    </span>
+</span>
 
 </div>
 
 </div>
 
 </section>
-
 
 </main>
 
@@ -2673,99 +2748,96 @@ footer {
 
 <div class="container">
 
-
 <div class="footer-grid">
 
 
 <div class="footer-brand">
 
-    <div class="brand">
+<div class="brand">
 
-        <img
-            src="logo.png"
-            class="brand-logo"
-            alt="Rupay">
+<img
+    src="https://raw.githubusercontent.com/soulpari21-hue/Rupay/refs/heads/main/1789472698527.png"
+    class="brand-logo"
+    alt="Rupay">
 
-        <span>
-            Rupay
-        </span>
+<span>
+    Rupay
+</span>
 
-    </div>
+</div>
 
 
-    <p>
+<p>
 
-        A modern digital platform interface
-        designed for a smooth and professional
-        experience.
+    A modern digital platform interface
+    designed for a smooth and professional
+    experience.
 
-    </p>
+</p>
 
 </div>
 
 
 <div class="footer-column">
 
-    <h4>
-        Quick Links
-    </h4>
+<h4>
+    Quick Links
+</h4>
 
-    <a href="#home">
-        Home
-    </a>
+<a href="#home">
+    Home
+</a>
 
-    <a href="#packages">
-        Packages
-    </a>
+<a href="#packages">
+    Packages
+</a>
 
-    <a href="#about">
-        About
-    </a>
+<a href="#about">
+    About
+</a>
 
-    <a href="#contact">
-        Contact
-    </a>
+<a href="#contact">
+    Contact
+</a>
 
 </div>
 
 
 <div class="footer-column">
 
-    <h4>
-        Account
-    </h4>
+<h4>
+    Account
+</h4>
 
-    <a href="Login.html">
-        Login
-    </a>
+<a href="Login.html">
+    Login
+</a>
 
-    <a href="Buy.html">
-        Buy Package
-    </a>
+<a href="Buy.html">
+    Buy Package
+</a>
 
-    <a href="About.html">
-        Package Details
-    </a>
+<a href="About.html">
+    Package Details
+</a>
 
 </div>
-
 
 </div>
 
 
 <div class="footer-bottom">
 
-    © <span id="year"></span>
-    Rupay. All rights reserved.
+© <span id="year"></span>
+Rupay. All rights reserved.
 
-    <br><br>
+<br><br>
 
-    ⚠️ Demo website interface.
-    Replace placeholders with verified company,
-    license, security and legal information.
+⚠️ Demo website interface.
+Replace placeholders with verified company,
+license, security and legal information.
 
 </div>
-
 
 </div>
 
@@ -2774,33 +2846,30 @@ footer {
 
 <!-- =======================================================
      FLOATING CONTROLS
-     BACK BUTTON REMOVED
      ======================================================= -->
 
 <div class="floating-controls">
 
+<button
+    class="float-btn"
+    onclick="refreshPage()"
+    title="Refresh"
+    aria-label="Refresh page">
 
-    <button
-        class="float-btn"
-        onclick="refreshPage()"
-        title="Refresh"
-        aria-label="Refresh page">
+    ↻
 
-        ↻
-
-    </button>
+</button>
 
 
-    <button
-        class="float-btn"
-        onclick="scrollTopPage()"
-        title="Scroll to top"
-        aria-label="Scroll to top">
+<button
+    class="float-btn"
+    onclick="scrollTopPage()"
+    title="Scroll to top"
+    aria-label="Scroll to top">
 
-        ↑
+    ↑
 
-    </button>
-
+</button>
 
 </div>
 
@@ -2820,6 +2889,7 @@ footer {
      ======================================================= -->
 
 <script>
+
 
 /* =========================================================
    MOBILE MENU
@@ -2850,8 +2920,6 @@ menuBtn.addEventListener(
     }
 );
 
-
-/* Close menu after navigation */
 
 document
 .querySelectorAll(".nav-links a")
@@ -2897,7 +2965,7 @@ function refreshPage() {
 
 
 /* =========================================================
-   SCROLL TO TOP
+   SCROLL TOP
    ========================================================= */
 
 function scrollTopPage() {
@@ -2987,23 +3055,15 @@ function updateUsers() {
         users.toLocaleString();
 
 
-    const userCount =
-        document.getElementById(
-            "userCount"
-        );
-
-
-    const onlineUsers =
-        document.getElementById(
-            "onlineUsers"
-        );
-
-
-    userCount.textContent =
+    document.getElementById(
+        "userCount"
+    ).textContent =
         formatted;
 
 
-    onlineUsers.textContent =
+    document.getElementById(
+        "onlineUsers"
+    ).textContent =
         formatted;
 
 }
@@ -3104,8 +3164,6 @@ function drawActivityChart() {
     );
 
 
-    /* Grid */
-
     ctx.strokeStyle =
         "rgba(255,255,255,.07)";
 
@@ -3177,8 +3235,6 @@ function drawActivityChart() {
             }
         );
 
-
-    /* Main line */
 
     ctx.beginPath();
 
@@ -3221,8 +3277,6 @@ function drawActivityChart() {
     ctx.stroke();
 
 
-    /* Points */
-
     points.forEach(
         point => {
 
@@ -3257,7 +3311,7 @@ function drawActivityChart() {
 
 
 /* =========================================================
-   PROFIT DEMO CHART
+   PROFIT CHART
    ========================================================= */
 
 function drawProfitChart() {
@@ -3294,8 +3348,6 @@ function drawProfitChart() {
         height
     );
 
-
-    /* Grid */
 
     ctx.strokeStyle =
         "rgba(255,255,255,.07)";
@@ -3368,8 +3420,6 @@ function drawProfitChart() {
             }
         );
 
-
-    /* Area fill */
 
     ctx.beginPath();
 
@@ -3428,8 +3478,6 @@ function drawProfitChart() {
     ctx.fill();
 
 
-    /* Main line */
-
     ctx.beginPath();
 
 
@@ -3470,8 +3518,6 @@ function drawProfitChart() {
 
     ctx.stroke();
 
-
-    /* Last point */
 
     const last =
         points[
@@ -3569,24 +3615,7 @@ window.addEventListener(
 
 
 /* =========================================================
-   GLOBAL ERROR LOGGING
-   ========================================================= */
-
-window.addEventListener(
-    "error",
-    event => {
-
-        console.log(
-            "Rupay interface error:",
-            event.message
-        );
-
-    }
-);
-
-
-/* =========================================================
-   ESCAPE KEY — CLOSE MOBILE MENU
+   ESCAPE KEY
    ========================================================= */
 
 document.addEventListener(
@@ -3618,4 +3647,4 @@ document.addEventListener(
 </script>
 
 </body>
-</html>
+      </html>
