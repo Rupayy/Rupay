@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0,
+               maximum-scale=1.0, user-scalable=no">
+
+<meta name="theme-color" content="#070b16">
+<meta name="description" content="Rupay secure account purchase platform">
+<title>Rupay — Account Purchase</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+:root{
+    --bg:#060912;
+    --card:#0d1424;
+    --card2:#111a2d;
+    --text:#f5f7ff;
+    --muted:#929bb0;
+    --primary:#7c5cff;
+    --primary2:#a78bfa;
+    --success:#21d19f;
+    --danger:#ff5f6d;
+    --border:rgba(255,255,255,.09);
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    background:
+        radial-gradient(circle at 10% 10%,rgba(124,92,255,.18),transparent 30%),
+        radial-gradient(circle at 90% 80%,rgba(33,209,159,.10),transparent 28%),
+        var(--bg);
+    color:var(--text);
+    font-family:
+        Inter,ui-sans-serif,system-ui,-apple-system,
+        BlinkMacSystemFont,"Segoe UI",sans-serif;
+    overflow-x:hidden;
+}
+
+button,input{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+.app{
+    width:100%;
+    min-height:100vh;
+}
+
+.container{
+    width:min(1100px,92%);
+    margin:auto;
+}
+
+header{
+    height:74px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid var(--border);
+    backdrop-filter:blur(18px);
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(6,9,18,.78);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:22px;
+    font-weight:900;
+    letter-spacing:-.7px;
+}
+
+.logo-icon{
+    width:38px;
+    height:38px;
+    display:grid;
+    place-items:center;
+    border-radius:12px;
+    background:linear-gradient(135deg,#8b5cf6,#5b4bff);
+    box-shadow:0 10px 35px rgba(124,92,255,.35);
+}
+
+.logo-icon::before{
+    content:"₹";
+    font-size:22px;
+    font-weight:900;
+}
+
+.status{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    color:#aeb6ca;
+    font-size:12px;
+}
+
+.dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--success);
+    box-shadow:0 0 12px var(--success);
+}
+
+main{
+    padding:42px 0 80px;
+}
+
+.page{
+    display:none;
+    animation:pageIn .45s ease;
+}
+
+.page.active{
+    display:block;
+}
+
+@keyframes pageIn{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+.hero{
+    text-align:center;
+    margin-bottom:28px;
+}
+
+.badge{
+    display:inline-flex;
+    padding:7px 13px;
+    border:1px solid rgba(124,92,255,.25);
+    background:rgba(124,92,255,.10);
+    border-radius:999px;
+    color:#b9abff;
+    font-size:12px;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.hero h1{
+    font-size:clamp(30px,6vw,52px);
+    line-height:1.05;
+    letter-spacing:-2px;
+    margin-bottom:12px;
+}
+
+.gradient{
+    background:linear-gradient(90deg,#fff,#a99aff,#6ee7d1);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    max-width:600px;
+    margin:auto;
+    color:var(--muted);
+    line-height:1.7;
+    font-size:14px;
+}
+
+.card{
+    background:
+        linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015)),
+        var(--card);
+    border:1px solid var(--border);
+    border-radius:24px;
+    box-shadow:0 25px 70px rgba(0,0,0,.35);
+}
+
+.purchase{
+    max-width:650px;
+    margin:0 auto;
+    padding:22px;
+}
+
+.section-title{
+    font-size:17px;
+    font-weight:800;
+    margin-bottom:15px;
+}
+
+.package-box{
+    padding:20px;
+    border-radius:19px;
+    background:
+        linear-gradient(135deg,rgba(124,92,255,.17),rgba(33,209,159,.06));
+    border:1px solid rgba(124,92,255,.22);
+    margin-bottom:22px;
+}
+
+.package-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+}
+
+.package-name{
+    font-weight:800;
+    font-size:18px;
+}
+
+.package-sub{
+    color:var(--muted);
+    font-size:12px;
+    margin-top:5px;
+}
+
+.price{
+    font-size:25px;
+    font-weight:900;
+    white-space:nowrap;
+}
+
+.qr-area{
+    text-align:center;
+    padding:20px 0;
+}
+
+.qr-frame{
+    width:min(280px,75vw);
+    aspect-ratio:1;
+    margin:12px auto 17px;
+    background:white;
+    border-radius:20px;
+    padding:12px;
+    display:grid;
+    place-items:center;
+    box-shadow:0 15px 50px rgba(0,0,0,.3);
+}
+
+.qr-frame img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    border-radius:10px;
+}
+
+/*
+ Replace the image below with YOUR payment QR image.
+ Example:
+ src="your-bank-qr.png"
+*/
+
+.scan{
+    color:#c3c9d8;
+    font-size:14px;
+    font-weight:700;
+}
+
+.helper{
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.6;
+    margin-top:6px;
+}
+
+.upload-box{
+    margin-top:20px;
+    padding:18px;
+    border:1px dashed rgba(255,255,255,.18);
+    border-radius:18px;
+    background:rgba(255,255,255,.025);
+}
+
+.upload-label{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:65px;
+    border-radius:14px;
+    background:rgba(124,92,255,.09);
+    border:1px solid rgba(124,92,255,.18);
+    color:#c8bfff;
+    font-weight:800;
+    font-size:14px;
+}
+
+input[type=file]{
+    display:none;
+}
+
+.preview{
+    display:none;
+    margin-top:13px;
+    text-align:center;
+}
+
+.preview img{
+    max-width:100%;
+    max-height:240px;
+    border-radius:14px;
+}
+
+.file-name{
+    color:#aeb6ca;
+    font-size:11px;
+    margin-top:8px;
+    word-break:break-all;
+}
+
+.primary{
+    width:100%;
+    border:0;
+    border-radius:15px;
+    padding:15px 18px;
+    margin-top:17px;
+    color:white;
+    font-weight:900;
+    background:linear-gradient(135deg,#805cff,#5d50ff);
+    box-shadow:0 12px 30px rgba(124,92,255,.25);
+    transition:.2s;
+}
+
+.primary:hover{
+    transform:translateY(-1px);
+    box-shadow:0 15px 35px rgba(124,92,255,.38);
+}
+
+.primary:active{
+    transform:scale(.98);
+}
+
+.primary:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+}
+
+.back{
+    width:100%;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.035);
+    color:#cbd2e2;
+    border-radius:15px;
+    padding:13px;
+    margin-top:10px;
+    font-weight:700;
+}
+
+.notice{
+    display:flex;
+    gap:10px;
+    padding:14px;
+    border-radius:14px;
+    background:rgba(255,193,7,.06);
+    border:1px solid rgba(255,193,7,.13);
+    color:#c8c1a7;
+    font-size:11px;
+    line-height:1.55;
+    margin-top:16px;
+}
+
+.agent-card{
+    max-width:520px;
+    margin:auto;
+    padding:25px;
+}
+
+.step{
+    color:#8f82ff;
+    font-size:11px;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:1.4px;
+    margin-bottom:9px;
+}
+
+.agent-card h2{
+    font-size:29px;
+    letter-spacing:-1px;
+    margin-bottom:9px;
+}
+
+.agent-card p{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.6;
+}
+
+.field{
+    margin-top:22px;
+}
+
+.field label{
+    display:block;
+    color:#cfd5e4;
+    font-size:12px;
+    font-weight:800;
+    margin-bottom:8px;
+}
+
+.input-wrap{
+    position:relative;
+}
+
+.input{
+    width:100%;
+    border:1px solid var(--border);
+    background:#080d19;
+    color:white;
+    border-radius:14px;
+    padding:15px 45px 15px 15px;
+    outline:none;
+    transition:.2s;
+}
+
+.input:focus{
+    border-color:rgba(124,92,255,.7);
+    box-shadow:0 0 0 4px rgba(124,92,255,.09);
+}
+
+.eye{
+    position:absolute;
+    right:12px;
+    top:50%;
+    transform:translateY(-50%);
+    border:0;
+    background:none;
+    color:#7f889c;
+}
+
+.error{
+    display:none;
+    color:#ff7c87;
+    font-size:11px;
+    margin-top:7px;
+}
+
+.success{
+    color:#55e8bc;
+}
+
+.credentials{
+    max-width:650px;
+    margin:auto;
+    padding:25px;
+}
+
+.success-icon{
+    width:70px;
+    height:70px;
+    margin:0 auto 18px;
+    display:grid;
+    place-items:center;
+    border-radius:22px;
+    background:rgba(33,209,159,.11);
+    border:1px solid rgba(33,209,159,.22);
+    color:#55e8bc;
+    font-size:34px;
+}
+
+.center{
+    text-align:center;
+}
+
+.center h2{
+    font-size:30px;
+    letter-spacing:-1px;
+}
+
+.center p{
+    color:var(--muted);
+    font-size:13px;
+    margin-top:8px;
+}
+
+.credential-list{
+    margin-top:24px;
+    display:grid;
+    gap:12px;
+}
+
+.credential{
+    position:relative;
+    padding:18px;
+    border-radius:17px;
+    background:#090f1c;
+    border:1px solid var(--border);
+}
+
+.credential small{
+    color:#858fa5;
+    display:block;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    font-weight:900;
+    margin-bottom:7px;
+}
+
+.credential strong{
+    font-size:19px;
+    letter-spacing:.5px;
+    word-break:break-all;
+}
+
+.copy{
+    position:absolute;
+    right:12px;
+    top:50%;
+    transform:translateY(-50%);
+    border:1px solid var(--border);
+    background:#111a2b;
+    color:#d9dded;
+    padding:7px 10px;
+    border-radius:9px;
+    font-size:10px;
+    font-weight:800;
+}
+
+.warning{
+    margin-top:18px;
+    padding:14px;
+    background:rgba(255,95,109,.06);
+    border:1px solid rgba(255,95,109,.13);
+    border-radius:14px;
+    color:#c7aeb2;
+    font-size:11px;
+    line-height:1.6;
+}
+
+footer{
+    text-align:center;
+    color:#616a7d;
+    font-size:11px;
+    padding:25px 0;
+}
+
+.toast{
+    position:fixed;
+    left:50%;
+    bottom:25px;
+    transform:translate(-50%,20px);
+    width:min(90%,420px);
+    padding:14px 16px;
+    border-radius:14px;
+    background:#151d30;
+    border:1px solid var(--border);
+    box-shadow:0 15px 40px rgba(0,0,0,.4);
+    color:white;
+    font-size:12px;
+    text-align:center;
+    opacity:0;
+    pointer-events:none;
+    transition:.3s;
+    z-index:999;
+}
+
+.toast.show{
+    opacity:1;
+    transform:translate(-50%,0);
+}
+
+.loading{
+    display:inline-block;
+    width:15px;
+    height:15px;
+    border:2px solid rgba(255,255,255,.3);
+    border-top-color:white;
+    border-radius:50%;
+    animation:spin .7s linear infinite;
+    vertical-align:middle;
+    margin-right:7px;
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg)}
+}
+
+@media(max-width:520px){
+    header{
+        height:64px;
+    }
+
+    main{
+        padding-top:28px;
+    }
+
+    .purchase,
+    .agent-card,
+    .credentials{
+        padding:18px;
+        border-radius:20px;
+    }
+
+    .hero h1{
+        letter-spacing:-1.4px;
+    }
+
+    .package-top{
+        align-items:flex-start;
+    }
+
+    .price{
+        font-size:20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<header>
+    <div class="container"
+         style="width:92%;display:flex;align-items:center;justify-content:space-between;">
+        <div class="logo">
+            <div class="logo-icon"></div>
+            Rupay
+        </div>
+
+        <div class="status">
+            <span class="dot"></span>
+            Secure Platform
+        </div>
+    </div>
+</header>
+
+<main>
+<div class="container">
+
+<!-- ================= BUY PAGE ================= -->
+
+<section id="buyPage" class="page active">
+
+    <div class="hero">
+        <div class="badge">SECURE ACCOUNT PURCHASE</div>
+
+        <h1>
+            Complete your
+            <span class="gradient">purchase</span>
+        </h1>
+
+        <p>
+            Scan the payment QR, complete your payment,
+            upload the payment screenshot and continue.
+        </p>
+    </div>
+
+    <div class="card purchase">
+
+        <div class="section-title">
+            Selected Package
+        </div>
+
+        <div class="package-box">
+            <div class="package-top">
+                <div>
+                    <div class="package-name" id="packageName">
+                        Rupay Account
+                    </div>
+
+                    <div class="package-sub">
+                        Digital account package
+                    </div>
+                </div>
+
+                <div class="price" id="packagePrice">
+                    ₹499
+                </div>
+            </div>
+        </div>
+
+        <div class="qr-area">
+
+            <div class="section-title">
+                Complete Payment
+            </div>
+
+            <div class="qr-frame">
+
+                <!--
+                =====================================================
+                PUT YOUR BANK / UPI QR IMAGE HERE
+                Replace "YOUR_QR_CODE.png" with your QR image.
+                =====================================================
+                -->
+
+                <img
+                    id="qrImage"
+                    src="YOUR_QR_CODE.png"
+                    alt="Payment QR Code"
+                    onerror="this.style.display='none';
+                    document.getElementById('qrFallback').style.display='grid';"
+                >
+
+                <div id="qrFallback"
+                     style="display:none;
+                     width:100%;height:100%;
+                     place-items:center;
+                     color:#222;
+                     text-align:center;
+                     font-weight:800;
+                     font-size:13px;">
+                    ADD YOUR<br>PAYMENT QR
+                </div>
+
+            </div>
+
+            <div class="scan">
+                Scan this QR code to pay
+            </div>
+
+            <div class="helper">
+                After completing the payment, upload your paid
+                screenshot below.
+            </div>
+
+        </div>
+
+        <div class="upload-box">
+
+            <label class="upload-label" for="paymentScreenshot">
+                📷 &nbsp; Send Payment Screenshot
+            </label>
+
+            <input
+                type="file"
+                id="paymentScreenshot"
+                accept="image/png,image/jpeg,image/webp"
+            >
+
+            <div class="preview" id="preview">
+                <img id="previewImage" alt="Payment screenshot">
+                <div class="file-name" id="fileName"></div>
+            </div>
+
+        </div>
+
+        <button
+            class="primary"
+            id="submitPayment"
+            disabled>
+            Submit Payment Screenshot
+        </button>
+
+        <div class="notice">
+            <span>🔒</span>
+            <span>
+                Never share your banking PIN, OTP or card details.
+                Only upload your payment confirmation screenshot.
+            </span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= AGENT PAGE ================= -->
+
+<section id="agentPage" class="page">
+
+    <div class="hero">
+        <div class="badge">FINAL VERIFICATION</div>
+
+        <h1>
+            Enter your
+            <span class="gradient">Agent Code</span>
+        </h1>
+
+        <p>
+            Enter the agent code provided to you to continue
+            to your account information.
+        </p>
+    </div>
+
+    <div class="card agent-card">
+
+        <div class="step">
+            Step 2 · Verification
+        </div>
+
+        <h2>Agent verification</h2>
+
+        <p>
+            Enter the authorized agent code below.
+        </p>
+
+        <div class="field">
+
+            <label for="agentCode">
+                Agent Code
+            </label>
+
+            <div class="input-wrap">
+
+                <input
+                    id="agentCode"
+                    class="input"
+                    type="password"
+                    placeholder="Enter Agent Code"
+                    autocomplete="off"
+                >
+
+                <button
+                    class="eye"
+                    id="toggleCode"
+                    type="button">
+                    ◉
+                </button>
+
+            </div>
+
+            <div class="error" id="agentError">
+                Incorrect agent code. Please try again.
+            </div>
+
+        </div>
+
+        <button
+            class="primary"
+            id="verifyAgent">
+            Continue
+        </button>
+
+        <button
+            class="back"
+            id="backToBuy">
+            ← Back
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CREDENTIAL PAGE ================= -->
+
+<section id="credentialPage" class="page">
+
+    <div class="hero">
+        <div class="badge">ACCOUNT READY</div>
+    </div>
+
+    <div class="card credentials">
+
+        <div class="center">
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <h2>Your account is ready</h2>
+
+            <p>
+                Keep these credentials private and secure.
+            </p>
+
+        </div>
+
+        <div class="credential-list">
+
+            <div class="credential">
+
+                <small>Your Package ID</small>
+
+                <strong id="displayPackageId">
+                    Rupays04
+                </strong>
+
+                <button
+                    class="copy"
+                    onclick="copyText('Rupays04')">
+                    COPY
+                </button>
+
+            </div>
+
+
+            <div class="credential">
+
+                <small>Your Password</small>
+
+                <strong id="displayPassword">
+                    Grow41st
+                </strong>
+
+                <button
+                    class="copy"
+                    onclick="copyText('Grow41st')">
+                    COPY
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="warning">
+            ⚠️ Do not share your Package ID or password with
+            anyone. Store your credentials securely.
+        </div>
+
+        <button
+            class="primary"
+            onclick="location.reload()">
+            Done
+        </button>
+
+    </div>
+
+</section>
+
+</div>
+</main>
+
+<footer>
+    © 2026 Rupay · Secure Digital Platform
+</footer>
+
+<div class="toast" id="toast"></div>
+
+</div>
+
+
+<script>
+/* =========================================================
+   RUPAY ACCOUNT PURCHASE PLATFORM
+   FRONTEND DEMO
+========================================================= */
+
+
+/* =========================================================
+   PACKAGE SETTINGS
+   Change these values for your package.
+========================================================= */
+
+const PACKAGE = {
+    name: "Rupay Account",
+    price: "₹499",
+    id: "Rupays04",
+    password: "Grow41st"
+};
+
+
+/* =========================================================
+   AGENT CODE
+========================================================= */
+
+const AGENT_CODE = "89004Pay";
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const buyPage = document.getElementById("buyPage");
+const agentPage = document.getElementById("agentPage");
+const credentialPage = document.getElementById("credentialPage");
+
+const screenshotInput =
+    document.getElementById("paymentScreenshot");
+
+const preview =
+    document.getElementById("preview");
+
+const previewImage =
+    document.getElementById("previewImage");
+
+const fileName =
+    document.getElementById("fileName");
+
+const submitPayment =
+    document.getElementById("submitPayment");
+
+const agentCode =
+    document.getElementById("agentCode");
+
+const verifyAgent =
+    document.getElementById("verifyAgent");
+
+const agentError =
+    document.getElementById("agentError");
+
+const toast =
+    document.getElementById("toast");
+
+
+/* =========================================================
+   LOAD PACKAGE
+========================================================= */
+
+document.getElementById("packageName").textContent =
+    PACKAGE.name;
+
+document.getElementById("packagePrice").textContent =
+    PACKAGE.price;
+
+document.getElementById("displayPackageId").textContent =
+    PACKAGE.id;
+
+document.getElementById("displayPassword").textContent =
+    PACKAGE.password;
+
+
+/* =========================================================
+   PAGE NAVIGATION
+========================================================= */
+
+function showPage(page){
+
+    [buyPage,agentPage,credentialPage]
+        .forEach(p => p.classList.remove("active"));
+
+    page.classList.add("active");
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+
+/* =========================================================
+   SCREENSHOT UPLOAD
+========================================================= */
+
+screenshotInput.addEventListener("change", function(){
+
+    const file = this.files[0];
+
+    if(!file){
+        submitPayment.disabled = true;
+        preview.style.display = "none";
+        return;
+    }
+
+
+    /* File type validation */
+
+    if(!file.type.startsWith("image/")){
+
+        showToast("Please select a valid image.");
+
+        screenshotInput.value = "";
+        submitPayment.disabled = true;
+        preview.style.display = "none";
+
+        return;
+    }
+
+
+    /* File size validation: 8 MB */
+
+    const maxSize =
+        8 * 1024 * 1024;
+
+    if(file.size > maxSize){
+
+        showToast("Image must be smaller than 8 MB.");
+
+        screenshotInput.value = "";
+        submitPayment.disabled = true;
+        preview.style.display = "none";
+
+        return;
+    }
+
+
+    /* Preview */
+
+    const reader = new FileReader();
+
+    reader.onload = function(e){
+
+        previewImage.src = e.target.result;
+
+        preview.style.display = "block";
+
+        fileName.textContent =
+            file.name;
+
+        submitPayment.disabled = false;
+
+        showToast("Screenshot attached successfully.");
+
+    };
+
+    reader.readAsDataURL(file);
+
+});
+
+
+/* =========================================================
+   SUBMIT SCREENSHOT
+========================================================= */
+
+submitPayment.addEventListener("click", function(){
+
+    if(!screenshotInput.files.length){
+
+        showToast("Please upload your payment screenshot.");
+
+        return;
+    }
+
+
+    submitPayment.disabled = true;
+
+    submitPayment.innerHTML =
+        '<span class="loading"></span> Processing...';
+
+
+    /*
+    Frontend demo delay.
+    In a real website, send the image to your backend here.
+    */
+
+    setTimeout(function(){
+
+        submitPayment.disabled = false;
+
+        submitPayment.textContent =
+            "Submit Payment Screenshot";
+
+        showToast("Screenshot submitted successfully.");
+
+        setTimeout(function(){
+
+            showPage(agentPage);
+
+            agentCode.focus();
+
+        },700);
+
+    },1200);
+
+});
+
+
+/* =========================================================
+   AGENT CODE VISIBILITY
+========================================================= */
+
+document.getElementById("toggleCode")
+.addEventListener("click",function(){
+
+    if(agentCode.type === "password"){
+
+        agentCode.type = "text";
+
+    }else{
+
+        agentCode.type = "password";
+
+    }
+
+});
+
+
+/* =========================================================
+   AGENT VERIFICATION
+========================================================= */
+
+verifyAgent.addEventListener("click", verifyCode);
+
+agentCode.addEventListener("keydown",function(e){
+
+    if(e.key === "Enter"){
+        verifyCode();
+    }
+
+});
+
+
+function verifyCode(){
+
+    const entered =
+        agentCode.value.trim();
+
+
+    if(!entered){
+
+        agentError.textContent =
+            "Please enter the Agent Code.";
+
+        agentError.style.display =
+            "block";
+
+        return;
+    }
+
+
+    if(entered !== AGENT_CODE){
+
+        agentError.textContent =
+            "Incorrect agent code. Please try again.";
+
+        agentError.style.display =
+            "block";
+
+        agentCode.focus();
+
+        return;
+    }
+
+
+    agentError.style.display =
+        "none";
+
+
+    verifyAgent.disabled = true;
+
+    verifyAgent.innerHTML =
+        '<span class="loading"></span> Verifying...';
+
+
+    setTimeout(function(){
+
+        verifyAgent.disabled = false;
+
+        verifyAgent.textContent =
+            "Continue";
+
+        showPage(credentialPage);
+
+        showToast("Agent verification successful.");
+
+    },900);
+
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+document.getElementById("backToBuy")
+.addEventListener("click",function(){
+
+    showPage(buyPage);
+
+});
+
+
+/* =========================================================
+   COPY CREDENTIAL
+========================================================= */
+
+function copyText(text){
+
+    if(navigator.clipboard){
+
+        navigator.clipboard.writeText(text)
+        .then(function(){
+
+            showToast("Copied successfully.");
+
+        })
+        .catch(function(){
+
+            fallbackCopy(text);
+
+        });
+
+    }else{
+
+        fallbackCopy(text);
+
+    }
+
+}
+
+
+function fallbackCopy(text){
+
+    const area =
+        document.createElement("textarea");
+
+    area.value = text;
+
+    document.body.appendChild(area);
+
+    area.select();
+
+    document.execCommand("copy");
+
+    area.remove();
+
+    showToast("Copied successfully.");
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer;
+
+function showToast(message){
+
+    toast.textContent =
+        message;
+
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer =
+        setTimeout(function(){
+
+            toast.classList.remove("show");
+
+        },2500);
+
+}
+
+
+/* =========================================================
+   PREVENT ACCIDENTAL FORM SUBMISSION
+========================================================= */
+
+document.addEventListener("keydown",function(e){
+
+    if(e.key === "Enter" &&
+       document.activeElement.tagName !== "INPUT"){
+
+        e.preventDefault();
+
+    }
+
+});
+
+
+/* =========================================================
+   PAGE REFRESH / RESTORE
+========================================================= */
+
+window.addEventListener("pageshow",function(){
+
+    agentCode.value = "";
+
+});
+
+
+/* =========================================================
+   OPTIONAL PACKAGE URL SUPPORT
+
+   Example:
+   yoursite.com/?price=999&package=Premium
+
+========================================================= */
+
+const params =
+    new URLSearchParams(location.search);
+
+const urlPrice =
+    params.get("price");
+
+const urlPackage =
+    params.get("package");
+
+if(urlPrice){
+
+    document.getElementById("packagePrice")
+        .textContent =
+        "₹" + urlPrice;
+
+}
+
+if(urlPackage){
+
+    document.getElementById("packageName")
+        .textContent =
+        urlPackage;
+
+}
+
+
+/* =========================================================
+   END
+========================================================= */
+</script>
+
+</body>
+</html>
