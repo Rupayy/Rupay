@@ -4,8 +4,10 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-      content="width=device-width, initial-scale=1.0,
-               maximum-scale=1.0, user-scalable=no">
+      content="width=device-width,
+               initial-scale=1.0,
+               maximum-scale=1.0,
+               user-scalable=no">
 
 <meta name="theme-color" content="#050b14">
 
@@ -16,36 +18,57 @@
 
 <style>
 
-:root{
-    --bg:#050b14;
-    --bg2:#091525;
-    --card:rgba(15,28,47,.82);
-    --card-hover:rgba(20,37,60,.94);
-    --text:#f7fbff;
-    --muted:#91a4bb;
-    --primary:#00d4ff;
-    --primary-light:#6cecff;
-    --secondary:#6c63ff;
-    --green:#22e58a;
-    --border:rgba(255,255,255,.09);
-    --shadow:0 20px 60px rgba(0,0,0,.35);
-    --radius:24px;
+/* =========================================================
+   RUPAY — PROFESSIONAL RESPONSIVE PLATFORM
+   SINGLE FILE: HTML + CSS + JAVASCRIPT
+   ========================================================= */
+
+:root {
+    --bg: #050b14;
+    --bg2: #091525;
+
+    --card: rgba(15, 28, 47, .82);
+    --card-hover: rgba(20, 37, 60, .92);
+
+    --text: #f7fbff;
+    --muted: #91a4bb;
+
+    --primary: #00d4ff;
+    --primary-light: #6cecff;
+
+    --secondary: #6c63ff;
+
+    --green: #22e58a;
+    --red: #ff5577;
+
+    --border: rgba(255,255,255,.09);
+
+    --shadow:
+        0 20px 60px rgba(0,0,0,.35);
+
+    --radius: 24px;
 }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    -webkit-tap-highlight-color:transparent;
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    -webkit-tap-highlight-color: transparent;
 }
 
-html{
-    scroll-behavior:smooth;
+html {
+    scroll-behavior: smooth;
 }
 
-body{
-    min-height:100vh;
-    overflow-x:hidden;
+body {
+    min-height: 100vh;
+
     background:
         radial-gradient(
             circle at 10% 10%,
@@ -62,7 +85,9 @@ body{
             var(--bg),
             var(--bg2)
         );
-    color:var(--text);
+
+    color: var(--text);
+
     font-family:
         Inter,
         -apple-system,
@@ -71,147 +96,300 @@ body{
         Roboto,
         Arial,
         sans-serif;
+
+    overflow-x: hidden;
 }
 
-body::before{
-    content:"";
-    position:fixed;
-    width:420px;
-    height:420px;
-    border-radius:50%;
-    background:rgba(0,212,255,.045);
-    filter:blur(100px);
-    top:18%;
-    left:-220px;
-    pointer-events:none;
-    z-index:-1;
+
+/* Background light */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    width: 420px;
+    height: 420px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(0,212,255,.045);
+
+    filter: blur(100px);
+
+    top: 18%;
+    left: -220px;
+
+    pointer-events: none;
+
+    z-index: -1;
 }
 
-/* HEADER */
 
-header{
-    position:sticky;
-    top:0;
-    z-index:1000;
-    background:rgba(5,11,20,.82);
-    border-bottom:1px solid var(--border);
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+header {
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+
+    background:
+        rgba(5,11,20,.82);
+
+    border-bottom:
+        1px solid var(--border);
+
+    backdrop-filter:
+        blur(20px);
+
+    -webkit-backdrop-filter:
+        blur(20px);
 }
 
-.navbar{
-    width:min(1180px,92%);
-    min-height:72px;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
+
+.navbar {
+    width:
+        min(1180px, 92%);
+
+    min-height: 72px;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
 }
 
-.brand{
-    display:flex;
-    align-items:center;
-    gap:11px;
-    text-decoration:none;
-    color:white;
-    font-weight:900;
-    font-size:22px;
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    text-decoration: none;
+
+    color: white;
+
+    font-weight: 900;
+
+    font-size: 22px;
+
+    letter-spacing: -.5px;
 }
 
-.brand-logo{
-    width:43px;
-    height:43px;
-    object-fit:contain;
-    border-radius:12px;
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.07);
+
+.brand-logo {
+    width: 43px;
+    height: 43px;
+
+    object-fit: contain;
+
+    border-radius: 12px;
+
+    background:
+        rgba(255,255,255,.05);
+
+    border:
+        1px solid rgba(255,255,255,.07);
+
+    /* NO LOGO ANIMATION */
 }
 
-.nav-links{
-    display:flex;
-    align-items:center;
-    gap:24px;
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.nav-links {
+    display: flex;
+
+    align-items: center;
+
+    gap: 24px;
 }
 
-.nav-links a{
-    color:#b9c8da;
-    text-decoration:none;
-    font-size:14px;
-    font-weight:650;
-    transition:color .2s ease;
+
+.nav-links a {
+    position: relative;
+
+    color: #b9c8da;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 650;
+
+    transition:
+        color .2s ease;
 }
 
-.nav-links a:hover{
-    color:white;
+
+.nav-links a:not(.btn)::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 1px;
+
+    background:
+        var(--primary);
+
+    transition:
+        width .2s ease;
 }
 
-.menu-btn{
-    display:none;
-    border:0;
-    background:transparent;
-    color:white;
-    font-size:27px;
-    cursor:pointer;
-    width:42px;
-    height:42px;
-    border-radius:12px;
+
+.nav-links a:hover {
+    color: white;
 }
 
-/* GENERAL */
 
-.container{
-    width:min(1180px,92%);
-    margin:auto;
+.nav-links a:hover::after {
+    width: 100%;
 }
 
-section{
-    padding:85px 0;
+
+.menu-btn {
+    display: none;
+
+    border: 0;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 27px;
+
+    cursor: pointer;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 12px;
+
+    transition:
+        background .2s ease;
 }
 
-.section-title{
-    text-align:center;
-    margin-bottom:45px;
+
+.menu-btn:active {
+    background:
+        rgba(255,255,255,.07);
 }
 
-.section-title .small{
-    display:inline-block;
-    color:var(--primary);
-    font-size:12px;
-    text-transform:uppercase;
-    letter-spacing:3px;
-    font-weight:800;
+
+/* =========================================================
+   GENERAL
+   ========================================================= */
+
+.container {
+    width:
+        min(1180px, 92%);
+
+    margin: auto;
 }
 
-.section-title h2{
-    font-size:clamp(30px,5vw,46px);
-    line-height:1.1;
-    margin:11px 0 13px;
-    letter-spacing:-1.5px;
+
+section {
+    padding: 85px 0;
 }
 
-.section-title p{
-    color:var(--muted);
-    max-width:650px;
-    margin:auto;
-    line-height:1.7;
-    font-size:14px;
+
+.section-title {
+    text-align: center;
+
+    margin-bottom: 45px;
 }
 
-/* BUTTONS */
 
-.btn{
-    display:inline-flex;
-    justify-content:center;
-    align-items:center;
-    min-height:50px;
-    padding:0 23px;
-    border-radius:14px;
-    border:1px solid var(--border);
-    text-decoration:none;
-    font-weight:800;
-    font-size:14px;
-    cursor:pointer;
+.section-title .small {
+    display: inline-block;
+
+    color: var(--primary);
+
+    font-size: 12px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 3px;
+
+    font-weight: 800;
+}
+
+
+.section-title h2 {
+    font-size:
+        clamp(30px, 5vw, 46px);
+
+    line-height: 1.1;
+
+    margin: 11px 0 13px;
+
+    letter-spacing: -1.5px;
+}
+
+
+.section-title p {
+    color: var(--muted);
+
+    max-width: 650px;
+
+    margin: auto;
+
+    line-height: 1.7;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.btn {
+    display: inline-flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    min-height: 50px;
+
+    padding:
+        0 23px;
+
+    border-radius: 14px;
+
+    border:
+        1px solid var(--border);
+
+    text-decoration: none;
+
+    font-weight: 800;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
     transition:
         transform .2s ease,
         box-shadow .2s ease,
@@ -219,79 +397,139 @@ section{
         border-color .2s ease;
 }
 
-.btn:hover{
-    transform:translateY(-2px);
+
+.btn:hover {
+    transform:
+        translateY(-2px);
 }
 
-.btn:active{
-    transform:translateY(0);
+
+.btn:active {
+    transform:
+        translateY(0);
 }
 
-.btn-primary{
-    color:#001018;
+
+.btn-primary {
+    color: #001018;
+
     background:
         linear-gradient(
             135deg,
             var(--primary),
             var(--primary-light)
         );
-    border-color:rgba(0,212,255,.3);
+
+    border-color:
+        rgba(0,212,255,.3);
+
     box-shadow:
         0 10px 30px
         rgba(0,212,255,.14);
 }
 
-.btn-primary:hover{
+
+.btn-primary:hover {
     box-shadow:
         0 15px 38px
         rgba(0,212,255,.22);
 }
 
-.btn-secondary{
-    color:white;
-    background:rgba(255,255,255,.055);
+
+.btn-secondary {
+    color: white;
+
+    background:
+        rgba(255,255,255,.055);
 }
 
-.btn-secondary:hover{
-    background:rgba(255,255,255,.085);
-    border-color:rgba(255,255,255,.15);
+
+.btn-secondary:hover {
+    background:
+        rgba(255,255,255,.085);
+
+    border-color:
+        rgba(255,255,255,.15);
 }
 
-/* HERO */
 
-.hero{
-    min-height:calc(100vh - 72px);
-    display:flex;
-    align-items:center;
-    text-align:center;
-    position:relative;
-    overflow:hidden;
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+    min-height:
+        calc(100vh - 72px);
+
+    display: flex;
+
+    align-items: center;
+
+    text-align: center;
+
+    position: relative;
+
+    overflow: hidden;
 }
 
-.hero-content{
-    width:100%;
-    max-width:850px;
-    margin:auto;
+
+.hero-content {
+    width: 100%;
+
+    max-width: 850px;
+
+    margin: auto;
 }
 
-.hero-logo{
-    width:105px;
-    height:105px;
-    object-fit:contain;
-    border-radius:28px;
-    margin-bottom:25px;
-    background:rgba(255,255,255,.045);
-    border:1px solid rgba(255,255,255,.07);
+
+/* =========================================================
+   HERO LOGO
+   ========================================================= */
+
+.hero-logo {
+    width: 105px;
+    height: 105px;
+
+    object-fit: contain;
+
+    border-radius: 28px;
+
+    margin-bottom: 25px;
+
+    background:
+        rgba(255,255,255,.045);
+
+    border:
+        1px solid rgba(255,255,255,.07);
+
     box-shadow:
-        0 0 0 1px rgba(255,255,255,.03),
-        0 20px 60px rgba(0,212,255,.12);
+        0 0 0 1px
+        rgba(255,255,255,.03),
+
+        0 20px 60px
+        rgba(0,212,255,.12);
+
+    /*
+       IMPORTANT:
+       No animation here.
+    */
 }
 
-.hero h1{
-    font-size:clamp(55px,12vw,105px);
-    line-height:.95;
-    font-weight:950;
-    letter-spacing:-5px;
+
+/* =========================================================
+   HERO TITLE
+   ========================================================= */
+
+.hero h1 {
+    font-size:
+        clamp(55px, 12vw, 105px);
+
+    line-height: .95;
+
+    font-weight: 950;
+
+    letter-spacing: -5px;
+
     background:
         linear-gradient(
             100deg,
@@ -299,818 +537,1238 @@ section{
             #8eeeff 45%,
             #7c73ff 90%
         );
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    color: transparent;
+
+    filter:
+        drop-shadow(
+            0 0 20px
+            rgba(0,212,255,.16)
+        );
 }
 
-.hero-subtitle{
-    margin:26px auto;
-    max-width:700px;
-    color:#a7b8cc;
-    line-height:1.8;
-    font-size:16px;
+
+.hero-subtitle {
+    margin:
+        26px auto;
+
+    max-width: 700px;
+
+    color: #a7b8cc;
+
+    line-height: 1.8;
+
+    font-size: 16px;
 }
 
-.hero-buttons{
-    display:flex;
-    justify-content:center;
-    gap:14px;
-    flex-wrap:wrap;
+
+.hero-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 14px;
+
+    flex-wrap: wrap;
 }
 
-/* STATS */
 
-.stats{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
+/* =========================================================
+   STATS
+   ========================================================= */
+
+.stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
 }
 
-.stat-card{
-    padding:25px;
-    border:1px solid var(--border);
-    border-radius:20px;
-    background:var(--card);
-    text-align:center;
+
+.stat-card {
+    padding: 25px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 20px;
+
+    background:
+        var(--card);
+
+    text-align: center;
+
     transition:
         transform .2s ease,
         border-color .2s ease,
         background .2s ease;
 }
 
-.stat-card:hover{
-    transform:translateY(-4px);
-    background:var(--card-hover);
-    border-color:rgba(0,212,255,.18);
+
+.stat-card:hover {
+    transform:
+        translateY(-4px);
+
+    background:
+        var(--card-hover);
+
+    border-color:
+        rgba(0,212,255,.18);
 }
 
-.stat-card strong{
-    display:block;
-    font-size:28px;
-    margin-bottom:5px;
+
+.stat-card strong {
+    display: block;
+
+    font-size: 28px;
+
+    margin-bottom: 5px;
 }
 
-.stat-card span{
-    color:var(--muted);
-    font-size:13px;
+
+.stat-card span {
+    color: var(--muted);
+
+    font-size: 13px;
 }
 
-/* PACKAGES */
 
-.packages{
-    display:grid;
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:24px;
-    align-items:stretch;
+/* =========================================================
+   PACKAGES
+   ========================================================= */
+
+.packages {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 22px;
 }
 
-.package{
-    position:relative;
-    display:flex;
-    flex-direction:column;
-    min-width:0;
-    overflow:hidden;
-    padding:12px;
-    border-radius:26px;
-    border:1px solid rgba(255,255,255,.10);
+
+.package {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 18px;
+
+    border-radius:
+        var(--radius);
+
+    border:
+        1px solid var(--border);
+
     background:
         linear-gradient(
             145deg,
-            rgba(19,35,56,.94),
-            rgba(8,17,30,.94)
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.022)
         );
+
     box-shadow:
-        0 18px 55px rgba(0,0,0,.30);
+        var(--shadow);
+
     transition:
-        transform .28s ease,
-        border-color .28s ease,
-        box-shadow .28s ease;
+        transform .25s ease,
+        border-color .25s ease,
+        background .25s ease;
 }
 
-.package:hover{
-    transform:translateY(-8px);
-    border-color:rgba(0,212,255,.30);
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.40),
-        0 0 35px rgba(0,212,255,.05);
-}
 
-.package.featured{
-    border-color:rgba(108,99,255,.48);
-    box-shadow:
-        0 22px 65px rgba(108,99,255,.10);
-}
+.package:hover {
+    transform:
+        translateY(-6px);
 
-.package-image-wrap{
-    position:relative;
-    width:100%;
-    overflow:hidden;
-    border-radius:20px;
+    border-color:
+        rgba(0,212,255,.30);
+
     background:
         linear-gradient(
             145deg,
-            #101f34,
-            #091321
+            rgba(255,255,255,.075),
+            rgba(255,255,255,.03)
         );
-    aspect-ratio:16/8.8;
-    border:1px solid rgba(255,255,255,.07);
 }
 
-.package-image{
-    width:100%;
-    height:100%;
-    display:block;
-    object-fit:cover;
-    object-position:center;
-    transition:transform .45s ease;
+
+.package.featured {
+    border-color:
+        rgba(108,99,255,.48);
 }
 
-.package:hover .package-image{
-    transform:scale(1.035);
-}
 
-.package-image-wrap::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    pointer-events:none;
+.package-badge {
+    position: absolute;
+
+    top: 14px;
+    right: 14px;
+
+    z-index: 2;
+
+    padding:
+        6px 10px;
+
+    border-radius: 30px;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
     background:
-        linear-gradient(
-            to bottom,
-            rgba(0,0,0,0) 45%,
-            rgba(0,0,0,.18)
-        );
+        rgba(108,99,255,.20);
+
+    color:
+        #c9c5ff;
+
+    border:
+        1px solid
+        rgba(108,99,255,.18);
 }
 
-.package-badge{
-    position:absolute;
-    top:23px;
-    right:23px;
-    z-index:5;
-    padding:7px 12px;
-    border-radius:999px;
-    font-size:9px;
-    letter-spacing:.8px;
-    font-weight:950;
-    color:white;
-    background:rgba(108,99,255,.88);
-    border:1px solid rgba(255,255,255,.18);
-    box-shadow:
-        0 8px 20px rgba(0,0,0,.25);
-    backdrop-filter:blur(12px);
+
+.package-image {
+    width: 100%;
+
+    height: 190px;
+
+    border-radius: 18px;
+
+    object-fit: cover;
+
+    display: block;
+
+    background:
+        #101c2e;
+
+    border:
+        1px solid
+        rgba(255,255,255,.05);
 }
 
-.package-content{
-    display:flex;
-    flex-direction:column;
-    flex:1;
-    padding:21px 8px 8px;
+
+.package-content {
+    padding:
+        20px 5px 5px;
 }
 
-.package-content h3{
-    font-size:21px;
-    line-height:1.25;
-    margin-bottom:9px;
+
+.package-content h3 {
+    font-size: 21px;
+
+    margin-bottom: 10px;
 }
 
-.package-content p{
-    color:var(--muted);
-    font-size:13px;
-    line-height:1.65;
-    margin-bottom:16px;
-    min-height:43px;
+
+.package-content p {
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    margin-bottom: 17px;
+
+    min-height: 42px;
 }
 
-.price{
-    display:flex;
-    align-items:baseline;
-    gap:6px;
-    font-size:28px;
-    line-height:1;
-    font-weight:950;
-    margin-bottom:20px;
+
+.price {
+    font-size: 27px;
+
+    font-weight: 900;
+
+    margin-bottom: 18px;
 }
 
-.price small{
-    color:var(--muted);
-    font-size:11px;
-    font-weight:600;
+
+.price small {
+    color: var(--muted);
+
+    font-size: 12px;
+
+    font-weight: 500;
 }
 
-.package-buttons{
-    display:grid;
-    grid-template-columns:1fr 1.18fr;
-    gap:9px;
-    margin-top:auto;
+
+.package-buttons {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 9px;
 }
 
-.package-buttons .btn{
-    min-height:45px;
-    padding:0 9px;
-    font-size:12px;
-    border-radius:12px;
+
+.package-buttons .btn {
+    min-height: 45px;
+
+    padding:
+        0 10px;
+
+    font-size: 12px;
 }
 
-/*
-=========================================================
-IMPORTANT BUY BUTTON FIX
-=========================================================
 
-The Buy Now buttons use REAL HTML links.
+/* =========================================================
+   ABOUT
+   ========================================================= */
 
-This means they work even if JavaScript has an error.
+.about-grid {
+    display: grid;
 
-Buy.html must be in the same folder.
+    grid-template-columns:
+        1fr 1fr;
 
-Examples:
-
-Buy.html?package=normal
-Buy.html?package=silver
-Buy.html?package=gold
-Buy.html?package=pro4x
-Buy.html?package=rupay7x
-*/
-
-/* ABOUT */
-
-.about-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:25px;
+    gap: 25px;
 }
 
-.about-card{
-    padding:30px;
-    border-radius:var(--radius);
-    border:1px solid var(--border);
-    background:var(--card);
+
+.about-card {
+    padding: 30px;
+
+    border-radius:
+        var(--radius);
+
+    border:
+        1px solid var(--border);
+
+    background:
+        var(--card);
 }
 
-.about-card h3{
-    margin-bottom:20px;
-    font-size:24px;
+
+.about-card h3 {
+    margin-bottom: 20px;
+
+    font-size: 24px;
 }
 
-.about-text{
-    color:var(--muted);
-    line-height:1.8;
-    font-size:14px;
+
+.about-text {
+    color: var(--muted);
+
+    line-height: 1.8;
+
+    font-size: 14px;
 }
 
-.features{
-    display:grid;
-    gap:14px;
+
+/* =========================================================
+   FEATURES
+   ========================================================= */
+
+.features {
+    display: grid;
+
+    gap: 14px;
 }
 
-.feature{
-    display:flex;
-    gap:14px;
-    align-items:center;
-    padding:14px;
-    border-radius:15px;
-    background:rgba(255,255,255,.035);
-    border:1px solid transparent;
+
+.feature {
+    display: flex;
+
+    gap: 14px;
+
+    align-items: center;
+
+    padding: 14px;
+
+    border-radius: 15px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid
+        transparent;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease;
 }
 
-.feature-icon{
-    width:40px;
-    height:40px;
-    flex:0 0 40px;
-    border-radius:12px;
-    display:grid;
-    place-items:center;
-    background:rgba(0,212,255,.1);
-    color:var(--primary);
-    font-size:19px;
+
+.feature:hover {
+    background:
+        rgba(255,255,255,.055);
+
+    border-color:
+        rgba(255,255,255,.06);
 }
 
-.feature strong{
-    display:block;
-    font-size:14px;
+
+.feature-icon {
+    width: 40px;
+    height: 40px;
+
+    flex:
+        0 0 40px;
+
+    border-radius: 12px;
+
+    display: grid;
+
+    place-items: center;
+
+    background:
+        rgba(0,212,255,.1);
+
+    color:
+        var(--primary);
+
+    font-size: 19px;
 }
 
-.feature span{
-    display:block;
-    margin-top:3px;
-    color:var(--muted);
-    font-size:12px;
+
+.feature strong {
+    display: block;
+
+    font-size: 14px;
 }
 
-/* LIVE */
 
-.live-box{
-    display:grid;
-    grid-template-columns:.8fr 1.2fr;
-    gap:25px;
+.feature span {
+    display: block;
+
+    margin-top: 3px;
+
+    color: var(--muted);
+
+    font-size: 12px;
 }
+
+
+/* =========================================================
+   LIVE USERS
+   ========================================================= */
+
+.live-box {
+    display: grid;
+
+    grid-template-columns:
+        .8fr 1.2fr;
+
+    gap: 25px;
+}
+
 
 .online-card,
-.chart-card{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    padding:28px;
+.chart-card {
+    background:
+        var(--card);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius);
+
+    padding: 28px;
 }
 
-.online-number{
-    font-size:54px;
-    font-weight:950;
-    margin:20px 0 8px;
+
+.online-number {
+    font-size: 54px;
+
+    font-weight: 950;
+
+    margin:
+        20px 0 8px;
+
+    letter-spacing: -2px;
 }
 
-.online-status{
-    color:var(--green);
-    font-size:13px;
-    font-weight:800;
+
+.online-status {
+    color:
+        var(--green);
+
+    font-size: 13px;
+
+    font-weight: 800;
 }
 
-.pulse{
-    display:inline-block;
-    width:9px;
-    height:9px;
-    background:var(--green);
-    border-radius:50%;
-    margin-right:7px;
+
+.pulse {
+    display: inline-block;
+
+    width: 9px;
+    height: 9px;
+
+    background:
+        var(--green);
+
+    border-radius: 50%;
+
+    margin-right: 7px;
+
     box-shadow:
         0 0 0 7px
         rgba(34,229,138,.08);
 }
 
-.chart-title{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:10px;
-    margin-bottom:20px;
+
+/* =========================================================
+   CHART
+   ========================================================= */
+
+.chart-title {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 20px;
 }
 
-.chart-title h3{
-    font-size:18px;
+
+.chart-title h3 {
+    font-size: 18px;
 }
 
-.demo-label{
-    font-size:10px;
-    color:#ffd166;
-    border:1px solid rgba(255,209,102,.25);
-    padding:5px 8px;
-    border-radius:8px;
-    white-space:nowrap;
+
+.demo-label {
+    font-size: 10px;
+
+    color: #ffd166;
+
+    border:
+        1px solid
+        rgba(255,209,102,.25);
+
+    padding:
+        5px 8px;
+
+    border-radius: 8px;
+
+    white-space: nowrap;
 }
 
-canvas{
-    width:100%;
-    height:270px;
-    display:block;
+
+canvas {
+    width: 100%;
+
+    height: 270px;
+
+    display: block;
 }
 
-/* CONTACT */
 
-.contact-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+.contact-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
 }
 
-.contact-card{
-    padding:27px;
-    border-radius:22px;
-    background:var(--card);
-    border:1px solid var(--border);
-    text-align:center;
+
+.contact-card {
+    padding: 27px;
+
+    border-radius: 22px;
+
+    background:
+        var(--card);
+
+    border:
+        1px solid var(--border);
+
+    text-align: center;
+
+    transition:
+        transform .2s ease,
+        border-color .2s ease;
 }
 
-.contact-icon{
-    font-size:28px;
-    margin-bottom:15px;
+
+.contact-card:hover {
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(0,212,255,.20);
 }
 
-.contact-card h3{
-    margin-bottom:8px;
+
+.contact-icon {
+    font-size: 28px;
+
+    margin-bottom: 15px;
 }
 
-.contact-card p{
-    color:var(--muted);
-    font-size:13px;
-    line-height:1.6;
+
+.contact-card h3 {
+    margin-bottom: 8px;
 }
 
-.contact-card a{
-    color:var(--primary);
-    text-decoration:none;
-    word-break:break-word;
+
+.contact-card p {
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.6;
 }
 
-.license{
-    margin-top:25px;
-    padding:20px;
-    border:1px solid var(--border);
-    background:rgba(255,255,255,.035);
-    border-radius:18px;
-    text-align:center;
+
+.contact-card a {
+    color:
+        var(--primary);
+
+    text-decoration: none;
+
+    word-break: break-word;
 }
 
-.license span{
-    display:block;
-    color:var(--muted);
-    font-size:12px;
-    margin-top:7px;
-    line-height:1.6;
+
+/* =========================================================
+   LICENSE
+   ========================================================= */
+
+.license {
+    margin-top: 25px;
+
+    padding: 20px;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        rgba(255,255,255,.035);
+
+    border-radius: 18px;
+
+    text-align: center;
 }
 
-/* FOOTER */
 
-footer{
-    border-top:1px solid var(--border);
-    padding:40px 0 25px;
-    background:rgba(0,0,0,.15);
+.license span {
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    margin-top: 7px;
+
+    line-height: 1.6;
 }
 
-.footer-grid{
-    display:grid;
-    grid-template-columns:1.5fr 1fr 1fr;
-    gap:30px;
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+    border-top:
+        1px solid var(--border);
+
+    padding:
+        40px 0 25px;
+
+    background:
+        rgba(0,0,0,.15);
 }
 
-.footer-brand p{
-    color:var(--muted);
-    font-size:13px;
-    line-height:1.7;
-    max-width:420px;
-    margin-top:12px;
+
+.footer-grid {
+    display: grid;
+
+    grid-template-columns:
+        1.5fr 1fr 1fr;
+
+    gap: 30px;
 }
 
-.footer-column h4{
-    margin-bottom:14px;
+
+.footer-brand p {
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    max-width: 420px;
+
+    margin-top: 12px;
 }
 
-.footer-column a{
-    display:block;
-    color:var(--muted);
-    text-decoration:none;
-    font-size:13px;
-    margin:10px 0;
+
+.footer-column h4 {
+    margin-bottom: 14px;
 }
 
-.footer-column a:hover{
-    color:white;
+
+.footer-column a {
+    display: block;
+
+    color: var(--muted);
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    margin: 10px 0;
+
+    transition:
+        color .2s ease;
 }
 
-.footer-bottom{
-    margin-top:30px;
-    padding-top:20px;
-    border-top:1px solid var(--border);
-    color:#708198;
-    font-size:11px;
-    text-align:center;
-    line-height:1.6;
+
+.footer-column a:hover {
+    color: white;
 }
 
-/* FLOATING CONTROLS */
 
-.floating-controls{
-    position:fixed;
-    bottom:20px;
-    right:18px;
-    z-index:999;
-    display:flex;
-    flex-direction:column;
-    gap:9px;
+.footer-bottom {
+    margin-top: 30px;
+
+    padding-top: 20px;
+
+    border-top:
+        1px solid var(--border);
+
+    color: #708198;
+
+    font-size: 11px;
+
+    text-align: center;
+
+    line-height: 1.6;
 }
 
-.float-btn{
-    width:44px;
-    height:44px;
-    border-radius:50%;
-    border:1px solid var(--border);
-    background:rgba(9,21,37,.92);
-    color:white;
-    cursor:pointer;
-    font-size:17px;
-    backdrop-filter:blur(15px);
+
+/* =========================================================
+   FLOATING CONTROLS
+   BACK BUTTON REMOVED
+   ========================================================= */
+
+.floating-controls {
+    position: fixed;
+
+    bottom: 20px;
+
+    right: 18px;
+
+    z-index: 999;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
 }
 
-/* TOAST */
 
-.toast{
-    position:fixed;
-    left:50%;
-    bottom:25px;
-    transform:translate(-50%,100px);
-    z-index:2000;
-    max-width:90%;
-    padding:13px 18px;
-    border-radius:13px;
-    background:#122238;
-    border:1px solid var(--border);
-    color:white;
-    font-size:13px;
-    opacity:0;
-    pointer-events:none;
+.float-btn {
+    width: 44px;
+    height: 44px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        rgba(9,21,37,.92);
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 17px;
+
+    backdrop-filter:
+        blur(15px);
+
+    transition:
+        transform .2s ease,
+        background .2s ease;
+}
+
+
+.float-btn:hover {
+    transform:
+        scale(1.07);
+
+    background:
+        rgba(20,38,60,.95);
+}
+
+
+.float-btn:active {
+    transform:
+        scale(.96);
+}
+
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+
+.toast {
+    position: fixed;
+
+    left: 50%;
+
+    bottom: 25px;
+
+    transform:
+        translate(-50%, 100px);
+
+    z-index: 2000;
+
+    max-width: 90%;
+
+    padding:
+        13px 18px;
+
+    border-radius: 13px;
+
+    background:
+        #122238;
+
+    border:
+        1px solid var(--border);
+
+    color: white;
+
+    font-size: 13px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
     transition:
         opacity .25s ease,
         transform .25s ease;
 }
 
-.toast.show{
-    opacity:1;
-    transform:translate(-50%,0);
+
+.toast.show {
+    opacity: 1;
+
+    transform:
+        translate(-50%, 0);
 }
 
-/* TABLET */
 
-@media(max-width:1000px){
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
 
-    .packages{
-        grid-template-columns:repeat(2,minmax(0,1fr));
+@media(max-width: 900px) {
+
+    .packages {
+        grid-template-columns:
+            repeat(2, 1fr);
     }
 
-    .stats{
-        grid-template-columns:repeat(2,1fr);
+
+    .stats {
+        grid-template-columns:
+            repeat(2, 1fr);
     }
+
 
     .about-grid,
-    .live-box{
-        grid-template-columns:1fr;
+    .live-box {
+        grid-template-columns:
+            1fr;
     }
 
-    .footer-grid{
-        grid-template-columns:1fr 1fr;
+
+    .footer-grid {
+        grid-template-columns:
+            1fr 1fr;
     }
 }
 
-/* MOBILE */
 
-@media(max-width:650px){
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
 
-    section{
-        padding:65px 0;
+@media(max-width: 650px) {
+
+    section {
+        padding: 65px 0;
     }
 
-    .navbar{
-        min-height:64px;
+
+    .navbar {
+        min-height: 64px;
     }
 
-    .menu-btn{
-        display:grid;
-        place-items:center;
+
+    .menu-btn {
+        display: grid;
+
+        place-items: center;
     }
 
-    .nav-links{
-        position:absolute;
-        top:64px;
-        left:4%;
-        right:4%;
-        padding:18px;
-        border:1px solid var(--border);
-        border-radius:18px;
-        background:rgba(6,15,27,.97);
-        display:none;
-        flex-direction:column;
-        align-items:stretch;
-        gap:4px;
+
+    .nav-links {
+        position: absolute;
+
+        top: 64px;
+
+        left: 4%;
+        right: 4%;
+
+        padding: 18px;
+
+        border:
+            1px solid var(--border);
+
+        border-radius: 18px;
+
+        background:
+            rgba(6,15,27,.97);
+
+        display: none;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 4px;
+
+        box-shadow:
+            0 20px 50px
+            rgba(0,0,0,.35);
     }
 
-    .nav-links.active{
-        display:flex;
+
+    .nav-links.active {
+        display: flex;
     }
 
-    .nav-links a{
-        padding:12px;
+
+    .nav-links a {
+        padding: 12px;
     }
 
-    .hero{
-        min-height:calc(100vh - 64px);
-        padding:55px 0;
+
+    .nav-links .btn {
+        margin-top: 5px;
     }
 
-    .hero h1{
-        letter-spacing:-3px;
+
+    .hero {
+        min-height:
+            calc(100vh - 64px);
+
+        padding:
+            55px 0;
     }
 
-    .hero-logo{
-        width:255px;
-        height:150px;
-        border-radius:24px;
+
+    .hero h1 {
+        letter-spacing:
+            -3px;
     }
 
-    .hero-subtitle{
-        font-size:14px;
-        padding:0 10px;
+
+    .hero-logo {
+        width: 255px;
+        height: 150px;
+
+        border-radius: 24px;
     }
 
-    .hero-buttons{
-        width:100%;
-        padding:0 10px;
+
+    .hero-subtitle {
+        font-size: 14px;
+
+        padding:
+            0 10px;
     }
 
-    .hero-buttons .btn{
-        width:100%;
-        max-width:300px;
+
+    .hero-buttons {
+        width: 100%;
+
+        padding:
+            0 10px;
     }
 
-    .packages{
-        grid-template-columns:1fr;
-        gap:18px;
+
+    .hero-buttons .btn {
+        width: 100%;
+
+        max-width: 300px;
     }
 
-    .package{
-        padding:10px;
-        border-radius:22px;
+
+    .packages,
+    .contact-grid {
+        grid-template-columns:
+            1fr;
     }
 
-    .package-image-wrap{
-        aspect-ratio:16/9;
-        border-radius:17px;
+
+    .stats {
+        gap: 10px;
     }
 
-    .package-content{
-        padding:18px 7px 7px;
+
+    .stat-card {
+        padding:
+            18px 10px;
     }
 
-    .package-content h3{
-        font-size:20px;
+
+    .stat-card strong {
+        font-size: 23px;
     }
 
-    .package-content p{
-        min-height:auto;
-        margin-bottom:15px;
+
+    .package-image {
+        height: 210px;
     }
 
-    .price{
-        font-size:26px;
-        margin-bottom:17px;
+
+    .online-number {
+        font-size: 45px;
     }
 
-    .package-buttons .btn{
-        min-height:46px;
+
+    .chart-title {
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
     }
 
-    .contact-grid{
-        grid-template-columns:1fr;
-    }
-
-    .stats{
-        gap:10px;
-    }
-
-    .stat-card{
-        padding:18px 10px;
-    }
-
-    .stat-card strong{
-        font-size:23px;
-    }
-
-    .online-number{
-        font-size:45px;
-    }
-
-    .chart-title{
-        align-items:flex-start;
-        flex-direction:column;
-    }
 
     .chart-card,
-    .online-card{
-        padding:22px;
+    .online-card {
+        padding: 22px;
     }
 
-    .footer-grid{
-        grid-template-columns:1fr;
+
+    .footer-grid {
+        grid-template-columns:
+            1fr;
     }
 
-    .floating-controls{
-        bottom:14px;
-        right:12px;
-    }
-}
 
-/* SMALL PHONES */
+    .floating-controls {
+        bottom: 14px;
 
-@media(max-width:380px){
-
-    .stats{
-        grid-template-columns:1fr;
-    }
-
-    .package-buttons{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .hero h1{
-        font-size:55px;
+        right: 12px;
     }
 }
 
-/* ACCESSIBILITY */
 
-@media(prefers-reduced-motion:reduce){
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
 
-    html{
-        scroll-behavior:auto;
+@media(max-width: 380px) {
+
+    .stats {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .package-buttons {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .hero h1 {
+        font-size: 55px;
+    }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media(prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior:
+            auto;
     }
 
     *,
     *::before,
-    *::after{
-        animation:none !important;
-        transition:none !important;
+    *::after {
+        animation: none !important;
+
+        transition: none !important;
     }
 }
 
 </style>
 </head>
 
+
 <body>
 
-<!-- HEADER -->
+
+<!-- =======================================================
+     HEADER
+     ======================================================= -->
 
 <header>
 
 <nav class="navbar">
 
-<a href="#home" class="brand">
+    <a href="#home"
+       class="brand">
 
-<img
-    src="https://raw.githubusercontent.com/soulpari21-hue/Rupay/refs/heads/main/1789472698527.png"
-    class="brand-logo"
-    alt="Rupay Logo"
-    onerror="this.style.display='none';"
->
+        <img
+            src="https://raw.githubusercontent.com/soulpari21-hue/Rupay/refs/heads/main/1789472698527.png"
+            class="brand-logo"
+            alt="Rupay Logo"
+            onerror="this.style.display='none';"
+        >
 
-<span>Rupay</span>
+        <span>Rupay</span>
 
-</a>
+    </a>
 
-<button
-    class="menu-btn"
-    id="menuBtn"
-    type="button"
-    aria-label="Open navigation menu"
-    aria-expanded="false">
 
-☰
+    <button
+        class="menu-btn"
+        id="menuBtn"
+        aria-label="Open navigation menu"
+        aria-expanded="false">
 
-</button>
+        ☰
 
-<div class="nav-links" id="navLinks">
+    </button>
 
-<a href="#home">Home</a>
-<a href="#packages">Packages</a>
-<a href="#about">About</a>
-<a href="#stats">Activity</a>
-<a href="#contact">Contact</a>
 
-<a href="Login.html" class="btn btn-primary">
-Login
-</a>
+    <div
+        class="nav-links"
+        id="navLinks">
 
-</div>
+        <a href="#home">
+            Home
+        </a>
+
+        <a href="#packages">
+            Packages
+        </a>
+
+        <a href="#about">
+            About
+        </a>
+
+        <a href="#stats">
+            Activity
+        </a>
+
+        <a href="#contact">
+            Contact
+        </a>
+
+        <a
+            href="Login.html"
+            class="btn btn-primary">
+
+            Login
+
+        </a>
+
+    </div>
 
 </nav>
 
 </header>
 
+
+<!-- =======================================================
+     MAIN
+     ======================================================= -->
+
 <main>
 
-<!-- HERO -->
 
-<section class="hero" id="home">
+<!-- =======================================================
+     HERO
+     ======================================================= -->
+
+<section
+    class="hero"
+    id="home">
 
 <div class="container">
 
 <div class="hero-content">
 
-<img
-    src="https://raw.githubusercontent.com/soulpari21-hue/Rupay/refs/heads/main/1789472698527.png"
-    alt="Rupay Logo"
-    class="hero-logo"
-    onerror="this.style.display='none';"
->
 
-<h1>Rupay</h1>
+    <img
+        src="https://raw.githubusercontent.com/soulpari21-hue/Rupay/refs/heads/main/1789472698527.png"
+        alt="Rupay Logo"
+        class="hero-logo"
+        onerror="this.style.display='none';"
+    >
 
-<p class="hero-subtitle">
 
-A modern digital platform designed with
-simplicity, speed and a professional experience
-in mind. Explore packages, manage your account
-and stay connected through one smooth platform.
+    <h1>
+        Rupay
+    </h1>
 
-</p>
 
-<div class="hero-buttons">
+    <p class="hero-subtitle">
 
-<a href="Login.html" class="btn btn-primary">
-Login →
-</a>
+        A modern digital platform designed with
+        simplicity, speed and a professional experience
+        in mind. Explore packages, manage your account
+        and stay connected through one smooth platform.
 
-<a href="#packages" class="btn btn-secondary">
-Explore Packages
-</a>
+    </p>
 
-</div>
+
+    <div class="hero-buttons">
+
+        <a
+            href="Login.html"
+            class="btn btn-primary">
+
+            Login →
+
+        </a>
+
+
+        <a
+            href="#packages"
+            class="btn btn-secondary">
+
+            Explore Packages
+
+        </a>
+
+    </div>
+
 
 </div>
 
@@ -1118,7 +1776,10 @@ Explore Packages
 
 </section>
 
-<!-- STATS -->
+
+<!-- =======================================================
+     STATS
+     ======================================================= -->
 
 <section id="stats">
 
@@ -1126,25 +1787,58 @@ Explore Packages
 
 <div class="stats">
 
-<div class="stat-card">
-<strong id="userCount">1,284</strong>
-<span>Online Users</span>
-</div>
 
-<div class="stat-card">
-<strong>24/7</strong>
-<span>Support Availability</span>
-</div>
+    <div class="stat-card">
 
-<div class="stat-card">
-<strong>5+</strong>
-<span>Packages</span>
-</div>
+        <strong id="userCount">
+            1,284
+        </strong>
 
-<div class="stat-card">
-<strong>Fast</strong>
-<span>Platform Experience</span>
-</div>
+        <span>
+            Online Users
+        </span>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <strong>
+            24/7
+        </strong>
+
+        <span>
+            Support Availability
+        </span>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <strong>
+            5+
+        </strong>
+
+        <span>
+            Packages
+        </span>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <strong>
+            Fast
+        </strong>
+
+        <span>
+            Platform Experience
+        </span>
+
+    </div>
+
 
 </div>
 
@@ -1152,299 +1846,317 @@ Explore Packages
 
 </section>
 
-<!-- PACKAGES -->
+
+<!-- =======================================================
+     PACKAGES
+     ======================================================= -->
 
 <section id="packages">
 
 <div class="container">
 
+
 <div class="section-title">
 
-<span class="small">
-Choose Your Plan
-</span>
+    <span class="small">
+        Choose Your Plan
+    </span>
 
-<h2>
-Rupay Packages
-</h2>
+    <h2>
+        Rupay Packages
+    </h2>
 
-<p>
-Select a package that matches your requirements.
-</p>
+    <p>
+        Select a package that matches your requirements.
+    </p>
 
 </div>
+
 
 <div class="packages">
 
-<!-- NORMAL -->
+
+<!-- PACKAGE 1 -->
 
 <article class="package">
 
-<div class="package-image-wrap">
-
-<img
-    src="package1.jpg"
-    alt="Normal Package"
-    class="package-image"
-    loading="lazy"
-    onerror="
-        this.onerror=null;
+    <img
+        src="package1.jpg"
+        alt="Normal Package"
+        class="package-image"
+        onerror="
         this.src='https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/1789429227825.jpg';
-    "
->
+        "
+    >
 
-</div>
 
-<div class="package-content">
+    <div class="package-content">
 
-<h3>Normal Package</h3>
+        <h3>
+            Normal Package
+        </h3>
 
-<p>
-Entry-level package for users who want
-a simple starting option.
-</p>
+        <p>
+            Entry-level package for users who want
+            a simple starting option.
+        </p>
 
-<div class="price">
-NPR 450
-<small>/ package</small>
-</div>
+        <div class="price">
+            NPR 450/-
+        </div>
 
-<div class="package-buttons">
+        <div class="package-buttons">
 
-<a href="About.html"
-   class="btn btn-secondary">
-About
-</a>
+            <a
+                href="About.html"
+                class="btn btn-secondary">
 
-<!-- REAL REDIRECT -->
+                About
 
-<a href="./Buy.html?package=normal"
-   class="btn btn-primary buy-btn"
-   data-package="normal">
-Buy Now
-</a>
+            </a>
 
-</div>
+            <a
+                href="Buy.html?package=normal"
+                class="btn btn-primary">
 
-</div>
+                Buy Now
+
+            </a>
+
+        </div>
+
+    </div>
 
 </article>
 
-<!-- SILVER -->
+
+<!-- PACKAGE 2 -->
 
 <article class="package">
 
-<div class="package-image-wrap">
+    <img
+        src="package2.jpg"
+        alt="Silver Package"
+        class="package-image"
+        onerror="
+        this.src='https://via.placeholder.com/600x400/101c2e/ffffff?text=Silver+Package';
+        "
+    >
 
-<img
-    src="package2.jpg"
-    alt="Silver Package"
-    class="package-image"
-    loading="lazy"
-    onerror="
-        this.onerror=null;
-        this.src='https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/1789429403401.jpg';
-    "
->
 
-</div>
+    <div class="package-content">
 
-<div class="package-content">
+        <h3>
+            Silver Package
+        </h3>
 
-<h3>Silver Package</h3>
+        <p>
+            A balanced package with additional
+            platform features.
+        </p>
 
-<p>
-A balanced package with additional
-platform features.
-</p>
+        <div class="price">
+            NPR 870/-
+        </div>
 
-<div class="price">
-NPR 870
-<small>/ package</small>
-</div>
+        <div class="package-buttons">
 
-<div class="package-buttons">
+            <a
+                href="About.html"
+                class="btn btn-secondary">
 
-<a href="About.html"
-   class="btn btn-secondary">
-About
-</a>
+                About
 
-<a href="./Buy.html?package=silver"
-   class="btn btn-primary buy-btn"
-   data-package="silver">
-Buy Now
-</a>
+            </a>
 
-</div>
+            <a
+                href="Buy.html?package=silver"
+                class="btn btn-primary">
 
-</div>
+                Buy Now
 
-</article>
+            </a>
 
-<!-- GOLD -->
+        </div>
 
-<article class="package featured">
-
-<span class="package-badge">
-POPULAR
-</span>
-
-<div class="package-image-wrap">
-
-<img
-    src="package3.jpg"
-    alt="Gold Package"
-    class="package-image"
-    loading="lazy"
-    onerror="
-        this.onerror=null;
-        this.src='https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/1789429462939.jpg';
-    "
->
-
-</div>
-
-<div class="package-content">
-
-<h3>Gold Package</h3>
-
-<p>
-A premium package designed for users
-looking for more features.
-</p>
-
-<div class="price">
-NPR 1,230
-<small>/ package</small>
-</div>
-
-<div class="package-buttons">
-
-<a href="About.html"
-   class="btn btn-secondary">
-About
-</a>
-
-<a href="./Buy.html?package=gold"
-   class="btn btn-primary buy-btn"
-   data-package="gold">
-Buy Now
-</a>
-
-</div>
-
-</div>
+    </div>
 
 </article>
 
-<!-- PRO4X -->
+
+<!-- PACKAGE 3 -->
+
+<article
+    class="package featured">
+
+    <span class="package-badge">
+        POPULAR
+    </span>
+
+
+    <img
+        src="package3.jpg"
+        alt="Gold Package"
+        class="package-image"
+        onerror="
+        this.src='https://via.placeholder.com/600x400/101c2e/ffffff?text=Gold+Package';
+        "
+    >
+
+
+    <div class="package-content">
+
+        <h3>
+            Gold Package
+        </h3>
+
+        <p>
+            A premium package designed for users
+            looking for more features.
+        </p>
+
+        <div class="price">
+            NPR 1,230/-
+        </div>
+
+        <div class="package-buttons">
+
+            <a
+                href="About.html"
+                class="btn btn-secondary">
+
+                About
+
+            </a>
+
+            <a
+                href="Buy.html?package=gold"
+                class="btn btn-primary">
+
+                Buy Now
+
+            </a>
+
+        </div>
+
+    </div>
+
+</article>
+
+
+<!-- PACKAGE 4 -->
 
 <article class="package">
 
-<div class="package-image-wrap">
+    <img
+        src="package4.jpg"
+        alt="Pro4x Package"
+        class="package-image"
+        onerror="
+        this.src='https://via.placeholder.com/600x400/101c2e/ffffff?text=Pro4x+Package';
+        "
+    >
 
-<img
-    src="package4.jpg"
-    alt="Pro4x Package"
-    class="package-image"
-    loading="lazy"
-    onerror="
-        this.onerror=null;
-        this.src='https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/1789429595150.jpg';
-    "
->
 
-</div>
+    <div class="package-content">
 
-<div class="package-content">
+        <h3>
+            Pro4x Package
+        </h3>
 
-<h3>Pro4x Package</h3>
+        <p>
+            Advanced package for users who need
+            an expanded platform experience.
+        </p>
 
-<p>
-Advanced package for users who need
-an expanded platform experience.
-</p>
+        <div class="price">
+            NPR 1,550/-
+        </div>
 
-<div class="price">
-NPR 1,550
-<small>/ package</small>
-</div>
+        <div class="package-buttons">
 
-<div class="package-buttons">
+            <a
+                href="About.html"
+                class="btn btn-secondary">
 
-<a href="About.html"
-   class="btn btn-secondary">
-About
-</a>
+                About
 
-<a href="./Buy.html?package=pro4x"
-   class="btn btn-primary buy-btn"
-   data-package="pro4x">
-Buy Now
-</a>
+            </a>
 
-</div>
+            <a
+                href="Buy.html?package=pro4x"
+                class="btn btn-primary">
 
-</div>
+                Buy Now
+
+            </a>
+
+        </div>
+
+    </div>
+
+</article>
+
+
+<!-- PACKAGE 5 -->
+
+<article
+    class="package featured">
+
+    <span class="package-badge">
+        PREMIUM
+    </span>
+
+
+    <img
+        src="package5.jpg"
+        alt="Rupay7x Pro Package"
+        class="package-image"
+        onerror="
+        this.src='https://via.placeholder.com/600x400/101c2e/ffffff?text=Rupay7x+Pro';
+        "
+    >
+
+
+    <div class="package-content">
+
+        <h3>
+            Rupay7x Pro
+        </h3>
+
+        <p>
+            Our highest listed package with a
+            premium platform experience.
+        </p>
+
+        <div class="price">
+            NPR 2,350/-
+        </div>
+
+        <div class="package-buttons">
+
+            <a
+                href="About.html"
+                class="btn btn-secondary">
+
+                About
+
+            </a>
+
+            <a
+                href="Buy.html?package=rupay7x"
+                class="btn btn-primary">
+
+                Buy Now
+
+            </a>
+
+        </div>
+
+    </div>
 
 </article>
 
-<!-- RUPAY7X -->
-
-<article class="package featured">
-
-<span class="package-badge">
-PREMIUM
-</span>
-
-<div class="package-image-wrap">
-
-<img
-    src="package5.jpg"
-    alt="Rupay7x Pro Package"
-    class="package-image"
-    loading="lazy"
-    onerror="
-        this.onerror=null;
-        this.src='https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/1789429749959.jpg';
-    "
->
-
-</div>
-
-<div class="package-content">
-
-<h3>Rupay7x Pro</h3>
-
-<p>
-Our highest listed package with a
-premium platform experience.
-</p>
-
-<div class="price">
-NPR 2,350
-<small>/ package</small>
-</div>
-
-<div class="package-buttons">
-
-<a href="About.html"
-   class="btn btn-secondary">
-About
-</a>
-
-<a href="./Buy.html?package=rupay7x"
-   class="btn btn-primary buy-btn"
-   data-package="rupay7x">
-Buy Now
-</a>
-
-</div>
-
-</div>
-
-</article>
 
 </div>
 
@@ -1452,117 +2164,183 @@ Buy Now
 
 </section>
 
-<!-- ABOUT -->
+
+<!-- =======================================================
+     ABOUT
+     ======================================================= -->
 
 <section id="about">
 
 <div class="container">
 
+
 <div class="section-title">
 
-<span class="small">
-Why Rupay
-</span>
+    <span class="small">
+        Why Rupay
+    </span>
 
-<h2>
-Built For A Better Experience
-</h2>
+    <h2>
+        Built For A Better Experience
+    </h2>
 
-<p>
-Simple design, responsive technology and
-useful platform features.
-</p>
+    <p>
+        Simple design, responsive technology and
+        useful platform features.
+    </p>
 
 </div>
+
 
 <div class="about-grid">
 
-<div class="about-card">
-
-<h3>About Rupay</h3>
-
-<p class="about-text">
-
-Rupay is designed as a modern digital platform
-experience focused on accessibility, smooth
-navigation and a clean user interface.
-
-</p>
-
-<br>
-
-<p class="about-text">
-
-Replace this text with your company's actual
-description, registration information,
-business details and terms.
-
-</p>
-
-</div>
 
 <div class="about-card">
 
-<h3>Platform Features</h3>
+    <h3>
+        About Rupay
+    </h3>
 
-<div class="features">
 
-<div class="feature">
+    <p class="about-text">
 
-<div class="feature-icon">⚡</div>
+        Rupay is designed as a modern digital platform
+        experience focused on accessibility, smooth
+        navigation and a clean user interface.
 
-<div>
-<strong>Fast Experience</strong>
-<span>Optimized responsive interface</span>
-</div>
+    </p>
 
-</div>
 
-<div class="feature">
+    <br>
 
-<div class="feature-icon">🕐</div>
 
-<div>
-<strong>24Hr Support</strong>
-<span>Support information available anytime</span>
-</div>
+    <p class="about-text">
 
-</div>
+        Replace this text with your company's actual
+        description, registration information,
+        business details and terms.
 
-<div class="feature">
-
-<div class="feature-icon">🎁</div>
-
-<div>
-<strong>Cashback</strong>
-<span>Promotional cashback can be configured</span>
-</div>
+    </p>
 
 </div>
 
-<div class="feature">
 
-<div class="feature-icon">🔐</div>
+<div class="about-card">
 
-<div>
-<strong>Secure Account</strong>
-<span>Account security features</span>
-</div>
+    <h3>
+        Platform Features
+    </h3>
 
-</div>
 
-<div class="feature">
+    <div class="features">
 
-<div class="feature-icon">📱</div>
 
-<div>
-<strong>Any Device</strong>
-<span>Mobile, iOS, tablet and desktop</span>
-</div>
+        <div class="feature">
 
-</div>
+            <div class="feature-icon">
+                ⚡
+            </div>
 
-</div>
+            <div>
+
+                <strong>
+                    Fast Experience
+                </strong>
+
+                <span>
+                    Optimized responsive interface
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🕐
+            </div>
+
+            <div>
+
+                <strong>
+                    24Hr Support
+                </strong>
+
+                <span>
+                    Support information available anytime
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🎁
+            </div>
+
+            <div>
+
+                <strong>
+                    Cashback
+                </strong>
+
+                <span>
+                    Promotional cashback can be configured
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🔐
+            </div>
+
+            <div>
+
+                <strong>
+                    Secure Account
+                </strong>
+
+                <span>
+                    Account security features
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                📱
+            </div>
+
+            <div>
+
+                <strong>
+                    Any Device
+                </strong>
+
+                <span>
+                    Mobile, iOS, tablet and desktop
+                </span>
+
+            </div>
+
+        </div>
+
+
+    </div>
 
 </div>
 
@@ -1572,93 +2350,114 @@ business details and terms.
 
 </section>
 
-<!-- LIVE ACTIVITY -->
+
+<!-- =======================================================
+     LIVE ACTIVITY
+     ======================================================= -->
 
 <section>
 
 <div class="container">
 
+
 <div class="section-title">
 
-<span class="small">
-Live Activity
-</span>
+    <span class="small">
+        Live Activity
+    </span>
 
-<h2>
-Platform Activity
-</h2>
+    <h2>
+        Platform Activity
+    </h2>
 
-<p>
-Example dashboard visualization.
-</p>
+    <p>
+        Example dashboard visualization.
+    </p>
 
 </div>
+
 
 <div class="live-box">
 
+
 <div class="online-card">
 
-<div class="online-status">
+    <div class="online-status">
 
-<span class="pulse"></span>
-LIVE STATUS
+        <span class="pulse"></span>
+
+        LIVE STATUS
+
+    </div>
+
+
+    <div
+        class="online-number"
+        id="onlineUsers">
+
+        1,284
+
+    </div>
+
+
+    <p style="
+        color:var(--muted);
+        font-size:13px;
+        line-height:1.7;
+    ">
+
+        Users currently displayed in this
+        demonstration interface.
+
+    </p>
+
+
+    <div style="
+        margin-top:25px;
+        height:7px;
+        background:#162438;
+        border-radius:20px;
+        overflow:hidden;
+    ">
+
+        <div
+            id="activityBar"
+            style="
+                height:100%;
+                width:72%;
+                background:
+                    linear-gradient(
+                        90deg,
+                        #00d4ff,
+                        #6c63ff
+                    );
+            ">
+        </div>
+
+    </div>
 
 </div>
 
-<div class="online-number" id="onlineUsers">
-1,284
-</div>
-
-<p style="
-    color:var(--muted);
-    font-size:13px;
-    line-height:1.7;
-">
-
-Users currently displayed in this
-demonstration interface.
-
-</p>
-
-<div style="
-    margin-top:25px;
-    height:7px;
-    background:#162438;
-    border-radius:20px;
-    overflow:hidden;
-">
-
-<div id="activityBar"
-     style="
-        height:100%;
-        width:72%;
-        background:linear-gradient(
-            90deg,
-            #00d4ff,
-            #6c63ff
-        );
-     ">
-</div>
-
-</div>
-
-</div>
 
 <div class="chart-card">
 
-<div class="chart-title">
+    <div class="chart-title">
 
-<h3>Activity Flow</h3>
+        <h3>
+            Activity Flow
+        </h3>
 
-<span class="demo-label">
-DEMO DATA
-</span>
+        <span class="demo-label">
+            DEMO DATA
+        </span>
+
+    </div>
+
+
+    <canvas id="activityChart"></canvas>
 
 </div>
 
-<canvas id="activityChart"></canvas>
-
-</div>
 
 </div>
 
@@ -1666,57 +2465,64 @@ DEMO DATA
 
 </section>
 
-<!-- TRADING DEMO -->
+
+<!-- =======================================================
+     TRADING DEMO
+     ======================================================= -->
 
 <section>
 
 <div class="container">
 
+
 <div class="section-title">
 
-<span class="small">
-Market View
-</span>
+    <span class="small">
+        Market View
+    </span>
 
-<h2>
-Trading Chart
-</h2>
+    <h2>
+        Trading Chart
+    </h2>
 
-<p>
-Illustrative chart only — values below are
-demonstration data and are not guaranteed returns.
-</p>
+    <p>
+        Illustrative chart only — values below are
+        demonstration data and are not guaranteed returns.
+    </p>
 
 </div>
+
 
 <div class="chart-card">
 
-<div class="chart-title">
+    <div class="chart-title">
 
-<h3>
-Illustrative Profit Rate
-</h3>
+        <h3>
+            Illustrative Profit Rate
+        </h3>
 
-<span class="demo-label">
-NOT REAL RETURNS
-</span>
+        <span class="demo-label">
+            NOT REAL RETURNS
+        </span>
 
-</div>
+    </div>
 
-<canvas id="profitChart"></canvas>
 
-<p style="
-    color:#73859c;
-    font-size:11px;
-    margin-top:15px;
-    line-height:1.6;
-">
+    <canvas id="profitChart"></canvas>
 
-This chart is a visual demonstration.
-Actual financial performance can vary and
-should only be shown using verified real data.
 
-</p>
+    <p style="
+        color:#73859c;
+        font-size:11px;
+        margin-top:15px;
+        line-height:1.6;
+    ">
+
+        This chart is a visual demonstration.
+        Actual financial performance can vary and
+        should only be shown using verified real data.
+
+    </p>
 
 </div>
 
@@ -1724,119 +2530,130 @@ should only be shown using verified real data.
 
 </section>
 
-<!-- CONTACT -->
+
+<!-- =======================================================
+     CONTACT
+     ======================================================= -->
 
 <section id="contact">
 
 <div class="container">
 
+
 <div class="section-title">
 
-<span class="small">
-Get In Touch
-</span>
+    <span class="small">
+        Get In Touch
+    </span>
 
-<h2>
-Contact Us
-</h2>
+    <h2>
+        Contact Us
+    </h2>
 
-<p>
-Replace the sample contact details below
-with your actual business information.
-</p>
+    <p>
+        Replace the sample contact details below
+        with your actual business information.
+    </p>
 
 </div>
+
 
 <div class="contact-grid">
 
-<div class="contact-card">
-
-<div class="contact-icon">
-💬
-</div>
-
-<h3>
-WhatsApp
-</h3>
-
-<p>
-Customer support
-</p>
-
-<br>
-
-<a href="https://wa.me/9779800000000"
-   target="_blank"
-   rel="noopener">
-
-+977 9800000000
-
-</a>
-
-</div>
 
 <div class="contact-card">
 
-<div class="contact-icon">
-✉️
+    <div class="contact-icon">
+        💬
+    </div>
+
+    <h3>
+        WhatsApp
+    </h3>
+
+    <p>
+        Customer support
+    </p>
+
+    <br>
+
+    <a
+        href="https://wa.me/9779800000000"
+        target="_blank"
+        rel="noopener">
+
+        +977 9800000000
+
+    </a>
+
 </div>
 
-<h3>
-Email
-</h3>
-
-<p>
-General enquiries
-</p>
-
-<br>
-
-<a href="mailto:support@yourdomain.com">
-
-support@yourdomain.com
-
-</a>
-
-</div>
 
 <div class="contact-card">
 
-<div class="contact-icon">
-🛡️
+    <div class="contact-icon">
+        ✉️
+    </div>
+
+    <h3>
+        Email
+    </h3>
+
+    <p>
+        General enquiries
+    </p>
+
+    <br>
+
+    <a href="mailto:support@yourdomain.com">
+
+        support@yourdomain.com
+
+    </a>
+
 </div>
 
-<h3>
-License
-</h3>
 
-<p>
-Business registration / license
-information
-</p>
+<div class="contact-card">
 
-<br>
+    <div class="contact-icon">
+        🛡️
+    </div>
 
-<strong style="font-size:13px;">
-LICENSE: ADD-YOUR-REAL-ID
-</strong>
+    <h3>
+        License
+    </h3>
+
+    <p>
+        Business registration / license
+        information
+    </p>
+
+    <br>
+
+    <strong style="font-size:13px;">
+        LICENSE: ADD-YOUR-REAL-ID
+    </strong>
 
 </div>
 
+
 </div>
+
 
 <div class="license">
 
-<strong>
-🔒 Security & Compliance
-</strong>
+    <strong>
+        🔒 Security & Compliance
+    </strong>
 
-<span>
+    <span>
 
-Add your real company registration,
-financial authorization and security
-certifications here if applicable.
+        Add your real company registration,
+        financial authorization and security
+        certifications here if applicable.
 
-</span>
+    </span>
 
 </div>
 
@@ -1844,127 +2661,180 @@ certifications here if applicable.
 
 </section>
 
+
 </main>
 
-<!-- FOOTER -->
+
+<!-- =======================================================
+     FOOTER
+     ======================================================= -->
 
 <footer>
 
 <div class="container">
 
+
 <div class="footer-grid">
+
 
 <div class="footer-brand">
 
-<div class="brand">
+    <div class="brand">
 
-<img
-    src="https://raw.githubusercontent.com/soulpari21-hue/Rupay/refs/heads/main/1789472698527.png"
-    class="brand-logo"
-    alt="Rupay">
+        <img
+            src="logo.png"
+            class="brand-logo"
+            alt="Rupay">
 
-<span>Rupay</span>
+        <span>
+            Rupay
+        </span>
+
+    </div>
+
+
+    <p>
+
+        A modern digital platform interface
+        designed for a smooth and professional
+        experience.
+
+    </p>
 
 </div>
 
-<p>
-
-A modern digital platform interface
-designed for a smooth and professional
-experience.
-
-</p>
-
-</div>
 
 <div class="footer-column">
 
-<h4>Quick Links</h4>
+    <h4>
+        Quick Links
+    </h4>
 
-<a href="#home">Home</a>
-<a href="#packages">Packages</a>
-<a href="#about">About</a>
-<a href="#contact">Contact</a>
+    <a href="#home">
+        Home
+    </a>
+
+    <a href="#packages">
+        Packages
+    </a>
+
+    <a href="#about">
+        About
+    </a>
+
+    <a href="#contact">
+        Contact
+    </a>
 
 </div>
+
 
 <div class="footer-column">
 
-<h4>Account</h4>
+    <h4>
+        Account
+    </h4>
 
-<a href="Login.html">Login</a>
+    <a href="Login.html">
+        Login
+    </a>
 
-<!-- Direct Buy Page -->
+    <a href="Buy.html">
+        Buy Package
+    </a>
 
-<a href="./Buy.html">Buy Package</a>
-
-<a href="About.html">Package Details</a>
+    <a href="About.html">
+        Package Details
+    </a>
 
 </div>
 
+
 </div>
+
 
 <div class="footer-bottom">
 
-© <span id="year"></span>
-Rupay. All rights reserved.
+    © <span id="year"></span>
+    Rupay. All rights reserved.
 
-<br><br>
+    <br><br>
 
-⚠️ Demo website interface.
-Replace placeholders with verified company,
-license, security and legal information.
+    ⚠️ Demo website interface.
+    Replace placeholders with verified company,
+    license, security and legal information.
 
 </div>
+
 
 </div>
 
 </footer>
 
-<!-- FLOATING CONTROLS -->
+
+<!-- =======================================================
+     FLOATING CONTROLS
+     BACK BUTTON REMOVED
+     ======================================================= -->
 
 <div class="floating-controls">
 
-<button
-    class="float-btn"
-    id="refreshBtn"
-    type="button"
-    title="Refresh"
-    aria-label="Refresh page">
 
-↻
+    <button
+        class="float-btn"
+        onclick="refreshPage()"
+        title="Refresh"
+        aria-label="Refresh page">
 
-</button>
+        ↻
 
-<button
-    class="float-btn"
-    id="topBtn"
-    type="button"
-    title="Scroll to top"
-    aria-label="Scroll to top">
+    </button>
 
-↑
 
-</button>
+    <button
+        class="float-btn"
+        onclick="scrollTopPage()"
+        title="Scroll to top"
+        aria-label="Scroll to top">
+
+        ↑
+
+    </button>
+
 
 </div>
 
-<!-- TOAST -->
 
-<div class="toast" id="toast"></div>
+<!-- =======================================================
+     TOAST
+     ======================================================= -->
+
+<div
+    class="toast"
+    id="toast">
+</div>
+
+
+<!-- =======================================================
+     JAVASCRIPT
+     ======================================================= -->
 
 <script>
 
 /* =========================================================
    MOBILE MENU
-========================================================= */
+   ========================================================= */
 
-const menuBtn = document.getElementById("menuBtn");
-const navLinks = document.getElementById("navLinks");
+const menuBtn =
+    document.getElementById("menuBtn");
 
-if(menuBtn && navLinks){
+const navLinks =
+    document.getElementById("navLinks");
 
-    menuBtn.addEventListener("click", function(){
+
+menuBtn.addEventListener(
+    "click",
+    () => {
 
         const isOpen =
             navLinks.classList.toggle("active");
@@ -1974,16 +2844,22 @@ if(menuBtn && navLinks){
 
         menuBtn.setAttribute(
             "aria-expanded",
-            String(isOpen)
+            isOpen
         );
 
-    });
+    }
+);
 
-    document
-    .querySelectorAll(".nav-links a")
-    .forEach(function(link){
 
-        link.addEventListener("click", function(){
+/* Close menu after navigation */
+
+document
+.querySelectorAll(".nav-links a")
+.forEach(link => {
+
+    link.addEventListener(
+        "click",
+        () => {
 
             navLinks.classList.remove("active");
 
@@ -1994,216 +2870,176 @@ if(menuBtn && navLinks){
                 "false"
             );
 
-        });
-
-    });
-
-}
-
-
-/* =========================================================
-   BUY NOW
-=========================================================
-
-IMPORTANT:
-
-The actual redirect is already handled by the HTML:
-
-<a href="./Buy.html?package=normal">
-
-JavaScript below ONLY saves the selected package.
-
-It does NOT cancel the normal browser navigation.
-
-This is more reliable than using event.preventDefault().
-========================================================= */
-
-document
-.querySelectorAll(".buy-btn")
-.forEach(function(button){
-
-    button.addEventListener("click", function(){
-
-        const packageName =
-            this.getAttribute("data-package");
-
-        if(packageName){
-
-            try{
-
-                localStorage.setItem(
-                    "selectedPackage",
-                    packageName
-                );
-
-            }catch(error){
-
-                console.log(
-                    "Local storage unavailable"
-                );
-
-            }
-
         }
-
-        /*
-         * DO NOT USE:
-         *
-         * event.preventDefault();
-         *
-         * The normal href must be allowed to work.
-         */
-
-    });
+    );
 
 });
 
 
 /* =========================================================
    REFRESH
-========================================================= */
+   ========================================================= */
 
-const refreshBtn =
-    document.getElementById("refreshBtn");
+function refreshPage() {
 
-if(refreshBtn){
+    showToast(
+        "Refreshing..."
+    );
 
-    refreshBtn.addEventListener(
-        "click",
-        function(){
-
+    setTimeout(
+        () => {
             window.location.reload();
-
-        }
+        },
+        450
     );
 
 }
 
 
 /* =========================================================
-   SCROLL TOP
-========================================================= */
+   SCROLL TO TOP
+   ========================================================= */
 
-const topBtn =
-    document.getElementById("topBtn");
+function scrollTopPage() {
 
-if(topBtn){
+    window.scrollTo({
 
-    topBtn.addEventListener(
-        "click",
-        function(){
+        top: 0,
 
-            window.scrollTo({
-                top:0,
-                behavior:"smooth"
-            });
+        behavior: "smooth"
 
-        }
-    );
+    });
 
 }
 
 
 /* =========================================================
    TOAST
-========================================================= */
+   ========================================================= */
 
 let toastTimer;
 
-function showToast(message){
+
+function showToast(message) {
 
     const toast =
         document.getElementById("toast");
 
-    if(!toast)return;
+    toast.textContent =
+        message;
 
-    toast.textContent = message;
+    toast.classList.add(
+        "show"
+    );
 
-    toast.classList.add("show");
-
-    clearTimeout(toastTimer);
+    clearTimeout(
+        toastTimer
+    );
 
     toastTimer =
-        setTimeout(function(){
+        setTimeout(
+            () => {
 
-            toast.classList.remove("show");
+                toast.classList.remove(
+                    "show"
+                );
 
-        },2200);
+            },
+            2200
+        );
 
 }
 
 
 /* =========================================================
    YEAR
-========================================================= */
+   ========================================================= */
 
-const year =
-    document.getElementById("year");
-
-if(year){
-
-    year.textContent =
-        new Date().getFullYear();
-
-}
+document
+.getElementById("year")
+.textContent =
+    new Date().getFullYear();
 
 
 /* =========================================================
-   DEMO USERS
-========================================================= */
+   DEMO ONLINE USERS
+   ========================================================= */
 
 let users = 1284;
 
-function updateUsers(){
 
-    const userCount =
-        document.getElementById("userCount");
-
-    const onlineUsers =
-        document.getElementById("onlineUsers");
-
-    if(!userCount || !onlineUsers)return;
+function updateUsers() {
 
     const variation =
-        Math.floor(Math.random()*13)-6;
+        Math.floor(
+            Math.random() * 13
+        ) - 6;
+
 
     users =
-        Math.max(100, users + variation);
+        Math.max(
+            100,
+            users + variation
+        );
+
 
     const formatted =
         users.toLocaleString();
 
+
+    const userCount =
+        document.getElementById(
+            "userCount"
+        );
+
+
+    const onlineUsers =
+        document.getElementById(
+            "onlineUsers"
+        );
+
+
     userCount.textContent =
         formatted;
+
 
     onlineUsers.textContent =
         formatted;
 
 }
 
-setInterval(updateUsers,3500);
+
+setInterval(
+    updateUsers,
+    3500
+);
 
 
 /* =========================================================
    CANVAS SETUP
-========================================================= */
+   ========================================================= */
 
-function setupCanvas(canvas){
+function setupCanvas(canvas) {
 
     const rect =
         canvas.getBoundingClientRect();
 
+
     const dpr =
         window.devicePixelRatio || 1;
+
 
     canvas.width =
         rect.width * dpr;
 
+
     canvas.height =
         rect.height * dpr;
 
+
     const ctx =
         canvas.getContext("2d");
+
 
     ctx.setTransform(
         dpr,
@@ -2214,10 +3050,17 @@ function setupCanvas(canvas){
         0
     );
 
-    return{
-        ctx:ctx,
-        width:rect.width,
-        height:rect.height
+
+    return {
+
+        ctx,
+
+        width:
+            rect.width,
+
+        height:
+            rect.height
+
     };
 
 }
@@ -2225,266 +3068,320 @@ function setupCanvas(canvas){
 
 /* =========================================================
    ACTIVITY CHART
-========================================================= */
+   ========================================================= */
 
-function drawActivityChart(){
+function drawActivityChart() {
 
     const canvas =
-        document.getElementById("activityChart");
+        document.getElementById(
+            "activityChart"
+        );
 
-    if(!canvas)return;
 
-    const data =
+    if (!canvas) return;
+
+
+    const {
+        ctx,
+        width,
+        height
+    } =
         setupCanvas(canvas);
 
-    const ctx = data.ctx;
-    const width = data.width;
-    const height = data.height;
 
-    const values=[
-        32,41,37,52,
-        48,63,58,72,
-        67,81,74,89
+    const values = [
+        32, 41, 37, 52,
+        48, 63, 58, 72,
+        67, 81, 74, 89
     ];
 
+
     ctx.clearRect(
-        0,0,width,height
+        0,
+        0,
+        width,
+        height
     );
+
+
+    /* Grid */
 
     ctx.strokeStyle =
         "rgba(255,255,255,.07)";
 
     ctx.lineWidth = 1;
 
-    for(let i=1;i<5;i++){
+
+    for (
+        let i = 1;
+        i < 5;
+        i++
+    ) {
 
         const y =
-            (height/5)*i;
+            (height / 5) * i;
+
 
         ctx.beginPath();
 
-        ctx.moveTo(0,y);
-        ctx.lineTo(width,y);
+        ctx.moveTo(
+            0,
+            y
+        );
+
+        ctx.lineTo(
+            width,
+            y
+        );
 
         ctx.stroke();
 
     }
 
+
     const max =
         Math.max(...values);
+
 
     const min =
         Math.min(...values);
 
+
     const range =
-        max-min || 1;
+        max - min || 1;
+
 
     const points =
-        values.map(function(value,i){
+        values.map(
+            (value, i) => {
 
-            const x =
-                (i/(values.length-1))*width;
+                const x =
+                    (i /
+                    (values.length - 1))
+                    * width;
 
-            const y =
-                height -
-                ((value-min)/range) *
-                (height-30)-15;
 
-            return{x,y};
+                const y =
+                    height -
+                    ((value - min) /
+                    range) *
+                    (height - 30) -
+                    15;
 
-        });
+
+                return {
+                    x,
+                    y
+                };
+
+            }
+        );
+
+
+    /* Main line */
 
     ctx.beginPath();
 
-    points.forEach(function(point,i){
 
-        if(i===0){
+    points.forEach(
+        (point, i) => {
 
-            ctx.moveTo(
-                point.x,
-                point.y
-            );
+            if (i === 0) {
 
-        }else{
+                ctx.moveTo(
+                    point.x,
+                    point.y
+                );
 
-            ctx.lineTo(
-                point.x,
-                point.y
-            );
+            } else {
+
+                ctx.lineTo(
+                    point.x,
+                    point.y
+                );
+
+            }
 
         }
+    );
 
-    });
 
     ctx.strokeStyle =
         "#00d4ff";
 
     ctx.lineWidth = 3;
 
-    ctx.lineJoin = "round";
-    ctx.lineCap = "round";
+    ctx.lineJoin =
+        "round";
+
+    ctx.lineCap =
+        "round";
+
 
     ctx.stroke();
 
-    points.forEach(function(point){
 
-        ctx.beginPath();
+    /* Points */
 
-        ctx.arc(
-            point.x,
-            point.y,
-            4,
-            0,
-            Math.PI*2
-        );
+    points.forEach(
+        point => {
 
-        ctx.fillStyle =
-            "#07111f";
+            ctx.beginPath();
 
-        ctx.fill();
+            ctx.arc(
+                point.x,
+                point.y,
+                4,
+                0,
+                Math.PI * 2
+            );
 
-        ctx.strokeStyle =
-            "#00d4ff";
 
-        ctx.lineWidth = 2;
+            ctx.fillStyle =
+                "#07111f";
 
-        ctx.stroke();
+            ctx.fill();
 
-    });
+
+            ctx.strokeStyle =
+                "#00d4ff";
+
+            ctx.lineWidth = 2;
+
+            ctx.stroke();
+
+        }
+    );
 
 }
 
 
 /* =========================================================
-   PROFIT CHART
-========================================================= */
+   PROFIT DEMO CHART
+   ========================================================= */
 
-function drawProfitChart(){
+function drawProfitChart() {
 
     const canvas =
-        document.getElementById("profitChart");
+        document.getElementById(
+            "profitChart"
+        );
 
-    if(!canvas)return;
 
-    const data =
+    if (!canvas) return;
+
+
+    const {
+        ctx,
+        width,
+        height
+    } =
         setupCanvas(canvas);
 
-    const ctx = data.ctx;
-    const width = data.width;
-    const height = data.height;
 
-    const values=[
-        1.2,1.8,1.5,2.3,
-        2.1,3.0,2.7,3.6,
-        3.2,4.1,3.8,4.7,
-        4.3,5.0
+    const values = [
+        1.2, 1.8, 1.5, 2.3,
+        2.1, 3.0, 2.7, 3.6,
+        3.2, 4.1, 3.8, 4.7,
+        4.3, 5.0
     ];
 
+
     ctx.clearRect(
-        0,0,width,height
+        0,
+        0,
+        width,
+        height
     );
+
+
+    /* Grid */
 
     ctx.strokeStyle =
         "rgba(255,255,255,.07)";
 
     ctx.lineWidth = 1;
 
-    for(let i=1;i<5;i++){
+
+    for (
+        let i = 1;
+        i < 5;
+        i++
+    ) {
 
         const y =
-            (height/5)*i;
+            (height / 5) * i;
+
 
         ctx.beginPath();
 
-        ctx.moveTo(0,y);
-        ctx.lineTo(width,y);
+        ctx.moveTo(
+            0,
+            y
+        );
+
+        ctx.lineTo(
+            width,
+            y
+        );
 
         ctx.stroke();
 
     }
 
+
     const max =
         Math.max(...values);
+
 
     const min =
         Math.min(...values);
 
+
     const range =
-        max-min || 1;
+        max - min || 1;
+
 
     const points =
-        values.map(function(value,i){
+        values.map(
+            (value, i) => {
 
-            const x =
-                (i/(values.length-1))*width;
+                const x =
+                    (i /
+                    (values.length - 1))
+                    * width;
 
-            const y =
-                height -
-                ((value-min)/range) *
-                (height-30)-15;
 
-            return{x,y};
+                const y =
+                    height -
+                    ((value - min) /
+                    range) *
+                    (height - 30) -
+                    15;
 
-        });
 
-    /* Fill */
+                return {
+                    x,
+                    y
+                };
+
+            }
+        );
+
+
+    /* Area fill */
 
     ctx.beginPath();
+
 
     ctx.moveTo(
         points[0].x,
         height
     );
 
-    points.forEach(function(point){
 
-        ctx.lineTo(
-            point.x,
-            point.y
-        );
-
-    });
-
-    ctx.lineTo(
-        points[points.length-1].x,
-        height
-    );
-
-    ctx.closePath();
-
-    const gradient =
-        ctx.createLinearGradient(
-            0,0,0,height
-        );
-
-    gradient.addColorStop(
-        0,
-        "rgba(0,212,255,.18)"
-    );
-
-    gradient.addColorStop(
-        1,
-        "rgba(0,212,255,0)"
-    );
-
-    ctx.fillStyle = gradient;
-
-    ctx.fill();
-
-    /* Line */
-
-    ctx.beginPath();
-
-    points.forEach(function(point,i){
-
-        if(i===0){
-
-            ctx.moveTo(
-                point.x,
-                point.y
-            );
-
-        }else{
+    points.forEach(
+        point => {
 
             ctx.lineTo(
                 point.x,
@@ -2492,33 +3389,107 @@ function drawProfitChart(){
             );
 
         }
+    );
 
-    });
+
+    ctx.lineTo(
+        points[points.length - 1].x,
+        height
+    );
+
+
+    ctx.closePath();
+
+
+    const gradient =
+        ctx.createLinearGradient(
+            0,
+            0,
+            0,
+            height
+        );
+
+
+    gradient.addColorStop(
+        0,
+        "rgba(0,212,255,.18)"
+    );
+
+
+    gradient.addColorStop(
+        1,
+        "rgba(0,212,255,0)"
+    );
+
+
+    ctx.fillStyle =
+        gradient;
+
+    ctx.fill();
+
+
+    /* Main line */
+
+    ctx.beginPath();
+
+
+    points.forEach(
+        (point, i) => {
+
+            if (i === 0) {
+
+                ctx.moveTo(
+                    point.x,
+                    point.y
+                );
+
+            } else {
+
+                ctx.lineTo(
+                    point.x,
+                    point.y
+                );
+
+            }
+
+        }
+    );
+
 
     ctx.strokeStyle =
         "#6c63ff";
 
     ctx.lineWidth = 3;
 
-    ctx.lineJoin = "round";
-    ctx.lineCap = "round";
+    ctx.lineJoin =
+        "round";
+
+    ctx.lineCap =
+        "round";
+
 
     ctx.stroke();
+
 
     /* Last point */
 
     const last =
-        points[points.length-1];
+        points[
+            points.length - 1
+        ];
+
 
     ctx.beginPath();
+
 
     ctx.arc(
         last.x,
         last.y,
         5,
         0,
-        Math.PI*2
+        Math.PI * 2
     );
+
 
     ctx.fillStyle =
         "#00d4ff";
@@ -2530,9 +3501,9 @@ function drawProfitChart(){
 
 /* =========================================================
    DRAW CHARTS
-========================================================= */
+   ========================================================= */
 
-function drawCharts(){
+function drawCharts() {
 
     drawActivityChart();
 
@@ -2540,18 +3511,24 @@ function drawCharts(){
 
 }
 
+
 window.addEventListener(
     "load",
     drawCharts
 );
 
+
 let resizeTimer;
+
 
 window.addEventListener(
     "resize",
-    function(){
+    () => {
 
-        clearTimeout(resizeTimer);
+        clearTimeout(
+            resizeTimer
+        );
+
 
         resizeTimer =
             setTimeout(
@@ -2565,11 +3542,11 @@ window.addEventListener(
 
 /* =========================================================
    CONNECTION STATUS
-========================================================= */
+   ========================================================= */
 
 window.addEventListener(
     "offline",
-    function(){
+    () => {
 
         showToast(
             "You are offline. Some features may not work."
@@ -2578,9 +3555,10 @@ window.addEventListener(
     }
 );
 
+
 window.addEventListener(
     "online",
-    function(){
+    () => {
 
         showToast(
             "Connection restored."
@@ -2591,31 +3569,46 @@ window.addEventListener(
 
 
 /* =========================================================
-   ESCAPE KEY
-========================================================= */
+   GLOBAL ERROR LOGGING
+   ========================================================= */
+
+window.addEventListener(
+    "error",
+    event => {
+
+        console.log(
+            "Rupay interface error:",
+            event.message
+        );
+
+    }
+);
+
+
+/* =========================================================
+   ESCAPE KEY — CLOSE MOBILE MENU
+   ========================================================= */
 
 document.addEventListener(
     "keydown",
-    function(event){
+    event => {
 
-        if(
+        if (
             event.key === "Escape" &&
-            navLinks &&
             navLinks.classList.contains("active")
-        ){
+        ) {
 
-            navLinks.classList.remove("active");
+            navLinks.classList.remove(
+                "active"
+            );
 
-            if(menuBtn){
+            menuBtn.textContent =
+                "☰";
 
-                menuBtn.textContent = "☰";
-
-                menuBtn.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-            }
+            menuBtn.setAttribute(
+                "aria-expanded",
+                "false"
+            );
 
         }
 
@@ -2625,4 +3618,4 @@ document.addEventListener(
 </script>
 
 </body>
-</html>
+      </html>
