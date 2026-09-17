@@ -16,10 +16,6 @@
 
 <style>
 
-/* =========================================================
-   RUPAY — PROFESSIONAL RESPONSIVE WEBSITE
-   ========================================================= */
-
 :root{
     --bg:#050b14;
     --bg2:#091525;
@@ -50,7 +46,6 @@ html{
 body{
     min-height:100vh;
     overflow-x:hidden;
-
     background:
         radial-gradient(
             circle at 10% 10%,
@@ -67,9 +62,7 @@ body{
             var(--bg),
             var(--bg2)
         );
-
     color:var(--text);
-
     font-family:
         Inter,
         -apple-system,
@@ -94,19 +87,14 @@ body::before{
     z-index:-1;
 }
 
-
-/* =========================================================
-   HEADER
-   ========================================================= */
+/* HEADER */
 
 header{
     position:sticky;
     top:0;
     z-index:1000;
-
     background:rgba(5,11,20,.82);
     border-bottom:1px solid var(--border);
-
     backdrop-filter:blur(20px);
     -webkit-backdrop-filter:blur(20px);
 }
@@ -115,7 +103,6 @@ header{
     width:min(1180px,92%);
     min-height:72px;
     margin:auto;
-
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -126,10 +113,8 @@ header{
     display:flex;
     align-items:center;
     gap:11px;
-
     text-decoration:none;
     color:white;
-
     font-weight:900;
     font-size:22px;
 }
@@ -139,7 +124,6 @@ header{
     height:43px;
     object-fit:contain;
     border-radius:12px;
-
     background:rgba(255,255,255,.05);
     border:1px solid rgba(255,255,255,.07);
 }
@@ -151,14 +135,10 @@ header{
 }
 
 .nav-links a{
-    position:relative;
-
     color:#b9c8da;
     text-decoration:none;
-
     font-size:14px;
     font-weight:650;
-
     transition:color .2s ease;
 }
 
@@ -168,24 +148,17 @@ header{
 
 .menu-btn{
     display:none;
-
     border:0;
     background:transparent;
     color:white;
-
     font-size:27px;
     cursor:pointer;
-
     width:42px;
     height:42px;
-
     border-radius:12px;
 }
 
-
-/* =========================================================
-   GENERAL
-   ========================================================= */
+/* GENERAL */
 
 .container{
     width:min(1180px,92%);
@@ -203,9 +176,7 @@ section{
 
 .section-title .small{
     display:inline-block;
-
     color:var(--primary);
-
     font-size:12px;
     text-transform:uppercase;
     letter-spacing:3px;
@@ -227,29 +198,20 @@ section{
     font-size:14px;
 }
 
-
-/* =========================================================
-   BUTTONS
-   ========================================================= */
+/* BUTTONS */
 
 .btn{
     display:inline-flex;
-
     justify-content:center;
     align-items:center;
-
     min-height:50px;
     padding:0 23px;
-
     border-radius:14px;
     border:1px solid var(--border);
-
     text-decoration:none;
     font-weight:800;
     font-size:14px;
-
     cursor:pointer;
-
     transition:
         transform .2s ease,
         box-shadow .2s ease,
@@ -267,16 +229,13 @@ section{
 
 .btn-primary{
     color:#001018;
-
     background:
         linear-gradient(
             135deg,
             var(--primary),
             var(--primary-light)
         );
-
     border-color:rgba(0,212,255,.3);
-
     box-shadow:
         0 10px 30px
         rgba(0,212,255,.14);
@@ -298,19 +257,13 @@ section{
     border-color:rgba(255,255,255,.15);
 }
 
-
-/* =========================================================
-   HERO
-   ========================================================= */
+/* HERO */
 
 .hero{
     min-height:calc(100vh - 72px);
-
     display:flex;
     align-items:center;
-
     text-align:center;
-
     position:relative;
     overflow:hidden;
 }
@@ -324,15 +277,11 @@ section{
 .hero-logo{
     width:105px;
     height:105px;
-
     object-fit:contain;
     border-radius:28px;
-
     margin-bottom:25px;
-
     background:rgba(255,255,255,.045);
     border:1px solid rgba(255,255,255,.07);
-
     box-shadow:
         0 0 0 1px rgba(255,255,255,.03),
         0 20px 60px rgba(0,212,255,.12);
@@ -341,10 +290,8 @@ section{
 .hero h1{
     font-size:clamp(55px,12vw,105px);
     line-height:.95;
-
     font-weight:950;
     letter-spacing:-5px;
-
     background:
         linear-gradient(
             100deg,
@@ -352,20 +299,15 @@ section{
             #8eeeff 45%,
             #7c73ff 90%
         );
-
     -webkit-background-clip:text;
     background-clip:text;
-
     color:transparent;
 }
 
 .hero-subtitle{
     margin:26px auto;
-
     max-width:700px;
-
     color:#a7b8cc;
-
     line-height:1.8;
     font-size:16px;
 }
@@ -377,10 +319,7 @@ section{
     flex-wrap:wrap;
 }
 
-
-/* =========================================================
-   STATS
-   ========================================================= */
+/* STATS */
 
 .stats{
     display:grid;
@@ -390,14 +329,10 @@ section{
 
 .stat-card{
     padding:25px;
-
     border:1px solid var(--border);
     border-radius:20px;
-
     background:var(--card);
-
     text-align:center;
-
     transition:
         transform .2s ease,
         border-color .2s ease,
@@ -421,10 +356,7 @@ section{
     font-size:13px;
 }
 
-
-/* =========================================================
-   PACKAGES
-   ========================================================= */
+/* PACKAGES */
 
 .packages{
     display:grid;
@@ -435,30 +367,21 @@ section{
 
 .package{
     position:relative;
-
     display:flex;
     flex-direction:column;
-
     min-width:0;
-
     overflow:hidden;
-
     padding:12px;
-
     border-radius:26px;
-
     border:1px solid rgba(255,255,255,.10);
-
     background:
         linear-gradient(
             145deg,
             rgba(19,35,56,.94),
             rgba(8,17,30,.94)
         );
-
     box-shadow:
         0 18px 55px rgba(0,0,0,.30);
-
     transition:
         transform .28s ease,
         border-color .28s ease,
@@ -467,9 +390,7 @@ section{
 
 .package:hover{
     transform:translateY(-8px);
-
     border-color:rgba(0,212,255,.30);
-
     box-shadow:
         0 25px 70px rgba(0,0,0,.40),
         0 0 35px rgba(0,212,255,.05);
@@ -477,41 +398,31 @@ section{
 
 .package.featured{
     border-color:rgba(108,99,255,.48);
-
     box-shadow:
         0 22px 65px rgba(108,99,255,.10);
 }
 
 .package-image-wrap{
     position:relative;
-
     width:100%;
-
     overflow:hidden;
-
     border-radius:20px;
-
     background:
         linear-gradient(
             145deg,
             #101f34,
             #091321
         );
-
     aspect-ratio:16/8.8;
-
     border:1px solid rgba(255,255,255,.07);
 }
 
 .package-image{
     width:100%;
     height:100%;
-
     display:block;
-
     object-fit:cover;
     object-position:center;
-
     transition:transform .45s ease;
 }
 
@@ -521,12 +432,9 @@ section{
 
 .package-image-wrap::after{
     content:"";
-
     position:absolute;
     inset:0;
-
     pointer-events:none;
-
     background:
         linear-gradient(
             to bottom,
@@ -537,87 +445,63 @@ section{
 
 .package-badge{
     position:absolute;
-
     top:23px;
     right:23px;
-
     z-index:5;
-
     padding:7px 12px;
-
     border-radius:999px;
-
     font-size:9px;
     letter-spacing:.8px;
     font-weight:950;
-
     color:white;
-
     background:rgba(108,99,255,.88);
-
     border:1px solid rgba(255,255,255,.18);
-
     box-shadow:
         0 8px 20px rgba(0,0,0,.25);
-
     backdrop-filter:blur(12px);
 }
 
 .package-content{
     display:flex;
     flex-direction:column;
-
     flex:1;
-
     padding:21px 8px 8px;
 }
 
 .package-content h3{
     font-size:21px;
     line-height:1.25;
-
     margin-bottom:9px;
 }
 
 .package-content p{
     color:var(--muted);
-
     font-size:13px;
     line-height:1.65;
-
     margin-bottom:16px;
-
     min-height:43px;
 }
 
 .price{
     display:flex;
     align-items:baseline;
-
     gap:6px;
-
     font-size:28px;
     line-height:1;
-
     font-weight:950;
-
     margin-bottom:20px;
 }
 
 .price small{
     color:var(--muted);
-
     font-size:11px;
     font-weight:600;
 }
 
 .package-buttons{
     display:grid;
-
     grid-template-columns:1fr 1.18fr;
-
     gap:9px;
-
     margin-top:auto;
 }
 
@@ -628,10 +512,27 @@ section{
     border-radius:12px;
 }
 
+/*
+=========================================================
+IMPORTANT BUY BUTTON FIX
+=========================================================
 
-/* =========================================================
-   ABOUT
-   ========================================================= */
+The Buy Now buttons use REAL HTML links.
+
+This means they work even if JavaScript has an error.
+
+Buy.html must be in the same folder.
+
+Examples:
+
+Buy.html?package=normal
+Buy.html?package=silver
+Buy.html?package=gold
+Buy.html?package=pro4x
+Buy.html?package=rupay7x
+*/
+
+/* ABOUT */
 
 .about-grid{
     display:grid;
@@ -641,11 +542,8 @@ section{
 
 .about-card{
     padding:30px;
-
     border-radius:var(--radius);
-
     border:1px solid var(--border);
-
     background:var(--card);
 }
 
@@ -669,31 +567,21 @@ section{
     display:flex;
     gap:14px;
     align-items:center;
-
     padding:14px;
-
     border-radius:15px;
-
     background:rgba(255,255,255,.035);
-
     border:1px solid transparent;
 }
 
 .feature-icon{
     width:40px;
     height:40px;
-
     flex:0 0 40px;
-
     border-radius:12px;
-
     display:grid;
     place-items:center;
-
     background:rgba(0,212,255,.1);
-
     color:var(--primary);
-
     font-size:19px;
 }
 
@@ -704,18 +592,12 @@ section{
 
 .feature span{
     display:block;
-
     margin-top:3px;
-
     color:var(--muted);
-
     font-size:12px;
 }
 
-
-/* =========================================================
-   LIVE
-   ========================================================= */
+/* LIVE */
 
 .live-box{
     display:grid;
@@ -726,18 +608,14 @@ section{
 .online-card,
 .chart-card{
     background:var(--card);
-
     border:1px solid var(--border);
-
     border-radius:var(--radius);
-
     padding:28px;
 }
 
 .online-number{
     font-size:54px;
     font-weight:950;
-
     margin:20px 0 8px;
 }
 
@@ -749,16 +627,11 @@ section{
 
 .pulse{
     display:inline-block;
-
     width:9px;
     height:9px;
-
     background:var(--green);
-
     border-radius:50%;
-
     margin-right:7px;
-
     box-shadow:
         0 0 0 7px
         rgba(34,229,138,.08);
@@ -766,12 +639,9 @@ section{
 
 .chart-title{
     display:flex;
-
     justify-content:space-between;
     align-items:center;
-
     gap:10px;
-
     margin-bottom:20px;
 }
 
@@ -781,15 +651,10 @@ section{
 
 .demo-label{
     font-size:10px;
-
     color:#ffd166;
-
     border:1px solid rgba(255,209,102,.25);
-
     padding:5px 8px;
-
     border-radius:8px;
-
     white-space:nowrap;
 }
 
@@ -799,28 +664,19 @@ canvas{
     display:block;
 }
 
-
-/* =========================================================
-   CONTACT
-   ========================================================= */
+/* CONTACT */
 
 .contact-grid{
     display:grid;
-
     grid-template-columns:repeat(3,1fr);
-
     gap:18px;
 }
 
 .contact-card{
     padding:27px;
-
     border-radius:22px;
-
     background:var(--card);
-
     border:1px solid var(--border);
-
     text-align:center;
 }
 
@@ -835,7 +691,6 @@ canvas{
 
 .contact-card p{
     color:var(--muted);
-
     font-size:13px;
     line-height:1.6;
 }
@@ -848,60 +703,40 @@ canvas{
 
 .license{
     margin-top:25px;
-
     padding:20px;
-
     border:1px solid var(--border);
-
     background:rgba(255,255,255,.035);
-
     border-radius:18px;
-
     text-align:center;
 }
 
 .license span{
     display:block;
-
     color:var(--muted);
-
     font-size:12px;
-
     margin-top:7px;
-
     line-height:1.6;
 }
 
-
-/* =========================================================
-   FOOTER
-   ========================================================= */
+/* FOOTER */
 
 footer{
     border-top:1px solid var(--border);
-
     padding:40px 0 25px;
-
     background:rgba(0,0,0,.15);
 }
 
 .footer-grid{
     display:grid;
-
     grid-template-columns:1.5fr 1fr 1fr;
-
     gap:30px;
 }
 
 .footer-brand p{
     color:var(--muted);
-
     font-size:13px;
-
     line-height:1.7;
-
     max-width:420px;
-
     margin-top:12px;
 }
 
@@ -911,13 +746,9 @@ footer{
 
 .footer-column a{
     display:block;
-
     color:var(--muted);
-
     text-decoration:none;
-
     font-size:13px;
-
     margin:10px 0;
 }
 
@@ -927,91 +758,55 @@ footer{
 
 .footer-bottom{
     margin-top:30px;
-
     padding-top:20px;
-
     border-top:1px solid var(--border);
-
     color:#708198;
-
     font-size:11px;
-
     text-align:center;
-
     line-height:1.6;
 }
 
-
-/* =========================================================
-   FLOATING CONTROLS
-   ========================================================= */
+/* FLOATING CONTROLS */
 
 .floating-controls{
     position:fixed;
-
     bottom:20px;
     right:18px;
-
     z-index:999;
-
     display:flex;
     flex-direction:column;
-
     gap:9px;
 }
 
 .float-btn{
     width:44px;
     height:44px;
-
     border-radius:50%;
-
     border:1px solid var(--border);
-
     background:rgba(9,21,37,.92);
-
     color:white;
-
     cursor:pointer;
-
     font-size:17px;
-
     backdrop-filter:blur(15px);
 }
 
-
-/* =========================================================
-   TOAST
-   ========================================================= */
+/* TOAST */
 
 .toast{
     position:fixed;
-
     left:50%;
     bottom:25px;
-
     transform:translate(-50%,100px);
-
     z-index:2000;
-
     max-width:90%;
-
     padding:13px 18px;
-
     border-radius:13px;
-
     background:#122238;
-
     border:1px solid var(--border);
-
     color:white;
-
     font-size:13px;
-
     opacity:0;
-
     pointer-events:none;
-
     transition:
         opacity .25s ease,
         transform .25s ease;
@@ -1019,25 +814,19 @@ footer{
 
 .toast.show{
     opacity:1;
-
     transform:translate(-50%,0);
 }
 
-
-/* =========================================================
-   TABLET
-   ========================================================= */
+/* TABLET */
 
 @media(max-width:1000px){
 
     .packages{
-        grid-template-columns:
-            repeat(2,minmax(0,1fr));
+        grid-template-columns:repeat(2,minmax(0,1fr));
     }
 
     .stats{
-        grid-template-columns:
-            repeat(2,1fr);
+        grid-template-columns:repeat(2,1fr);
     }
 
     .about-grid,
@@ -1050,10 +839,7 @@ footer{
     }
 }
 
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
+/* MOBILE */
 
 @media(max-width:650px){
 
@@ -1072,26 +858,16 @@ footer{
 
     .nav-links{
         position:absolute;
-
         top:64px;
-
         left:4%;
         right:4%;
-
         padding:18px;
-
         border:1px solid var(--border);
-
         border-radius:18px;
-
         background:rgba(6,15,27,.97);
-
         display:none;
-
         flex-direction:column;
-
         align-items:stretch;
-
         gap:4px;
     }
 
@@ -1210,10 +986,7 @@ footer{
     }
 }
 
-
-/* =========================================================
-   SMALL PHONES
-   ========================================================= */
+/* SMALL PHONES */
 
 @media(max-width:380px){
 
@@ -1230,10 +1003,7 @@ footer{
     }
 }
 
-
-/* =========================================================
-   ACCESSIBILITY
-   ========================================================= */
+/* ACCESSIBILITY */
 
 @media(prefers-reduced-motion:reduce){
 
@@ -1252,13 +1022,9 @@ footer{
 </style>
 </head>
 
-
 <body>
 
-
-<!-- =========================================================
-     HEADER
-     ========================================================= -->
+<!-- HEADER -->
 
 <header>
 
@@ -1277,7 +1043,6 @@ footer{
 
 </a>
 
-
 <button
     class="menu-btn"
     id="menuBtn"
@@ -1285,25 +1050,20 @@ footer{
     aria-label="Open navigation menu"
     aria-expanded="false">
 
-    ☰
+☰
 
 </button>
-
 
 <div class="nav-links" id="navLinks">
 
 <a href="#home">Home</a>
-
 <a href="#packages">Packages</a>
-
 <a href="#about">About</a>
-
 <a href="#stats">Activity</a>
-
 <a href="#contact">Contact</a>
 
 <a href="Login.html" class="btn btn-primary">
-    Login
+Login
 </a>
 
 </div>
@@ -1312,13 +1072,7 @@ footer{
 
 </header>
 
-
-<!-- =========================================================
-     MAIN
-     ========================================================= -->
-
 <main>
-
 
 <!-- HERO -->
 
@@ -1346,15 +1100,14 @@ and stay connected through one smooth platform.
 
 </p>
 
-
 <div class="hero-buttons">
 
 <a href="Login.html" class="btn btn-primary">
-    Login →
+Login →
 </a>
 
 <a href="#packages" class="btn btn-secondary">
-    Explore Packages
+Explore Packages
 </a>
 
 </div>
@@ -1364,7 +1117,6 @@ and stay connected through one smooth platform.
 </div>
 
 </section>
-
 
 <!-- STATS -->
 
@@ -1375,38 +1127,23 @@ and stay connected through one smooth platform.
 <div class="stats">
 
 <div class="stat-card">
-
 <strong id="userCount">1,284</strong>
-
 <span>Online Users</span>
-
 </div>
 
-
 <div class="stat-card">
-
 <strong>24/7</strong>
-
 <span>Support Availability</span>
-
 </div>
 
-
 <div class="stat-card">
-
 <strong>5+</strong>
-
 <span>Packages</span>
-
 </div>
 
-
 <div class="stat-card">
-
 <strong>Fast</strong>
-
 <span>Platform Experience</span>
-
 </div>
 
 </div>
@@ -1415,35 +1152,29 @@ and stay connected through one smooth platform.
 
 </section>
 
-
-<!-- =========================================================
-     PACKAGES
-     ========================================================= -->
+<!-- PACKAGES -->
 
 <section id="packages">
 
 <div class="container">
 
-
 <div class="section-title">
 
 <span class="small">
-    Choose Your Plan
+Choose Your Plan
 </span>
 
 <h2>
-    Rupay Packages
+Rupay Packages
 </h2>
 
 <p>
-    Select a package that matches your requirements.
+Select a package that matches your requirements.
 </p>
 
 </div>
 
-
 <div class="packages">
-
 
 <!-- NORMAL -->
 
@@ -1464,7 +1195,6 @@ and stay connected through one smooth platform.
 
 </div>
 
-
 <div class="package-content">
 
 <h3>Normal Package</h3>
@@ -1479,21 +1209,19 @@ NPR 450
 <small>/ package</small>
 </div>
 
-
 <div class="package-buttons">
 
-<a
-    href="About.html"
-    class="btn btn-secondary">
-    About
+<a href="About.html"
+   class="btn btn-secondary">
+About
 </a>
 
+<!-- REAL REDIRECT -->
 
-<a
-    href="Buy.html?package=normal"
-    class="btn btn-primary buy-btn"
-    data-package="normal">
-    Buy Now
+<a href="./Buy.html?package=normal"
+   class="btn btn-primary buy-btn"
+   data-package="normal">
+Buy Now
 </a>
 
 </div>
@@ -1501,7 +1229,6 @@ NPR 450
 </div>
 
 </article>
-
 
 <!-- SILVER -->
 
@@ -1522,7 +1249,6 @@ NPR 450
 
 </div>
 
-
 <div class="package-content">
 
 <h3>Silver Package</h3>
@@ -1537,21 +1263,17 @@ NPR 870
 <small>/ package</small>
 </div>
 
-
 <div class="package-buttons">
 
-<a
-    href="About.html"
-    class="btn btn-secondary">
-    About
+<a href="About.html"
+   class="btn btn-secondary">
+About
 </a>
 
-
-<a
-    href="Buy.html?package=silver"
-    class="btn btn-primary buy-btn"
-    data-package="silver">
-    Buy Now
+<a href="./Buy.html?package=silver"
+   class="btn btn-primary buy-btn"
+   data-package="silver">
+Buy Now
 </a>
 
 </div>
@@ -1560,15 +1282,13 @@ NPR 870
 
 </article>
 
-
 <!-- GOLD -->
 
 <article class="package featured">
 
 <span class="package-badge">
-    POPULAR
+POPULAR
 </span>
-
 
 <div class="package-image-wrap">
 
@@ -1585,7 +1305,6 @@ NPR 870
 
 </div>
 
-
 <div class="package-content">
 
 <h3>Gold Package</h3>
@@ -1600,21 +1319,17 @@ NPR 1,230
 <small>/ package</small>
 </div>
 
-
 <div class="package-buttons">
 
-<a
-    href="About.html"
-    class="btn btn-secondary">
-    About
+<a href="About.html"
+   class="btn btn-secondary">
+About
 </a>
 
-
-<a
-    href="Buy.html?package=gold"
-    class="btn btn-primary buy-btn"
-    data-package="gold">
-    Buy Now
+<a href="./Buy.html?package=gold"
+   class="btn btn-primary buy-btn"
+   data-package="gold">
+Buy Now
 </a>
 
 </div>
@@ -1622,7 +1337,6 @@ NPR 1,230
 </div>
 
 </article>
-
 
 <!-- PRO4X -->
 
@@ -1643,7 +1357,6 @@ NPR 1,230
 
 </div>
 
-
 <div class="package-content">
 
 <h3>Pro4x Package</h3>
@@ -1658,21 +1371,17 @@ NPR 1,550
 <small>/ package</small>
 </div>
 
-
 <div class="package-buttons">
 
-<a
-    href="About.html"
-    class="btn btn-secondary">
-    About
+<a href="About.html"
+   class="btn btn-secondary">
+About
 </a>
 
-
-<a
-    href="Buy.html?package=pro4x"
-    class="btn btn-primary buy-btn"
-    data-package="pro4x">
-    Buy Now
+<a href="./Buy.html?package=pro4x"
+   class="btn btn-primary buy-btn"
+   data-package="pro4x">
+Buy Now
 </a>
 
 </div>
@@ -1681,15 +1390,13 @@ NPR 1,550
 
 </article>
 
-
 <!-- RUPAY7X -->
 
 <article class="package featured">
 
 <span class="package-badge">
-    PREMIUM
+PREMIUM
 </span>
-
 
 <div class="package-image-wrap">
 
@@ -1706,7 +1413,6 @@ NPR 1,550
 
 </div>
 
-
 <div class="package-content">
 
 <h3>Rupay7x Pro</h3>
@@ -1721,21 +1427,17 @@ NPR 2,350
 <small>/ package</small>
 </div>
 
-
 <div class="package-buttons">
 
-<a
-    href="About.html"
-    class="btn btn-secondary">
-    About
+<a href="About.html"
+   class="btn btn-secondary">
+About
 </a>
 
-
-<a
-    href="Buy.html?package=rupay7x"
-    class="btn btn-primary buy-btn"
-    data-package="rupay7x">
-    Buy Now
+<a href="./Buy.html?package=rupay7x"
+   class="btn btn-primary buy-btn"
+   data-package="rupay7x">
+Buy Now
 </a>
 
 </div>
@@ -1744,17 +1446,13 @@ NPR 2,350
 
 </article>
 
-
 </div>
 
 </div>
 
 </section>
 
-
-<!-- =========================================================
-     ABOUT
-     ========================================================= -->
+<!-- ABOUT -->
 
 <section id="about">
 
@@ -1763,23 +1461,21 @@ NPR 2,350
 <div class="section-title">
 
 <span class="small">
-    Why Rupay
+Why Rupay
 </span>
 
 <h2>
-    Built For A Better Experience
+Built For A Better Experience
 </h2>
 
 <p>
-    Simple design, responsive technology and
-    useful platform features.
+Simple design, responsive technology and
+useful platform features.
 </p>
 
 </div>
 
-
 <div class="about-grid">
-
 
 <div class="about-card">
 
@@ -1805,99 +1501,66 @@ business details and terms.
 
 </div>
 
-
 <div class="about-card">
 
 <h3>Platform Features</h3>
 
-
 <div class="features">
-
 
 <div class="feature">
 
 <div class="feature-icon">⚡</div>
 
 <div>
-
 <strong>Fast Experience</strong>
-
-<span>
-Optimized responsive interface
-</span>
-
+<span>Optimized responsive interface</span>
 </div>
 
 </div>
-
 
 <div class="feature">
 
 <div class="feature-icon">🕐</div>
 
 <div>
-
 <strong>24Hr Support</strong>
-
-<span>
-Support information available anytime
-</span>
-
+<span>Support information available anytime</span>
 </div>
 
 </div>
-
 
 <div class="feature">
 
 <div class="feature-icon">🎁</div>
 
 <div>
-
 <strong>Cashback</strong>
-
-<span>
-Promotional cashback can be configured
-</span>
-
+<span>Promotional cashback can be configured</span>
 </div>
 
 </div>
-
 
 <div class="feature">
 
 <div class="feature-icon">🔐</div>
 
 <div>
-
 <strong>Secure Account</strong>
-
-<span>
-Account security features
-</span>
-
+<span>Account security features</span>
 </div>
 
 </div>
-
 
 <div class="feature">
 
 <div class="feature-icon">📱</div>
 
 <div>
-
 <strong>Any Device</strong>
-
-<span>
-Mobile, iOS, tablet and desktop
-</span>
-
+<span>Mobile, iOS, tablet and desktop</span>
 </div>
 
 </div>
-
 
 </div>
 
@@ -1909,10 +1572,7 @@ Mobile, iOS, tablet and desktop
 
 </section>
 
-
-<!-- =========================================================
-     LIVE ACTIVITY
-     ========================================================= -->
+<!-- LIVE ACTIVITY -->
 
 <section>
 
@@ -1921,42 +1581,33 @@ Mobile, iOS, tablet and desktop
 <div class="section-title">
 
 <span class="small">
-    Live Activity
+Live Activity
 </span>
 
 <h2>
-    Platform Activity
+Platform Activity
 </h2>
 
 <p>
-    Example dashboard visualization.
+Example dashboard visualization.
 </p>
 
 </div>
 
-
 <div class="live-box">
-
 
 <div class="online-card">
 
 <div class="online-status">
 
 <span class="pulse"></span>
-
 LIVE STATUS
 
 </div>
 
-
-<div
-    class="online-number"
-    id="onlineUsers">
-
+<div class="online-number" id="onlineUsers">
 1,284
-
 </div>
-
 
 <p style="
     color:var(--muted);
@@ -1969,7 +1620,6 @@ demonstration interface.
 
 </p>
 
-
 <div style="
     margin-top:25px;
     height:7px;
@@ -1978,9 +1628,8 @@ demonstration interface.
     overflow:hidden;
 ">
 
-<div
-    id="activityBar"
-    style="
+<div id="activityBar"
+     style="
         height:100%;
         width:72%;
         background:linear-gradient(
@@ -1988,24 +1637,21 @@ demonstration interface.
             #00d4ff,
             #6c63ff
         );
-    ">
+     ">
 </div>
 
 </div>
 
 </div>
-
 
 <div class="chart-card">
 
 <div class="chart-title">
 
-<h3>
-    Activity Flow
-</h3>
+<h3>Activity Flow</h3>
 
 <span class="demo-label">
-    DEMO DATA
+DEMO DATA
 </span>
 
 </div>
@@ -2020,10 +1666,7 @@ demonstration interface.
 
 </section>
 
-
-<!-- =========================================================
-     TRADING DEMO
-     ========================================================= -->
+<!-- TRADING DEMO -->
 
 <section>
 
@@ -2032,11 +1675,11 @@ demonstration interface.
 <div class="section-title">
 
 <span class="small">
-    Market View
+Market View
 </span>
 
 <h2>
-    Trading Chart
+Trading Chart
 </h2>
 
 <p>
@@ -2045,7 +1688,6 @@ demonstration data and are not guaranteed returns.
 </p>
 
 </div>
-
 
 <div class="chart-card">
 
@@ -2082,10 +1724,7 @@ should only be shown using verified real data.
 
 </section>
 
-
-<!-- =========================================================
-     CONTACT
-     ========================================================= -->
+<!-- CONTACT -->
 
 <section id="contact">
 
@@ -2094,11 +1733,11 @@ should only be shown using verified real data.
 <div class="section-title">
 
 <span class="small">
-    Get In Touch
+Get In Touch
 </span>
 
 <h2>
-    Contact Us
+Contact Us
 </h2>
 
 <p>
@@ -2108,9 +1747,7 @@ with your actual business information.
 
 </div>
 
-
 <div class="contact-grid">
-
 
 <div class="contact-card">
 
@@ -2128,17 +1765,15 @@ Customer support
 
 <br>
 
-<a
-    href="https://wa.me/9779800000000"
-    target="_blank"
-    rel="noopener">
+<a href="https://wa.me/9779800000000"
+   target="_blank"
+   rel="noopener">
 
 +977 9800000000
 
 </a>
 
 </div>
-
 
 <div class="contact-card">
 
@@ -2163,7 +1798,6 @@ support@yourdomain.com
 </a>
 
 </div>
-
 
 <div class="contact-card">
 
@@ -2190,7 +1824,6 @@ LICENSE: ADD-YOUR-REAL-ID
 
 </div>
 
-
 <div class="license">
 
 <strong>
@@ -2213,17 +1846,13 @@ certifications here if applicable.
 
 </main>
 
-
-<!-- =========================================================
-     FOOTER
-     ========================================================= -->
+<!-- FOOTER -->
 
 <footer>
 
 <div class="container">
 
 <div class="footer-grid">
-
 
 <div class="footer-brand">
 
@@ -2238,7 +1867,6 @@ certifications here if applicable.
 
 </div>
 
-
 <p>
 
 A modern digital platform interface
@@ -2249,21 +1877,16 @@ experience.
 
 </div>
 
-
 <div class="footer-column">
 
 <h4>Quick Links</h4>
 
 <a href="#home">Home</a>
-
 <a href="#packages">Packages</a>
-
 <a href="#about">About</a>
-
 <a href="#contact">Contact</a>
 
 </div>
-
 
 <div class="footer-column">
 
@@ -2271,14 +1894,15 @@ experience.
 
 <a href="Login.html">Login</a>
 
-<a href="Buy.html">Buy Package</a>
+<!-- Direct Buy Page -->
+
+<a href="./Buy.html">Buy Package</a>
 
 <a href="About.html">Package Details</a>
 
 </div>
 
 </div>
-
 
 <div class="footer-bottom">
 
@@ -2297,10 +1921,7 @@ license, security and legal information.
 
 </footer>
 
-
-<!-- =========================================================
-     FLOATING CONTROLS
-     ========================================================= -->
+<!-- FLOATING CONTROLS -->
 
 <div class="floating-controls">
 
@@ -2315,7 +1936,6 @@ license, security and legal information.
 
 </button>
 
-
 <button
     class="float-btn"
     id="topBtn"
@@ -2329,114 +1949,110 @@ license, security and legal information.
 
 </div>
 
-
 <!-- TOAST -->
 
-<div
-    class="toast"
-    id="toast">
-</div>
-
+<div class="toast" id="toast"></div>
 
 <script>
 
 /* =========================================================
    MOBILE MENU
-   ========================================================= */
+========================================================= */
 
-const menuBtn =
-    document.getElementById("menuBtn");
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
 
-const navLinks =
-    document.getElementById("navLinks");
+if(menuBtn && navLinks){
 
+    menuBtn.addEventListener("click", function(){
 
-menuBtn.addEventListener("click", function(){
+        const isOpen =
+            navLinks.classList.toggle("active");
 
-    const isOpen =
-        navLinks.classList.toggle("active");
-
-    menuBtn.textContent =
-        isOpen ? "✕" : "☰";
-
-    menuBtn.setAttribute(
-        "aria-expanded",
-        String(isOpen)
-    );
-
-});
-
-
-document
-.querySelectorAll(".nav-links a")
-.forEach(function(link){
-
-    link.addEventListener("click",function(){
-
-        navLinks.classList.remove("active");
-
-        menuBtn.textContent="☰";
+        menuBtn.textContent =
+            isOpen ? "✕" : "☰";
 
         menuBtn.setAttribute(
             "aria-expanded",
-            "false"
+            String(isOpen)
         );
 
     });
 
-});
+    document
+    .querySelectorAll(".nav-links a")
+    .forEach(function(link){
+
+        link.addEventListener("click", function(){
+
+            navLinks.classList.remove("active");
+
+            menuBtn.textContent = "☰";
+
+            menuBtn.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        });
+
+    });
+
+}
 
 
 /* =========================================================
-   BUY NOW BUTTON — FIXED
-   =========================================================
+   BUY NOW
+=========================================================
 
-   Every Buy Now button:
-   1. Reads the package name.
-   2. Stores it temporarily.
-   3. Opens Buy.html with ?package=...
-   4. Uses window.location.href as a reliable fallback.
+IMPORTANT:
 
-   IMPORTANT:
-   Buy.html MUST be in the SAME FOLDER as this file.
-   ========================================================= */
+The actual redirect is already handled by the HTML:
+
+<a href="./Buy.html?package=normal">
+
+JavaScript below ONLY saves the selected package.
+
+It does NOT cancel the normal browser navigation.
+
+This is more reliable than using event.preventDefault().
+========================================================= */
 
 document
 .querySelectorAll(".buy-btn")
 .forEach(function(button){
 
-    button.addEventListener("click",function(event){
-
-        event.preventDefault();
+    button.addEventListener("click", function(){
 
         const packageName =
             this.getAttribute("data-package");
 
-        if(!packageName){
-            showToast("Package not found.");
-            return;
+        if(packageName){
+
+            try{
+
+                localStorage.setItem(
+                    "selectedPackage",
+                    packageName
+                );
+
+            }catch(error){
+
+                console.log(
+                    "Local storage unavailable"
+                );
+
+            }
+
         }
 
-        /* Save selected package */
-        try{
-            localStorage.setItem(
-                "selectedPackage",
-                packageName
-            );
-        }catch(error){
-            console.log(
-                "Local storage unavailable:",
-                error
-            );
-        }
-
-        /* Correct Buy.html URL */
-        const buyPage =
-            "Buy.html?package=" +
-            encodeURIComponent(packageName);
-
-        /* Navigate */
-        window.location.href = buyPage;
+        /*
+         * DO NOT USE:
+         *
+         * event.preventDefault();
+         *
+         * The normal href must be allowed to work.
+         */
 
     });
 
@@ -2445,42 +2061,52 @@ document
 
 /* =========================================================
    REFRESH
-   ========================================================= */
+========================================================= */
 
-document
-.getElementById("refreshBtn")
-.addEventListener("click",function(){
+const refreshBtn =
+    document.getElementById("refreshBtn");
 
-    showToast("Refreshing...");
+if(refreshBtn){
 
-    setTimeout(function(){
+    refreshBtn.addEventListener(
+        "click",
+        function(){
 
-        window.location.reload();
+            window.location.reload();
 
-    },450);
+        }
+    );
 
-});
+}
 
 
 /* =========================================================
    SCROLL TOP
-   ========================================================= */
+========================================================= */
 
-document
-.getElementById("topBtn")
-.addEventListener("click",function(){
+const topBtn =
+    document.getElementById("topBtn");
 
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
+if(topBtn){
 
-});
+    topBtn.addEventListener(
+        "click",
+        function(){
+
+            window.scrollTo({
+                top:0,
+                behavior:"smooth"
+            });
+
+        }
+    );
+
+}
 
 
 /* =========================================================
    TOAST
-   ========================================================= */
+========================================================= */
 
 let toastTimer;
 
@@ -2489,7 +2115,9 @@ function showToast(message){
     const toast =
         document.getElementById("toast");
 
-    toast.textContent=message;
+    if(!toast)return;
+
+    toast.textContent = message;
 
     toast.classList.add("show");
 
@@ -2507,38 +2135,49 @@ function showToast(message){
 
 /* =========================================================
    YEAR
-   ========================================================= */
+========================================================= */
 
-document
-.getElementById("year")
-.textContent =
-    new Date().getFullYear();
+const year =
+    document.getElementById("year");
+
+if(year){
+
+    year.textContent =
+        new Date().getFullYear();
+
+}
 
 
 /* =========================================================
    DEMO USERS
-   ========================================================= */
+========================================================= */
 
-let users=1284;
+let users = 1284;
 
 function updateUsers(){
+
+    const userCount =
+        document.getElementById("userCount");
+
+    const onlineUsers =
+        document.getElementById("onlineUsers");
+
+    if(!userCount || !onlineUsers)return;
 
     const variation =
         Math.floor(Math.random()*13)-6;
 
     users =
-        Math.max(100,users+variation);
+        Math.max(100, users + variation);
 
     const formatted =
         users.toLocaleString();
 
-    document.getElementById(
-        "userCount"
-    ).textContent=formatted;
+    userCount.textContent =
+        formatted;
 
-    document.getElementById(
-        "onlineUsers"
-    ).textContent=formatted;
+    onlineUsers.textContent =
+        formatted;
 
 }
 
@@ -2547,7 +2186,7 @@ setInterval(updateUsers,3500);
 
 /* =========================================================
    CANVAS SETUP
-   ========================================================= */
+========================================================= */
 
 function setupCanvas(canvas){
 
@@ -2558,10 +2197,10 @@ function setupCanvas(canvas){
         window.devicePixelRatio || 1;
 
     canvas.width =
-        rect.width*dpr;
+        rect.width * dpr;
 
     canvas.height =
-        rect.height*dpr;
+        rect.height * dpr;
 
     const ctx =
         canvas.getContext("2d");
@@ -2586,23 +2225,21 @@ function setupCanvas(canvas){
 
 /* =========================================================
    ACTIVITY CHART
-   ========================================================= */
+========================================================= */
 
 function drawActivityChart(){
 
     const canvas =
-        document.getElementById(
-            "activityChart"
-        );
+        document.getElementById("activityChart");
 
     if(!canvas)return;
 
     const data =
         setupCanvas(canvas);
 
-    const ctx=data.ctx;
-    const width=data.width;
-    const height=data.height;
+    const ctx = data.ctx;
+    const width = data.width;
+    const height = data.height;
 
     const values=[
         32,41,37,52,
@@ -2614,14 +2251,14 @@ function drawActivityChart(){
         0,0,width,height
     );
 
-    ctx.strokeStyle=
+    ctx.strokeStyle =
         "rgba(255,255,255,.07)";
 
-    ctx.lineWidth=1;
+    ctx.lineWidth = 1;
 
     for(let i=1;i<5;i++){
 
-        const y=
+        const y =
             (height/5)*i;
 
         ctx.beginPath();
@@ -2633,26 +2270,29 @@ function drawActivityChart(){
 
     }
 
-    const max=Math.max(...values);
-    const min=Math.min(...values);
+    const max =
+        Math.max(...values);
 
-    const range=max-min||1;
+    const min =
+        Math.min(...values);
 
-    const points=
+    const range =
+        max-min || 1;
+
+    const points =
         values.map(function(value,i){
 
-            const x=
+            const x =
                 (i/(values.length-1))*width;
 
-            const y=
-                height-
-                ((value-min)/range)*
+            const y =
+                height -
+                ((value-min)/range) *
                 (height-30)-15;
 
             return{x,y};
 
         });
-
 
     ctx.beginPath();
 
@@ -2676,16 +2316,15 @@ function drawActivityChart(){
 
     });
 
+    ctx.strokeStyle =
+        "#00d4ff";
 
-    ctx.strokeStyle="#00d4ff";
+    ctx.lineWidth = 3;
 
-    ctx.lineWidth=3;
-
-    ctx.lineJoin="round";
-    ctx.lineCap="round";
+    ctx.lineJoin = "round";
+    ctx.lineCap = "round";
 
     ctx.stroke();
-
 
     points.forEach(function(point){
 
@@ -2699,13 +2338,15 @@ function drawActivityChart(){
             Math.PI*2
         );
 
-        ctx.fillStyle="#07111f";
+        ctx.fillStyle =
+            "#07111f";
 
         ctx.fill();
 
-        ctx.strokeStyle="#00d4ff";
+        ctx.strokeStyle =
+            "#00d4ff";
 
-        ctx.lineWidth=2;
+        ctx.lineWidth = 2;
 
         ctx.stroke();
 
@@ -2716,23 +2357,21 @@ function drawActivityChart(){
 
 /* =========================================================
    PROFIT CHART
-   ========================================================= */
+========================================================= */
 
 function drawProfitChart(){
 
     const canvas =
-        document.getElementById(
-            "profitChart"
-        );
+        document.getElementById("profitChart");
 
     if(!canvas)return;
 
-    const data=
+    const data =
         setupCanvas(canvas);
 
-    const ctx=data.ctx;
-    const width=data.width;
-    const height=data.height;
+    const ctx = data.ctx;
+    const width = data.width;
+    const height = data.height;
 
     const values=[
         1.2,1.8,1.5,2.3,
@@ -2745,14 +2384,14 @@ function drawProfitChart(){
         0,0,width,height
     );
 
-    ctx.strokeStyle=
+    ctx.strokeStyle =
         "rgba(255,255,255,.07)";
 
-    ctx.lineWidth=1;
+    ctx.lineWidth = 1;
 
     for(let i=1;i<5;i++){
 
-        const y=
+        const y =
             (height/5)*i;
 
         ctx.beginPath();
@@ -2764,26 +2403,29 @@ function drawProfitChart(){
 
     }
 
-    const max=Math.max(...values);
-    const min=Math.min(...values);
+    const max =
+        Math.max(...values);
 
-    const range=max-min||1;
+    const min =
+        Math.min(...values);
 
-    const points=
+    const range =
+        max-min || 1;
+
+    const points =
         values.map(function(value,i){
 
-            const x=
+            const x =
                 (i/(values.length-1))*width;
 
-            const y=
-                height-
-                ((value-min)/range)*
+            const y =
+                height -
+                ((value-min)/range) *
                 (height-30)-15;
 
             return{x,y};
 
         });
-
 
     /* Fill */
 
@@ -2810,8 +2452,7 @@ function drawProfitChart(){
 
     ctx.closePath();
 
-
-    const gradient=
+    const gradient =
         ctx.createLinearGradient(
             0,0,0,height
         );
@@ -2826,10 +2467,9 @@ function drawProfitChart(){
         "rgba(0,212,255,0)"
     );
 
-    ctx.fillStyle=gradient;
+    ctx.fillStyle = gradient;
 
     ctx.fill();
-
 
     /* Line */
 
@@ -2855,20 +2495,19 @@ function drawProfitChart(){
 
     });
 
+    ctx.strokeStyle =
+        "#6c63ff";
 
-    ctx.strokeStyle="#6c63ff";
+    ctx.lineWidth = 3;
 
-    ctx.lineWidth=3;
-
-    ctx.lineJoin="round";
-    ctx.lineCap="round";
+    ctx.lineJoin = "round";
+    ctx.lineCap = "round";
 
     ctx.stroke();
 
-
     /* Last point */
 
-    const last=
+    const last =
         points[points.length-1];
 
     ctx.beginPath();
@@ -2881,7 +2520,8 @@ function drawProfitChart(){
         Math.PI*2
     );
 
-    ctx.fillStyle="#00d4ff";
+    ctx.fillStyle =
+        "#00d4ff";
 
     ctx.fill();
 
@@ -2890,7 +2530,7 @@ function drawProfitChart(){
 
 /* =========================================================
    DRAW CHARTS
-   ========================================================= */
+========================================================= */
 
 function drawCharts(){
 
@@ -2905,7 +2545,6 @@ window.addEventListener(
     drawCharts
 );
 
-
 let resizeTimer;
 
 window.addEventListener(
@@ -2914,7 +2553,7 @@ window.addEventListener(
 
         clearTimeout(resizeTimer);
 
-        resizeTimer=
+        resizeTimer =
             setTimeout(
                 drawCharts,
                 100
@@ -2926,7 +2565,7 @@ window.addEventListener(
 
 /* =========================================================
    CONNECTION STATUS
-   ========================================================= */
+========================================================= */
 
 window.addEventListener(
     "offline",
@@ -2938,7 +2577,6 @@ window.addEventListener(
 
     }
 );
-
 
 window.addEventListener(
     "online",
@@ -2954,27 +2592,30 @@ window.addEventListener(
 
 /* =========================================================
    ESCAPE KEY
-   ========================================================= */
+========================================================= */
 
 document.addEventListener(
     "keydown",
     function(event){
 
         if(
-            event.key==="Escape" &&
+            event.key === "Escape" &&
+            navLinks &&
             navLinks.classList.contains("active")
         ){
 
-            navLinks.classList.remove(
-                "active"
-            );
+            navLinks.classList.remove("active");
 
-            menuBtn.textContent="☰";
+            if(menuBtn){
 
-            menuBtn.setAttribute(
-                "aria-expanded",
-                "false"
-            );
+                menuBtn.textContent = "☰";
+
+                menuBtn.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            }
 
         }
 
