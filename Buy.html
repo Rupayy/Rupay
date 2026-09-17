@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0,
+               maximum-scale=1.0, user-scalable=no">
+
+<meta name="theme-color" content="#07111f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="description" content="Rupay Payment Platform">
+
+<title>Rupay Payment</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+:root{
+    --bg:#050b14;
+    --card:#0c1625;
+    --card2:#101d2f;
+    --border:rgba(255,255,255,.09);
+    --text:#ffffff;
+    --muted:#8d9aae;
+    --primary:#18c8ff;
+    --primary2:#536dff;
+    --success:#20d889;
+    --danger:#ff5268;
+    --shadow:0 25px 70px rgba(0,0,0,.45);
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    font-family:
+        Inter, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Roboto, Arial, sans-serif;
+    background:
+        radial-gradient(circle at 15% 10%,rgba(24,200,255,.12),transparent 28%),
+        radial-gradient(circle at 90% 80%,rgba(83,109,255,.12),transparent 30%),
+        var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+}
+
+/* Background decoration */
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    width:260px;
+    height:260px;
+    border-radius:50%;
+    filter:blur(80px);
+    opacity:.16;
+    pointer-events:none;
+    z-index:-1;
+}
+
+body::before{
+    background:#00c8ff;
+    top:-100px;
+    left:-100px;
+}
+
+body::after{
+    background:#526dff;
+    bottom:-120px;
+    right:-100px;
+}
+
+/* Header */
+.header{
+    width:100%;
+    padding:18px 5%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid rgba(255,255,255,.06);
+    background:rgba(5,11,20,.72);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    font-size:20px;
+    font-weight:800;
+    letter-spacing:-.5px;
+}
+
+.logo-icon{
+    width:39px;
+    height:39px;
+    border-radius:12px;
+    display:grid;
+    place-items:center;
+    background:linear-gradient(135deg,var(--primary),var(--primary2));
+    box-shadow:0 8px 25px rgba(24,200,255,.22);
+    font-size:19px;
+}
+
+.secure{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    font-size:12px;
+    color:var(--success);
+    font-weight:700;
+}
+
+.secure-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--success);
+    box-shadow:0 0 12px var(--success);
+}
+
+/* Main */
+.container{
+    width:min(100%,920px);
+    margin:auto;
+    padding:45px 18px 60px;
+}
+
+.hero{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.hero-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 13px;
+    border:1px solid rgba(24,200,255,.2);
+    border-radius:100px;
+    background:rgba(24,200,255,.07);
+    color:var(--primary);
+    font-size:12px;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.hero h1{
+    font-size:clamp(30px,6vw,50px);
+    line-height:1.08;
+    letter-spacing:-1.8px;
+    margin-bottom:12px;
+}
+
+.hero h1 span{
+    background:linear-gradient(90deg,#fff,var(--primary));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    color:var(--muted);
+    max-width:590px;
+    margin:auto;
+    line-height:1.7;
+    font-size:14px;
+}
+
+/* Payment card */
+.payment-card{
+    background:
+        linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
+    border:1px solid var(--border);
+    border-radius:28px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+}
+
+.card-top{
+    padding:22px 24px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.card-title{
+    font-size:17px;
+    font-weight:800;
+}
+
+.card-subtitle{
+    margin-top:4px;
+    color:var(--muted);
+    font-size:12px;
+}
+
+.status{
+    padding:7px 10px;
+    border-radius:9px;
+    background:rgba(32,216,137,.08);
+    color:var(--success);
+    font-size:11px;
+    font-weight:800;
+    white-space:nowrap;
+}
+
+/* QR section */
+.qr-section{
+    padding:30px 20px;
+    text-align:center;
+}
+
+.qr-wrapper{
+    width:min(100%,300px);
+    aspect-ratio:1;
+    margin:0 auto 18px;
+    padding:13px;
+    background:#fff;
+    border-radius:23px;
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.35),
+        0 0 0 7px rgba(255,255,255,.025);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.qr-wrapper img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    border-radius:10px;
+}
+
+/* Replace image above with your QR */
+
+.qr-title{
+    font-size:16px;
+    font-weight:800;
+    margin-bottom:6px;
+}
+
+.qr-info{
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.6;
+}
+
+/* Divider */
+.divider{
+    height:1px;
+    background:var(--border);
+    margin:0 24px;
+}
+
+/* Form */
+.form-section{
+    padding:28px 24px 30px;
+}
+
+.label{
+    display:block;
+    margin-bottom:9px;
+    font-size:13px;
+    font-weight:700;
+}
+
+.upload-box{
+    position:relative;
+    min-height:155px;
+    border:1px dashed rgba(24,200,255,.35);
+    border-radius:18px;
+    background:rgba(24,200,255,.035);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:20px;
+    cursor:pointer;
+    transition:.25s ease;
+}
+
+.upload-box:hover{
+    border-color:var(--primary);
+    background:rgba(24,200,255,.07);
+}
+
+.upload-box.dragover{
+    border-color:var(--primary);
+    background:rgba(24,200,255,.1);
+    transform:scale(1.01);
+}
+
+.upload-icon{
+    width:48px;
+    height:48px;
+    border-radius:15px;
+    display:grid;
+    place-items:center;
+    background:rgba(24,200,255,.1);
+    color:var(--primary);
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+.upload-title{
+    font-size:14px;
+    font-weight:800;
+}
+
+.upload-text{
+    color:var(--muted);
+    font-size:11px;
+    margin-top:5px;
+}
+
+#paymentScreenshot{
+    display:none;
+}
+
+/* Preview */
+.preview{
+    display:none;
+    margin-top:14px;
+    padding:10px;
+    background:rgba(255,255,255,.035);
+    border:1px solid var(--border);
+    border-radius:14px;
+    align-items:center;
+    gap:12px;
+}
+
+.preview img{
+    width:58px;
+    height:58px;
+    object-fit:cover;
+    border-radius:10px;
+    background:#fff;
+}
+
+.preview-info{
+    min-width:0;
+    text-align:left;
+}
+
+.preview-name{
+    font-size:12px;
+    font-weight:700;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+.preview-size{
+    font-size:10px;
+    color:var(--muted);
+    margin-top:4px;
+}
+
+/* Submit */
+.submit-btn{
+    width:100%;
+    margin-top:20px;
+    min-height:55px;
+    border:0;
+    border-radius:15px;
+    color:#fff;
+    background:linear-gradient(100deg,var(--primary2),var(--primary));
+    font-size:14px;
+    font-weight:900;
+    cursor:pointer;
+    box-shadow:0 13px 35px rgba(24,140,255,.2);
+    transition:.2s ease;
+    position:relative;
+    overflow:hidden;
+}
+
+.submit-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 18px 40px rgba(24,140,255,.28);
+}
+
+.submit-btn:active{
+    transform:scale(.98);
+}
+
+.submit-btn:disabled{
+    opacity:.65;
+    cursor:not-allowed;
+    transform:none;
+}
+
+.loading{
+    display:none;
+}
+
+.spinner{
+    width:19px;
+    height:19px;
+    border:2px solid rgba(255,255,255,.35);
+    border-top-color:#fff;
+    border-radius:50%;
+    animation:spin .7s linear infinite;
+    margin:auto;
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg);}
+}
+
+/* Security features */
+.features{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin-top:18px;
+}
+
+.feature{
+    padding:17px 13px;
+    border:1px solid var(--border);
+    border-radius:16px;
+    background:rgba(255,255,255,.025);
+    text-align:center;
+}
+
+.feature-icon{
+    font-size:18px;
+    margin-bottom:7px;
+}
+
+.feature strong{
+    display:block;
+    font-size:11px;
+}
+
+.feature span{
+    color:var(--muted);
+    display:block;
+    font-size:9px;
+    margin-top:4px;
+}
+
+/* Agent page */
+.agent-page{
+    display:none;
+    animation:fadeUp .4s ease;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+.agent-card{
+    max-width:500px;
+    margin:25px auto 0;
+    padding:30px 25px;
+    border-radius:25px;
+    background:
+        linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.015));
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+}
+
+.agent-icon{
+    width:65px;
+    height:65px;
+    margin:0 auto 18px;
+    border-radius:20px;
+    display:grid;
+    place-items:center;
+    font-size:27px;
+    background:linear-gradient(135deg,var(--primary2),var(--primary));
+    box-shadow:0 15px 35px rgba(24,150,255,.2);
+}
+
+.agent-card h2{
+    text-align:center;
+    font-size:24px;
+    margin-bottom:8px;
+}
+
+.agent-card > p{
+    text-align:center;
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.7;
+    margin-bottom:24px;
+}
+
+.input-label{
+    display:block;
+    font-size:12px;
+    font-weight:800;
+    margin-bottom:8px;
+}
+
+.agent-input{
+    width:100%;
+    height:54px;
+    border:1px solid var(--border);
+    border-radius:14px;
+    outline:none;
+    padding:0 15px;
+    background:rgba(0,0,0,.2);
+    color:#fff;
+    font-size:16px;
+    letter-spacing:2px;
+    transition:.2s;
+}
+
+.agent-input:focus{
+    border-color:var(--primary);
+    box-shadow:0 0 0 4px rgba(24,200,255,.07);
+}
+
+.agent-btn{
+    width:100%;
+    height:54px;
+    margin-top:15px;
+    border:0;
+    border-radius:14px;
+    background:linear-gradient(100deg,var(--primary2),var(--primary));
+    color:#fff;
+    font-size:14px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.agent-note{
+    margin-top:18px;
+    padding:13px;
+    border-radius:12px;
+    background:rgba(255,193,7,.06);
+    border:1px solid rgba(255,193,7,.13);
+    color:#c8b67a;
+    font-size:11px;
+    line-height:1.6;
+    text-align:center;
+}
+
+.error{
+    display:none;
+    margin-top:12px;
+    padding:12px;
+    border-radius:12px;
+    background:rgba(255,82,104,.08);
+    border:1px solid rgba(255,82,104,.18);
+    color:#ff8090;
+    font-size:12px;
+    text-align:center;
+}
+
+.success-message{
+    display:none;
+    margin-top:12px;
+    padding:12px;
+    border-radius:12px;
+    background:rgba(32,216,137,.08);
+    border:1px solid rgba(32,216,137,.18);
+    color:var(--success);
+    font-size:12px;
+    text-align:center;
+}
+
+/* Footer */
+.footer{
+    text-align:center;
+    margin-top:30px;
+    color:#586577;
+    font-size:10px;
+    line-height:1.7;
+}
+
+.footer b{
+    color:#78879b;
+}
+
+/* Toast */
+.toast{
+    position:fixed;
+    left:50%;
+    bottom:25px;
+    transform:translate(-50%,20px);
+    width:min(calc(100% - 30px),420px);
+    padding:14px 16px;
+    border-radius:14px;
+    background:#111d2d;
+    border:1px solid var(--border);
+    box-shadow:0 20px 50px rgba(0,0,0,.4);
+    color:#fff;
+    font-size:12px;
+    text-align:center;
+    opacity:0;
+    pointer-events:none;
+    transition:.3s ease;
+    z-index:999;
+}
+
+.toast.show{
+    opacity:1;
+    transform:translate(-50%,0);
+}
+
+.toast.error-toast{
+    border-color:rgba(255,82,104,.3);
+}
+
+.toast.success-toast{
+    border-color:rgba(32,216,137,.3);
+}
+
+/* Mobile */
+@media(max-width:600px){
+    .header{
+        padding:15px 18px;
+    }
+
+    .logo{
+        font-size:17px;
+    }
+
+    .logo-icon{
+        width:35px;
+        height:35px;
+        border-radius:10px;
+    }
+
+    .container{
+        padding:32px 13px 45px;
+    }
+
+    .hero{
+        margin-bottom:24px;
+    }
+
+    .hero h1{
+        letter-spacing:-1px;
+    }
+
+    .payment-card{
+        border-radius:22px;
+    }
+
+    .card-top{
+        padding:18px;
+    }
+
+    .qr-section{
+        padding:25px 15px;
+    }
+
+    .qr-wrapper{
+        width:min(78vw,290px);
+    }
+
+    .form-section{
+        padding:24px 17px;
+    }
+
+    .divider{
+        margin:0 17px;
+    }
+
+    .features{
+        grid-template-columns:1fr;
+    }
+
+    .feature{
+        display:flex;
+        align-items:center;
+        text-align:left;
+        gap:12px;
+        padding:14px;
+    }
+
+    .feature-icon{
+        margin:0;
+    }
+
+    .feature strong,
+    .feature span{
+        display:block;
+    }
+
+    .agent-card{
+        padding:25px 18px;
+        border-radius:22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="logo">
+        <div class="logo-icon">₹</div>
+        <span>Rupay Payment</span>
+    </div>
+
+    <div class="secure">
+        <span class="secure-dot"></span>
+        Secure Payment
+    </div>
+</header>
+
+
+<main class="container">
+
+    <!-- ================= PAYMENT PAGE ================= -->
+
+    <section id="paymentPage">
+
+        <div class="hero">
+            <div class="hero-badge">
+                🔒 SECURE CHECKOUT
+            </div>
+
+            <h1>
+                Complete Your <span>Payment</span>
+            </h1>
+
+            <p>
+                Scan the QR code below to make your payment.
+                After completing the payment, upload your payment
+                screenshot for verification.
+            </p>
+        </div>
+
+
+        <div class="payment-card">
+
+            <div class="card-top">
+                <div>
+                    <div class="card-title">
+                        Payment Verification
+                    </div>
+
+                    <div class="card-subtitle">
+                        Complete payment & submit proof
+                    </div>
+                </div>
+
+                <div class="status">
+                    ● Secure
+                </div>
+            </div>
+
+
+            <!-- QR CODE -->
+
+            <div class="qr-section">
+
+                <div class="qr-wrapper">
+
+                    <!--
+                        ==========================================
+                        REPLACE THIS IMAGE WITH YOUR BANK QR CODE
+                        ==========================================
+
+                        Example:
+                        src="my-bank-qr.png"
+
+                        Make sure the QR image is in the same
+                        folder as this HTML file.
+                    -->
+
+                    <img
+                        id="qrImage"
+                        src="YOUR-BANK-QR.png"
+                        alt="Bank Payment QR Code"
+                        onerror="showQRPlaceholder(this)"
+                    >
+
+                </div>
+
+                <div class="qr-title">
+                    Scan & Pay
+                </div>
+
+                <div class="qr-info">
+                    Open your banking / UPI application,
+                    scan this QR code and complete your payment.
+                </div>
+
+            </div>
+
+
+            <div class="divider"></div>
+
+
+            <!-- UPLOAD FORM -->
+
+            <div class="form-section">
+
+                <label class="label">
+                    Payment Screenshot
+                </label>
+
+                <label
+                    class="upload-box"
+                    id="uploadBox"
+                    for="paymentScreenshot"
+                >
+
+                    <div class="upload-icon">
+                        ↑
+                    </div>
+
+                    <div class="upload-title">
+                        Upload Payment Screenshot
+                    </div>
+
+                    <div class="upload-text">
+                        JPG, PNG or WEBP • Maximum 5MB
+                    </div>
+
+                </label>
+
+                <input
+                    type="file"
+                    id="paymentScreenshot"
+                    accept="image/png,image/jpeg,image/webp"
+                >
+
+
+                <!-- Preview -->
+
+                <div class="preview" id="preview">
+
+                    <img id="previewImage" alt="Payment screenshot">
+
+                    <div class="preview-info">
+                        <div class="preview-name" id="previewName">
+                            screenshot.jpg
+                        </div>
+
+                        <div class="preview-size" id="previewSize">
+                            0 KB
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="error" id="uploadError"></div>
+
+
+                <button
+                    type="button"
+                    class="submit-btn"
+                    id="submitPayment"
+                >
+
+                    <span id="submitText">
+                        Submit Payment Proof →
+                    </span>
+
+                    <span class="loading" id="loading">
+                        <span class="spinner"></span>
+                    </span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Features -->
+
+        <div class="features">
+
+            <div class="feature">
+                <div class="feature-icon">🔐</div>
+                <div>
+                    <strong>Secure Process</strong>
+                    <span>Protected payment flow</span>
+                </div>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <div>
+                    <strong>Fast Verification</strong>
+                    <span>Simple confirmation process</span>
+                </div>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">✓</div>
+                <div>
+                    <strong>Easy Submission</strong>
+                    <span>Upload your payment proof</span>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= AGENT CODE PAGE ================= -->
+
+    <section id="agentPage" class="agent-page">
+
+        <div class="hero">
+
+            <div class="hero-badge">
+                🔑 FINAL CONFIRMATION
+            </div>
+
+            <h1>
+                Agent <span>Confirmation</span>
+            </h1>
+
+            <p>
+                Enter your Agent Code to continue to
+                the Rupay Home Login page.
+            </p>
+
+        </div>
+
+
+        <div class="agent-card">
+
+            <div class="agent-icon">
+                🔑
+            </div>
+
+            <h2>
+                Enter Agent Code
+            </h2>
+
+            <p>
+                Ask your Agent to get the Agent Code
+                for your package before continuing.
+            </p>
+
+
+            <label class="input-label">
+                AGENT CODE
+            </label>
+
+            <input
+                type="password"
+                id="agentCode"
+                class="agent-input"
+                inputmode="numeric"
+                maxlength="20"
+                placeholder="Enter Agent Code"
+                autocomplete="off"
+            >
+
+
+            <button
+                type="button"
+                class="agent-btn"
+                id="confirmAgent"
+            >
+                Confirm Agent Code →
+            </button>
+
+
+            <div class="error" id="agentError">
+                Incorrect Agent Code. Please enter the
+                correct code.
+            </div>
+
+
+            <div class="success-message" id="agentSuccess">
+                Agent Code verified. Redirecting...
+            </div>
+
+
+            <div class="agent-note">
+                <b>Important:</b> Ask your Agent to get a
+                valid Agent Code for your package.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="footer">
+        © 2026 <b>Rupay Payment</b><br>
+        Please make sure your payment details are correct
+        before submitting.
+    </div>
+
+</main>
+
+
+<!-- Toast -->
+
+<div class="toast" id="toast"></div>
+
+
+<script>
+
+/* =========================================================
+   RUPAY PAYMENT PLATFORM
+   JavaScript
+   ========================================================= */
+
+
+/* ================= CONFIGURATION ================= */
+
+// Agent code
+const CORRECT_AGENT_CODE = "8940";
+
+// Maximum screenshot size
+const MAX_FILE_SIZE = 5 * 1024 * 1024;
+
+// Home page after successful confirmation
+const HOME_PAGE = "index.html";
+
+
+/* ================= ELEMENTS ================= */
+
+const paymentPage =
+    document.getElementById("paymentPage");
+
+const agentPage =
+    document.getElementById("agentPage");
+
+const paymentScreenshot =
+    document.getElementById("paymentScreenshot");
+
+const uploadBox =
+    document.getElementById("uploadBox");
+
+const preview =
+    document.getElementById("preview");
+
+const previewImage =
+    document.getElementById("previewImage");
+
+const previewName =
+    document.getElementById("previewName");
+
+const previewSize =
+    document.getElementById("previewSize");
+
+const uploadError =
+    document.getElementById("uploadError");
+
+const submitPayment =
+    document.getElementById("submitPayment");
+
+const submitText =
+    document.getElementById("submitText");
+
+const loading =
+    document.getElementById("loading");
+
+const agentCode =
+    document.getElementById("agentCode");
+
+const confirmAgent =
+    document.getElementById("confirmAgent");
+
+const agentError =
+    document.getElementById("agentError");
+
+const agentSuccess =
+    document.getElementById("agentSuccess");
+
+const toast =
+    document.getElementById("toast");
+
+
+/* ================= QR FALLBACK ================= */
+
+function showQRPlaceholder(img){
+
+    img.onerror = null;
+
+    img.src =
+        "data:image/svg+xml;charset=UTF-8," +
+        encodeURIComponent(`
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 width="500"
+                 height="500"
+                 viewBox="0 0 500 500">
+
+                <rect width="500"
+                      height="500"
+                      fill="white"/>
+
+                <rect x="45" y="45"
+                      width="150"
+                      height="150"
+                      fill="none"
+                      stroke="#111"
+                      stroke-width="25"/>
+
+                <rect x="305" y="45"
+                      width="150"
+                      height="150"
+                      fill="none"
+                      stroke="#111"
+                      stroke-width="25"/>
+
+                <rect x="45" y="305"
+                      width="150"
+                      height="150"
+                      fill="none"
+                      stroke="#111"
+                      stroke-width="25"/>
+
+                <rect x="105" y="105"
+                      width="30"
+                      height="30"
+                      fill="#111"/>
+
+                <rect x="365" y="105"
+                      width="30"
+                      height="30"
+                      fill="#111"/>
+
+                <rect x="105" y="365"
+                      width="30"
+                      height="30"
+                      fill="#111"/>
+
+                <rect x="225" y="60"
+                      width="30"
+                      height="30"
+                      fill="#111"/>
+
+                <rect x="225" y="120"
+                      width="30"
+                      height="60"
+                      fill="#111"/>
+
+                <rect x="215" y="220"
+                      width="70"
+                      height="30"
+                      fill="#111"/>
+
+                <rect x="305" y="225"
+                      width="30"
+                      height="80"
+                      fill="#111"/>
+
+                <rect x="365" y="250"
+                      width="80"
+                      height="30"
+                      fill="#111"/>
+
+                <rect x="225" y="310"
+                      width="30"
+                      height="80"
+                      fill="#111"/>
+
+                <rect x="285" y="365"
+                      width="70"
+                      height="30"
+                      fill="#111"/>
+
+                <text x="250"
+                      y="485"
+                      text-anchor="middle"
+                      font-size="20"
+                      font-family="Arial"
+                      fill="#111">
+                    ADD YOUR BANK QR
+                </text>
+
+            </svg>
+        `);
+}
+
+
+/* ================= TOAST ================= */
+
+function showToast(message, type = ""){
+
+    toast.textContent = message;
+
+    toast.className = "toast show";
+
+    if(type === "error"){
+        toast.classList.add("error-toast");
+    }
+
+    if(type === "success"){
+        toast.classList.add("success-toast");
+    }
+
+    setTimeout(() => {
+        toast.className = "toast";
+    }, 2800);
+}
+
+
+/* ================= FILE VALIDATION ================= */
+
+function validateFile(file){
+
+    uploadError.style.display = "none";
+
+    if(!file){
+        return false;
+    }
+
+    const allowedTypes = [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+    ];
+
+    if(!allowedTypes.includes(file.type)){
+
+        uploadError.textContent =
+            "Please upload a JPG, PNG or WEBP image.";
+
+        uploadError.style.display = "block";
+
+        showToast(
+            "Invalid image format.",
+            "error"
+        );
+
+        return false;
+    }
+
+
+    if(file.size > MAX_FILE_SIZE){
+
+        uploadError.textContent =
+            "Image is too large. Maximum size is 5MB.";
+
+        uploadError.style.display = "block";
+
+        showToast(
+            "Image must be smaller than 5MB.",
+            "error"
+        );
+
+        return false;
+    }
+
+    return true;
+}
+
+
+/* ================= FILE SELECT ================= */
+
+paymentScreenshot.addEventListener(
+    "change",
+    function(){
+
+        const file = this.files[0];
+
+        if(!validateFile(file)){
+            this.value = "";
+            preview.style.display = "none";
+            return;
+        }
+
+
+        const reader = new FileReader();
+
+        reader.onload = function(event){
+
+            previewImage.src =
+                event.target.result;
+
+            previewName.textContent =
+                file.name;
+
+            previewSize.textContent =
+                formatFileSize(file.size);
+
+            preview.style.display = "flex";
+
+            showToast(
+                "Payment screenshot selected.",
+                "success"
+            );
+        };
+
+        reader.readAsDataURL(file);
+    }
+);
+
+
+/* ================= FILE SIZE ================= */
+
+function formatFileSize(bytes){
+
+    if(bytes < 1024){
+        return bytes + " B";
+    }
+
+    if(bytes < 1024 * 1024){
+        return (bytes / 1024).toFixed(1) + " KB";
+    }
+
+    return (bytes / (1024 * 1024)).toFixed(2) + " MB";
+}
+
+
+/* ================= DRAG & DROP ================= */
+
+uploadBox.addEventListener(
+    "dragover",
+    function(event){
+
+        event.preventDefault();
+
+        uploadBox.classList.add("dragover");
+    }
+);
+
+uploadBox.addEventListener(
+    "dragleave",
+    function(){
+
+        uploadBox.classList.remove("dragover");
+    }
+);
+
+uploadBox.addEventListener(
+    "drop",
+    function(event){
+
+        event.preventDefault();
+
+        uploadBox.classList.remove("dragover");
+
+        const file =
+            event.dataTransfer.files[0];
+
+        if(!validateFile(file)){
+            return;
+        }
+
+        paymentScreenshot.files =
+            event.dataTransfer.files;
+
+        const reader =
+            new FileReader();
+
+        reader.onload = function(e){
+
+            previewImage.src = e.target.result;
+
+            previewName.textContent =
+                file.name;
+
+            previewSize.textContent =
+                formatFileSize(file.size);
+
+            preview.style.display = "flex";
+        };
+
+        reader.readAsDataURL(file);
+    }
+);
+
+
+/* ================= SUBMIT PAYMENT ================= */
+
+submitPayment.addEventListener(
+    "click",
+    function(){
+
+        const file =
+            paymentScreenshot.files[0];
+
+
+        if(!file){
+
+            uploadError.textContent =
+                "Please upload your payment screenshot first.";
+
+            uploadError.style.display = "block";
+
+            showToast(
+                "Payment screenshot is required.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        if(!validateFile(file)){
+            return;
+        }
+
+
+        /*
+            Demo loading state.
+
+            IMPORTANT:
+            This frontend-only page does NOT actually
+            upload the screenshot to a server.
+
+            To receive uploaded screenshots, you need
+            a backend/database/storage service.
+        */
+
+        submitPayment.disabled = true;
+
+        submitText.style.display = "none";
+        loading.style.display = "block";
+
+
+        setTimeout(function(){
+
+            submitPayment.disabled = false;
+
+            submitText.style.display = "inline";
+            loading.style.display = "none";
+
+
+            /*
+                Open the Agent Code page
+            */
+
+            paymentPage.style.display = "none";
+            agentPage.style.display = "block";
+
+            window.scrollTo({
+                top:0,
+                behavior:"smooth"
+            });
+
+            showToast(
+                "Payment proof submitted. Enter Agent Code.",
+                "success"
+            );
+
+            setTimeout(() => {
+                agentCode.focus();
+            }, 500);
+
+        }, 900);
+    }
+);
+
+
+/* ================= AGENT CODE ================= */
+
+function checkAgentCode(){
+
+    const enteredCode =
+        agentCode.value.trim();
+
+
+    agentError.style.display = "none";
+    agentSuccess.style.display = "none";
+
+
+    if(!enteredCode){
+
+        agentError.textContent =
+            "Please enter your Agent Code.";
+
+        agentError.style.display = "block";
+
+        agentCode.focus();
+
+        return;
+    }
+
+
+    if(enteredCode === CORRECT_AGENT_CODE){
+
+        agentError.style.display = "none";
+
+        agentSuccess.textContent =
+            "Agent Code verified. Redirecting...";
+
+        agentSuccess.style.display = "block";
+
+        confirmAgent.disabled = true;
+
+        showToast(
+            "Agent Code verified successfully.",
+            "success"
+        );
+
+
+        /*
+            Redirect to Home Login page
+        */
+
+        setTimeout(function(){
+
+            window.location.href =
+                HOME_PAGE;
+
+        }, 1000);
+
+    }else{
+
+        agentSuccess.style.display = "none";
+
+        agentError.textContent =
+            "Incorrect Agent Code. Please enter the correct code.";
+
+        agentError.style.display = "block";
+
+        showToast(
+            "Incorrect Agent Code.",
+            "error"
+        );
+
+        agentCode.focus();
+
+        agentCode.select();
+    }
+}
+
+
+confirmAgent.addEventListener(
+    "click",
+    checkAgentCode
+);
+
+
+/* Enter key support */
+
+agentCode.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Enter"){
+            event.preventDefault();
+            checkAgentCode();
+        }
+    }
+);
+
+
+/* ================= PREVENT DOUBLE TAP ================= */
+
+let lastTouch = 0;
+
+document.addEventListener(
+    "touchend",
+    function(event){
+
+        const now =
+            Date.now();
+
+        if(now - lastTouch <= 300){
+            event.preventDefault();
+        }
+
+        lastTouch = now;
+
+    },
+    {passive:false}
+);
+
+
+/* ================= PAGE LOAD ================= */
+
+window.addEventListener(
+    "load",
+    function(){
+
+        console.log(
+            "Rupay Payment Platform loaded."
+        );
+
+    }
+);
+
+</script>
+
+</body>
+</html>
