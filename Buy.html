@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0,
                maximum-scale=1.0, user-scalable=no">
@@ -69,7 +70,8 @@ body::before{
     z-index:-1;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
+
 header{
     position:sticky;
     top:0;
@@ -138,7 +140,8 @@ header{
     cursor:pointer;
 }
 
-/* GENERAL */
+/* ================= GENERAL ================= */
+
 .container{
     width:min(1180px,92%);
     margin:auto;
@@ -177,7 +180,8 @@ section{
     font-size:14px;
 }
 
-/* BUTTONS */
+/* ================= BUTTONS ================= */
+
 .btn{
     display:inline-flex;
     justify-content:center;
@@ -191,10 +195,16 @@ section{
     font-size:14px;
     cursor:pointer;
     transition:.2s;
+    user-select:none;
+    -webkit-user-select:none;
 }
 
 .btn:hover{
     transform:translateY(-2px);
+}
+
+.btn:active{
+    transform:scale(.97);
 }
 
 .btn-primary{
@@ -212,7 +222,8 @@ section{
     background:rgba(255,255,255,.09);
 }
 
-/* HERO */
+/* ================= HERO ================= */
+
 .hero{
     min-height:calc(100vh - 72px);
     display:flex;
@@ -266,7 +277,8 @@ section{
     flex-wrap:wrap;
 }
 
-/* STATS */
+/* ================= STATS ================= */
+
 .stats{
     display:grid;
     grid-template-columns:repeat(4,1fr);
@@ -292,7 +304,8 @@ section{
     font-size:13px;
 }
 
-/* PACKAGES */
+/* ================= PACKAGES ================= */
+
 .packages{
     display:grid;
     grid-template-columns:repeat(3,minmax(0,1fr));
@@ -415,7 +428,8 @@ section{
     border-radius:12px;
 }
 
-/* ABOUT */
+/* ================= ABOUT ================= */
+
 .about-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -477,7 +491,8 @@ section{
     font-size:12px;
 }
 
-/* ACTIVITY */
+/* ================= ACTIVITY ================= */
+
 .live-box{
     display:grid;
     grid-template-columns:.8fr 1.2fr;
@@ -539,7 +554,8 @@ canvas{
     display:block;
 }
 
-/* CONTACT */
+/* ================= CONTACT ================= */
+
 .contact-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -575,7 +591,8 @@ canvas{
     word-break:break-word;
 }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
+
 footer{
     border-top:1px solid var(--border);
     padding:40px 0 25px;
@@ -618,7 +635,8 @@ footer{
     line-height:1.6;
 }
 
-/* FLOAT */
+/* ================= FLOATING ================= */
+
 .floating-controls{
     position:fixed;
     bottom:20px;
@@ -640,13 +658,14 @@ footer{
     font-size:17px;
 }
 
-/* TOAST */
+/* ================= TOAST ================= */
+
 .toast{
     position:fixed;
     left:50%;
     bottom:25px;
     transform:translate(-50%,100px);
-    z-index:3000;
+    z-index:9000;
     max-width:90%;
     padding:13px 18px;
     border-radius:13px;
@@ -657,6 +676,7 @@ footer{
     opacity:0;
     pointer-events:none;
     transition:.25s;
+    text-align:center;
 }
 
 .toast.show{
@@ -664,9 +684,8 @@ footer{
     transform:translate(-50%,0);
 }
 
-/* =====================================================
-PACKAGE ABOUT MODAL
-===================================================== */
+/* ================= MODAL ================= */
+
 .modal{
     position:fixed;
     inset:0;
@@ -710,6 +729,7 @@ PACKAGE ABOUT MODAL
         opacity:0;
         transform:translateY(20px) scale(.97);
     }
+
     to{
         opacity:1;
         transform:translateY(0) scale(1);
@@ -815,8 +835,10 @@ PACKAGE ABOUT MODAL
     margin-top:20px;
 }
 
-/* RESPONSIVE */
+/* ================= RESPONSIVE ================= */
+
 @media(max-width:1000px){
+
     .packages{
         grid-template-columns:repeat(2,minmax(0,1fr));
     }
@@ -836,6 +858,7 @@ PACKAGE ABOUT MODAL
 }
 
 @media(max-width:650px){
+
     section{
         padding:65px 0;
     }
@@ -962,6 +985,7 @@ PACKAGE ABOUT MODAL
 }
 
 @media(max-width:380px){
+
     .stats{
         grid-template-columns:1fr;
     }
@@ -976,6 +1000,7 @@ PACKAGE ABOUT MODAL
 }
 
 @media(prefers-reduced-motion:reduce){
+
     html{
         scroll-behavior:auto;
     }
@@ -992,7 +1017,8 @@ PACKAGE ABOUT MODAL
 
 <body>
 
-<!-- HEADER -->
+<!-- ================= HEADER ================= -->
+
 <header>
 <nav class="navbar">
 
@@ -1006,18 +1032,28 @@ onerror="this.style.display='none'">
 </a>
 
 <button
+type="button"
 class="menu-btn"
 id="menuBtn"
 aria-label="Open menu"
-aria-expanded="false">☰</button>
+aria-expanded="false">
+☰
+</button>
 
 <div class="nav-links" id="navLinks">
+
 <a href="#home">Home</a>
 <a href="#packages">Packages</a>
 <a href="#about">About</a>
 <a href="#stats">Activity</a>
 <a href="#contact">Contact</a>
-<a href="Login.html" class="btn btn-primary">Login</a>
+
+<a
+href="Login.html"
+class="btn btn-primary">
+Login
+</a>
+
 </div>
 
 </nav>
@@ -1025,9 +1061,12 @@ aria-expanded="false">☰</button>
 
 <main>
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
+
 <section class="hero" id="home">
+
 <div class="container">
+
 <div class="hero-content">
 
 <img
@@ -1046,21 +1085,31 @@ and platform information.
 </p>
 
 <div class="hero-buttons">
-<a href="Login.html" class="btn btn-primary">
+
+<a
+href="Login.html"
+class="btn btn-primary">
 Login →
 </a>
 
-<a href="#packages" class="btn btn-secondary">
+<a
+href="#packages"
+class="btn btn-secondary">
 Explore Packages
 </a>
+
 </div>
 
 </div>
+
 </div>
+
 </section>
 
-<!-- STATS -->
+<!-- ================= STATS ================= -->
+
 <section id="stats">
+
 <div class="container">
 
 <div class="stats">
@@ -1086,28 +1135,42 @@ Explore Packages
 </div>
 
 </div>
+
 </div>
+
 </section>
 
-<!-- PACKAGES -->
+<!-- ================= PACKAGES ================= -->
+
 <section id="packages">
+
 <div class="container">
 
 <div class="section-title">
-<span class="small">Choose Your Plan</span>
-<h2>Rupay Packages</h2>
+
+<span class="small">
+Choose Your Plan
+</span>
+
+<h2>
+Rupay Packages
+</h2>
+
 <p>
 Tap <b>About</b> on any package to view its complete
 feature information.
 </p>
+
 </div>
 
 <div class="packages">
 
 <!-- NORMAL -->
+
 <article class="package">
 
 <div class="package-image-wrap">
+
 <img
 src="package1.jpg"
 alt="Normal Package"
@@ -1116,11 +1179,14 @@ loading="lazy"
 onerror="
 this.src='https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/1789429227825.jpg';
 ">
+
 </div>
 
 <div class="package-content">
 
-<h3>Normal Package</h3>
+<h3>
+Normal Package
+</h3>
 
 <p>
 Entry-level package for users looking
@@ -1135,25 +1201,32 @@ NPR 450
 <div class="package-buttons">
 
 <button
+type="button"
 class="btn btn-secondary about-btn"
 data-package="normal">
 About
 </button>
 
-<a
-href="Buy.html?package=normal"
-class="btn btn-primary">
+<button
+type="button"
+class="btn btn-primary buy-btn"
+data-package="normal">
 Buy Now
-</a>
+</button>
 
 </div>
+
 </div>
+
 </article>
 
+
 <!-- SILVER -->
+
 <article class="package">
 
 <div class="package-image-wrap">
+
 <img
 src="package2.jpg"
 alt="Silver Package"
@@ -1162,11 +1235,14 @@ loading="lazy"
 onerror="
 this.src='https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/1789429403401.jpg';
 ">
+
 </div>
 
 <div class="package-content">
 
-<h3>Silver Package</h3>
+<h3>
+Silver Package
+</h3>
 
 <p>
 A balanced package with additional
@@ -1181,27 +1257,36 @@ NPR 870
 <div class="package-buttons">
 
 <button
+type="button"
 class="btn btn-secondary about-btn"
 data-package="silver">
 About
 </button>
 
-<a
-href="Buy.html?package=silver"
-class="btn btn-primary">
+<button
+type="button"
+class="btn btn-primary buy-btn"
+data-package="silver">
 Buy Now
-</a>
+</button>
 
 </div>
+
 </div>
+
 </article>
 
+
 <!-- GOLD -->
+
 <article class="package featured">
 
-<span class="package-badge">POPULAR</span>
+<span class="package-badge">
+POPULAR
+</span>
 
 <div class="package-image-wrap">
+
 <img
 src="package3.jpg"
 alt="Gold Package"
@@ -1210,11 +1295,14 @@ loading="lazy"
 onerror="
 this.src='https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/1789429462939.jpg';
 ">
+
 </div>
 
 <div class="package-content">
 
-<h3>Gold Package</h3>
+<h3>
+Gold Package
+</h3>
 
 <p>
 A premium package with an expanded
@@ -1229,25 +1317,32 @@ NPR 1,230
 <div class="package-buttons">
 
 <button
+type="button"
 class="btn btn-secondary about-btn"
 data-package="gold">
 About
 </button>
 
-<a
-href="Buy.html?package=gold"
-class="btn btn-primary">
+<button
+type="button"
+class="btn btn-primary buy-btn"
+data-package="gold">
 Buy Now
-</a>
+</button>
 
 </div>
+
 </div>
+
 </article>
 
+
 <!-- PRO4X -->
+
 <article class="package">
 
 <div class="package-image-wrap">
+
 <img
 src="package4.jpg"
 alt="Pro4x Package"
@@ -1256,11 +1351,14 @@ loading="lazy"
 onerror="
 this.src='https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/1789429595150.jpg';
 ">
+
 </div>
 
 <div class="package-content">
 
-<h3>Pro4x Package</h3>
+<h3>
+Pro4x Package
+</h3>
 
 <p>
 Advanced package for users seeking
@@ -1275,27 +1373,36 @@ NPR 1,550
 <div class="package-buttons">
 
 <button
+type="button"
 class="btn btn-secondary about-btn"
 data-package="pro4x">
 About
 </button>
 
-<a
-href="Buy.html?package=pro4x"
-class="btn btn-primary">
+<button
+type="button"
+class="btn btn-primary buy-btn"
+data-package="pro4x">
 Buy Now
-</a>
+</button>
 
 </div>
+
 </div>
+
 </article>
 
+
 <!-- RUPAY7X -->
+
 <article class="package featured">
 
-<span class="package-badge">PREMIUM</span>
+<span class="package-badge">
+PREMIUM
+</span>
 
 <div class="package-image-wrap">
+
 <img
 src="package5.jpg"
 alt="Rupay7x Pro Package"
@@ -1304,11 +1411,14 @@ loading="lazy"
 onerror="
 this.src='https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/1789429749959.jpg';
 ">
+
 </div>
 
 <div class="package-content">
 
-<h3>Rupay7x Pro</h3>
+<h3>
+Rupay7x Pro
+</h3>
 
 <p>
 Highest listed package with premium
@@ -1323,43 +1433,61 @@ NPR 2,350
 <div class="package-buttons">
 
 <button
+type="button"
 class="btn btn-secondary about-btn"
 data-package="rupay7x">
 About
 </button>
 
-<a
-href="Buy.html?package=rupay7x"
-class="btn btn-primary">
+<button
+type="button"
+class="btn btn-primary buy-btn"
+data-package="rupay7x">
 Buy Now
-</a>
+</button>
 
 </div>
+
 </div>
+
 </article>
 
 </div>
+
 </div>
+
 </section>
 
-<!-- ABOUT -->
+<!-- ================= ABOUT ================= -->
+
 <section id="about">
+
 <div class="container">
 
 <div class="section-title">
-<span class="small">Why Rupay</span>
-<h2>Built For A Better Experience</h2>
+
+<span class="small">
+Why Rupay
+</span>
+
+<h2>
+Built For A Better Experience
+</h2>
+
 <p>
 Simple design, responsive technology and
 useful platform features.
 </p>
+
 </div>
 
 <div class="about-grid">
 
 <div class="about-card">
 
-<h3>About Rupay</h3>
+<h3>
+About Rupay
+</h3>
 
 <p class="about-text">
 Rupay is designed as a modern digital platform
@@ -1379,67 +1507,107 @@ should be added here using verified information.
 
 <div class="about-card">
 
-<h3>Platform Features</h3>
+<h3>
+Platform Features
+</h3>
 
 <div class="features">
 
 <div class="feature">
-<div class="feature-icon">⚡</div>
+
+<div class="feature-icon">
+⚡
+</div>
+
 <div>
 <strong>Fast Experience</strong>
 <span>Optimized responsive interface</span>
 </div>
+
 </div>
 
 <div class="feature">
-<div class="feature-icon">🕐</div>
+
+<div class="feature-icon">
+🕐
+</div>
+
 <div>
 <strong>24Hr Support</strong>
 <span>Support information available anytime</span>
 </div>
+
 </div>
 
 <div class="feature">
-<div class="feature-icon">🎁</div>
+
+<div class="feature-icon">
+🎁
+</div>
+
 <div>
 <strong>Cashback</strong>
 <span>Promotional cashback where applicable</span>
 </div>
+
 </div>
 
 <div class="feature">
-<div class="feature-icon">🔐</div>
+
+<div class="feature-icon">
+🔐
+</div>
+
 <div>
 <strong>Account Security</strong>
 <span>Designed with account protection in mind</span>
 </div>
+
 </div>
 
 <div class="feature">
-<div class="feature-icon">📱</div>
+
+<div class="feature-icon">
+📱
+</div>
+
 <div>
 <strong>Any Device</strong>
 <span>Mobile, iOS, tablet and desktop</span>
 </div>
+
 </div>
 
 </div>
+
 </div>
 
 </div>
+
 </div>
+
 </section>
 
-<!-- ACTIVITY -->
+<!-- ================= ACTIVITY ================= -->
+
 <section>
+
 <div class="container">
 
 <div class="section-title">
-<span class="small">Live Activity</span>
-<h2>Platform Activity</h2>
+
+<span class="small">
+Live Activity
+</span>
+
+<h2>
+Platform Activity
+</h2>
+
 <p>
 Example visualization using demonstration data.
 </p>
+
 </div>
 
 <div class="live-box">
@@ -1457,7 +1625,10 @@ id="onlineUsers">
 1,284
 </div>
 
-<p style="color:var(--muted);font-size:13px;line-height:1.7">
+<p style="
+color:var(--muted);
+font-size:13px;
+line-height:1.7">
 Users currently displayed in this demonstration
 interface.
 </p>
@@ -1482,8 +1653,15 @@ background:linear-gradient(90deg,#00d4ff,#6c63ff);">
 <div class="chart-card">
 
 <div class="chart-title">
-<h3>Activity Flow</h3>
-<span class="demo-label">DEMO DATA</span>
+
+<h3>
+Activity Flow
+</h3>
+
+<span class="demo-label">
+DEMO DATA
+</span>
+
 </div>
 
 <canvas id="activityChart"></canvas>
@@ -1491,27 +1669,46 @@ background:linear-gradient(90deg,#00d4ff,#6c63ff);">
 </div>
 
 </div>
+
 </div>
+
 </section>
 
-<!-- CHART -->
+<!-- ================= CHART ================= -->
+
 <section>
+
 <div class="container">
 
 <div class="section-title">
-<span class="small">Market View</span>
-<h2>Illustrative Chart</h2>
+
+<span class="small">
+Market View
+</span>
+
+<h2>
+Illustrative Chart
+</h2>
+
 <p>
 This is demonstration data only and does not
 represent guaranteed financial performance.
 </p>
+
 </div>
 
 <div class="chart-card">
 
 <div class="chart-title">
-<h3>Illustrative Profit Rate</h3>
-<span class="demo-label">NOT REAL RETURNS</span>
+
+<h3>
+Illustrative Profit Rate
+</h3>
+
+<span class="demo-label">
+NOT REAL RETURNS
+</span>
+
 </div>
 
 <canvas id="profitChart"></canvas>
@@ -1529,54 +1726,105 @@ should only be displayed using verified data.
 </p>
 
 </div>
+
 </div>
+
 </section>
 
-<!-- CONTACT -->
+<!-- ================= CONTACT ================= -->
+
 <section id="contact">
+
 <div class="container">
 
 <div class="section-title">
-<span class="small">Get In Touch</span>
-<h2>Contact Us</h2>
+
+<span class="small">
+Get In Touch
+</span>
+
+<h2>
+Contact Us
+</h2>
+
 <p>
 Replace these sample details with your
 verified business contact information.
 </p>
+
 </div>
 
 <div class="contact-grid">
 
 <div class="contact-card">
-<div class="contact-icon">💬</div>
-<h3>WhatsApp</h3>
-<p>Customer support</p>
+
+<div class="contact-icon">
+💬
+</div>
+
+<h3>
+WhatsApp
+</h3>
+
+<p>
+Customer support
+</p>
+
 <br>
-<a href="https://wa.me/9779800000000"
+
+<a
+href="https://wa.me/9779800000000"
 target="_blank"
 rel="noopener">
 +977 9800000000
 </a>
+
 </div>
 
+
 <div class="contact-card">
-<div class="contact-icon">✉️</div>
-<h3>Email</h3>
-<p>General enquiries</p>
+
+<div class="contact-icon">
+✉️
+</div>
+
+<h3>
+Email
+</h3>
+
+<p>
+General enquiries
+</p>
+
 <br>
+
 <a href="mailto:support@yourdomain.com">
 support@yourdomain.com
 </a>
+
 </div>
 
+
 <div class="contact-card">
-<div class="contact-icon">🛡️</div>
-<h3>License</h3>
-<p>Business registration / license</p>
+
+<div class="contact-icon">
+🛡️
+</div>
+
+<h3>
+License
+</h3>
+
+<p>
+Business registration / license
+</p>
+
 <br>
+
 <strong style="font-size:13px">
 LICENSE: ADD-YOUR-REAL-ID
 </strong>
+
 </div>
 
 </div>
@@ -1589,7 +1837,9 @@ background:rgba(255,255,255,.035);
 border-radius:18px;
 text-align:center;">
 
-<strong>🔒 Security & Compliance</strong>
+<strong>
+🔒 Security & Compliance
+</strong>
 
 <div style="
 color:var(--muted);
@@ -1606,12 +1856,15 @@ certifications here if applicable.
 </div>
 
 </div>
+
 </section>
 
 </main>
 
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
+
 <footer>
+
 <div class="container">
 
 <div class="footer-grid">
@@ -1619,11 +1872,16 @@ certifications here if applicable.
 <div class="footer-brand">
 
 <div class="brand">
+
 <img
 src="https://raw.githubusercontent.com/soulpari21-hue/Rupay/refs/heads/main/1789472698527.png"
 class="brand-logo"
 alt="Rupay">
-<span>Rupay</span>
+
+<span>
+Rupay
+</span>
+
 </div>
 
 <p>
@@ -1633,19 +1891,52 @@ for a smooth and professional experience.
 
 </div>
 
-<div class="footer-column">
-<h4>Quick Links</h4>
-<a href="#home">Home</a>
-<a href="#packages">Packages</a>
-<a href="#about">About</a>
-<a href="#contact">Contact</a>
-</div>
 
 <div class="footer-column">
-<h4>Account</h4>
-<a href="Login.html">Login</a>
-<a href="Buy.html">Buy Package</a>
-<a href="#packages">Package Details</a>
+
+<h4>
+Quick Links
+</h4>
+
+<a href="#home">
+Home
+</a>
+
+<a href="#packages">
+Packages
+</a>
+
+<a href="#about">
+About
+</a>
+
+<a href="#contact">
+Contact
+</a>
+
+</div>
+
+
+<div class="footer-column">
+
+<h4>
+Account
+</h4>
+
+<a href="Login.html">
+Login
+</a>
+
+<a
+href="Buy.html"
+class="footer-buy">
+Buy Package
+</a>
+
+<a href="#packages">
+Package Details
+</a>
+
 </div>
 
 </div>
@@ -1666,33 +1957,40 @@ before publishing.
 </div>
 
 </div>
+
 </footer>
 
-<!-- FLOATING BUTTONS -->
+<!-- ================= FLOATING BUTTONS ================= -->
+
 <div class="floating-controls">
 
 <button
+type="button"
 class="float-btn"
-onclick="refreshPage()"
+id="refreshBtn"
 title="Refresh">
 ↻
 </button>
 
 <button
+type="button"
 class="float-btn"
-onclick="scrollTopPage()"
+id="topBtn"
 title="Scroll to top">
 ↑
 </button>
 
 </div>
 
-<!-- TOAST -->
-<div class="toast" id="toast"></div>
+<!-- ================= TOAST ================= -->
 
-<!-- =====================================================
-PACKAGE ABOUT MODAL
-===================================================== -->
+<div
+class="toast"
+id="toast">
+</div>
+
+<!-- ================= PACKAGE MODAL ================= -->
+
 <div
 class="modal"
 id="packageModal"
@@ -1703,6 +2001,7 @@ aria-labelledby="modalTitle">
 <div class="modal-box">
 
 <button
+type="button"
 class="modal-close"
 id="modalClose"
 aria-label="Close">
@@ -1711,7 +2010,9 @@ aria-label="Close">
 
 <div class="modal-header">
 
-<span class="modal-tag" id="modalTag">
+<span
+class="modal-tag"
+id="modalTag">
 PACKAGE DETAILS
 </span>
 
@@ -1734,35 +2035,41 @@ id="detailsList">
 </div>
 
 <div class="modal-note">
+
 ⚠️ The earning ranges displayed here are
 listed package claims/information. They are
 not a guarantee of income, profit or return.
 Actual results may vary. Verify all terms,
 fees and legal/financial authorization before
 using or publishing the platform.
+
 </div>
 
 <div class="modal-actions">
 
 <button
+type="button"
 class="btn btn-secondary"
 id="modalCloseBottom">
 Close
 </button>
 
-<a
-href="#"
-id="modalBuy"
-class="btn btn-primary">
+<button
+type="button"
+class="btn btn-primary"
+id="modalBuy">
 Buy Now →
-</a>
+</button>
 
 </div>
 
 </div>
+
 </div>
+
 
 <script>
+
 /* =====================================================
 PACKAGE DATA
 ===================================================== */
@@ -1773,6 +2080,7 @@ const packages = {
         name:"Normal Package",
         price:"NPR 450 / package",
         badge:"STARTER PACKAGE",
+
         buy:"Buy.html?package=normal",
 
         details:[
@@ -1788,6 +2096,7 @@ const packages = {
         name:"Silver Package",
         price:"NPR 870 / package",
         badge:"SILVER PACKAGE",
+
         buy:"Buy.html?package=silver",
 
         details:[
@@ -1803,6 +2112,7 @@ const packages = {
         name:"Gold Package",
         price:"NPR 1,230 / package",
         badge:"POPULAR PACKAGE",
+
         buy:"Buy.html?package=gold",
 
         details:[
@@ -1818,6 +2128,7 @@ const packages = {
         name:"Pro4x Package",
         price:"NPR 1,550 / package",
         badge:"ADVANCED PACKAGE",
+
         buy:"Buy.html?package=pro4x",
 
         details:[
@@ -1833,6 +2144,7 @@ const packages = {
         name:"Rupay7x Pro Package",
         price:"NPR 2,350 / package",
         badge:"PREMIUM PACKAGE",
+
         buy:"Buy.html?package=rupay7x",
 
         details:[
@@ -1848,11 +2160,69 @@ const packages = {
 
 
 /* =====================================================
+RELIABLE BUY REDIRECT
+===================================================== */
+
+function buyPackage(packageId){
+
+    const data = packages[packageId];
+
+    if(!data || !data.buy){
+
+        showToast("Package could not be found.");
+
+        return;
+    }
+
+    /*
+       IMPORTANT:
+       This directly changes the current page URL.
+       It does not depend on an <a> element working.
+    */
+
+    showToast("Opening " + data.name + "...");
+
+    setTimeout(function(){
+
+        window.location.href = data.buy;
+
+    },150);
+
+}
+
+
+/* =====================================================
+ALL BUY NOW BUTTONS
+===================================================== */
+
+document.querySelectorAll(".buy-btn")
+.forEach(function(button){
+
+    button.addEventListener("click",function(event){
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        const packageId =
+            this.getAttribute("data-package");
+
+        buyPackage(packageId);
+
+    });
+
+});
+
+
+/* =====================================================
 MOBILE MENU
 ===================================================== */
 
-const menuBtn = document.getElementById("menuBtn");
-const navLinks = document.getElementById("navLinks");
+const menuBtn =
+    document.getElementById("menuBtn");
+
+const navLinks =
+    document.getElementById("navLinks");
+
 
 menuBtn.addEventListener("click",function(){
 
@@ -1866,16 +2236,24 @@ menuBtn.addEventListener("click",function(){
         "aria-expanded",
         String(open)
     );
+
 });
 
-document.querySelectorAll(".nav-links a")
-.forEach(link=>{
 
-    link.addEventListener("click",()=>{
+document.querySelectorAll(".nav-links a")
+.forEach(function(link){
+
+    link.addEventListener("click",function(){
 
         navLinks.classList.remove("active");
-        menuBtn.textContent="☰";
-        menuBtn.setAttribute("aria-expanded","false");
+
+        menuBtn.textContent =
+            "☰";
+
+        menuBtn.setAttribute(
+            "aria-expanded",
+            "false"
+        );
 
     });
 
@@ -1911,12 +2289,23 @@ const modalCloseBottom =
     document.getElementById("modalCloseBottom");
 
 
+let currentPackage = null;
+
+
 function openPackage(packageId){
 
     const data =
         packages[packageId];
 
-    if(!data) return;
+    if(!data){
+
+        showToast("Package information unavailable.");
+
+        return;
+    }
+
+    currentPackage =
+        packageId;
 
     modalTitle.textContent =
         data.name;
@@ -1927,12 +2316,10 @@ function openPackage(packageId){
     modalPrice.textContent =
         data.price;
 
-    modalBuy.href =
-        data.buy;
-
     detailsList.innerHTML = "";
 
-    data.details.forEach(item=>{
+
+    data.details.forEach(function(item){
 
         const div =
             document.createElement("div");
@@ -1940,29 +2327,62 @@ function openPackage(packageId){
         div.className =
             "detail-item";
 
-        div.innerHTML = `
-            <div class="detail-icon">
-                ${item[0]}
-            </div>
+        const icon =
+            document.createElement("div");
 
-            <div>
-                <strong>${item[1]}</strong>
-                <span>${item[2]}</span>
-            </div>
-        `;
+        icon.className =
+            "detail-icon";
+
+        icon.textContent =
+            item[0];
+
+
+        const content =
+            document.createElement("div");
+
+
+        const strong =
+            document.createElement("strong");
+
+        strong.textContent =
+            item[1];
+
+
+        const span =
+            document.createElement("span");
+
+        span.textContent =
+            item[2];
+
+
+        content.appendChild(strong);
+        content.appendChild(span);
+
+        div.appendChild(icon);
+        div.appendChild(content);
 
         detailsList.appendChild(div);
 
     });
+
 
     modal.classList.add("active");
 
     document.body.style.overflow =
         "hidden";
 
-    modalClose.focus();
+    setTimeout(function(){
+
+        modalClose.focus();
+
+    },50);
+
 }
 
+
+/* =====================================================
+CLOSE MODAL
+===================================================== */
 
 function closePackage(){
 
@@ -1971,17 +2391,23 @@ function closePackage(){
     document.body.style.overflow =
         "";
 
+    currentPackage =
+        null;
+
 }
 
 
 document.querySelectorAll(".about-btn")
-.forEach(button=>{
+.forEach(function(button){
 
-    button.addEventListener("click",function(){
+    button.addEventListener("click",function(event){
 
-        openPackage(
-            this.dataset.package
-        );
+        event.preventDefault();
+
+        const packageId =
+            this.getAttribute("data-package");
+
+        openPackage(packageId);
 
     });
 
@@ -1993,28 +2419,85 @@ modalClose.addEventListener(
     closePackage
 );
 
+
 modalCloseBottom.addEventListener(
     "click",
     closePackage
 );
 
 
-modal.addEventListener("click",function(e){
+/* =====================================================
+MODAL BUY NOW
+===================================================== */
 
-    if(e.target === modal){
-        closePackage();
+modalBuy.addEventListener(
+    "click",
+    function(event){
+
+        event.preventDefault();
+
+        if(currentPackage){
+
+            buyPackage(currentPackage);
+
+        }
+
     }
+);
 
-});
 
+/* =====================================================
+CLOSE MODAL BY BACKDROP
+===================================================== */
 
-document.addEventListener("keydown",function(e){
+modal.addEventListener(
+    "click",
+    function(event){
 
-    if(e.key === "Escape"){
-        closePackage();
+        if(event.target === modal){
+
+            closePackage();
+
+        }
+
     }
+);
 
-});
+
+/* =====================================================
+ESC KEY
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Escape"){
+
+            if(modal.classList.contains("active")){
+
+                closePackage();
+
+            }
+
+            if(navLinks.classList.contains("active")){
+
+                navLinks.classList.remove("active");
+
+                menuBtn.textContent =
+                    "☰";
+
+                menuBtn.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            }
+
+        }
+
+    }
+);
 
 
 /* =====================================================
@@ -2025,11 +2508,20 @@ function refreshPage(){
 
     showToast("Refreshing...");
 
-    setTimeout(()=>{
+    setTimeout(function(){
+
         window.location.reload();
+
     },450);
 
 }
+
+
+document.getElementById("refreshBtn")
+.addEventListener(
+    "click",
+    refreshPage
+);
 
 
 /* =====================================================
@@ -2039,11 +2531,20 @@ SCROLL TOP
 function scrollTopPage(){
 
     window.scrollTo({
+
         top:0,
         behavior:"smooth"
+
     });
 
 }
+
+
+document.getElementById("topBtn")
+.addEventListener(
+    "click",
+    scrollTopPage
+);
 
 
 /* =====================================================
@@ -2051,6 +2552,7 @@ TOAST
 ===================================================== */
 
 let toastTimer;
+
 
 function showToast(message){
 
@@ -2065,11 +2567,12 @@ function showToast(message){
     clearTimeout(toastTimer);
 
     toastTimer =
-        setTimeout(()=>{
+        setTimeout(function(){
 
             toast.classList.remove("show");
 
         },2200);
+
 }
 
 
@@ -2086,7 +2589,9 @@ new Date().getFullYear();
 DEMO USER COUNTER
 ===================================================== */
 
-let users = 1284;
+let users =
+    1284;
+
 
 function updateUsers(){
 
@@ -2094,19 +2599,31 @@ function updateUsers(){
         Math.floor(Math.random()*13)-6;
 
     users =
-        Math.max(100,users+variation);
+        Math.max(
+            100,
+            users + variation
+        );
 
     const formatted =
         users.toLocaleString();
 
+
     document.getElementById("userCount")
-        .textContent=formatted;
+        .textContent =
+        formatted;
+
 
     document.getElementById("onlineUsers")
-        .textContent=formatted;
+        .textContent =
+        formatted;
+
 }
 
-setInterval(updateUsers,3500);
+
+setInterval(
+    updateUsers,
+    3500
+);
 
 
 /* =====================================================
@@ -2121,24 +2638,45 @@ function setupCanvas(canvas){
     const dpr =
         window.devicePixelRatio || 1;
 
+
     canvas.width =
-        rect.width*dpr;
+        Math.max(
+            1,
+            rect.width * dpr
+        );
+
 
     canvas.height =
-        rect.height*dpr;
+        Math.max(
+            1,
+            rect.height * dpr
+        );
+
 
     const ctx =
         canvas.getContext("2d");
 
+
     ctx.setTransform(
-        dpr,0,0,dpr,0,0
+        dpr,
+        0,
+        0,
+        dpr,
+        0,
+        0
     );
 
+
     return{
-        ctx,
+
+        ctx:ctx,
+
         width:rect.width,
+
         height:rect.height
+
     };
+
 }
 
 
@@ -2149,41 +2687,77 @@ ACTIVITY CHART
 function drawActivityChart(){
 
     const canvas =
-        document.getElementById("activityChart");
+        document.getElementById(
+            "activityChart"
+        );
 
-    if(!canvas) return;
+    if(!canvas)
+        return;
 
-    const {
-        ctx,
-        width,
-        height
-    } = setupCanvas(canvas);
 
-    const values=[
+    const setup =
+        setupCanvas(canvas);
+
+
+    const ctx =
+        setup.ctx;
+
+    const width =
+        setup.width;
+
+    const height =
+        setup.height;
+
+
+    const values = [
+
         32,41,37,52,
         48,63,58,72,
         67,81,74,89
+
     ];
 
+
     ctx.clearRect(
-        0,0,width,height
+        0,
+        0,
+        width,
+        height
     );
+
 
     ctx.strokeStyle =
         "rgba(255,255,255,.07)";
 
-    ctx.lineWidth=1;
+    ctx.lineWidth =
+        1;
 
-    for(let i=1;i<5;i++){
+
+    for(
+        let i=1;
+        i<5;
+        i++
+    ){
 
         const y =
             (height/5)*i;
 
         ctx.beginPath();
-        ctx.moveTo(0,y);
-        ctx.lineTo(width,y);
+
+        ctx.moveTo(
+            0,
+            y
+        );
+
+        ctx.lineTo(
+            width,
+            y
+        );
+
         ctx.stroke();
+
     }
+
 
     const max =
         Math.max(...values);
@@ -2194,38 +2768,69 @@ function drawActivityChart(){
     const range =
         max-min || 1;
 
+
     const points =
-        values.map((value,i)=>{
+        values.map(function(value,i){
 
             const x =
-                (i/(values.length-1))*width;
+                (i/(values.length-1))
+                * width;
 
             const y =
-                height-
-                ((value-min)/range)*
-                (height-30)-15;
+                height -
+                ((value-min)/range)
+                * (height-30) -
+                15;
 
-            return{x,y};
+
+            return{
+                x:x,
+                y:y
+            };
+
         });
+
 
     ctx.beginPath();
 
-    points.forEach((point,i)=>{
 
-        if(i===0)
-            ctx.moveTo(point.x,point.y);
-        else
-            ctx.lineTo(point.x,point.y);
+    points.forEach(function(point,i){
+
+        if(i===0){
+
+            ctx.moveTo(
+                point.x,
+                point.y
+            );
+
+        }else{
+
+            ctx.lineTo(
+                point.x,
+                point.y
+            );
+
+        }
 
     });
 
-    ctx.strokeStyle="#00d4ff";
-    ctx.lineWidth=3;
-    ctx.lineJoin="round";
-    ctx.lineCap="round";
+
+    ctx.strokeStyle =
+        "#00d4ff";
+
+    ctx.lineWidth =
+        3;
+
+    ctx.lineJoin =
+        "round";
+
+    ctx.lineCap =
+        "round";
+
     ctx.stroke();
 
-    points.forEach(point=>{
+
+    points.forEach(function(point){
 
         ctx.beginPath();
 
@@ -2237,14 +2842,21 @@ function drawActivityChart(){
             Math.PI*2
         );
 
-        ctx.fillStyle="#07111f";
+        ctx.fillStyle =
+            "#07111f";
+
         ctx.fill();
 
-        ctx.strokeStyle="#00d4ff";
-        ctx.lineWidth=2;
+        ctx.strokeStyle =
+            "#00d4ff";
+
+        ctx.lineWidth =
+            2;
+
         ctx.stroke();
 
     });
+
 }
 
 
@@ -2255,42 +2867,78 @@ PROFIT CHART
 function drawProfitChart(){
 
     const canvas =
-        document.getElementById("profitChart");
+        document.getElementById(
+            "profitChart"
+        );
 
-    if(!canvas) return;
+    if(!canvas)
+        return;
 
-    const {
-        ctx,
-        width,
-        height
-    } = setupCanvas(canvas);
 
-    const values=[
+    const setup =
+        setupCanvas(canvas);
+
+
+    const ctx =
+        setup.ctx;
+
+    const width =
+        setup.width;
+
+    const height =
+        setup.height;
+
+
+    const values = [
+
         1.2,1.8,1.5,2.3,
         2.1,3.0,2.7,3.6,
         3.2,4.1,3.8,4.7,
         4.3,5.0
+
     ];
 
+
     ctx.clearRect(
-        0,0,width,height
+        0,
+        0,
+        width,
+        height
     );
+
 
     ctx.strokeStyle =
         "rgba(255,255,255,.07)";
 
-    ctx.lineWidth=1;
+    ctx.lineWidth =
+        1;
 
-    for(let i=1;i<5;i++){
+
+    for(
+        let i=1;
+        i<5;
+        i++
+    ){
 
         const y =
             (height/5)*i;
 
         ctx.beginPath();
-        ctx.moveTo(0,y);
-        ctx.lineTo(width,y);
+
+        ctx.moveTo(
+            0,
+            y
+        );
+
+        ctx.lineTo(
+            width,
+            y
+        );
+
         ctx.stroke();
+
     }
+
 
     const max =
         Math.max(...values);
@@ -2301,21 +2949,31 @@ function drawProfitChart(){
     const range =
         max-min || 1;
 
+
     const points =
-        values.map((value,i)=>{
+        values.map(function(value,i){
 
             const x =
-                (i/(values.length-1))*width;
+                (i/(values.length-1))
+                * width;
 
             const y =
-                height-
-                ((value-min)/range)*
-                (height-30)-15;
+                height -
+                ((value-min)/range)
+                * (height-30) -
+                15;
 
-            return{x,y};
+
+            return{
+                x:x,
+                y:y
+            };
+
         });
 
-    /* Area */
+
+    /* AREA */
+
     ctx.beginPath();
 
     ctx.moveTo(
@@ -2323,60 +2981,100 @@ function drawProfitChart(){
         height
     );
 
-    points.forEach(point=>{
+
+    points.forEach(function(point){
+
         ctx.lineTo(
             point.x,
             point.y
         );
+
     });
+
 
     ctx.lineTo(
         points[points.length-1].x,
         height
     );
 
+
     ctx.closePath();
+
 
     const gradient =
         ctx.createLinearGradient(
-            0,0,0,height
+            0,
+            0,
+            0,
+            height
         );
+
 
     gradient.addColorStop(
         0,
         "rgba(0,212,255,.18)"
     );
 
+
     gradient.addColorStop(
         1,
         "rgba(0,212,255,0)"
     );
 
-    ctx.fillStyle=gradient;
+
+    ctx.fillStyle =
+        gradient;
+
     ctx.fill();
 
-    /* Line */
+
+    /* LINE */
+
     ctx.beginPath();
 
-    points.forEach((point,i)=>{
 
-        if(i===0)
-            ctx.moveTo(point.x,point.y);
-        else
-            ctx.lineTo(point.x,point.y);
+    points.forEach(function(point,i){
+
+        if(i===0){
+
+            ctx.moveTo(
+                point.x,
+                point.y
+            );
+
+        }else{
+
+            ctx.lineTo(
+                point.x,
+                point.y
+            );
+
+        }
 
     });
 
-    ctx.strokeStyle="#6c63ff";
-    ctx.lineWidth=3;
-    ctx.lineJoin="round";
-    ctx.lineCap="round";
+
+    ctx.strokeStyle =
+        "#6c63ff";
+
+    ctx.lineWidth =
+        3;
+
+    ctx.lineJoin =
+        "round";
+
+    ctx.lineCap =
+        "round";
+
     ctx.stroke();
+
 
     const last =
         points[points.length-1];
 
+
     ctx.beginPath();
+
 
     ctx.arc(
         last.x,
@@ -2386,8 +3084,12 @@ function drawProfitChart(){
         Math.PI*2
     );
 
-    ctx.fillStyle="#00d4ff";
+
+    ctx.fillStyle =
+        "#00d4ff";
+
     ctx.fill();
+
 }
 
 
@@ -2398,28 +3100,56 @@ DRAW CHARTS
 function drawCharts(){
 
     drawActivityChart();
+
     drawProfitChart();
 
 }
+
 
 window.addEventListener(
     "load",
     drawCharts
 );
 
+
 let resizeTimer;
+
 
 window.addEventListener(
     "resize",
-    ()=>{
+    function(){
 
-        clearTimeout(resizeTimer);
+        clearTimeout(
+            resizeTimer
+        );
 
         resizeTimer =
             setTimeout(
                 drawCharts,
                 150
             );
+
+    }
+);
+
+
+/* =====================================================
+FINAL SAFETY CHECK
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        const buttons =
+            document.querySelectorAll(
+                ".buy-btn"
+            );
+
+        console.log(
+            "Rupay loaded. Buy buttons found:",
+            buttons.length
+        );
 
     }
 );
