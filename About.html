@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width,
+               initial-scale=1.0,
+               maximum-scale=1.0,
+               user-scalable=no">
+
+<meta name="theme-color" content="#050b14">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<title>Rupay — Packages</title>
+
+<style>
+/* =========================
+   GLOBAL
+========================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Inter,Arial,sans-serif;
+    background:#050b14;
+    color:#fff;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+button{
+    font-family:inherit;
+}
+
+.container{
+    width:min(1150px,92%);
+    margin:auto;
+}
+
+/* =========================
+   HEADER
+========================= */
+.header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    height:70px;
+    display:flex;
+    align-items:center;
+    background:rgba(5,11,20,.82);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.nav{
+    width:min(1150px,92%);
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:21px;
+    font-weight:800;
+    letter-spacing:.3px;
+}
+
+.logo{
+    width:38px;
+    height:38px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#00d4ff,#6c63ff);
+    color:#fff;
+    font-size:19px;
+    font-weight:900;
+    box-shadow:0 8px 30px rgba(0,212,255,.22);
+}
+
+/* =========================
+   HERO
+========================= */
+.hero{
+    padding:65px 0 38px;
+    text-align:center;
+}
+
+.hero-badge{
+    display:inline-flex;
+    padding:8px 15px;
+    border:1px solid rgba(0,212,255,.25);
+    border-radius:50px;
+    background:rgba(0,212,255,.07);
+    color:#6ee9ff;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:18px;
+}
+
+.hero h1{
+    font-size:clamp(34px,6vw,58px);
+    line-height:1.05;
+    font-weight:900;
+    letter-spacing:-2px;
+}
+
+.hero h1 span{
+    background:linear-gradient(90deg,#00d4ff,#8d7cff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    max-width:650px;
+    margin:18px auto 0;
+    color:#8d9aae;
+    line-height:1.7;
+    font-size:15px;
+}
+
+/* =========================
+   PACKAGE GRID
+========================= */
+.packages{
+    padding:25px 0 80px;
+}
+
+.package-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.package{
+    position:relative;
+    padding:25px;
+    min-height:330px;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:24px;
+    background:
+        linear-gradient(145deg,
+        rgba(255,255,255,.055),
+        rgba(255,255,255,.018));
+    box-shadow:0 15px 45px rgba(0,0,0,.25);
+    overflow:hidden;
+    transition:.3s ease;
+}
+
+.package:hover{
+    transform:translateY(-6px);
+    border-color:rgba(0,212,255,.3);
+}
+
+.package::before{
+    content:"";
+    position:absolute;
+    width:160px;
+    height:160px;
+    right:-70px;
+    top:-70px;
+    background:#00d4ff;
+    opacity:.08;
+    border-radius:50%;
+    filter:blur(20px);
+}
+
+.package-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:22px;
+}
+
+.package-icon{
+    width:50px;
+    height:50px;
+    border-radius:16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,212,255,.1);
+    border:1px solid rgba(0,212,255,.18);
+    font-size:23px;
+}
+
+.package-name{
+    font-size:22px;
+    font-weight:850;
+}
+
+.tag{
+    padding:6px 10px;
+    border-radius:20px;
+    font-size:10px;
+    font-weight:800;
+    color:#07101c;
+    background:#00d4ff;
+}
+
+.package-desc{
+    color:#8995a8;
+    font-size:13px;
+    line-height:1.6;
+    margin-bottom:24px;
+}
+
+.feature-preview{
+    list-style:none;
+    display:grid;
+    gap:11px;
+}
+
+.feature-preview li{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    color:#c8d1de;
+    font-size:13px;
+}
+
+.check{
+    width:18px;
+    height:18px;
+    flex:none;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,212,255,.12);
+    color:#00d4ff;
+    font-size:11px;
+}
+
+.package-footer{
+    margin-top:25px;
+    display:flex;
+    gap:10px;
+}
+
+.about-btn{
+    width:100%;
+    border:none;
+    cursor:pointer;
+    padding:13px 16px;
+    border-radius:13px;
+    color:#fff;
+    font-size:13px;
+    font-weight:800;
+    background:linear-gradient(135deg,#00a8d0,#6359e8);
+    box-shadow:0 8px 25px rgba(0,212,255,.13);
+    transition:.2s ease;
+}
+
+.about-btn:active{
+    transform:scale(.96);
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer{
+    text-align:center;
+    padding:25px 15px 40px;
+    color:#596577;
+    font-size:12px;
+}
+
+/* =========================
+   MODAL
+========================= */
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:500;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:18px;
+    background:rgba(0,0,0,.72);
+    backdrop-filter:blur(10px);
+
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition:.25s ease;
+}
+
+.modal.active{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+}
+
+.modal-box{
+    width:min(500px,100%);
+    max-height:90vh;
+    overflow-y:auto;
+    border-radius:28px;
+    border:1px solid rgba(255,255,255,.1);
+    background:#091321;
+    box-shadow:0 30px 100px rgba(0,0,0,.6);
+    transform:translateY(25px) scale(.96);
+    transition:.3s ease;
+}
+
+.modal.active .modal-box{
+    transform:translateY(0) scale(1);
+}
+
+/* Modal header */
+.modal-header{
+    position:relative;
+    padding:28px 25px 22px;
+    background:
+        radial-gradient(circle at 90% 0%,
+        rgba(0,212,255,.18),
+        transparent 40%);
+    border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.modal-title-row{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding-right:35px;
+}
+
+.modal-icon{
+    width:56px;
+    height:56px;
+    flex:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:18px;
+    background:linear-gradient(135deg,#00d4ff,#6c63ff);
+    font-size:25px;
+}
+
+.modal-title{
+    font-size:25px;
+    font-weight:900;
+}
+
+.modal-subtitle{
+    margin-top:5px;
+    color:#718095;
+    font-size:12px;
+}
+
+.close-btn{
+    position:absolute;
+    top:20px;
+    right:20px;
+    width:35px;
+    height:35px;
+    border:none;
+    border-radius:50%;
+    cursor:pointer;
+    color:#aeb9c8;
+    background:rgba(255,255,255,.07);
+    font-size:19px;
+}
+
+.close-btn:hover{
+    background:rgba(255,255,255,.13);
+}
+
+/* Modal content */
+.modal-content{
+    padding:22px 25px 26px;
+}
+
+.details-title{
+    color:#6ee9ff;
+    font-size:12px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:14px;
+}
+
+.details-list{
+    display:grid;
+    gap:11px;
+}
+
+.detail-item{
+    display:flex;
+    align-items:center;
+    gap:13px;
+    padding:14px;
+    border-radius:15px;
+    border:1px solid rgba(255,255,255,.06);
+    background:rgba(255,255,255,.035);
+}
+
+.detail-icon{
+    width:35px;
+    height:35px;
+    flex:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:10px;
+    background:rgba(0,212,255,.09);
+    color:#00d4ff;
+    font-size:15px;
+}
+
+.detail-text{
+    color:#d7dee8;
+    font-size:14px;
+    line-height:1.4;
+}
+
+.modal-note{
+    margin-top:18px;
+    padding:14px;
+    border-radius:14px;
+    background:rgba(108,99,255,.08);
+    border:1px solid rgba(108,99,255,.14);
+    color:#9ba5b7;
+    font-size:11px;
+    line-height:1.6;
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media(max-width:900px){
+    .package-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+    .header{
+        height:62px;
+    }
+
+    .logo{
+        width:35px;
+        height:35px;
+        border-radius:11px;
+    }
+
+    .brand{
+        font-size:18px;
+    }
+
+    .hero{
+        padding:48px 0 25px;
+    }
+
+    .hero h1{
+        letter-spacing:-1.2px;
+    }
+
+    .hero p{
+        font-size:13px;
+    }
+
+    .packages{
+        padding-top:15px;
+    }
+
+    .package-grid{
+        grid-template-columns:1fr;
+        gap:15px;
+    }
+
+    .package{
+        min-height:auto;
+        padding:21px;
+        border-radius:21px;
+    }
+
+    .package-name{
+        font-size:20px;
+    }
+
+    .modal{
+        padding:12px;
+    }
+
+    .modal-box{
+        border-radius:23px;
+    }
+
+    .modal-header{
+        padding:23px 20px 19px;
+    }
+
+    .modal-content{
+        padding:19px 20px 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     HEADER
+========================= -->
+<header class="header">
+    <div class="nav">
+        <div class="brand">
+            <div class="logo">₹</div>
+            <span>Rupay</span>
+        </div>
+    </div>
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+<section class="hero">
+    <div class="container">
+
+        <div class="hero-badge">
+            ✦ Rupay Packages
+        </div>
+
+        <h1>
+            Choose Your <span>Package</span>
+        </h1>
+
+        <p>
+            Explore package details, support information,
+            income details, cashback and withdrawal limits
+            in one simple place.
+        </p>
+
+    </div>
+</section>
+
+
+<!-- =========================
+     PACKAGES
+========================= -->
+<section class="packages">
+<div class="container">
+
+<div class="package-grid">
+
+    <!-- NORMAL -->
+    <div class="package">
+        <div class="package-top">
+            <div class="package-icon">◈</div>
+            <div class="tag">STARTER</div>
+        </div>
+
+        <div class="package-name">Normal</div>
+
+        <div class="package-desc">
+            Simple package with basic support and
+            standard earning features.
+        </div>
+
+        <ul class="feature-preview">
+            <li><span class="check">✓</span> 24/hr Support</li>
+            <li><span class="check">✓</span> Daily 4k To 8k Daily Income</li>
+            <li><span class="check">✓</span> Free cashback</li>
+        </ul>
+
+        <div class="package-footer">
+            <button class="about-btn"
+                    onclick="showPackage('normal')">
+                About Package
+            </button>
+        </div>
+    </div>
+
+
+    <!-- SILVER -->
+    <div class="package">
+        <div class="package-top">
+            <div class="package-icon">◇</div>
+            <div class="tag">SILVER</div>
+        </div>
+
+        <div class="package-name">Silver</div>
+
+        <div class="package-desc">
+            Higher package level with increased
+            daily income and cashback.
+        </div>
+
+        <ul class="feature-preview">
+            <li><span class="check">✓</span> 24/hr Support</li>
+            <li><span class="check">✓</span> Daily 8k To 13k Daily Income</li>
+            <li><span class="check">✓</span> Free cashback : 1200</li>
+        </ul>
+
+        <div class="package-footer">
+            <button class="about-btn"
+                    onclick="showPackage('silver')">
+                About Package
+            </button>
+        </div>
+    </div>
+
+
+    <!-- GOLD -->
+    <div class="package">
+        <div class="package-top">
+            <div class="package-icon">◆</div>
+            <div class="tag">GOLD</div>
+        </div>
+
+        <div class="package-name">Gold</div>
+
+        <div class="package-desc">
+            Premium earning package with a higher
+            daily income range.
+        </div>
+
+        <ul class="feature-preview">
+            <li><span class="check">✓</span> 24/hr Support</li>
+            <li><span class="check">✓</span> Daily 13k To 20k Daily Income</li>
+            <li><span class="check">✓</span> Free cashback : 1200</li>
+        </ul>
+
+        <div class="package-footer">
+            <button class="about-btn"
+                    onclick="showPackage('gold')">
+                About Package
+            </button>
+        </div>
+    </div>
+
+
+    <!-- PREMIUM -->
+    <div class="package">
+        <div class="package-top">
+            <div class="package-icon">✦</div>
+            <div class="tag">PREMIUM</div>
+        </div>
+
+        <div class="package-name">Premium</div>
+
+        <div class="package-desc">
+            Advanced package designed with a higher
+            withdrawal limit.
+        </div>
+
+        <ul class="feature-preview">
+            <li><span class="check">✓</span> 24/hr Support</li>
+            <li><span class="check">✓</span> Daily 3pk To 47k Daily Income</li>
+            <li><span class="check">✓</span> Free cashback : 1200</li>
+        </ul>
+
+        <div class="package-footer">
+            <button class="about-btn"
+                    onclick="showPackage('premium')">
+                About Package
+            </button>
+        </div>
+    </div>
+
+
+    <!-- RUPAY 7X PRO -->
+    <div class="package">
+        <div class="package-top">
+            <div class="package-icon">♛</div>
+            <div class="tag">7X PRO</div>
+        </div>
+
+        <div class="package-name">Rupay7x Pro</div>
+
+        <div class="package-desc">
+            High-level package featuring the highest
+            listed daily income range.
+        </div>
+
+        <ul class="feature-preview">
+            <li><span class="check">✓</span> 24/hr Support</li>
+            <li><span class="check">✓</span> Daily 50k To 87k Daily Income</li>
+            <li><span class="check">✓</span> Free cashback : 1200</li>
+        </ul>
+
+        <div class="package-footer">
+            <button class="about-btn"
+                    onclick="showPackage('rupay7x')">
+                About Package
+            </button>
+        </div>
+    </div>
+
+</div>
+</div>
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+<footer class="footer">
+    © 2026 Rupay. All rights reserved.
+</footer>
+
+
+<!-- =========================
+     MODAL
+========================= -->
+<div class="modal" id="packageModal">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <button class="close-btn"
+                    onclick="closePackage()">
+                ×
+            </button>
+
+            <div class="modal-title-row">
+
+                <div class="modal-icon" id="modalIcon">
+                    ₹
+                </div>
+
+                <div>
+                    <div class="modal-title"
+                         id="modalTitle">
+                        Package
+                    </div>
+
+                    <div class="modal-subtitle">
+                        Package information
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="modal-content">
+
+            <div class="details-title">
+                Package Details
+            </div>
+
+            <div class="details-list"
+                 id="detailsList">
+            </div>
+
+            <div class="modal-note">
+                Package information is displayed exactly
+                according to the details provided on this platform.
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+
+/* =========================
+   PACKAGE DATA
+========================= */
+
+const packages = {
+
+    normal: {
+        name: "Normal Package",
+        icon: "◈",
+        details: [
+            "24/hr Support",
+            "Daily 4k To 8k Daily Income",
+            "Free cashback",
+            "Normal income",
+            "Limited Withdrawal up to 8k"
+        ]
+    },
+
+    silver: {
+        name: "Silver Package",
+        icon: "◇",
+        details: [
+            "24/hr Support",
+            "Daily 8k To 13k Daily Income",
+            "Free cashback : 1200",
+            "Best income",
+            "Limited Withdrawal up to 15k"
+        ]
+    },
+
+    gold: {
+        name: "Gold Package",
+        icon: "◆",
+        details: [
+            "24/hr Support",
+            "Daily 13k To 20k Daily Income",
+            "Free cashback : 1200",
+            "Normal income",
+            "Limited Withdrawal up to 25k"
+        ]
+    },
+
+    premium: {
+        name: "Premium Package",
+        icon: "✦",
+        details: [
+            "24/hr Support",
+            "Daily 3pk To 47k Daily Income",
+            "Free cashback : 1200",
+            "Normal income",
+            "Limited Withdrawal up to 50k"
+        ]
+    },
+
+    rupay7x: {
+        name: "Rupay7x Pro Package",
+        icon: "♛",
+        details: [
+            "24/hr Support",
+            "Daily 50k To 87k Daily Income",
+            "Free cashback : 1200",
+            "Low Risk, High paid",
+            "Limited Withdrawal up to Per day 7 time"
+        ]
+    }
+
+};
+
+
+/* =========================
+   OPEN PACKAGE
+========================= */
+
+function showPackage(packageName){
+
+    const data = packages[packageName];
+
+    if(!data) return;
+
+    const modal = document.getElementById("packageModal");
+    const title = document.getElementById("modalTitle");
+    const icon = document.getElementById("modalIcon");
+    const list = document.getElementById("detailsList");
+
+    title.textContent = data.name;
+    icon.textContent = data.icon;
+
+    list.innerHTML = "";
+
+    data.details.forEach((detail, index) => {
+
+        const item = document.createElement("div");
+
+        item.className = "detail-item";
+
+        item.innerHTML = `
+            <div class="detail-icon">
+                ${getIcon(index)}
+            </div>
+            <div class="detail-text">
+                ${detail}
+            </div>
+        `;
+
+        list.appendChild(item);
+    });
+
+    modal.classList.add("active");
+
+    document.body.style.overflow = "hidden";
+}
+
+
+/* =========================
+   DETAIL ICONS
+========================= */
+
+function getIcon(index){
+
+    const icons = [
+        "☎",
+        "₹",
+        "✦",
+        "★",
+        "↗"
+    ];
+
+    return icons[index] || "✓";
+}
+
+
+/* =========================
+   CLOSE MODAL
+========================= */
+
+function closePackage(){
+
+    const modal = document.getElementById("packageModal");
+
+    modal.classList.remove("active");
+
+    document.body.style.overflow = "";
+}
+
+
+/* =========================
+   CLOSE WHEN CLICK OUTSIDE
+========================= */
+
+document.getElementById("packageModal")
+.addEventListener("click", function(event){
+
+    if(event.target === this){
+        closePackage();
+    }
+
+});
+
+
+/* =========================
+   CLOSE WITH ESC KEY
+========================= */
+
+document.addEventListener("keydown", function(event){
+
+    if(event.key === "Escape"){
+        closePackage();
+    }
+
+});
+
+</script>
+
+</body>
+</html>
