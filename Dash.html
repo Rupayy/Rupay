@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0,
       maximum-scale=1.0, user-scalable=no">
@@ -464,11 +463,6 @@ body{
     border-bottom:0;
 }
 
-/* =========================================================
-   BIGGER INVEST + PROFIT AMOUNTS
-   ========================================================= */
-
-/* Invest amount */
 .trade-table td:first-child{
     font-size:18px;
     font-weight:900;
@@ -477,7 +471,6 @@ body{
     white-space:nowrap;
 }
 
-/* Profit amount */
 .trade-table td.profit{
     font-size:19px;
     font-weight:950;
@@ -487,13 +480,11 @@ body{
     text-shadow:0 0 14px rgba(38,217,138,.12);
 }
 
-/* Amount column labels */
 .trade-table th:first-child,
 .trade-table th:nth-child(2){
     font-size:11px;
 }
 
-/* Action button */
 .invest-btn{
     border:0;
     padding:9px 12px;
@@ -723,6 +714,152 @@ body{
 }
 
 /* =========================================================
+   PREMIUM TEEN PATTI GAME CARD
+   ========================================================= */
+
+.game-card{
+    position:relative;
+    overflow:hidden;
+    min-height:330px;
+    padding:28px;
+    border-radius:27px;
+    border:1px solid rgba(255,200,87,.22);
+    background:
+        radial-gradient(circle at 85% 10%,rgba(255,200,87,.20),transparent 27%),
+        radial-gradient(circle at 15% 100%,rgba(87,127,255,.18),transparent 35%),
+        linear-gradient(135deg,#111b32,#091321 70%);
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
+    cursor:pointer;
+    transition:.3s ease;
+}
+
+.game-card:hover{
+    transform:translateY(-4px);
+    border-color:rgba(255,200,87,.45);
+    box-shadow:0 25px 70px rgba(0,0,0,.45);
+}
+
+.game-card:before{
+    content:"";
+    position:absolute;
+    width:210px;
+    height:210px;
+    right:-90px;
+    top:-90px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.game-card:after{
+    content:"";
+    position:absolute;
+    width:140px;
+    height:140px;
+    left:-70px;
+    bottom:-70px;
+    border-radius:50%;
+    border:1px solid rgba(255,200,87,.10);
+}
+
+.game-top{
+    position:relative;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.game-icon{
+    width:82px;
+    height:82px;
+    flex-shrink:0;
+    display:grid;
+    place-items:center;
+    border-radius:25px;
+    font-size:42px;
+    background:
+        linear-gradient(145deg,#ffda72,#d99b27);
+    border:1px solid rgba(255,255,255,.2);
+    box-shadow:
+        0 12px 30px rgba(255,184,45,.22),
+        inset 0 1px 0 rgba(255,255,255,.4);
+}
+
+.game-badge{
+    padding:7px 11px;
+    border-radius:20px;
+    color:#1d1604;
+    background:linear-gradient(135deg,#ffe082,#ffb52e);
+    font-size:10px;
+    font-weight:950;
+    letter-spacing:.5px;
+}
+
+.game-content{
+    position:relative;
+    z-index:2;
+    margin-top:25px;
+}
+
+.game-content h2{
+    font-size:28px;
+    font-weight:950;
+    letter-spacing:-.7px;
+}
+
+.game-content h2 span{
+    color:#ffd05a;
+}
+
+.game-content p{
+    max-width:550px;
+    color:#94a6bc;
+    font-size:13px;
+    line-height:1.7;
+    margin-top:8px;
+}
+
+.game-meta{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-top:17px;
+}
+
+.game-meta span{
+    padding:7px 10px;
+    border-radius:10px;
+    color:#c9d5e5;
+    background:rgba(255,255,255,.055);
+    border:1px solid rgba(255,255,255,.07);
+    font-size:10px;
+    font-weight:750;
+}
+
+.game-play{
+    position:relative;
+    z-index:2;
+    width:100%;
+    margin-top:22px;
+    border:0;
+    border-radius:14px;
+    padding:13px 18px;
+    color:#171105;
+    background:linear-gradient(135deg,#ffd45c,#ffad22);
+    font-weight:950;
+    font-size:13px;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(255,181,43,.18);
+    transition:.25s;
+}
+
+.game-play:hover{
+    transform:translateY(-2px);
+    box-shadow:0 14px 30px rgba(255,181,43,.28);
+}
+
+/* =========================================================
    MENU
    ========================================================= */
 
@@ -909,7 +1046,6 @@ body{
         font-size:10px;
     }
 
-    /* Larger amounts on mobile */
     .trade-table th,
     .trade-table td{
         padding:13px 3px;
@@ -953,6 +1089,23 @@ body{
 
     .nav-btn{
         font-size:9px;
+    }
+
+    .game-card{
+        min-height:310px;
+        padding:21px;
+        border-radius:23px;
+    }
+
+    .game-icon{
+        width:70px;
+        height:70px;
+        border-radius:21px;
+        font-size:35px;
+    }
+
+    .game-content h2{
+        font-size:25px;
     }
 }
 
@@ -1010,26 +1163,26 @@ body{
 
 <header class="header">
 
-    <div class="logo">
-        <div class="logo-mark">₹</div>
-        Rupay
-    </div>
+<div class="logo">
+    <div class="logo-mark">₹</div>
+    Rupay
+</div>
 
-    <div class="header-actions">
+<div class="header-actions">
 
-        <button class="icon-btn"
-                onclick="showPage('profile')"
-                aria-label="Profile">
-            👤
-        </button>
+    <button class="icon-btn"
+            onclick="showPage('profile')"
+            aria-label="Profile">
+        👤
+    </button>
 
-        <button class="icon-btn"
-                onclick="toggleMenu()"
-                aria-label="Menu">
-            ⋮
-        </button>
+    <button class="icon-btn"
+            onclick="toggleMenu()"
+            aria-label="Menu">
+        ⋮
+    </button>
 
-    </div>
+</div>
 
 </header>
 
@@ -1040,25 +1193,25 @@ body{
 
 <div class="menu" id="menu">
 
-    <button onclick="showPage('home');closeMenu()">
-        🏠 &nbsp; Dashboard
-    </button>
+<button onclick="showPage('home');closeMenu()">
+    🏠 &nbsp; Dashboard
+</button>
 
-    <button onclick="showPage('profile');closeMenu()">
-        👤 &nbsp; Profile
-    </button>
+<button onclick="showPage('profile');closeMenu()">
+    👤 &nbsp; Profile
+</button>
 
-    <button onclick="showPage('game');closeMenu()">
-        🎮 &nbsp; Games
-    </button>
+<button onclick="showPage('game');closeMenu()">
+    🎮 &nbsp; Games
+</button>
 
-    <button onclick="showToast('Notifications are currently empty')">
-        🔔 &nbsp; Notifications
-    </button>
+<button onclick="showToast('Notifications are currently empty')">
+    🔔 &nbsp; Notifications
+</button>
 
-    <button onclick="showToast('Settings will be available soon')">
-        ⚙️ &nbsp; Settings
-    </button>
+<button onclick="showToast('Settings will be available soon')">
+    ⚙️ &nbsp; Settings
+</button>
 
 </div>
 
@@ -1069,358 +1222,344 @@ body{
 
 <main class="app">
 
+
 <!-- ================= HOME ================= -->
 
 <section id="home" class="page active">
 
-    <div class="welcome">
-        <small>Welcome back 👋</small>
-        <h1>Rupay Trading </h1>
+<div class="welcome">
+    <small>Welcome back 👋</small>
+    <h1>Rupay Trading </h1>
+</div>
+
+
+<!-- BALANCE -->
+
+<div class="balance-card">
+
+    <div class="balance-label">
+        TOTAL BALANCE
     </div>
 
+    <div class="balance">
+        ₹1,200 <span>NPR</span>
+    </div>
 
-    <!-- BALANCE -->
+    <div class="balance-sub">
+        Available balance
+    </div>
 
-    <div class="balance-card">
+    <div class="balance-actions">
 
-        <div class="balance-label">
-            TOTAL BALANCE
+        <button class="primary-btn"
+                onclick="goWithdraw()">
+            Withdraw
+        </button>
+
+        <button class="secondary-btn"
+                onclick="showToast('Balance details opened')">
+            View Details
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- EARNINGS -->
+
+<div class="stats">
+
+    <div class="stat">
+        <div class="stat-title">
+            Today Earning
         </div>
 
-        <div class="balance">
-            ₹1,200 <span>NPR</span>
+        <div class="stat-value green">
+            ₹1,200
+        </div>
+    </div>
+
+    <div class="stat">
+        <div class="stat-title">
+            Weekly Earning
         </div>
 
-        <div class="balance-sub">
-            Available balance
+        <div class="stat-value">
+            ₹500
+        </div>
+    </div>
+
+    <div class="stat">
+        <div class="stat-title">
+            Monthly Earning
         </div>
 
-        <div class="balance-actions">
+        <div class="stat-value">
+            ₹120
+        </div>
+    </div>
 
-            <button class="primary-btn"
-                    onclick="goWithdraw()">
-                Withdraw
-            </button>
+</div>
 
-            <button class="secondary-btn"
-                    onclick="showToast('Balance details opened')">
-                View Details
-            </button>
 
+<div class="section">
+
+    <div class="section-head">
+        <h2>Investment Progress</h2>
+        <span>Level 1</span>
+    </div>
+
+    <div class="level-card">
+
+        <div class="progress-wrap">
+
+            <svg class="progress-ring"
+                 viewBox="0 0 170 170">
+
+                <defs>
+
+                    <linearGradient id="progressGradient"
+                                    x1="0%" y1="0%"
+                                    x2="100%" y2="100%">
+
+                        <stop offset="0%"
+                              stop-color="#168fff"/>
+
+                        <stop offset="100%"
+                              stop-color="#49e7ff"/>
+
+                    </linearGradient>
+
+                </defs>
+
+                <circle
+                    class="progress-bg"
+                    cx="85"
+                    cy="85"
+                    r="70">
+                </circle>
+
+                <circle
+                    class="progress-value"
+                    cx="85"
+                    cy="85"
+                    r="70">
+                </circle>
+
+            </svg>
+
+            <div class="progress-center">
+                50%
+            </div>
+
+        </div>
+
+        <h3>Investment Progress</h3>
+
+        <p>
+            Invest in trading to fill your progress.
+            Reach 100% to unlock the next level and
+            access additional platform features.
+        </p>
+
+        <div class="level-bar">
+            <span></span>
         </div>
 
     </div>
 
+</div>
 
-    <!-- EARNINGS -->
 
-    <div class="stats">
+<!-- =====================================================
+     TRADING LIST
+     ===================================================== -->
 
-        <div class="stat">
-            <div class="stat-title">
-                Today Earning
-            </div>
+<div class="section" id="tradingSection">
 
-            <div class="stat-value green">
-                ₹1,200
-            </div>
-        </div>
+    <div class="section-head">
 
-        <div class="stat">
-            <div class="stat-title">
-                Weekly Earning
-            </div>
+        <h2>Trading List</h2>
 
-            <div class="stat-value">
-                ₹500
-            </div>
-        </div>
+        <span>
+            Available Plans
+        </span>
 
-        <div class="stat">
-            <div class="stat-title">
-                Monthly Earning
-            </div>
+    </div>
 
-            <div class="stat-value">
-                ₹120
-            </div>
+    <div class="table-card">
+
+        <table class="trade-table">
+
+            <thead>
+
+                <tr>
+                    <th>Invest</th>
+                    <th>Profit</th>
+                    <th>Action</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>₹800</td>
+
+                    <td class="profit">
+                        ₹1,640
+                    </td>
+
+                    <td>
+                        <button class="invest-btn"
+                                onclick="goInvest(800)">
+                            Invest Now
+                        </button>
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>₹1,500</td>
+
+                    <td class="profit">
+                        ₹2,540
+                    </td>
+
+                    <td>
+                        <button class="invest-btn"
+                                onclick="goInvest(1500)">
+                            Invest Now
+                        </button>
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>₹2,300</td>
+
+                    <td class="profit">
+                        ₹3,650
+                    </td>
+
+                    <td>
+                        <button class="invest-btn"
+                                onclick="goInvest(2300)">
+                            Invest Now
+                        </button>
+                    </td>
+
+                </tr>
+
+
+                <tr class="offer">
+
+                    <td>₹3,200</td>
+
+                    <td class="profit">
+                        ₹4,640
+                    </td>
+
+                    <td>
+                        <button class="invest-btn"
+                                onclick="goInvest(3200)">
+                            Invest Now
+                        </button>
+                    </td>
+
+                </tr>
+
+
+                <tr class="offer">
+
+                    <td>₹5,500</td>
+
+                    <td class="profit">
+                        ₹8,540
+                    </td>
+
+                    <td>
+                        <button class="invest-btn"
+                                onclick="goInvest(5500)">
+                            Invest Now
+                        </button>
+                    </td>
+
+                </tr>
+
+
+                <tr class="offer">
+
+                    <td>₹9,300</td>
+
+                    <td class="profit">
+                        ₹13,640
+                    </td>
+
+                    <td>
+                        <button class="invest-btn"
+                                onclick="goInvest(9300)">
+                            Invest Now
+                        </button>
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <div class="coming">
+            More trading plans coming soon
         </div>
 
     </div>
-    
 
-    <div class="section">
+</div>
 
-        <div class="section-head">
-            <h2>Investment Progress</h2>
-            <span>Level 1</span>
-        </div>
 
-        <div class="level-card">
+<!-- =====================================================
+     CHART
+     ===================================================== -->
 
-            <div class="progress-wrap">
+<div class="section">
 
-                <svg class="progress-ring"
-                     viewBox="0 0 170 170">
+    <div class="section-head">
 
-                    <defs>
+        <h2>Trading Market</h2>
 
-                        <linearGradient id="progressGradient"
-                                        x1="0%" y1="0%"
-                                        x2="100%" y2="100%">
+        <span>
+            Live-style demo
+        </span>
 
-                            <stop offset="0%"
-                                  stop-color="#168fff"/>
+    </div>
 
-                            <stop offset="100%"
-                                  stop-color="#49e7ff"/>
+    <div class="chart-card">
 
-                        </linearGradient>
+        <div class="chart-head">
 
-                    </defs>
+            <div class="coin">
 
-                    <circle
-                        class="progress-bg"
-                        cx="85"
-                        cy="85"
-                        r="70">
-                    </circle>
-
-                    <circle
-                        class="progress-value"
-                        cx="85"
-                        cy="85"
-                        r="70">
-                    </circle>
-
-                </svg>
-
-                <div class="progress-center">
-                    50%
+                <div class="coin-icon">
+                    ₿
                 </div>
 
-            </div>
+                <div>
 
-            <h3>Investment Progress</h3>
-
-            <p>
-                Invest in trading to fill your progress.
-                Reach 100% to unlock the next level and
-                access additional platform features.
-            </p>
-
-            <div class="level-bar">
-                <span></span>
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =====================================================
-         TRADING LIST
-         ===================================================== -->
-
-    <div class="section" id="tradingSection">
-
-        <div class="section-head">
-
-            <h2>Trading List</h2>
-
-            <span>
-                Available Plans
-            </span>
-
-        </div>
-
-        <div class="table-card">
-
-            <table class="trade-table">
-
-                <thead>
-
-                    <tr>
-                        <th>Invest</th>
-                        <th>Profit</th>
-                        <th>Action</th>
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-
-                        <td>₹800</td>
-
-                        <td class="profit">
-                            ₹1,640
-                        </td>
-
-                        <td>
-                            <button class="invest-btn"
-                                    onclick="goInvest(800)">
-                                Invest Now
-                            </button>
-                        </td>
-
-                    </tr>
-
-
-                    <tr>
-
-                        <td>₹1,500</td>
-
-                        <td class="profit">
-                            ₹2,540
-                        </td>
-
-                        <td>
-                            <button class="invest-btn"
-                                    onclick="goInvest(1500)">
-                                Invest Now
-                            </button>
-                        </td>
-
-                    </tr>
-
-
-                    <tr>
-
-                        <td>₹2,300</td>
-
-                        <td class="profit">
-                            ₹3,650
-                        </td>
-
-                        <td>
-                            <button class="invest-btn"
-                                    onclick="goInvest(2300)">
-                                Invest Now
-                            </button>
-                        </td>
-
-                    </tr>
-
-
-                    <tr class="offer">
-
-                        <td>₹3,200</td>
-
-                        <td class="profit">
-                            ₹4,640
-                        </td>
-
-                        <td>
-                            <button class="invest-btn"
-                                    onclick="goInvest(3200)">
-                                Invest Now
-                            </button>
-                        </td>
-
-                    </tr>
-
-
-                    <tr class="offer">
-
-                        <td>₹5,500</td>
-
-                        <td class="profit">
-                            ₹8,540
-                        </td>
-
-                        <td>
-                            <button class="invest-btn"
-                                    onclick="goInvest(5500)">
-                                Invest Now
-                            </button>
-                        </td>
-
-                    </tr>
-
-
-                    <tr class="offer">
-
-                        <td>₹9,300</td>
-
-                        <td class="profit">
-                            ₹13,640
-                        </td>
-
-                        <td>
-                            <button class="invest-btn"
-                                    onclick="goInvest(9300)">
-                                Invest Now
-                            </button>
-                        </td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-            <div class="coming">
-                More trading plans coming soon
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =====================================================
-         CHART
-         ===================================================== -->
-
-    <div class="section">
-
-        <div class="section-head">
-
-            <h2>Trading Market</h2>
-
-            <span>
-                Live-style demo
-            </span>
-
-        </div>
-
-        <div class="chart-card">
-
-            <div class="chart-head">
-
-                <div class="coin">
-
-                    <div class="coin-icon">
-                        ₿
-                    </div>
-
-                    <div>
-
-                        <strong>
-                            Trading Coin
-                        </strong>
-
-                        <br>
-
-                        <small>
-                            TRC / NPR
-                        </small>
-
-                    </div>
-
-                </div>
-
-
-                <div class="chart-value">
-
-                    <strong id="coinPrice">
-                        ₹82,450
+                    <strong>
+                        Trading Coin
                     </strong>
 
-                    <small id="coinChange">
-                        +2.84%
+                    <br>
+
+                    <small>
+                        TRC / NPR
                     </small>
 
                 </div>
@@ -1428,157 +1567,172 @@ body{
             </div>
 
 
-            <svg class="chart"
-                 viewBox="0 0 800 190"
-                 preserveAspectRatio="none">
+            <div class="chart-value">
 
-                <defs>
+                <strong id="coinPrice">
+                    ₹82,450
+                </strong>
 
-                    <linearGradient id="areaGradient"
-                                    x1="0"
-                                    y1="0"
-                                    x2="0"
-                                    y2="1">
-
-                        <stop offset="0%"
-                              stop-color="#43d8ff"
-                              stop-opacity=".45"/>
-
-                        <stop offset="100%"
-                              stop-color="#43d8ff"
-                              stop-opacity="0"/>
-
-                    </linearGradient>
-
-                </defs>
-
-
-                <line class="chart-grid"
-                      x1="0"
-                      y1="35"
-                      x2="800"
-                      y2="35"/>
-
-                <line class="chart-grid"
-                      x1="0"
-                      y1="95"
-                      x2="800"
-                      y2="95"/>
-
-                <line class="chart-grid"
-                      x1="0"
-                      y1="155"
-                      x2="800"
-                      y2="155"/>
-
-
-                <path id="chartArea"
-                      class="chart-area"
-                      d="">
-                </path>
-
-                <path id="chartLine"
-                      class="chart-line"
-                      d="">
-                </path>
-
-                <circle id="chartDot"
-                        class="chart-dot"
-                        cx="790"
-                        cy="95"
-                        r="5">
-                </circle>
-
-            </svg>
-
-        </div>
-
-    </div>
-
-
-    <!-- =====================================================
-         REFERRAL
-         ===================================================== -->
-
-    <div class="section">
-
-        <div class="ref-card">
-
-            <h3>
-                Earn By Referral
-            </h3>
-
-            <p>
-                Refer your friend and get
-                <strong>₹1,899 cashback</strong>.
-            </p>
-
-
-            <div class="ref-link">
-
-                <input id="refLink"
-                       value="https://example.com/rupay/ref/12345"
-                       readonly>
-
-                <button class="primary-btn"
-                        onclick="copyReferral()">
-                    Copy
-                </button>
-
-            </div>
-
-
-            <div class="share-buttons">
-
-                <button class="share"
-                        onclick="shareWhatsApp()">
-                    💬 WhatsApp
-                </button>
-
-                <button class="share"
-                        onclick="shareFacebook()">
-                    Facebook
-                </button>
-
-                <button class="share"
-                        onclick="nativeShare()">
-                    ↗ Share
-                </button>
+                <small id="coinChange">
+                    +2.84%
+                </small>
 
             </div>
 
         </div>
 
+
+        <svg class="chart"
+             viewBox="0 0 800 190"
+             preserveAspectRatio="none">
+
+            <defs>
+
+                <linearGradient id="areaGradient"
+                                x1="0"
+                                y1="0"
+                                x2="0"
+                                y2="1">
+
+                    <stop offset="0%"
+                          stop-color="#43d8ff"
+                          stop-opacity=".45"/>
+
+                    <stop offset="100%"
+                          stop-color="#43d8ff"
+                          stop-opacity="0"/>
+
+                </linearGradient>
+
+            </defs>
+
+
+            <line class="chart-grid"
+                  x1="0"
+                  y1="35"
+                  x2="800"
+                  y2="35"/>
+
+            <line class="chart-grid"
+                  x1="0"
+                  y1="95"
+                  x2="800"
+                  y2="95"/>
+
+            <line class="chart-grid"
+                  x1="0"
+                  y1="155"
+                  x2="800"
+                  y2="155"/>
+
+
+            <path id="chartArea"
+                  class="chart-area"
+                  d="">
+            </path>
+
+            <path id="chartLine"
+                  class="chart-line"
+                  d="">
+            </path>
+
+            <circle id="chartDot"
+                    class="chart-dot"
+                    cx="790"
+                    cy="95"
+                    r="5">
+            </circle>
+
+        </svg>
+
     </div>
 
+</div>
 
-    <!-- LEVEL 2 -->
 
-    <div class="section">
+<!-- =====================================================
+     REFERRAL
+     ===================================================== -->
 
-        <div class="lock-card">
+<div class="section">
 
-            <div class="lock-icon">
-                🔒
-            </div>
+    <div class="ref-card">
 
-            <h2>
-                Unlock More Income Methods
-            </h2>
+        <h3>
+            Earn By Referral
+        </h3>
 
-            <p>
-                Reach Level 2 to unlock additional platform
-                features, offers and income methods.
-            </p>
+        <p>
+            Refer your friend and get
+            <strong>₹1,899 cashback</strong>.
+        </p>
+
+
+        <div class="ref-link">
+
+            <input id="refLink"
+                   value="https://example.com/rupay/ref/12345"
+                   readonly>
 
             <button class="primary-btn"
-                    onclick="showToast('Level 2 features are currently locked')">
-                View Level 2
+                    onclick="copyReferral()">
+                Copy
+            </button>
+
+        </div>
+
+
+        <div class="share-buttons">
+
+            <button class="share"
+                    onclick="shareWhatsApp()">
+                💬 WhatsApp
+            </button>
+
+            <button class="share"
+                    onclick="shareFacebook()">
+                Facebook
+            </button>
+
+            <button class="share"
+                    onclick="nativeShare()">
+                ↗ Share
             </button>
 
         </div>
 
     </div>
+
+</div>
+
+
+<!-- LEVEL 2 -->
+
+<div class="section">
+
+    <div class="lock-card">
+
+        <div class="lock-icon">
+            🔒
+        </div>
+
+        <h2>
+            Unlock More Income Methods
+        </h2>
+
+        <p>
+            Reach Level 2 to unlock additional platform
+            features, offers and income methods.
+        </p>
+
+        <button class="primary-btn"
+                onclick="showToast('Level 2 features are currently locked')">
+            View Level 2
+        </button>
+
+    </div>
+
+</div>
 
 </section>
 
@@ -1589,84 +1743,113 @@ body{
 
 <section id="profile" class="page">
 
-    <div class="welcome">
+<div class="welcome">
 
-        <small>
-            Account
-        </small>
+    <small>
+        Account
+    </small>
 
-        <h1>
-            Profile
-        </h1>
+    <h1>
+        Profile
+    </h1>
 
+</div>
+
+
+<div class="lock-card">
+
+    <div class="lock-icon">
+        🔐
     </div>
 
+    <h2>
+        Profile Locked
+    </h2>
 
-    <div class="lock-card">
+    <p>
+        Your advanced profile area is locked.
+        Reach Level 2 to access this section.
+    </p>
 
-        <div class="lock-icon">
-            🔐
-        </div>
+    <button class="primary-btn"
+            onclick="showPage('home')">
+        Back to Home
+    </button>
 
-        <h2>
-            Profile Locked
-        </h2>
-
-        <p>
-            Your advanced profile area is locked.
-            Reach Level 2 to access this section.
-        </p>
-
-        <button class="primary-btn"
-                onclick="showPage('home')">
-            Back to Home
-        </button>
-
-    </div>
+</div>
 
 </section>
 
 
 <!-- =========================================================
      GAME
+     ONLY THIS SECTION HAS BEEN CHANGED
      ========================================================= -->
 
 <section id="game" class="page">
 
-    <div class="welcome">
+<div class="welcome">
 
-        <small>
-            Entertainment
-        </small>
+    <small>
+        Entertainment
+    </small>
 
-        <h1>
-            Games
-        </h1>
+    <h1>
+        Games
+    </h1>
+
+</div>
+
+
+<div class="game-card"
+     onclick="openTeenPatti()">
+
+    <div class="game-top">
+
+        <div class="game-icon">
+            🃏
+        </div>
+
+        <div class="game-badge">
+            PREMIUM GAME
+        </div>
 
     </div>
 
 
-    <div class="lock-card">
-
-        <div class="lock-icon">
-            🎮
-        </div>
+    <div class="game-content">
 
         <h2>
-            Unlock at Level 2
+            Teen <span>Patti</span>
         </h2>
 
         <p>
-            Games and rewards will become available
-            after reaching Level 2.
+            Enter the premium Teen Patti game
+            experience and play against the AI.
         </p>
 
-        <button class="primary-btn"
-                onclick="showPage('home')">
-            Return Home
+
+        <div class="game-meta">
+
+            <span>👤 User vs AI</span>
+
+            <span>🃏 3 Cards</span>
+
+            <span>✨ Premium</span>
+
+        </div>
+
+
+        <button class="game-play"
+                onclick="event.stopPropagation(); openTeenPatti()">
+
+            🎮 Play Teen Patti
+
         </button>
 
     </div>
+
+</div>
 
 </section>
 
@@ -1677,40 +1860,40 @@ body{
 
 <section id="offer" class="page">
 
-    <div class="welcome">
+<div class="welcome">
 
-        <small>
-            Rewards
-        </small>
+    <small>
+        Rewards
+    </small>
 
-        <h1>
-            Free Offers
-        </h1>
+    <h1>
+        Free Offers
+    </h1>
 
+</div>
+
+
+<div class="lock-card">
+
+    <div class="lock-icon">
+        🎁
     </div>
 
+    <h2>
+        Offers Locked
+    </h2>
 
-    <div class="lock-card">
+    <p>
+        Free offers and promotional rewards are
+        available after reaching Level 2.
+    </p>
 
-        <div class="lock-icon">
-            🎁
-        </div>
+    <button class="primary-btn"
+            onclick="showPage('home')">
+        Return Home
+    </button>
 
-        <h2>
-            Offers Locked
-        </h2>
-
-        <p>
-            Free offers and promotional rewards are
-            available after reaching Level 2.
-        </p>
-
-        <button class="primary-btn"
-                onclick="showPage('home')">
-            Return Home
-        </button>
-
-    </div>
+</div>
 
 </section>
 
@@ -1721,167 +1904,167 @@ body{
 
 <section id="trading" class="page">
 
-    <div class="welcome">
+<div class="welcome">
 
-        <small>
-            Markets
-        </small>
+    <small>
+        Markets
+    </small>
 
-        <h1>
-            Trading
-        </h1>
+    <h1>
+        Trading
+    </h1>
 
-    </div>
-
-
-    <div class="section">
-
-        <div class="table-card">
-
-            <table class="trade-table">
-
-                <thead>
-
-                    <tr>
-                        <th>Invest</th>
-                        <th>Profit</th>
-                        <th>Action</th>
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-
-                        <td>
-                            ₹800
-                        </td>
-
-                        <td class="profit">
-                            ₹1,640
-                        </td>
-
-                        <td>
-                            <button class="invest-btn"
-                                    onclick="goInvest(800)">
-                                Invest Now
-                            </button>
-                        </td>
-
-                    </tr>
+</div>
 
 
-                    <tr>
+<div class="section">
 
-                        <td>
-                            ₹1,500
-                        </td>
+    <div class="table-card">
 
-                        <td class="profit">
-                            ₹2,540
-                        </td>
+        <table class="trade-table">
 
-                        <td>
-                            <button class="invest-btn"
-                                    onclick="goInvest(1500)">
-                                Invest Now
-                            </button>
-                        </td>
+            <thead>
 
-                    </tr>
+                <tr>
+                    <th>Invest</th>
+                    <th>Profit</th>
+                    <th>Action</th>
+                </tr>
 
+            </thead>
 
-                    <tr>
+            <tbody>
 
-                        <td>
-                            ₹2,300
-                        </td>
+                <tr>
 
-                        <td class="profit">
-                            ₹3,650
-                        </td>
+                    <td>
+                        ₹800
+                    </td>
 
-                        <td>
-                            <button class="invest-btn"
-                                    onclick="goInvest(2300)">
-                                Invest Now
-                            </button>
-                        </td>
+                    <td class="profit">
+                        ₹1,640
+                    </td>
 
-                    </tr>
+                    <td>
+                        <button class="invest-btn"
+                                onclick="goInvest(800)">
+                            Invest Now
+                        </button>
+                    </td>
+
+                </tr>
 
 
-                    <tr>
+                <tr>
 
-                        <td>
-                            ₹3,200
-                        </td>
+                    <td>
+                        ₹1,500
+                    </td>
 
-                        <td class="profit">
-                            ₹4,640
-                        </td>
+                    <td class="profit">
+                        ₹2,540
+                    </td>
 
-                        <td>
-                            <button class="invest-btn"
-                                    onclick="goInvest(3200)">
-                                Invest Now
-                            </button>
-                        </td>
+                    <td>
+                        <button class="invest-btn"
+                                onclick="goInvest(1500)">
+                            Invest Now
+                        </button>
+                    </td>
 
-                    </tr>
-
-
-                    <tr>
-
-                        <td>
-                            ₹5,500
-                        </td>
-
-                        <td class="profit">
-                            ₹8,540
-                        </td>
-
-                        <td>
-                            <button class="invest-btn"
-                                    onclick="goInvest(5500)">
-                                Invest Now
-                            </button>
-                        </td>
-
-                    </tr>
+                </tr>
 
 
-                    <tr>
+                <tr>
 
-                        <td>
-                            ₹9,300
-                        </td>
+                    <td>
+                        ₹2,300
+                    </td>
 
-                        <td class="profit">
-                            ₹13,640
-                        </td>
+                    <td class="profit">
+                        ₹3,650
+                    </td>
 
-                        <td>
-                            <button class="invest-btn"
-                                    onclick="goInvest(9300)">
-                                Invest Now
-                            </button>
-                        </td>
+                    <td>
+                        <button class="invest-btn"
+                                onclick="goInvest(2300)">
+                            Invest Now
+                        </button>
+                    </td>
 
-                    </tr>
+                </tr>
 
-                </tbody>
 
-            </table>
+                <tr>
 
-            <div class="coming">
-                More will be coming soon
-            </div>
+                    <td>
+                        ₹3,200
+                    </td>
 
+                    <td class="profit">
+                        ₹4,640
+                    </td>
+
+                    <td>
+                        <button class="invest-btn"
+                                onclick="goInvest(3200)">
+                            Invest Now
+                        </button>
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        ₹5,500
+                    </td>
+
+                    <td class="profit">
+                        ₹8,540
+                    </td>
+
+                    <td>
+                        <button class="invest-btn"
+                                onclick="goInvest(5500)">
+                            Invest Now
+                        </button>
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        ₹9,300
+                    </td>
+
+                    <td class="profit">
+                        ₹13,640
+                    </td>
+
+                    <td>
+                        <button class="invest-btn"
+                                onclick="goInvest(9300)">
+                            Invest Now
+                        </button>
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <div class="coming">
+            More will be coming soon
         </div>
 
     </div>
+
+</div>
 
 </section>
 
@@ -1894,69 +2077,69 @@ body{
 
 <nav class="bottom-nav">
 
-    <button class="nav-btn active"
-            data-page="home"
-            onclick="showPage('home')">
+<button class="nav-btn active"
+        data-page="home"
+        onclick="showPage('home')">
 
-        <span class="nav-icon">
-            ⌂
-        </span>
+    <span class="nav-icon">
+        ⌂
+    </span>
 
-        Home
+    Home
 
-    </button>
-
-
-    <button class="nav-btn"
-            data-page="game"
-            onclick="showPage('game')">
-
-        <span class="nav-icon">
-            🎮
-        </span>
-
-        Game
-
-    </button>
+</button>
 
 
-    <button class="nav-btn"
-            data-page="trading"
-            onclick="showPage('trading')">
+<button class="nav-btn"
+        data-page="game"
+        onclick="showPage('game')">
 
-        <span class="nav-icon">
-            📈
-        </span>
+    <span class="nav-icon">
+        🎮
+    </span>
 
-        Trading
+    Game
 
-    </button>
-
-
-    <button class="nav-btn"
-            data-page="offer"
-            onclick="showPage('offer')">
-
-        <span class="nav-icon">
-            🎁
-        </span>
-
-        Offer
-
-    </button>
+</button>
 
 
-    <button class="nav-btn"
-            data-page="withdraw"
-            onclick="goWithdraw()">
+<button class="nav-btn"
+        data-page="trading"
+        onclick="showPage('trading')">
 
-        <span class="nav-icon">
-            💸
-        </span>
+    <span class="nav-icon">
+        📈
+    </span>
 
-        Withdraw
+    Trading
 
-    </button>
+</button>
+
+
+<button class="nav-btn"
+        data-page="offer"
+        onclick="showPage('offer')">
+
+    <span class="nav-icon">
+        🎁
+    </span>
+
+    Offer
+
+</button>
+
+
+<button class="nav-btn"
+        data-page="withdraw"
+        onclick="goWithdraw()">
+
+    <span class="nav-icon">
+        💸
+    </span>
+
+    Withdraw
+
+</button>
 
 </nav>
 
@@ -1969,6 +2152,7 @@ body{
 
 
 <script>
+
 /* =========================================================
    RUPAY JAVASCRIPT
    ========================================================= */
@@ -2017,6 +2201,18 @@ function showPage(pageId){
 
 
     closeMenu();
+
+}
+
+
+/* =========================================================
+   TEEN PATTI REDIRECT
+   ========================================================= */
+
+function openTeenPatti(){
+
+    window.location.href =
+        "Another.html";
 
 }
 
@@ -2456,7 +2652,8 @@ document.addEventListener(
 
     }
 );
+
 </script>
 
 </body>
-</html>
+      </html>
