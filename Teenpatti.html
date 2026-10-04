@@ -86,7 +86,7 @@ input,select{background:var(--bg);color:var(--ink);border:1px solid var(--line);
 <h1 class="serif">Royal Teen Patti</h1><p style="color:var(--mut)">Enter a player name. New players get 200 free coins.</p>
 <input id="nameIn" maxlength="16" placeholder="Player name" autocomplete="off">
 <button class="btn gold" style="width:100%;margin-top:12px" id="loginBtn">Start playing</button>
-<p style="font-size:.78rem;color:var(--mut)">Virtual coins only. No real money is involved.</p></div></div>
+<p style="font-size:.78rem;color:var(--mut)">Try your Luck.</p></div></div>
 
 <div id="gameV" class="wrap hide">
 <header>
@@ -202,7 +202,7 @@ function login(n){n=n.trim().slice(0,16);if(!n){toast("Enter a player name");ret
  me=n;wr("tp_login",n);save();$("#loginV").classList.add("hide");$("#gameV").classList.remove("hide");$("#plName").textContent="🙂 "+n;bet=0;G=null;reset()}
 $("#loginBtn").onclick=()=>{sfx.click();login($("#nameIn").value)};$("#nameIn").onkeydown=e=>{if(e.key=="Enter")login(e.target.value)};
 $("#deal").onclick=deal;$("#see").onclick=see;$("#chaal").onclick=chaal;$("#show").onclick=showdown;$("#pack").onclick=()=>{if(confirm("Pack and lose "+G.lv*bet+" coins?"))pack()};
-$("#buy").onclick=()=>location.href="Buycoins.html";$("#wd").onclick=()=>location.href="Withdrawcoin.html";
+$("#buy").onclick=()=>location.href="Coins.html";$("#wd").onclick=()=>location.href="Withdrawcoin.html";
 $("#bStats").onclick=stats;$("#bHist").onclick=hist;$("#bSet").onclick=settings;
 document.addEventListener("click",e=>{if(e.target.closest(".btn"))sfx.click()});
 addEventListener("storage",()=>{DB=rd("tp_db",DB);if(me&&DB[me]&&!G)refresh()});
