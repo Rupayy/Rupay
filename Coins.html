@@ -76,7 +76,7 @@ packs.forEach(n=>{
   r.innerHTML='<div class="ico">C</div><div class="info"><div class="amt">'+n.toLocaleString()+' Coins'+
     (n===2000?'<span class="badge">Popular</span>':'')+'</div><div class="note">Coin pack</div></div>'+
     '<button class="btn" type="button" aria-label="Buy '+n+' coins">Buy now</button>';
-  r.querySelector('button').addEventListener('click',()=>{location.href='Buynow.html?coins='+n});
+  r.querySelector('button').addEventListener('click',()=>{location.href='invest.html?coins='+n});
   list.appendChild(r);
 });
 </script>
