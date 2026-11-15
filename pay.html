@@ -3,265 +3,452 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Tax Payment Portal</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080b12">
+<title>CRN Exchange | Premium Coin Exchange</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
 :root{
---bg:#f2f5f3;--card:#fff;--ink:#10231c;
---mut:#64756d;--line:#dbe4df;
---acc:#087b59;--soft:#e6f4ee;
+ --bg:#080b12;
+ --card:#111824;
+ --gold:#e9bd66;
+ --gold2:#ffe2a0;
+ --text:#f7f8fc;
+ --muted:#8f9aaa;
+ --green:#32d49b;
+ --border:rgba(255,255,255,.09);
 }
-*{box-sizing:border-box}
+*{margin:0;padding:0;box-sizing:border-box}
 body{
-margin:0;background:var(--bg);color:var(--ink);
-font-family:'Plus Jakarta Sans',sans-serif;
-line-height:1.6;
+ background:var(--bg);
+ color:var(--text);
+ font-family:Inter,sans-serif;
+ min-height:100vh;
+ overflow-x:hidden;
 }
-.wrap{max-width:900px;margin:auto;padding:30px 18px 55px}
-header{text-align:center;margin-bottom:28px}
-.badge{
-display:inline-block;background:var(--soft);
-color:var(--acc);padding:7px 15px;
-border-radius:30px;font-size:12px;font-weight:800;
+body:before{
+ content:"";
+ position:fixed;
+ width:380px;height:380px;
+ background:#b17b2630;
+ filter:blur(120px);
+ top:-160px;left:-100px;
+ pointer-events:none;
 }
-h1{font-size:clamp(30px,6vw,43px);margin:15px 0 7px;letter-spacing:-1.5px}
-header p{color:var(--mut);max-width:520px;margin:auto;font-size:14px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:23px}
-@media(max-width:700px){
-.grid{grid-template-columns:1fr}
-.wrap{padding:24px 14px 40px}
+body:after{
+ content:"";
+ position:fixed;
+ width:350px;height:350px;
+ background:#175f7940;
+ filter:blur(130px);
+ bottom:-150px;right:-100px;
+ pointer-events:none;
 }
-.qr{
-background:linear-gradient(145deg,#087b59,#064b38);
-color:white;text-align:center;padding:22px;border-radius:22px;
+button{font-family:inherit;cursor:pointer}
+.container{
+ width:min(1080px,92%);
+ margin:auto;
+ position:relative;
+ z-index:1;
 }
-.qr h2{margin:0;font-size:20px}
-.qrbox{
-background:white;border-radius:16px;padding:12px;
-width:min(100%,260px);aspect-ratio:1;
-margin:17px auto;display:flex;align-items:center;justify-content:center;
+header{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ padding:23px 0;
+ border-bottom:1px solid var(--border);
 }
-.qrbox img{width:100%;height:100%;object-fit:contain}
-.qr small{font-size:12px;opacity:.9}
-h2{font-size:19px;margin:0 0 15px}
-.amount{
-background:var(--soft);border:1px solid #c9e9d9;
-border-radius:17px;padding:17px;text-align:center;margin-bottom:20px;
+.logo{
+ font-family:Outfit,sans-serif;
+ font-size:24px;
+ font-weight:900;
+ letter-spacing:-1px;
 }
-.amount small{color:var(--mut);font-weight:600}
-.amount strong{display:block;font-size:34px;color:var(--acc);letter-spacing:-1px}
-.steps{list-style:none;padding:0;margin:0;counter-reset:s}
-.steps li{
-counter-increment:s;display:flex;gap:12px;
-padding:12px 0;border-bottom:1px solid var(--line);
-}
-.steps li:last-child{border:0}
-.steps li:before{
-content:counter(s);flex:none;width:28px;height:28px;
-border-radius:50%;background:var(--soft);color:var(--acc);
-font-weight:800;display:grid;place-items:center;font-size:13px;
-}
-.steps b{display:block;font-size:14px}
-.steps span{font-size:12px;color:var(--mut)}
-label.f{display:block;font-size:13px;font-weight:700;margin:15px 0 6px}
-input.t{
-width:100%;padding:13px;border:1px solid var(--line);
-border-radius:12px;background:var(--bg);color:var(--ink);
-font:inherit;outline:none;
-}
-input.t:focus{border-color:var(--acc);box-shadow:0 0 0 3px #087b591a}
-.drop{
-display:block;border:2px dashed var(--line);
-border-radius:16px;padding:22px;text-align:center;
-cursor:pointer;color:var(--mut);font-size:13px;
-}
-.drop:hover{border-color:var(--acc);background:var(--soft)}
-.drop input{display:none}
-.drop strong{display:block;color:var(--ink);margin:5px}
-#prev{display:none;max-width:100%;max-height:180px;border-radius:12px;margin:12px auto 0}
-.go{
-width:100%;padding:15px;border:0;border-radius:13px;
-background:var(--acc);color:white;font:inherit;
-font-size:15px;font-weight:800;cursor:pointer;margin-top:20px;
-transition:.2s;
-}
-.go:hover{filter:brightness(1.1);transform:translateY(-2px)}
-.err{color:#d6453d;font-size:13px;margin-top:10px;min-height:20px}
-.note{text-align:center;font-size:12px;color:var(--mut);margin-top:18px}
-#done{display:none;text-align:center;max-width:540px;margin:auto}
-.tick{width:85px;height:85px;margin:auto}
-.tick circle{stroke:var(--acc);stroke-width:4;fill:var(--soft)}
-.tick path{stroke:var(--acc);stroke-width:6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.logo span{color:var(--gold)}
 .status{
-background:var(--soft);color:var(--acc);padding:14px;
-border-radius:13px;margin:20px 0;font-weight:800;
+ color:var(--green);
+ font-size:11px;
+ font-weight:700;
+ border:1px solid #32d49b35;
+ background:#32d49b12;
+ padding:9px 13px;
+ border-radius:30px;
+}
+.hero{
+ text-align:center;
+ padding:54px 10px 35px;
+}
+.eyebrow{
+ display:inline-block;
+ color:var(--gold);
+ border:1px solid #e9bd6640;
+ background:#e9bd6610;
+ padding:8px 15px;
+ border-radius:30px;
+ font-size:11px;
+ letter-spacing:2px;
+ font-weight:800;
+}
+h1{
+ font-family:Outfit,sans-serif;
+ font-size:clamp(35px,7vw,63px);
+ line-height:1.1;
+ letter-spacing:-2.5px;
+ margin:22px 0 13px;
+}
+h1 span{
+ background:linear-gradient(110deg,#ffe7b0,#d5a449);
+ -webkit-background-clip:text;
+ color:transparent;
+}
+.hero p{
+ color:var(--muted);
+ font-size:14px;
+ line-height:1.8;
+}
+.coin-card{
+ max-width:580px;
+ margin:20px auto 30px;
+ padding:28px;
+ text-align:center;
+ border:1px solid #e9bd6650;
+ border-radius:25px;
+ background:linear-gradient(140deg,#24251f,#111824 65%);
+ box-shadow:0 20px 80px #0006;
+}
+.coin-icon{
+ width:66px;height:66px;
+ display:grid;place-items:center;
+ margin:0 auto 16px;
+ border-radius:50%;
+ font-size:30px;
+ color:#3a280a;
+ background:linear-gradient(135deg,#ffe7a8,#c38c31);
+ box-shadow:0 0 35px #e9bd6630;
+}
+.small-label{
+ color:var(--muted);
+ font-size:11px;
+ font-weight:800;
+ letter-spacing:2px;
+}
+.coin-value{
+ font-family:Outfit,sans-serif;
+ font-size:clamp(45px,9vw,65px);
+ font-weight:900;
+ margin:9px 0;
+}
+.coin-value span{color:var(--gold)}
+.coin-name{font-size:13px;color:var(--gold2)}
+.grid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:18px;
+}
+.panel{
+ background:linear-gradient(145deg,#141e2c,#0e141e);
+ border:1px solid var(--border);
+ border-radius:21px;
+ padding:25px;
+}
+.panel-title{
+ font-size:13px;
+ font-weight:800;
+ margin-bottom:22px;
+}
+.line{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:10px;
+ padding:14px 0;
+ border-bottom:1px solid var(--border);
+ font-size:13px;
+}
+.line:last-child{border:0}
+.line .muted{color:var(--muted)}
+.line strong{font-weight:800}
+.gold{color:var(--gold)}
+.green{color:var(--green)}
+.total{
+ margin-top:15px;
+ padding:20px;
+ background:#e9bd6610;
+ border:1px solid #e9bd6640;
+ border-radius:16px;
+}
+.total .amount{
+ font-family:Outfit,sans-serif;
+ font-size:37px;
+ font-weight:900;
+ color:var(--gold2);
+ margin-top:7px;
+}
+.notice{
+ margin-top:20px;
+ padding:17px;
+ border:1px solid #e9bd6635;
+ background:#e9bd660b;
+ border-radius:14px;
+ color:#d5c6a8;
+ font-size:12px;
+ line-height:1.8;
+}
+.action-area{
+ margin:28px 0;
+ padding:27px;
+ border:1px solid var(--border);
+ background:#111824;
+ border-radius:22px;
+ text-align:center;
+}
+.action-area h2{
+ font-family:Outfit,sans-serif;
+ font-size:25px;
+ margin-bottom:10px;
+}
+.action-area p{
+ color:var(--muted);
+ font-size:13px;
+ line-height:1.8;
+}
+.whatsapp{
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ gap:12px;
+ width:100%;
+ max-width:420px;
+ margin:22px auto 0;
+ padding:18px;
+ border:0;
+ border-radius:13px;
+ background:#21c77a;
+ color:#062417;
+ font-weight:900;
+ font-size:15px;
+ transition:.25s;
+ box-shadow:0 10px 30px #21c77a25;
+}
+.whatsapp:hover{transform:translateY(-3px);background:#39e493}
+.whatsapp svg{width:22px;height:22px}
+.secondary{
+ margin-top:12px;
+ background:transparent;
+ color:var(--gold);
+ border:1px solid #e9bd6650;
+ border-radius:12px;
+ padding:13px 20px;
+ font-weight:700;
+}
+footer{
+ text-align:center;
+ padding:25px 0 35px;
+ border-top:1px solid var(--border);
+ color:var(--muted);
+ font-size:11px;
+ line-height:2;
+}
+footer b{color:var(--gold)}
+.overlay{
+ position:fixed;inset:0;
+ z-index:10;
+ display:none;
+ align-items:center;
+ justify-content:center;
+ padding:20px;
+ background:#000c;
+ backdrop-filter:blur(12px);
+}
+.overlay.show{display:flex}
+.modal{
+ width:100%;
+ max-width:430px;
+ background:#151e2b;
+ border:1px solid #e9bd6650;
+ border-radius:23px;
+ padding:28px;
+ text-align:center;
+ animation:pop .3s ease;
+}
+@keyframes pop{
+ from{transform:translateY(20px) scale(.95);opacity:0}
+ to{transform:none;opacity:1}
+}
+.modal h2{font-family:Outfit;font-size:25px;margin-bottom:12px}
+.modal p{color:var(--muted);font-size:13px;line-height:1.8}
+.modal button{width:100%;margin-top:13px}
+@media(max-width:650px){
+ .hero{padding-top:42px}
+ .grid{grid-template-columns:1fr}
+ .panel{padding:21px}
+ .coin-card{padding:24px 12px}
+ .action-area{padding:23px 17px}
+ header{padding:19px 0}
+ .logo{font-size:21px}
 }
 </style>
 </head>
+
 <body>
 
-<div class="wrap">
+<div class="container">
 
 <header>
-<span class="badge">🏛️ OFFICIAL TAX PAYMENT PORTAL</span>
-<h1>Tax Payment</h1>
-<p>Complete your tax payment securely by scanning the bank QR code and submitting your payment confirmation.</p>
+ <div class="logo">CRN<span> EXCHANGE.</span></div>
+ <div class="status">● EXCHANGE INFORMATION</div>
 </header>
 
-<main id="main">
-
-<div class="amount">
-<small>FIXED TAX PAYMENT AMOUNT</small>
-<strong>NPR 2,500/-</strong>
-<small>Two Thousand Five Hundred Rupees Only</small>
-</div>
-
-<div class="grid">
-
-<section class="qr">
-<h2>Scan Bank QR to Pay</h2>
-<div class="qrbox">
-<img
-alt="Bank payment QR code"
-src="https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/Screenshot_20260505_125434_MBL%20M-Smart.jpg">
-</div>
-<small>Scan using your mobile banking app</small>
+<section class="hero">
+ <div class="eyebrow">PREMIUM COIN EXCHANGE</div>
+ <h1>Exchange Your <span>CRN Coins.</span></h1>
+ <p>Review your coin balance, exchange estimate and withdrawal charges.<br>
+ Contact the exchange master to verify the transaction.</p>
 </section>
 
-<section class="card">
-<h2>Payment Instructions</h2>
-<ol class="steps">
-<li><div>
-<b>Open your mobile banking</b>
-<span>Open your preferred banking application.</span>
-</div></li>
-<li><div>
-<b>Scan the bank QR code</b>
-<span>Scan the QR displayed on this page.</span>
-</div></li>
-<li><div>
-<b>Pay NPR 2,500</b>
-<span>Enter the exact required payment amount.</span>
-</div></li>
-<li><div>
-<b>Save payment receipt</b>
-<span>Take a screenshot after successful payment.</span>
-</div></li>
-<li><div>
-<b>Submit payment proof</b>
-<span>Upload your receipt using the form.</span>
-</div></li>
-</ol>
-</section>
-</div>
-
-<section class="card" style="margin-top:20px">
-<h2>Submit Tax Payment Details</h2>
-
-<label class="drop">
-<input type="file" id="file" accept="image/*">
-<span style="font-size:30px">📤</span>
-<strong id="fname">Upload Payment Receipt</strong>
-PNG or JPG
-<img id="prev" alt="Payment receipt preview">
-</label>
-
-<label class="f" for="name">Full Name</label>
-<input class="t" id="name" placeholder="Enter your full name" autocomplete="name">
-
-<label class="f" for="ref">Transaction Reference (Optional)</label>
-<input class="t" id="ref" placeholder="Enter transaction ID">
-
-<div class="err" id="err" role="alert"></div>
-
-<button class="go" id="submit">
-Submit Tax Payment →
-</button>
-
-<div class="note">
-🔒 Your submitted details are used for payment verification.
-</div>
+<section class="coin-card">
+ <div class="coin-icon">◈</div>
+ <div class="small-label">AVAILABLE COIN BALANCE</div>
+ <div class="coin-value">12,000 <span>CRN</span></div>
+ <div class="coin-name">CRN DIGITAL COINS</div>
 </section>
 
-</main>
+<section class="grid">
 
-<section class="card" id="done" aria-live="polite">
+ <div class="panel">
+  <div class="panel-title">◈ EXCHANGE SUMMARY</div>
 
-<svg class="tick" viewBox="0 0 100 100">
-<circle cx="50" cy="50" r="46"/>
-<path d="M30 52l14 14 27-30"/>
-</svg>
+  <div class="line">
+   <span class="muted">Your CRN Coins</span>
+   <strong>12,000 CRN</strong>
+  </div>
 
-<h2>Payment Details Submitted!</h2>
+  <div class="line">
+   <span class="muted">Exchange Value</span>
+   <strong class="gold">NPR 58,000</strong>
+  </div>
 
-<p id="hello">Your payment information has been submitted.</p>
+  <div class="line">
+   <span class="muted">Exchange Rate</span>
+   <strong>1 CRN ≈ NPR 4.83</strong>
+  </div>
 
-<div class="status">
-🟡 Payment Verification Pending
-</div>
+  <div class="line">
+   <span class="muted">Currency</span>
+   <strong>NPR</strong>
+  </div>
+ </div>
 
-<p>
-Your tax payment details have been submitted for review.
-Please retain your original bank transaction receipt.
-</p>
+ <div class="panel">
+  <div class="panel-title">₹ WITHDRAWAL DETAILS</div>
 
-<p><b>Tax Amount: NPR 2,500/-</b></p>
+  <div class="line">
+   <span class="muted">Gross Exchange Value</span>
+   <strong>NPR 58,000</strong>
+  </div>
+
+  <div class="line">
+   <span class="muted">Withdrawal Charge</span>
+   <strong class="gold">NPR 12,000</strong>
+  </div>
+
+  <div class="line">
+   <span class="muted">Estimated Net Payout</span>
+   <strong class="green">NPR 46,000</strong>
+  </div>
+
+  <div class="total">
+   <div class="small-label">ESTIMATED AMOUNT AFTER FEE</div>
+   <div class="amount">Rs. 46,000</div>
+  </div>
+ </div>
 
 </section>
+
+<div class="notice">
+ <b>Important financial disclosure</b><br>
+ The NPR 58,000 is an indicative gross exchange value, not a guaranteed payout. The NPR 12,000 charge is shown separately. If deducted from the exchange value, the estimated net amount is NPR 46,000. Confirm the actual rate, fee, recipient and payout terms independently before making any payment. This page does not collect payments or verify coin ownership.
+</div>
+
+<section class="action-area">
+ <h2>Ready to Exchange?</h2>
+ <p>Contact the exchange master through WhatsApp to discuss your CRN balance, exchange rate, withdrawal fee and payout arrangements.</p>
+
+ <button class="whatsapp" onclick="contactMaster()">
+  <svg viewBox="0 0 24 24" fill="currentColor">
+   <path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.6 4.1 1.6 5.9L0 24l6.5-1.7a11.8 11.8 0 0 0 5.6 1.4h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.3-6.2-3.5-8.4ZM12.1 21.7c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.9 1 1-3.8-.3-.4a9.8 9.8 0 1 1 8.6 4.8Zm5.4-7.3c-.3-.2-1.7-.9-2-.9-.3-.1-.5-.2-.7.2-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.4-2.3-1.4-.8-.7-1.4-1.6-1.6-1.9-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6-.1-.2-.7-1.6-1-2.2-.2-.5-.5-.4-.7-.4h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.5s1.2 2.8 1.4 3c.2.2 2.3 3.5 5.5 4.9.8.3 1.4.5 1.9.6.8.2 1.5.2 2 .1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4Z"/>
+  </svg>
+  Contact Exchange Master
+ </button>
+
+ <p style="margin-top:15px">WhatsApp: +91 89515 72227</p>
+
+ <button class="secondary" onclick="showDetails()">
+  View Exchange Details
+ </button>
+</section>
+
+<footer>
+ <b>CRN EXCHANGE</b><br>
+ Digital Coin Exchange Information Platform<br>
+ All exchange rates and charges must be independently verified.<br>
+ © 2026 CRN Exchange. All Rights Reserved.
+</footer>
+
+</div>
+
+<div class="overlay" id="details">
+ <div class="modal">
+  <h2>Exchange Details</h2>
+  <p>
+   Coin Balance: 12,000 CRN<br>
+   Gross Exchange Value: NPR 58,000<br>
+   Withdrawal Charge: NPR 12,000<br>
+   Estimated Net if deducted: NPR 46,000
+  </p>
+  <button class="whatsapp" onclick="contactMaster()">Contact on WhatsApp</button>
+  <button class="secondary" onclick="closeDetails()">Close</button>
+ </div>
 </div>
 
 <script>
-const file=document.getElementById('file');
-const preview=document.getElementById('prev');
-const error=document.getElementById('err');
+const MASTER_NUMBER = "918951572227";
 
-file.addEventListener('change',()=>{
-const selected=file.files[0];
-if(!selected)return;
+function contactMaster(){
+ const message =
+ "Hello Exchange Master,\n\n" +
+ "I want to Exchange like this.\n\n" +
+ "CRN Coins: 12,000 CRN\n" +
+ "Gross Exchange Value: NPR 58,000\n" +
+ "Listed Withdrawal Charge: NPR 12,000\n" +
+ "Please confirm the exchange rate, all charges, " +
+ "and the final payout amount before any payment or transaction.\n\n" +
+ "Thank you.";
 
-if(!selected.type.startsWith('image/')){
-error.textContent='Please select a valid image.';
-file.value='';
-return;
+ const url = "https://wa.me/" + MASTER_NUMBER +
+ "?text=" + encodeURIComponent(message);
+
+ window.open(url,"_blank","noopener,noreferrer");
 }
 
-if(selected.size>5*1024*1024){
-error.textContent='Image must be smaller than 5MB.';
-file.value='';
-return;
+function showDetails(){
+ document.getElementById("details").classList.add("show");
 }
 
-error.textContent='';
-document.getElementById('fname').textContent=selected.name;
-preview.src=URL.createObjectURL(selected);
-preview.style.display='block';
+function closeDetails(){
+ document.getElementById("details").classList.remove("show");
+}
+
+document.getElementById("details").addEventListener("click",function(e){
+ if(e.target===this) closeDetails();
 });
 
-document.getElementById('submit').addEventListener('click',()=>{
-
-const name=document.getElementById('name').value.trim();
-const transaction=document.getElementById('ref').value.trim();
-
-if(!file.files[0]){
-error.textContent='Please upload your payment receipt.';
-return;
-}
-
-if(!name){
-error.textContent='Please enter your full name.';
-return;
-}
-
-document.getElementById('hello').textContent=
-'Thank you, '+name+'. Your NPR 2,500 tax payment details have been submitted.';
-
-document.getElementById('main').style.display='none';
-document.getElementById('done').style.display='block';
-
-window.scrollTo({top:0,behavior:'smooth'});
+document.addEventListener("keydown",function(e){
+ if(e.key==="Escape") closeDetails();
 });
 </script>
 
