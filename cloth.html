@@ -1,0 +1,362 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d19">
+<title>NPL | Match Center</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Inter,sans-serif;
+  background:#080d19;
+  color:#fff;
+  min-height:100vh;
+}
+.container{max-width:950px;margin:auto;padding:20px}
+header{
+ display:flex;justify-content:space-between;
+ align-items:center;padding:12px 0 25px;
+}
+.logo{font-size:23px;font-weight:900;letter-spacing:-1px}
+.logo span{color:#38e6a5}
+.live{
+ background:#35151d;color:#ff6377;
+ padding:8px 13px;border-radius:30px;
+ font-size:11px;font-weight:800;
+}
+.card{
+ background:linear-gradient(145deg,#151f32,#101827);
+ border:1px solid #27334a;
+ border-radius:20px;padding:22px;
+ margin-bottom:18px;
+}
+.match-label{
+ color:#92a2bb;font-size:11px;
+ letter-spacing:2px;font-weight:800;
+ text-align:center;
+}
+.match{
+ display:flex;align-items:center;
+ justify-content:space-around;
+ text-align:center;margin:25px 0;
+}
+.team{width:35%}
+.team img{
+ width:85px;height:85px;
+ object-fit:contain;
+ margin-bottom:12px;
+}
+.team h3{font-size:15px}
+.vs{font-size:25px;font-weight:900;color:#71819a}
+.match-info{text-align:center;color:#9caec6;font-size:12px}
+.section-title{font-size:19px;font-weight:800;margin-bottom:18px}
+.option-grid{
+ display:grid;grid-template-columns:1fr 1fr;
+ gap:12px;
+}
+.option{
+ border:1px solid #33415b;
+ background:#111c2e;
+ border-radius:13px;
+ padding:17px 10px;
+ color:white;font-weight:700;
+ cursor:pointer;text-align:center;
+ transition:.2s;
+}
+.option.active{
+ border:1px solid #36e4a2;
+ background:#123c34;
+ color:#48f1b3;
+}
+input{
+ width:100%;padding:17px;
+ border-radius:12px;
+ border:1px solid #33415b;
+ background:#0b1423;
+ color:white;font-size:17px;
+ outline:none;margin:12px 0;
+}
+input:focus{border-color:#36e4a2}
+.range{
+ color:#91a3bd;font-size:12px;
+ display:flex;justify-content:space-between;
+}
+.amount-display{
+ font-size:27px;font-weight:900;
+ color:#40e7a8;margin:10px 0;
+}
+.btn{
+ width:100%;padding:17px;
+ border:0;border-radius:12px;
+ background:linear-gradient(100deg,#19c98d,#42edb0);
+ color:#061a14;font-size:15px;
+ font-weight:900;cursor:pointer;
+ margin-top:15px;
+}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.hidden{display:none!important}
+.qr{
+ width:220px;height:220px;
+ object-fit:contain;background:white;
+ padding:10px;border-radius:12px;
+ display:block;margin:20px auto;
+}
+.qr-note{text-align:center;color:#a6b5ca;font-size:12px}
+.upload{
+ border:1px dashed #4b617b;
+ border-radius:13px;padding:22px;
+ text-align:center;margin-top:18px;
+}
+.upload input{border:0;padding:10px;font-size:12px}
+.preview{
+ max-width:100%;max-height:230px;
+ border-radius:10px;margin-top:12px;
+}
+.note{
+ color:#8ea1bb;font-size:11px;
+ line-height:1.7;margin-top:15px;
+ text-align:center;
+}
+hr{border:0;border-top:1px solid #29364a;margin:20px 0}
+@media(max-width:500px){
+ .container{padding:14px}
+ .card{padding:18px}
+ .team img{width:65px;height:65px}
+ .team h3{font-size:12px}
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+ <div class="logo">NPL<span> MATCH</span></div>
+ <div class="live">● MATCH CENTER</div>
+</header>
+
+<div class="card">
+ <div class="match-label">NEPAL PREMIER LEAGUE</div>
+
+ <div class="match">
+  <div class="team">
+   <img src="lumbini.png" alt="Lumbini Lions"
+   onerror="this.style.display='none'">
+   <h3>LUMBINI<br>LIONS</h3>
+  </div>
+
+  <div class="vs">VS</div>
+
+  <div class="team">
+   <img src="sudurpaschim.png" alt="Sudurpashchim Royals"
+   onerror="this.style.display='none'">
+   <h3>SUDURPASHCHIM<br>ROYALS</h3>
+  </div>
+ </div>
+
+ <div class="match-info">
+  NPL • Match Center
+ </div>
+</div>
+
+<div class="card" id="betSection">
+
+ <div class="section-title">Choose Your Prediction</div>
+
+ <div class="option-grid">
+  <button class="option" onclick="choose(this,'Lumbini Lions')">
+   🦁 Lumbini Lions
+  </button>
+
+  <button class="option" onclick="choose(this,'Sudurpashchim Royals')">
+   👑 Sudurpashchim Royals
+  </button>
+ </div>
+
+ <hr>
+
+ <div class="section-title">Enter Amount</div>
+
+ <div class="range">
+  <span>Minimum: NPR 500</span>
+  <span>Maximum: NPR 20,00,000</span>
+ </div>
+
+ <input type="number" id="amount"
+ placeholder="Enter amount (NPR)"
+ min="500" max="2000000"
+ oninput="updateAmount()">
+
+ <div class="amount-display" id="displayAmount">
+ NPR 0
+ </div>
+
+ <button class="btn" onclick="showPayment()">
+ CONTINUE TO PAYMENT →
+ </button>
+
+ <p class="note">
+ This interface is a demonstration only. No real-money wagers
+ or payouts are processed through this page.
+ </p>
+</div>
+
+<div class="card hidden" id="paymentSection">
+
+ <div class="section-title">Payment Information</div>
+
+ <p class="qr-note">Your selected prediction</p>
+ <h3 id="selectedTeam" style="text-align:center;margin:10px"></h3>
+
+ <p class="qr-note">Amount to pay</p>
+ <h2 id="paymentAmount" style="text-align:center;color:#40e7a8;margin:12px"></h2>
+
+ <hr>
+
+ <h3 style="text-align:center">Scan QR Code</h3>
+
+ <!-- REPLACE qr.png WITH YOUR ACTUAL PAYMENT QR -->
+ <img class="qr" src="qr.png" alt="Payment QR Code"
+ onerror="this.alt='Add your QR image as qr.png';this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22220%22 height=%22220%22%3E%3Crect width=%22220%22 height=%22220%22 fill=%22white%22/%3E%3Ctext x=%22110%22 y=%22110%22 text-anchor=%22middle%22 font-size=%2214%22 fill=%22black%22%3EADD YOUR QR IMAGE%3C/text%3E%3C/svg%3E'">
+
+ <p class="qr-note">
+ Replace this placeholder with your authorized payment QR.
+ </p>
+
+ <div class="upload">
+  <h3>Upload Payment Screenshot</h3>
+  <p class="qr-note" style="margin-top:8px">
+   Select your payment receipt image
+  </p>
+
+  <input type="file" id="receipt"
+  accept="image/png,image/jpeg,image/webp"
+  onchange="previewImage(event)">
+
+  <img id="preview" class="preview hidden">
+
+ </div>
+
+ <button class="btn" id="confirmBtn"
+ onclick="finishSubmission()">
+ SUBMIT PAYMENT DETAILS →
+ </button>
+
+ <p class="note">
+ Demo only: uploading a screenshot does not verify payment.
+ </p>
+
+</div>
+
+<footer class="note" style="padding:20px">
+ NPL MATCH CENTER • DEMO INTERFACE
+</footer>
+
+</div>
+
+<script>
+let selected = "";
+
+function choose(button,team){
+ selected=team;
+
+ document.querySelectorAll(".option")
+ .forEach(b=>b.classList.remove("active"));
+
+ button.classList.add("active");
+}
+
+function updateAmount(){
+ const amount=Number(document.getElementById("amount").value);
+
+ document.getElementById("displayAmount").innerText=
+ "NPR "+(amount||0).toLocaleString("en-IN");
+}
+
+function showPayment(){
+
+ const amount=Number(document.getElementById("amount").value);
+
+ if(!selected){
+  alert("Please choose a team first.");
+  return;
+ }
+
+ if(!Number.isInteger(amount)||amount<500||amount>2000000){
+  alert("Enter an amount between NPR 500 and NPR 20,00,000.");
+  return;
+ }
+
+ document.getElementById("selectedTeam").innerText=selected;
+ document.getElementById("paymentAmount").innerText=
+ "NPR "+amount.toLocaleString("en-IN");
+
+ document.getElementById("betSection").classList.add("hidden");
+ document.getElementById("paymentSection").classList.remove("hidden");
+
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function previewImage(event){
+ const file=event.target.files[0];
+
+ if(!file)return;
+
+ if(file.size>3*1024*1024){
+  alert("Image must be smaller than 3 MB.");
+  event.target.value="";
+  return;
+ }
+
+ const reader=new FileReader();
+
+ reader.onload=function(){
+  const preview=document.getElementById("preview");
+  preview.src=reader.result;
+  preview.classList.remove("hidden");
+ };
+
+ reader.readAsDataURL(file);
+}
+
+function finishSubmission(){
+
+ const file=document.getElementById("receipt").files[0];
+
+ if(!file){
+  alert("Please upload your payment screenshot.");
+  return;
+ }
+
+ const amount=Number(document.getElementById("amount").value);
+
+ const reader=new FileReader();
+
+ reader.onload=function(){
+
+  const data={
+   team:selected,
+   amount:amount,
+   receipt:reader.result,
+   date:new Date().toLocaleString()
+  };
+
+  try{
+   sessionStorage.setItem("nplSubmission",JSON.stringify(data));
+   window.location.href="View.html";
+  }catch(error){
+   alert("Image is too large for temporary browser storage. Please use a smaller image.");
+  }
+ };
+
+ reader.readAsDataURL(file);
+}
+</script>
+
+</body>
+</html>
