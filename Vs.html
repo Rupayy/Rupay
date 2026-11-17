@@ -627,47 +627,36 @@ function setAmount(value) {
 }
 
 // SUBMIT
-
 function submitBet() {
 
     const amountInput = document.getElementById("amount");
-
     const amount = Number(amountInput.value);
-
     const error = document.getElementById("error");
 
     error.style.display = "none";
 
     if (!Number.isSafeInteger(amount) || amount < 500) {
-
-        error.innerText =
-            "Please enter a valid amount starting from NPR 500.";
-
+        error.innerText = "Minimum amount is NPR 500.";
         error.style.display = "block";
-
         return;
     }
 
     if (amount > 2000000) {
-
-        error.innerText =
-            "Maximum permitted amount is NPR 20,00,000.";
-
+        error.innerText = "Maximum amount is NPR 20,00,000.";
         error.style.display = "block";
-
         return;
     }
 
-    // Pass selection to the next page
+    // SAVE SELECTED TEAM AND AMOUNT
 
-    const nextPage = "Invest.html";
+    const params = new URLSearchParams();
 
-    const params = new URLSearchParams({
-        team: selectedTeam,
-        amount: amount
-    });
+    params.set("team", selectedTeam);
+    params.set("amount", amount);
 
-    window.location.href = nextPage + "?" + params.toString();
+    // REDIRECT TO Invest.html
+
+    window.location.href = "invest.html?" + params.toString();
 
 }
 
