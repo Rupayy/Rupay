@@ -2,27 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width,
-               initial-scale=1.0,
-               maximum-scale=1.0,
-               user-scalable=no">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="theme-color" content="#050b14">
 <meta name="apple-mobile-web-app-capable" content="yes">
-
-<meta name="description"
-      content="Rupay - Trading ">
-
+<meta name="description" content="Rupay - Trading">
 <title>Rupay — Trading</title>
 
 <style>
-/* =========================================================
-   RUPAY WEBSITE
-   HTML + CSS + JAVASCRIPT IN ONE FILE
-========================================================= */
-
 :root{
     --bg:#050b14;
     --bg2:#08111f;
@@ -47,19 +33,10 @@
     -webkit-tap-highlight-color:transparent;
 }
 
-html{
-    scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth;}
 
 body{
-    font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Arial,
-        sans-serif;
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
     background:
         radial-gradient(circle at 20% 0%,rgba(59,130,246,.14),transparent 28%),
         radial-gradient(circle at 90% 20%,rgba(34,211,238,.09),transparent 25%),
@@ -69,45 +46,32 @@ body{
     overflow-x:hidden;
 }
 
-/* Background decoration */
-
 body::before{
     content:"";
     position:fixed;
-    width:420px;
-    height:420px;
+    width:420px;height:420px;
     border-radius:50%;
     background:rgba(59,130,246,.07);
     filter:blur(80px);
-    top:10%;
-    left:-180px;
-    pointer-events:none;
-    z-index:-1;
+    top:10%;left:-180px;
+    pointer-events:none;z-index:-1;
 }
 
 body::after{
     content:"";
     position:fixed;
-    width:350px;
-    height:350px;
+    width:350px;height:350px;
     border-radius:50%;
     background:rgba(34,211,238,.05);
     filter:blur(80px);
-    right:-150px;
-    bottom:10%;
-    pointer-events:none;
-    z-index:-1;
+    right:-150px;bottom:10%;
+    pointer-events:none;z-index:-1;
 }
 
-/* =========================================================
-   HEADER
-========================================================= */
+/* HEADER */
 
 .header{
-    position:sticky;
-    top:0;
-    z-index:1000;
-    width:100%;
+    position:sticky;top:0;z-index:1000;width:100%;
     background:rgba(5,11,20,.82);
     backdrop-filter:blur(18px);
     -webkit-backdrop-filter:blur(18px);
@@ -115,193 +79,99 @@ body::after{
 }
 
 .nav{
-    max-width:1200px;
-    margin:auto;
-    min-height:72px;
-    padding:0 20px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
+    max-width:1200px;margin:auto;min-height:72px;
+    padding:0 20px;display:flex;
+    align-items:center;justify-content:space-between;gap:20px;
 }
 
 .brand{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    text-decoration:none;
-    color:white;
-    font-size:21px;
-    font-weight:900;
-    letter-spacing:.5px;
+    display:flex;align-items:center;gap:10px;
+    text-decoration:none;color:white;
+    font-size:21px;font-weight:900;letter-spacing:.5px;
 }
 
 .brand-logo{
-    width:42px;
-    height:42px;
-    border-radius:13px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
-    background:linear-gradient(135deg,#16263d,#243b5a);
+    width:42px;height:42px;border-radius:13px;
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;background:linear-gradient(135deg,#16263d,#243b5a);
     box-shadow:0 10px 30px rgba(20,40,70,.35);
 }
-      
-.brand-logo img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
 
-/* Replace brand logo image:
-   <img src="logo.png">
-*/
+.brand-logo img{width:100%;height:100%;object-fit:cover;}
 
-.nav-links{
-    display:flex;
-    align-items:center;
-    gap:8px;
-}
+.nav-links{display:flex;align-items:center;gap:8px;}
 
 .nav-links a{
-    color:#c9d4e5;
-    text-decoration:none;
-    font-size:14px;
-    font-weight:700;
-    padding:10px 13px;
-    border-radius:10px;
+    color:#c9d4e5;text-decoration:none;font-size:14px;
+    font-weight:700;padding:10px 13px;border-radius:10px;
     transition:.25s;
 }
 
-.nav-links a:hover{
-    color:white;
-    background:rgba(255,255,255,.06);
-}
+.nav-links a:hover{color:white;background:rgba(255,255,255,.06);}
 
 .login-top{
-    text-decoration:none;
-    color:white;
+    text-decoration:none;color:white;
     background:linear-gradient(135deg,#2563eb,#0891b2);
-    padding:11px 18px;
-    border-radius:12px;
-    font-size:14px;
-    font-weight:800;
+    padding:11px 18px;border-radius:12px;
+    font-size:14px;font-weight:800;
     box-shadow:0 10px 25px rgba(37,99,235,.2);
     transition:.25s;
 }
 
-.login-top:hover{
-    transform:translateY(-2px);
-}
+.login-top:hover{transform:translateY(-2px);}
 
 .menu-btn{
-    display:none;
-    border:0;
-    background:rgba(255,255,255,.06);
-    color:white;
-    width:42px;
-    height:42px;
-    border-radius:11px;
-    font-size:20px;
-    cursor:pointer;
+    display:none;border:0;background:rgba(255,255,255,.06);
+    color:white;width:42px;height:42px;border-radius:11px;
+    font-size:20px;cursor:pointer;
 }
 
-/* =========================================================
-   GENERAL
-========================================================= */
+/* GENERAL */
 
-.container{
-    width:min(1160px,calc(100% - 32px));
-    margin:auto;
-}
+.container{width:min(1160px,calc(100% - 32px));margin:auto;}
+section{padding:80px 0;}
 
-section{
-    padding:80px 0;
-}
-
-.section-heading{
-    text-align:center;
-    margin-bottom:45px;
-}
+.section-heading{text-align:center;margin-bottom:45px;}
 
 .section-heading .eyebrow{
-    color:var(--cyan);
-    text-transform:uppercase;
-    letter-spacing:2px;
-    font-size:12px;
-    font-weight:900;
+    color:var(--cyan);text-transform:uppercase;
+    letter-spacing:2px;font-size:12px;font-weight:900;
     margin-bottom:10px;
 }
 
 .section-heading h2{
-    font-size:clamp(30px,5vw,46px);
-    line-height:1.1;
-    margin-bottom:12px;
+    font-size:clamp(30px,5vw,46px);line-height:1.1;margin-bottom:12px;
 }
 
 .section-heading p{
-    max-width:680px;
-    margin:auto;
-    color:var(--muted);
-    line-height:1.7;
+    max-width:680px;margin:auto;color:var(--muted);line-height:1.7;
 }
 
-/* =========================================================
-   HERO
-========================================================= */
+/* HERO */
 
 .hero{
     min-height:calc(100vh - 72px);
-    display:flex;
-    align-items:center;
-    padding:70px 0 80px;
+    display:flex;align-items:center;padding:70px 0 80px;
 }
 
 .hero-grid{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:45px;
-    align-items:center;
-    text-align:center;
+    display:grid;grid-template-columns:1fr;
+    gap:45px;align-items:center;text-align:center;
 }
 
 .hero-logo{
-    width:min(230px,58vw);
-    aspect-ratio:1;
-    margin:0 auto 28px;
-    border-radius:42px;
+    width:min(230px,58vw);aspect-ratio:1;
+    margin:0 auto 28px;border-radius:42px;
     border:1px solid rgba(255,255,255,.1);
-    background:
-        linear-gradient(145deg,
-        rgba(255,255,255,.08),
-        rgba(255,255,255,.02));
-    box-shadow:
-        0 30px 90px rgba(0,0,0,.45),
-        inset 0 0 40px rgba(255,255,255,.03);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
-    animation:floatLogo 5s ease-in-out infinite;
+    background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
+    box-shadow:0 30px 90px rgba(0,0,0,.45),inset 0 0 40px rgba(255,255,255,.03);
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;animation:floatLogo 5s ease-in-out infinite;
 }
 
-.hero-logo img{
-    width:100%;
-    height:100%;
-    object-fit:contain;
-}
+.hero-logo img{width:100%;height:100%;object-fit:contain;}
 
-/* Put your logo here:
-   <img src="your-logo.png">
-*/
-
-.logo-placeholder{
-    color:#66758e;
-    font-size:14px;
-    font-weight:700;
-    padding:25px;
-}
+.logo-placeholder{color:#66758e;font-size:14px;font-weight:700;padding:25px;}
 
 @keyframes floatLogo{
     0%,100%{transform:translateY(0)}
@@ -309,139 +179,78 @@ section{
 }
 
 .hero h1{
-    font-size:clamp(48px,10vw,88px);
-    font-weight:950;
-    letter-spacing:-3px;
-    margin-bottom:18px;
+    font-size:clamp(48px,10vw,88px);font-weight:950;
+    letter-spacing:-3px;margin-bottom:18px;
     background:linear-gradient(135deg,#fff,#9bdcff 45%,#3b82f6);
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
+    -webkit-background-clip:text;background-clip:text;color:transparent;
 }
 
 .hero-sub{
-    color:#a8b5c9;
-    max-width:720px;
-    margin:0 auto;
-    font-size:17px;
-    line-height:1.8;
+    color:#a8b5c9;max-width:720px;margin:0 auto;
+    font-size:17px;line-height:1.8;
 }
 
 .hero-actions{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:13px;
-    margin-top:30px;
+    display:flex;justify-content:center;flex-wrap:wrap;
+    gap:13px;margin-top:30px;
 }
 
 .btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    min-height:50px;
-    padding:0 23px;
-    border-radius:13px;
-    text-decoration:none;
-    border:1px solid var(--border);
-    color:white;
-    font-weight:800;
-    font-size:14px;
-    cursor:pointer;
+    display:inline-flex;align-items:center;justify-content:center;
+    min-height:50px;padding:0 23px;border-radius:13px;
+    text-decoration:none;border:1px solid var(--border);
+    color:white;font-weight:800;font-size:14px;cursor:pointer;
     transition:.25s;
 }
 
-.btn:hover{
-    transform:translateY(-2px);
-}
+.btn:hover{transform:translateY(-2px);}
 
 .btn-primary{
     background:linear-gradient(135deg,#2563eb,#0891b2);
-    border-color:transparent;
-    box-shadow:0 15px 35px rgba(37,99,235,.25);
+    border-color:transparent;box-shadow:0 15px 35px rgba(37,99,235,.25);
 }
 
-.btn-secondary{
-    background:rgba(255,255,255,.04);
-}
+.btn-secondary{background:rgba(255,255,255,.04);}
 
 .trust-row{
-    margin-top:38px;
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:10px;
+    margin-top:38px;display:flex;justify-content:center;
+    flex-wrap:wrap;gap:10px;
 }
 
 .trust-pill{
     border:1px solid var(--border);
     background:rgba(255,255,255,.025);
-    color:#a9b5c8;
-    padding:9px 13px;
-    border-radius:999px;
-    font-size:12px;
+    color:#a9b5c8;padding:9px 13px;
+    border-radius:999px;font-size:12px;
 }
 
-/* =========================================================
-   ABOUT
-========================================================= */
+/* ABOUT */
 
-.about-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:22px;
-}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
 
 .info-card{
-    background:
-        linear-gradient(145deg,
-        rgba(255,255,255,.045),
-        rgba(255,255,255,.015));
-    border:1px solid var(--border);
-    border-radius:22px;
-    padding:28px;
-    box-shadow:var(--shadow);
+    background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
+    border:1px solid var(--border);border-radius:22px;
+    padding:28px;box-shadow:var(--shadow);
 }
 
 .info-icon{
-    width:48px;
-    height:48px;
-    border-radius:14px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:rgba(59,130,246,.12);
-    margin-bottom:18px;
-    font-size:21px;
+    width:48px;height:48px;border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(59,130,246,.12);margin-bottom:18px;font-size:21px;
 }
 
-.info-card h3{
-    font-size:21px;
-    margin-bottom:12px;
-}
+.info-card h3{font-size:21px;margin-bottom:12px;}
+.info-card p{color:var(--muted);line-height:1.8;font-size:14px;}
 
-.info-card p{
-    color:var(--muted);
-    line-height:1.8;
-    font-size:14px;
-}
+/* FEATURES */
 
-/* =========================================================
-   FEATURES
-========================================================= */
-
-.feature-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:16px;
-}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
 
 .feature{
     background:rgba(255,255,255,.025);
-    border:1px solid var(--border);
-    border-radius:18px;
-    padding:23px;
-    transition:.3s;
+    border:1px solid var(--border);border-radius:18px;
+    padding:23px;transition:.3s;
 }
 
 .feature:hover{
@@ -450,43 +259,19 @@ section{
     background:rgba(255,255,255,.045);
 }
 
-.feature-icon{
-    font-size:25px;
-    margin-bottom:15px;
-}
+.feature-icon{font-size:25px;margin-bottom:15px;}
+.feature h3{font-size:16px;margin-bottom:8px;}
+.feature p{color:var(--muted);font-size:13px;line-height:1.65;}
 
-.feature h3{
-    font-size:16px;
-    margin-bottom:8px;
-}
+/* PACKAGES */
 
-.feature p{
-    color:var(--muted);
-    font-size:13px;
-    line-height:1.65;
-}
-
-/* =========================================================
-   PACKAGES
-========================================================= */
-
-.package-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-}
+.package-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
 
 .package{
-    position:relative;
-    overflow:hidden;
-    background:
-        linear-gradient(160deg,
-        rgba(14,29,49,.98),
-        rgba(7,16,28,.98));
-    border:1px solid var(--border);
-    border-radius:23px;
-    padding:15px;
-    transition:.3s;
+    position:relative;overflow:hidden;
+    background:linear-gradient(160deg,rgba(14,29,49,.98),rgba(7,16,28,.98));
+    border:1px solid var(--border);border-radius:23px;
+    padding:15px;transition:.3s;
 }
 
 .package:hover{
@@ -496,1730 +281,836 @@ section{
 }
 
 .package-image{
-    width:100%;
-    height:180px;
-    border-radius:16px;
-    overflow:hidden;
-    background:#091321;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    width:100%;height:180px;border-radius:16px;overflow:hidden;
+    background:#091321;display:flex;align-items:center;justify-content:center;
 }
 
-.package-image img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
+.package-image img{width:100%;height:100%;object-fit:cover;}
 
-/* Replace image sources below with your package images */
+.package-placeholder{color:#617089;font-size:13px;text-align:center;padding:20px;}
 
-.package-placeholder{
-    color:#617089;
-    font-size:13px;
-    text-align:center;
-    padding:20px;
-}
-
-.package-body{
-    padding:20px 7px 7px;
-}
+.package-body{padding:20px 7px 7px;}
 
 .package-tag{
-    display:inline-block;
-    font-size:10px;
-    font-weight:900;
-    text-transform:uppercase;
-    letter-spacing:1.4px;
-    color:#70d7ff;
-    margin-bottom:9px;
+    display:inline-block;font-size:10px;font-weight:900;
+    text-transform:uppercase;letter-spacing:1.4px;
+    color:#70d7ff;margin-bottom:9px;
 }
 
-.package h3{
-    font-size:20px;
-    margin-bottom:8px;
-}
+.package h3{font-size:20px;margin-bottom:8px;}
 
-.price{
-    display:flex;
-    align-items:baseline;
-    gap:4px;
-    margin-bottom:18px;
-}
+.price{display:flex;align-items:baseline;gap:4px;margin-bottom:18px;}
+.currency{color:#aebbd0;font-size:14px;font-weight:700;}
+.price-number{font-size:31px;font-weight:950;}
 
-.currency{
-    color:#aebbd0;
-    font-size:14px;
-    font-weight:700;
-}
-
-.price-number{
-    font-size:31px;
-    font-weight:950;
-}
-
-.package-actions{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:9px;
-}
+.package-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
 
 .package-actions a{
-    min-height:44px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-decoration:none;
-    border-radius:11px;
-    font-size:13px;
-    font-weight:850;
-    transition:.25s;
+    min-height:44px;display:flex;align-items:center;justify-content:center;
+    text-decoration:none;border-radius:11px;font-size:13px;
+    font-weight:850;transition:.25s;
 }
 
-.about-btn{
-    color:#c7d3e6;
-    background:rgba(255,255,255,.05);
-    border:1px solid var(--border);
-}
+.about-btn{color:#c7d3e6;background:rgba(255,255,255,.05);border:1px solid var(--border);}
+.buy-btn{color:white;background:linear-gradient(135deg,#2563eb,#0891b2);}
+.package-actions a:hover{transform:translateY(-2px);}
 
-.buy-btn{
-    color:white;
-    background:linear-gradient(135deg,#2563eb,#0891b2);
-}
+/* ACTIVITY */
 
-.package-actions a:hover{
-    transform:translateY(-2px);
-}
+.activity-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:20px;}
 
-/* =========================================================
-   LIVE ACTIVITY
-========================================================= */
-
-.activity-grid{
-    display:grid;
-    grid-template-columns:.8fr 1.2fr;
-    gap:20px;
-}
-
-.live-card,
-.chart-card{
+.live-card,.chart-card{
     background:rgba(255,255,255,.025);
-    border:1px solid var(--border);
-    border-radius:22px;
-    padding:25px;
+    border:1px solid var(--border);border-radius:22px;padding:25px;
 }
 
-.live-header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:25px;
-}
+.live-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:25px;}
+.live-title{font-size:18px;font-weight:850;}
+.live-status{display:flex;align-items:center;gap:7px;color:#7de8a1;font-size:12px;font-weight:800;}
+.live-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 15px #22c55e;animation:pulse 1.4s infinite;}
 
-.live-title{
-    font-size:18px;
-    font-weight:850;
-}
+@keyframes pulse{50%{opacity:.3;transform:scale(.7)}}
 
-.live-status{
-    display:flex;
-    align-items:center;
-    gap:7px;
-    color:#7de8a1;
-    font-size:12px;
-    font-weight:800;
-}
+.live-number{font-size:54px;font-weight:950;letter-spacing:-2px;margin-bottom:6px;}
+.live-note{color:var(--muted);font-size:13px;}
+.activity-list{margin-top:28px;display:grid;gap:12px;}
 
-.live-dot{
-    width:8px;
-    height:8px;
-    border-radius:50%;
-    background:#22c55e;
-    box-shadow:0 0 15px #22c55e;
-    animation:pulse 1.4s infinite;
-}
+.activity-item{display:flex;align-items:center;gap:12px;padding:12px;background:rgba(255,255,255,.025);border-radius:13px;}
+.activity-avatar{width:35px;height:35px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#2563eb,#06b6d4);font-size:12px;font-weight:900;}
+.activity-text{flex:1;}
+.activity-text strong{display:block;font-size:12px;}
+.activity-text span{color:#718198;font-size:11px;}
 
-@keyframes pulse{
-    50%{opacity:.3;transform:scale(.7)}
-}
+/* CHART */
 
-.live-number{
-    font-size:54px;
-    font-weight:950;
-    letter-spacing:-2px;
-    margin-bottom:6px;
-}
-
-.live-note{
-    color:var(--muted);
-    font-size:13px;
-}
-
-.activity-list{
-    margin-top:28px;
-    display:grid;
-    gap:12px;
-}
-
-.activity-item{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    padding:12px;
-    background:rgba(255,255,255,.025);
-    border-radius:13px;
-}
-
-.activity-avatar{
-    width:35px;
-    height:35px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:linear-gradient(135deg,#2563eb,#06b6d4);
-    font-size:12px;
-    font-weight:900;
-}
-
-.activity-text{
-    flex:1;
-}
-
-.activity-text strong{
-    display:block;
-    font-size:12px;
-}
-
-.activity-text span{
-    color:#718198;
-    font-size:11px;
-}
-
-/* =========================================================
-   CHART
-========================================================= */
-
-.chart-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:20px;
-}
-
-.chart-top h3{
-    font-size:17px;
-}
-
-.chart-value{
-    font-size:20px;
-    font-weight:900;
-}
+.chart-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
+.chart-top h3{font-size:17px;}
+.chart-value{font-size:20px;font-weight:900;}
 
 .chart{
-    height:290px;
-    position:relative;
-    overflow:hidden;
-    border-radius:14px;
-    background:
-        linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+    height:290px;position:relative;overflow:hidden;border-radius:14px;
+    background:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
     background-size:50px 50px;
 }
 
-.chart svg{
-    width:100%;
-    height:100%;
-    display:block;
-}
+.chart svg{width:100%;height:100%;display:block;}
+.chart-line{fill:none;stroke:#35c8ff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 5px rgba(53,200,255,.55));}
+.chart-area{fill:url(#chartGradient);opacity:.22;}
+.chart-labels{display:flex;justify-content:space-between;color:#62728b;font-size:10px;margin-top:10px;}
 
-.chart-line{
-    fill:none;
-    stroke:#35c8ff;
-    stroke-width:3;
-    stroke-linecap:round;
-    stroke-linejoin:round;
-    filter:drop-shadow(0 0 5px rgba(53,200,255,.55));
-}
+/* SECURITY */
 
-.chart-area{
-    fill:url(#chartGradient);
-    opacity:.22;
-}
-
-.chart-labels{
-    display:flex;
-    justify-content:space-between;
-    color:#62728b;
-    font-size:10px;
-    margin-top:10px;
-}
-
-/* =========================================================
-   SECURITY / CERTIFICATE
-========================================================= */
-
-.security-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-}
+.security-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
 
 .security-card{
-    border:1px solid var(--border);
-    background:rgba(255,255,255,.025);
-    border-radius:22px;
-    padding:27px;
+    border:1px solid var(--border);background:rgba(255,255,255,.025);
+    border-radius:22px;padding:27px;
 }
 
-.security-card h3{
-    margin-bottom:12px;
-}
-
-.security-card p{
-    color:var(--muted);
-    line-height:1.75;
-    font-size:13px;
-}
+.security-card h3{margin-bottom:12px;}
+.security-card p{color:var(--muted);line-height:1.75;font-size:13px;}
 
 .certificate{
-    min-height:220px;
-    border:1px dashed rgba(255,255,255,.2);
-    border-radius:17px;
-    margin-top:18px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:25px;
-    background:rgba(255,255,255,.015);
+    min-height:220px;border:1px dashed rgba(255,255,255,.2);
+    border-radius:17px;margin-top:18px;display:flex;
+    flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:25px;background:rgba(255,255,255,.015);
 }
 
 .certificate-badge{
-    width:65px;
-    height:65px;
-    border-radius:50%;
+    width:65px;height:65px;border-radius:50%;
     border:1px solid rgba(245,185,66,.45);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:var(--gold);
-    font-size:27px;
-    margin-bottom:13px;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--gold);font-size:27px;margin-bottom:13px;
 }
 
-.certificate small{
-    color:#74839a;
-    margin-top:8px;
-    line-height:1.5;
-}
+.certificate small{color:#74839a;margin-top:8px;line-height:1.5;}
 
-/* =========================================================
-   CONTACT
-========================================================= */
+/* CONTACT */
 
-.contact-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
 
 .contact-card{
     background:rgba(255,255,255,.025);
-    border:1px solid var(--border);
-    border-radius:22px;
-    padding:28px;
+    border:1px solid var(--border);border-radius:22px;padding:28px;
 }
 
-.contact-links{
-    display:grid;
-    gap:12px;
-    margin-top:20px;
-}
+.contact-links{display:grid;gap:12px;margin-top:20px;}
 
 .contact-link{
-    display:flex;
-    align-items:center;
-    gap:13px;
-    padding:14px;
-    color:white;
-    text-decoration:none;
-    border:1px solid var(--border);
-    border-radius:13px;
-    background:rgba(255,255,255,.025);
-    transition:.25s;
+    display:flex;align-items:center;gap:13px;padding:14px;
+    color:white;text-decoration:none;border:1px solid var(--border);
+    border-radius:13px;background:rgba(255,255,255,.025);transition:.25s;
 }
 
-.contact-link:hover{
-    transform:translateX(4px);
-    border-color:rgba(59,130,246,.35);
-}
+.contact-link:hover{transform:translateX(4px);border-color:rgba(59,130,246,.35);}
+.contact-icon{width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:11px;background:rgba(59,130,246,.12);}
+.contact-link div:last-child{flex:1;}
+.contact-link strong{display:block;font-size:13px;}
+.contact-link span{color:#728198;font-size:11px;}
 
-.contact-icon{
-    width:40px;
-    height:40px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:11px;
-    background:rgba(59,130,246,.12);
-}
+/* FOOTER */
 
-.contact-link div:last-child{
-    flex:1;
-}
-
-.contact-link strong{
-    display:block;
-    font-size:13px;
-}
-
-.contact-link span{
-    color:#728198;
-    font-size:11px;
-}
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer{
-    margin-top:30px;
-    border-top:1px solid var(--border);
-    background:#030810;
-}
+footer{margin-top:30px;border-top:1px solid var(--border);background:#030810;}
 
 .footer-main{
-    max-width:1160px;
-    margin:auto;
-    padding:45px 20px 30px;
-    display:grid;
-    grid-template-columns:1.5fr 1fr 1fr;
-    gap:35px;
+    max-width:1160px;margin:auto;padding:45px 20px 30px;
+    display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:35px;
 }
 
-.footer-brand p{
-    color:#718096;
-    font-size:13px;
-    line-height:1.7;
-    max-width:400px;
-    margin-top:14px;
-}
-
-.footer-col h4{
-    font-size:13px;
-    margin-bottom:15px;
-}
-
-.footer-col a{
-    display:block;
-    color:#77869d;
-    text-decoration:none;
-    font-size:12px;
-    margin:10px 0;
-}
-
-.footer-col a:hover{
-    color:white;
-}
+.footer-brand p{color:#718096;font-size:13px;line-height:1.7;max-width:400px;margin-top:14px;}
+.footer-col h4{font-size:13px;margin-bottom:15px;}
+.footer-col a{display:block;color:#77869d;text-decoration:none;font-size:12px;margin:10px 0;}
+.footer-col a:hover{color:white;}
 
 .certified-footer{
     border-top:1px solid var(--border);
     border-bottom:1px solid var(--border);
-    padding:17px 20px;
-    text-align:center;
-    color:#7e8da4;
-    font-size:11px;
+    padding:17px 20px;text-align:center;color:#7e8da4;font-size:11px;
 }
 
 .footer-bottom{
-    max-width:1160px;
-    margin:auto;
-    padding:20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:15px;
-    color:#5e6c81;
-    font-size:11px;
+    max-width:1160px;margin:auto;padding:20px;
+    display:flex;justify-content:space-between;align-items:center;
+    gap:15px;color:#5e6c81;font-size:11px;
 }
 
-/* =========================================================
-   BACK TO TOP
-========================================================= */
+/* BACK TO TOP */
 
 .top-btn{
+    position:fixed;right:18px;bottom:18px;
+    width:45px;height:45px;border:1px solid var(--border);
+    border-radius:13px;background:rgba(7,17,31,.9);
+    color:white;cursor:pointer;opacity:0;visibility:hidden;
+    transform:translateY(10px);transition:.25s;z-index:500;
+}
+
+.top-btn.show{opacity:1;visibility:visible;transform:translateY(0);}
+
+/* WHATSAPP FLOATING SUPPORT BUTTON */
+
+.whatsapp-float{
     position:fixed;
-    right:18px;
-    bottom:18px;
-    width:45px;
-    height:45px;
-    border:1px solid var(--border);
-    border-radius:13px;
-    background:rgba(7,17,31,.9);
-    color:white;
-    cursor:pointer;
-    opacity:0;
-    visibility:hidden;
-    transform:translateY(10px);
-    transition:.25s;
-    z-index:500;
+    right:20px;
+    bottom:82px;
+    z-index:2000;
+    display:flex;
+    align-items:center;
+    gap:11px;
+    padding:11px 17px 11px 11px;
+    background:linear-gradient(135deg,#25D366,#128C7E);
+    color:#fff;
+    text-decoration:none;
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:50px;
+    box-shadow:0 8px 30px rgba(37,211,102,.35);
+    font-size:13px;
+    font-weight:850;
+    transition:.3s ease;
+    animation:whatsappPulse 2.5s infinite;
 }
 
-.top-btn.show{
-    opacity:1;
-    visibility:visible;
-    transform:translateY(0);
+.whatsapp-float:hover{
+    transform:translateY(-5px) scale(1.03);
+    box-shadow:0 12px 35px rgba(37,211,102,.5);
 }
 
-/* =========================================================
-   MOBILE MENU
-========================================================= */
+.whatsapp-icon{
+    width:43px;
+    height:43px;
+    border-radius:50%;
+    background:rgba(255,255,255,.18);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+}
+
+.whatsapp-icon svg{
+    width:27px;
+    height:27px;
+    fill:white;
+}
+
+.whatsapp-text{
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+}
+
+.whatsapp-text strong{font-size:13px;}
+.whatsapp-text span{font-size:10px;font-weight:600;opacity:.9;}
+
+@keyframes whatsappPulse{
+    0%,100%{box-shadow:0 8px 30px rgba(37,211,102,.3);}
+    50%{box-shadow:0 8px 35px rgba(37,211,102,.55),0 0 0 7px rgba(37,211,102,.08);}
+}
+
+/* MOBILE */
 
 @media(max-width:800px){
-
-    .nav{
-        min-height:65px;
-    }
+    .nav{min-height:65px;}
 
     .nav-links{
-        position:absolute;
-        top:65px;
-        left:12px;
-        right:12px;
-        padding:12px;
-        display:none;
-        flex-direction:column;
-        align-items:stretch;
-        background:rgba(7,16,29,.97);
-        border:1px solid var(--border);
-        border-radius:17px;
+        position:absolute;top:65px;left:12px;right:12px;
+        padding:12px;display:none;flex-direction:column;
+        align-items:stretch;background:rgba(7,16,29,.97);
+        border:1px solid var(--border);border-radius:17px;
         box-shadow:var(--shadow);
     }
 
-    .nav-links.open{
-        display:flex;
-    }
+    .nav-links.open{display:flex;}
+    .nav-links a{width:100%;}
+    .login-top{display:none;}
+    .menu-btn{display:block;}
+    .hero{min-height:auto;padding-top:55px;}
+    section{padding:65px 0;}
 
-    .nav-links a{
-        width:100%;
-    }
-
-    .login-top{
-        display:none;
-    }
-
-    .menu-btn{
-        display:block;
-    }
-
-    .hero{
-        min-height:auto;
-        padding-top:55px;
-    }
-
-    section{
-        padding:65px 0;
-    }
-
-    .about-grid,
-    .activity-grid,
-    .security-grid,
-    .contact-grid{
-        grid-template-columns:1fr;
-    }
-
-    .feature-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .package-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .footer-main{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .footer-brand{
-        grid-column:1/-1;
-    }
+    .about-grid,.activity-grid,.security-grid,.contact-grid{grid-template-columns:1fr;}
+    .feature-grid{grid-template-columns:1fr 1fr;}
+    .package-grid{grid-template-columns:1fr 1fr;}
+    .footer-main{grid-template-columns:1fr 1fr;}
+    .footer-brand{grid-column:1/-1;}
 }
 
 @media(max-width:560px){
+    .container{width:min(100% - 24px,1160px);}
+    .hero h1{letter-spacing:-2px;}
+    .hero-sub{font-size:14px;}
+    .hero-actions{flex-direction:column;width:100%;}
+    .hero-actions .btn{width:100%;}
+    .feature-grid,.package-grid{grid-template-columns:1fr;}
+    .package-image{height:205px;}
+    .live-number{font-size:46px;}
+    .footer-main{grid-template-columns:1fr;}
+    .footer-brand{grid-column:auto;}
+    .footer-bottom{flex-direction:column;text-align:center;}
 
-    .container{
-        width:min(100% - 24px,1160px);
+    .whatsapp-float{
+        right:14px;
+        bottom:76px;
+        padding:9px 14px 9px 9px;
     }
 
-    .hero h1{
-        letter-spacing:-2px;
-    }
-
-    .hero-sub{
-        font-size:14px;
-    }
-
-    .hero-actions{
-        flex-direction:column;
-        width:100%;
-    }
-
-    .hero-actions .btn{
-        width:100%;
-    }
-
-    .feature-grid,
-    .package-grid{
-        grid-template-columns:1fr;
-    }
-
-    .package-image{
-        height:205px;
-    }
-
-    .live-number{
-        font-size:46px;
-    }
-
-    .footer-main{
-        grid-template-columns:1fr;
-    }
-
-    .footer-brand{
-        grid-column:auto;
-    }
-
-    .footer-bottom{
-        flex-direction:column;
-        text-align:center;
-    }
+    .whatsapp-icon{width:40px;height:40px;}
 }
 
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
 @media(prefers-reduced-motion:reduce){
-    *{
-        scroll-behavior:auto!important;
-        animation:none!important;
-        transition:none!important;
-    }
+    *{scroll-behavior:auto!important;animation:none!important;transition:none!important;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- ======================================================
-     HEADER
-====================================================== -->
-
 <header class="header">
+<nav class="nav">
 
-    <nav class="nav">
+<a href="#home" class="brand">
+<div class="brand-logo">
+<img src="https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/1789472698527.png"
+alt="Rupay Logo"
+onerror="this.style.display='none';this.parentElement.innerHTML='R';">
+</div>
+<span>Rupay</span>
+</a>
 
-        <a href="#home" class="brand">
+<div class="nav-links" id="navLinks">
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#features">Features</a>
+<a href="#packages">Packages</a>
+<a href="#activity">Activity</a>
+<a href="#contact">Contact</a>
+</div>
 
-            <div class="brand-logo">
-                <!-- CHANGE THIS TO YOUR LOGO -->
-                <img src="https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/1789472698527.png"
-                     alt="Rupay Logo"
-                     onerror="this.style.display='none'; this.parentElement.innerHTML='R';">
-            </div>
+<a href="Login.html" class="login-top">Login</a>
 
-            <span>Rupay</span>
-
-        </a>
-
-        <div class="nav-links" id="navLinks">
-
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#features">Features</a>
-            <a href="#packages">Packages</a>
-            <a href="#activity">Activity</a>
-            <a href="#contact">Contact</a>
-
-        </div>
-
-        <a href="Login.html" class="login-top">
-            Login
-        </a>
-
-        <button class="menu-btn"
-                id="menuBtn"
-                aria-label="Open Menu">
-            ☰
-        </button>
-
-    </nav>
-
+<button class="menu-btn" id="menuBtn" aria-label="Open Menu">☰</button>
+</nav>
 </header>
-
-
-<!-- ======================================================
-     HERO
-====================================================== -->
 
 <main>
 
 <section class="hero" id="home">
+<div class="container">
+<div class="hero-grid">
+<div>
 
-    <div class="container">
+<div class="hero-logo">
+<img src="https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/1789472698527.png"
+alt="Rupay Main Logo"
+onerror="this.style.display='none';document.getElementById('logoText').style.display='block';">
 
-        <div class="hero-grid">
+<div id="logoText" class="logo-placeholder" style="display:none;">
+ADD YOUR LOGO IMAGE
+</div>
+</div>
 
-            <div>
+<h1>Rupay</h1>
 
-                <div class="hero-logo">
+<p class="hero-sub">
+A modern digital platform designed with a clean,
+responsive and user-friendly experience.
+Explore available plans, discover platform features
+and access your account from any device.
+</p>
 
-                    <!--
-                        ADD YOUR BIG LOGO HERE
+<div class="hero-actions">
+<a href="Login.html" class="btn btn-primary">Login to Rupay</a>
+<a href="#packages" class="btn btn-secondary">Explore Packages</a>
+</div>
 
-                        Example:
-                        <img src="big-logo.png" alt="Rupay Logo">
-                    -->
+<div class="trust-row">
+<div class="trust-pill">✓ Responsive Design</div>
+<div class="trust-pill">✓ Free Cashbacks</div>
+<div class="trust-pill">✓ Secure UI</div>
+<div class="trust-pill">✓ 24/7 Access</div>
+</div>
 
-                    <img src="https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/1789472698527.png"
-                         alt="Rupay Main Logo"
-                         onerror="this.style.display='none'; document.getElementById('logoText').style.display='block';">
-
-                    <div id="logoText"
-                         class="logo-placeholder"
-                         style="display:none;">
-                        ADD YOUR LOGO IMAGE
-                    </div>
-
-                </div>
-
-                <h1>Rupay</h1>
-
-                <p class="hero-sub">
-                    A modern digital platform designed with a clean,
-                    responsive and user-friendly experience.
-                    Explore available plans, discover platform features
-                    and access your account from any device.
-                </p>
-
-                <div class="hero-actions">
-
-                    <a href="Login.html"
-                       class="btn btn-primary">
-                        Login to Rupay
-                    </a>
-
-                    <a href="#packages"
-                       class="btn btn-secondary">
-                        Explore Packages
-                    </a>
-
-                </div>
-
-                <div class="trust-row">
-
-                    <div class="trust-pill">
-                        ✓ Responsive Design
-                    </div>
-
-                    <div class="trust-pill">
-                        ✓ Free Cashbacks
-                    </div>
-
-                    <div class="trust-pill">
-                        ✓ Secure UI
-                    </div>
-
-                    <div class="trust-pill">
-                        ✓ 24/7 Access
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
+</div>
+</div>
+</div>
 </section>
 
+<!-- ABOUT -->
+<section id="about">
+<div class="container">
+<div class="section-heading">
+<div class="eyebrow">About Rupay</div>
+<h2>About Our Platform</h2>
+<p>Explore the platform and learn more about its features and services.</p>
+</div>
 
+<div class="about-grid">
+<div class="info-card">
+<div class="info-icon">🌐</div>
+<h3>Our Platform</h3>
+<p>Rupay provides a modern digital interface with simple navigation and responsive access across devices.</p>
+</div>
+<div class="info-card">
+<div class="info-icon">🎯</div>
+<h3>Our Goal</h3>
+<p>To provide a convenient experience for visitors exploring the available platform information and packages.</p>
+</div>
+</div>
+</div>
+</section>
 
-<!-- ======================================================
-     PACKAGES
-====================================================== -->
+<!-- FEATURES -->
+<section id="features">
+<div class="container">
+<div class="section-heading">
+<div class="eyebrow">Platform Benefits</div>
+<h2>Our Features</h2>
+<p>Discover the interface features available on Rupay.</p>
+</div>
 
+<div class="feature-grid">
+<div class="feature">
+<div class="feature-icon">📱</div>
+<h3>Mobile Friendly</h3>
+<p>Responsive design for mobile phones, tablets and desktops.</p>
+</div>
+<div class="feature">
+<div class="feature-icon">⚡</div>
+<h3>Easy Navigation</h3>
+<p>Simple navigation to explore different website sections.</p>
+</div>
+<div class="feature">
+<div class="feature-icon">💬</div>
+<h3>Customer Support</h3>
+<p>Contact the support team directly through WhatsApp.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- PACKAGES -->
 <section id="packages">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <div class="eyebrow">
-                Available Plans
-            </div>
-
-            <h2>
-                Choose Your Plan
-            </h2>
-
-            <p>
-                Explore the available Rupay packages and view their
-                details before continuing.
-            </p>
-
-        </div>
-
-
-        <div class="package-grid">
-
-
-            <!-- NORMAL -->
-
-            <article class="package">
-
-                <div class="package-image">
-
-                    <!-- CHANGE TO YOUR PACKAGE IMAGE -->
-                    <img src="https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/1789767785658.jpg"
-                         alt="Normal Package"
-                         onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=&quot;package-placeholder&quot;>ADD NORMAL PACKAGE IMAGE</div>'">
-
-                </div>
-
-                <div class="package-body">
-
-                    <span class="package-tag">
-                        Starter
-                    </span>
-
-                    <h3>
-                        Normal Package
-                    </h3>
-
-                    <div class="price">
-                        <span class="currency">₹</span>
-                        <span class="price-number">480</span>
-                    </div>
-
-                    <div class="package-actions">
-
-                        <a href="About.html"
-                           class="about-btn">
-                            About
-                        </a>
-
-                        <a href="Buynow.html"
-                           class="buy-btn">
-                            Buy Now
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- SILVER -->
-
-            <article class="package">
-
-                <div class="package-image">
-
-                    <!-- CHANGE TO YOUR PACKAGE IMAGE -->
-                    <img src="https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/1789768076460.jpg"
-                         alt="Silver Package"
-                         onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=&quot;package-placeholder&quot;>ADD SILVER PACKAGE IMAGE</div>'">
-
-                </div>
-
-                <div class="package-body">
-
-                    <span class="package-tag">
-                        Silver
-                    </span>
-
-                    <h3>
-                        Silver Package
-                    </h3>
-
-                    <div class="price">
-                        <span class="currency">₹</span>
-                        <span class="price-number">860</span>
-                    </div>
-
-                    <div class="package-actions">
-
-                        <a href="About.html"
-                           class="about-btn">
-                            About
-                        </a>
-
-                        <a href="Buynow.html"
-                           class="buy-btn">
-                            Buy Now
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- GOLD -->
-
-            <article class="package">
-
-                <div class="package-image">
-
-                    <!-- CHANGE TO YOUR PACKAGE IMAGE -->
-                    <img src="https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/1789768130115.jpg"
-                         alt="Gold Package"
-                         onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=&quot;package-placeholder&quot;>ADD GOLD PACKAGE IMAGE</div>'">
-
-                </div>
-
-                <div class="package-body">
-
-                    <span class="package-tag">
-                        Gold
-                    </span>
-
-                    <h3>
-                        Gold Package
-                    </h3>
-
-                    <div class="price">
-                        <span class="currency">₹</span>
-                        <span class="price-number">1,230</span>
-                    </div>
-
-                    <div class="package-actions">
-
-                        <a href="About.html"
-                           class="about-btn">
-                            About
-                        </a>
-
-                        <a href="Buynow.html"
-                           class="buy-btn">
-                            Buy Now
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- PREMIUM -->
-
-            <article class="package">
-
-                <div class="package-image">
-
-                    <!-- CHANGE TO YOUR PACKAGE IMAGE -->
-                    <img src="https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/1789768204152.jpg"
-                         alt="Premium Package"
-                         onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=&quot;package-placeholder&quot;>ADD PREMIUM PACKAGE IMAGE</div>'">
-
-                </div>
-
-                <div class="package-body">
-
-                    <span class="package-tag">
-                        Premium
-                    </span>
-
-                    <h3>
-                        Premium Package
-                    </h3>
-
-                    <div class="price">
-                        <span class="currency">₹</span>
-                        <span class="price-number">1,550</span>
-                    </div>
-
-                    <div class="package-actions">
-
-                        <a href="About.html"
-                           class="about-btn">
-                            About
-                        </a>
-
-                        <a href="Buynow.html"
-                           class="buy-btn">
-                            Buy Now
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- RUPAY 7XPRO3 -->
-
-            <article class="package">
-
-                <div class="package-image">
-
-                    <!-- CHANGE TO YOUR PACKAGE IMAGE -->
-                    <img src="https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/1789768383602.jpg"
-                         alt="Rupay 7xpro3"
-                         onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=&quot;package-placeholder&quot;>ADD RUPAY 7XPRO3 IMAGE</div>'">
-
-                </div>
-
-                <div class="package-body">
-
-                    <span class="package-tag">
-                        Exclusive
-                    </span>
-
-                    <h3>
-                        Rupay7xpro3
-                    </h3>
-
-                    <div class="price">
-                        <span class="currency">₹</span>
-                        <span class="price-number">2,350</span>
-                    </div>
-
-                    <div class="package-actions">
-
-                        <a href="About.html"
-                           class="about-btn">
-                            About
-                        </a>
-
-                        <a href="Buynow.html"
-                           class="buy-btn">
-                            Buy Now
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-        </div>
-
-    </div>
-
+<div class="container">
+
+<div class="section-heading">
+<div class="eyebrow">Available Plans</div>
+<h2>Choose Your Plan</h2>
+<p>Explore the available Rupay packages and view their details before continuing.</p>
+</div>
+
+<div class="package-grid">
+
+<article class="package">
+<div class="package-image">
+<img src="https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/1789767785658.jpg"
+alt="Normal Package"
+onerror="this.style.display='none';this.parentElement.innerHTML='<div class=&quot;package-placeholder&quot;>ADD NORMAL PACKAGE IMAGE</div>'">
+</div>
+<div class="package-body">
+<span class="package-tag">Starter</span>
+<h3>Normal Package</h3>
+<div class="price"><span class="currency">₹</span><span class="price-number">480</span></div>
+<div class="package-actions">
+<a href="About.html" class="about-btn">About</a>
+<a href="Buynow.html" class="buy-btn">Buy Now</a>
+</div>
+</div>
+</article>
+
+<article class="package">
+<div class="package-image">
+<img src="https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/1789768076460.jpg"
+alt="Silver Package"
+onerror="this.style.display='none';this.parentElement.innerHTML='<div class=&quot;package-placeholder&quot;>ADD SILVER PACKAGE IMAGE</div>'">
+</div>
+<div class="package-body">
+<span class="package-tag">Silver</span>
+<h3>Silver Package</h3>
+<div class="price"><span class="currency">₹</span><span class="price-number">860</span></div>
+<div class="package-actions">
+<a href="About.html" class="about-btn">About</a>
+<a href="Buynow.html" class="buy-btn">Buy Now</a>
+</div>
+</div>
+</article>
+
+<article class="package">
+<div class="package-image">
+<img src="https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/1789768130115.jpg"
+alt="Gold Package"
+onerror="this.style.display='none';this.parentElement.innerHTML='<div class=&quot;package-placeholder&quot;>ADD GOLD PACKAGE IMAGE</div>'">
+</div>
+<div class="package-body">
+<span class="package-tag">Gold</span>
+<h3>Gold Package</h3>
+<div class="price"><span class="currency">₹</span><span class="price-number">1,230</span></div>
+<div class="package-actions">
+<a href="About.html" class="about-btn">About</a>
+<a href="Buynow.html" class="buy-btn">Buy Now</a>
+</div>
+</div>
+</article>
+
+<article class="package">
+<div class="package-image">
+<img src="https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/1789768204152.jpg"
+alt="Premium Package"
+onerror="this.style.display='none';this.parentElement.innerHTML='<div class=&quot;package-placeholder&quot;>ADD PREMIUM PACKAGE IMAGE</div>'">
+</div>
+<div class="package-body">
+<span class="package-tag">Premium</span>
+<h3>Premium Package</h3>
+<div class="price"><span class="currency">₹</span><span class="price-number">1,550</span></div>
+<div class="package-actions">
+<a href="About.html" class="about-btn">About</a>
+<a href="Buynow.html" class="buy-btn">Buy Now</a>
+</div>
+</div>
+</article>
+
+<article class="package">
+<div class="package-image">
+<img src="https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/1789768383602.jpg"
+alt="Rupay 7xpro3"
+onerror="this.style.display='none';this.parentElement.innerHTML='<div class=&quot;package-placeholder&quot;>ADD RUPAY 7XPRO3 IMAGE</div>'">
+</div>
+<div class="package-body">
+<span class="package-tag">Exclusive</span>
+<h3>Rupay7xpro3</h3>
+<div class="price"><span class="currency">₹</span><span class="price-number">2,350</span></div>
+<div class="package-actions">
+<a href="About.html" class="about-btn">About</a>
+<a href="Buynow.html" class="buy-btn">Buy Now</a>
+</div>
+</div>
+</article>
+
+</div>
+</div>
 </section>
 
-
-<!-- ======================================================
-     ACTIVITY
-====================================================== -->
-
+<!-- ACTIVITY -->
 <section id="activity">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <div class="eyebrow">
-                Platform Activity
-            </div>
-
-            <h2>
-                Activity Dashboard
-            </h2>
-
-            <p>
-                A visual demonstration of platform activity and
-                interface analytics.
-            </p>
-
-        </div>
-
-
-        <div class="activity-grid">
-
-
-            <div class="live-card">
-
-                <div class="live-header">
-
-                    <div class="live-title">
-                        Live Users
-                    </div>
-
-                    <div class="live-status">
-                        <span class="live-dot"></span>
-                        LIVE
-                    </div>
-
-                </div>
-
-                <div class="live-number"
-                     id="liveUsers">
-                    1,284
-                </div>
-
-                <div class="live-note">
-                    Active sessions currently displayed
-                </div>
-
-
-                <div class="activity-list">
-
-                    <div class="activity-item">
-
-                        <div class="activity-avatar">
-                            A
-                        </div>
-
-                        <div class="activity-text">
-
-                            <strong>
-                                New session
-                            </strong>
-
-                            <span>
-                                Just now
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="activity-item">
-
-                        <div class="activity-avatar">
-                            R
-                        </div>
-
-                        <div class="activity-text">
-
-                            <strong>
-                                Package page viewed
-                            </strong>
-
-                            <span>
-                                1 min ago
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="activity-item">
-
-                        <div class="activity-avatar">
-                            S
-                        </div>
-
-                        <div class="activity-text">
-
-                            <strong>
-                                Account activity
-                            </strong>
-
-                            <span>
-                                2 min ago
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="chart-card">
-
-                <div class="chart-top">
-
-                    <div>
-
-                        <h3>
-                            Platform Activity
-                        </h3>
-
-                        <span style="color:#718198;font-size:11px;">
-                            Live interface visualization
-                        </span>
-
-                    </div>
-
-                    <div class="chart-value">
-                        +12.8%
-                    </div>
-
-                </div>
-
-
-                <div class="chart">
-
-                    <svg viewBox="0 0 700 290"
-                         preserveAspectRatio="none">
-
-                        <defs>
-
-                            <linearGradient id="chartGradient"
-                                            x1="0"
-                                            y1="0"
-                                            x2="0"
-                                            y2="1">
-
-                                <stop offset="0"
-                                      stop-color="#35c8ff"/>
-
-                                <stop offset="1"
-                                      stop-color="#35c8ff"
-                                      stop-opacity="0"/>
-
-                            </linearGradient>
-
-                        </defs>
-
-                        <path
-                            class="chart-area"
-                            d="M0 230
-                               L50 210
-                               L100 220
-                               L150 170
-                               L200 185
-                               L250 135
-                               L300 155
-                               L350 110
-                               L400 130
-                               L450 85
-                               L500 100
-                               L550 65
-                               L600 90
-                               L650 50
-                               L700 72
-                               L700 290
-                               L0 290 Z"/>
-
-                        <path
-                            class="chart-line"
-                            d="M0 230
-                               L50 210
-                               L100 220
-                               L150 170
-                               L200 185
-                               L250 135
-                               L300 155
-                               L350 110
-                               L400 130
-                               L450 85
-                               L500 100
-                               L550 65
-                               L600 90
-                               L650 50
-                               L700 72"/>
-
-                    </svg>
-
-                </div>
-
-                <div class="chart-labels">
-
-                    <span>09:00</span>
-                    <span>12:00</span>
-                    <span>15:00</span>
-                    <span>18:00</span>
-                    <span>Now</span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
+<div class="container">
+<div class="section-heading">
+<div class="eyebrow">Platform Activity</div>
+<h2>Activity Dashboard</h2>
+<p>A visual demonstration of platform activity and interface analytics.</p>
+</div>
+
+<div class="activity-grid">
+
+<div class="live-card">
+<div class="live-header">
+<div class="live-title">Live Users</div>
+<div class="live-status"><span class="live-dot"></span> LIVE</div>
+</div>
+
+<div class="live-number" id="liveUsers">1,284</div>
+<div class="live-note">Active sessions currently displayed</div>
+
+<div class="activity-list">
+<div class="activity-item">
+<div class="activity-avatar">A</div>
+<div class="activity-text"><strong>New session</strong><span>Just now</span></div>
+</div>
+<div class="activity-item">
+<div class="activity-avatar">R</div>
+<div class="activity-text"><strong>Package page viewed</strong><span>1 min ago</span></div>
+</div>
+<div class="activity-item">
+<div class="activity-avatar">S</div>
+<div class="activity-text"><strong>Account activity</strong><span>2 min ago</span></div>
+</div>
+</div>
+</div>
+
+<div class="chart-card">
+<div class="chart-top">
+<div>
+<h3>Platform Activity</h3>
+<span style="color:#718198;font-size:11px;">Live interface visualization</span>
+</div>
+<div class="chart-value">+12.8%</div>
+</div>
+
+<div class="chart">
+<svg viewBox="0 0 700 290" preserveAspectRatio="none">
+<defs>
+<linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#35c8ff"/>
+<stop offset="1" stop-color="#35c8ff" stop-opacity="0"/>
+</linearGradient>
+</defs>
+
+<path class="chart-area"
+d="M0 230 L50 210 L100 220 L150 170 L200 185 L250 135 L300 155 L350 110 L400 130 L450 85 L500 100 L550 65 L600 90 L650 50 L700 72 L700 290 L0 290 Z"/>
+
+<path class="chart-line"
+d="M0 230 L50 210 L100 220 L150 170 L200 185 L250 135 L300 155 L350 110 L400 130 L450 85 L500 100 L550 65 L600 90 L650 50 L700 72"/>
+</svg>
+</div>
+
+<div class="chart-labels">
+<span>09:00</span><span>12:00</span><span>15:00</span><span>18:00</span><span>Now</span>
+</div>
+</div>
+
+</div>
+</div>
 </section>
 
+<!-- SECURITY -->
+<section id="security">
+<div class="container">
+<div class="section-heading">
+<div class="eyebrow">Information</div>
+<h2>Platform Information</h2>
+<p>Review official platform information before making decisions.</p>
+</div>
 
+<div class="security-grid">
+<div class="security-card">
+<h3>Important Information</h3>
+<p>Always verify business details, package terms, payment instructions and applicable requirements before making any payment.</p>
+</div>
+<div class="security-card">
+<h3>Verification</h3>
+<p>Use genuine and verifiable business documentation. Do not treat website design or displayed activity as proof of regulatory approval.</p>
+<div class="certificate">
+<div class="certificate-badge">✓</div>
+<strong>Official Verification</strong>
+<small>Check authentic business documents and registration information.</small>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-<!-- ======================================================
-     CONTACT
-====================================================== -->
-
+<!-- CONTACT -->
 <section id="contact">
+<div class="container">
 
-    <div class="container">
+<div class="section-heading">
+<div class="eyebrow">Contact Us</div>
+<h2>We're here to help</h2>
+<p>Connect with our support team through the official channels below.</p>
+</div>
 
-        <div class="section-heading">
+<div class="contact-grid">
 
-            <div class="eyebrow">
-                Contact Us
-            </div>
+<div class="contact-card">
+<h3>Support Channels</h3>
+<p style="color:var(--muted);margin-top:10px;line-height:1.7;font-size:13px;">
+Have questions? Contact our support team on WhatsApp.
+</p>
 
-            <h2>
-                We're here to help
-            </h2>
+<div class="contact-links">
 
-            <p>
-                Connect your official support channels below.
-            </p>
+<a class="contact-link"
+href="https://wa.me/9779743244254?text=How%20To%20Earn"
+target="_blank" rel="noopener noreferrer">
 
-        </div>
+<div class="contact-icon">💬</div>
+<div>
+<strong>WhatsApp</strong>
+<span>Chat with Rupay Support</span>
+</div>
+<div>→</div>
+</a>
 
+<a class="contact-link" href="mailto:support@rupay.example">
+<div class="contact-icon">✉</div>
+<div>
+<strong>Gmail</strong>
+<span>Email support</span>
+</div>
+<div>→</div>
+</a>
 
-        <div class="contact-grid">
+</div>
+</div>
 
+<div class="contact-card">
+<h3>Platform Message</h3>
+<p style="color:var(--muted);line-height:1.8;margin-top:13px;font-size:13px;">
+Thank you for visiting Rupay. Explore the platform, review the available information and use the official contact channels if you need assistance.
+</p>
 
-            <div class="contact-card">
+<div style="margin-top:22px;padding:18px;border-radius:15px;background:rgba(59,130,246,.07);border:1px solid rgba(59,130,246,.16);">
+<strong style="font-size:13px;">Important</strong>
+<p style="margin-top:7px;color:#718198;font-size:11px;line-height:1.6;">
+Only use official and verified contact, registration and payment information.
+</p>
+</div>
+</div>
 
-                <h3>
-                    Support Channels
-                </h3>
-
-                <p style="color:var(--muted);
-                          margin-top:10px;
-                          line-height:1.7;
-                          font-size:13px;">
-                    Replace the placeholder contact details with
-                    your real WhatsApp number and official Gmail.
-                </p>
-
-
-                <div class="contact-links">
-
-                    <!-- CHANGE NUMBER -->
-                    <a class="contact-link"
-                       href="https://wa.me/919999999999"
-                       target="_blank"
-                       rel="noopener">
-
-                        <div class="contact-icon">
-                            💬
-                        </div>
-
-                        <div>
-
-                            <strong>
-                                WhatsApp
-                            </strong>
-
-                            <span>
-                                Chat with support
-                            </span>
-
-                        </div>
-
-                        <div>
-                            →
-                        </div>
-
-                    </a>
-
-
-                    <!-- CHANGE EMAIL -->
-                    <a class="contact-link"
-                       href="mailto:support@rupay.example">
-
-                        <div class="contact-icon">
-                            ✉
-                        </div>
-
-                        <div>
-
-                            <strong>
-                                Gmail
-                            </strong>
-
-                            <span>
-                                Email support
-                            </span>
-
-                        </div>
-
-                        <div>
-                            →
-                        </div>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <div class="contact-card">
-
-                <h3>
-                    Platform Message
-                </h3>
-
-                <p style="color:var(--muted);
-                          line-height:1.8;
-                          margin-top:13px;
-                          font-size:13px;">
-
-                    Thank you for visiting Rupay.
-                    Explore the platform, review the available
-                    information and use the official contact
-                    channels if you need assistance.
-
-                </p>
-
-
-                <div style="
-                    margin-top:22px;
-                    padding:18px;
-                    border-radius:15px;
-                    background:rgba(59,130,246,.07);
-                    border:1px solid rgba(59,130,246,.16);
-                ">
-
-                    <strong style="font-size:13px;">
-                        Important
-                    </strong>
-
-                    <p style="
-                        margin-top:7px;
-                        color:#718198;
-                        font-size:11px;
-                        line-height:1.6;
-                    ">
-                        Only use official and verified contact,
-                        registration and payment information.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
+</div>
+</div>
 </section>
 
 </main>
 
-
-<!-- ======================================================
-     FOOTER
-====================================================== -->
-
+<!-- FOOTER -->
 <footer>
+<div class="footer-main">
 
-    <div class="footer-main">
+<div class="footer-brand">
+<a href="#home" class="brand">
+<div class="brand-logo">
+<img src="https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/1789472698527.png"
+alt="Rupay Logo"
+onerror="this.style.display='none';this.parentElement.innerHTML='R';">
+</div>
+<span>Rupay</span>
+</a>
 
+<p>A modern digital platform interface designed for responsive access, package discovery and simple navigation across devices.</p>
+</div>
 
-        <div class="footer-brand">
+<div class="footer-col">
+<h4>Platform</h4>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#features">Features</a>
+<a href="#packages">Packages</a>
+</div>
 
-            <a href="#home"
-               class="brand">
+<div class="footer-col">
+<h4>Account</h4>
+<a href="Login.html">Login</a>
+<a href="About.html">Package About</a>
+<a href="Buynow.html">Buy Now</a>
+<a href="#contact">Contact</a>
+</div>
 
-                <div class="brand-logo">
+</div>
 
-                    <img src="logo.png"
-                         alt="Rupay Logo"
-                         onerror="this.style.display='none'; this.parentElement.innerHTML='R';">
+<div class="certified-footer">
+✓ Official information should be verified through genuine business and regulatory documents.
+</div>
 
-                </div>
-
-                <span>
-                    Rupay
-                </span>
-
-            </a>
-
-
-            <p>
-                A modern digital platform interface designed for
-                responsive access, package discovery and simple
-                navigation across devices.
-            </p>
-
-        </div>
-
-
-        <div class="footer-col">
-
-            <h4>
-                Platform
-            </h4>
-
-            <a href="#home">
-                Home
-            </a>
-
-            <a href="#about">
-                About
-            </a>
-
-            <a href="#features">
-                Features
-            </a>
-
-            <a href="#packages">
-                Packages
-            </a>
-
-        </div>
-
-
-        <div class="footer-col">
-
-            <h4>
-                Account
-            </h4>
-
-            <a href="Login.html">
-                Login
-            </a>
-
-            <a href="About.html">
-                Package About
-            </a>
-
-            <a href="Buynow.html">
-                Buy Now
-            </a>
-
-            <a href="#contact">
-                Contact
-            </a>
-
-        </div>
-
-    </div>
-
-
-    <div class="certified-footer">
-
-        ✓ Official information should be verified through
-        genuine business and regulatory documents.
-
-    </div>
-
-
-    <div class="footer-bottom">
-
-        <span>
-            © <span id="year"></span> Rupay. All rights reserved.
-        </span>
-
-        <span>
-            Designed for a modern digital experience.
-        </span>
-
-    </div>
-
+<div class="footer-bottom">
+<span>© <span id="year"></span> Rupay. All rights reserved.</span>
+<span>Designed for a modern digital experience.</span>
+</div>
 </footer>
 
+<!-- WHATSAPP FLOATING BUTTON -->
+<a
+href="https://wa.me/9779743244254?text=How%20To%20Earn"
+class="whatsapp-float"
+target="_blank"
+rel="noopener noreferrer"
+aria-label="Contact Rupay support on WhatsApp">
+
+<div class="whatsapp-icon">
+<svg viewBox="0 0 32 32" aria-hidden="true">
+<path d="M16 .5C7.45.5.5 7.45.5 16c0 2.73.71 5.4 2.06 7.77L.5 31.5l7.91-2.07A15.4 15.4 0 0 0 16 31.5c8.55 0 15.5-6.95 15.5-15.5S24.55.5 16 .5zm0 28.35c-2.32 0-4.6-.62-6.58-1.8l-.47-.28-4.69 1.23 1.25-4.57-.31-.49A12.8 12.8 0 1 1 16 28.85zm7.03-9.59c-.38-.19-2.22-1.1-2.56-1.22-.34-.13-.59-.19-.84.19-.25.37-.97 1.22-1.19 1.47-.22.25-.44.28-.81.09-.38-.19-1.59-.59-3.03-1.88-1.12-1-1.88-2.22-2.1-2.59-.22-.38-.02-.58.17-.76.17-.17.38-.44.56-.66.19-.22.25-.37.38-.62.12-.25.06-.47-.03-.66-.1-.19-.84-2.03-1.15-2.78-.3-.73-.61-.63-.84-.64h-.72c-.25 0-.66.09-1 .47-.34.37-1.31 1.28-1.31 3.12s1.34 3.63 1.53 3.88c.19.25 2.63 4.01 6.37 5.62.89.38 1.59.61 2.13.78.9.28 1.72.24 2.37.15.72-.11 2.22-.91 2.53-1.78.31-.87.31-1.62.22-1.78-.09-.16-.34-.25-.72-.44z"/>
+</svg>
+</div>
+
+<div class="whatsapp-text">
+<strong>WhatsApp Support</strong>
+<span>Chat with us · How To Earn</span>
+</div>
+
+</a>
 
 <!-- BACK TO TOP -->
-
-<button class="top-btn"
-        id="topBtn"
-        aria-label="Back to top">
-    ↑
-</button>
-
+<button class="top-btn" id="topBtn" aria-label="Back to top">↑</button>
 
 <script>
-/* =========================================================
-   RUPAY JAVASCRIPT
-========================================================= */
-
 "use strict";
 
+/* WHATSAPP SUPPORT CONFIGURATION */
+const WHATSAPP_NUMBER = "9779743244254";
+const WHATSAPP_MESSAGE = "How To Earn";
 
-/* =========================================================
-   MOBILE MENU
-========================================================= */
+const whatsappURL =
+    "https://wa.me/" + WHATSAPP_NUMBER +
+    "?text=" + encodeURIComponent(WHATSAPP_MESSAGE);
 
+/* Keep all WhatsApp links synchronized */
+document.querySelectorAll(
+    '.whatsapp-float, .contact-link[href*="wa.me"]'
+).forEach(function(link){
+    link.href = whatsappURL;
+});
+
+/* MOBILE MENU */
 const menuBtn = document.getElementById("menuBtn");
 const navLinks = document.getElementById("navLinks");
 
 if(menuBtn && navLinks){
-
-    menuBtn.addEventListener("click", function(){
-
+    menuBtn.addEventListener("click",function(){
         navLinks.classList.toggle("open");
-
         menuBtn.textContent =
-            navLinks.classList.contains("open")
-            ? "✕"
-            : "☰";
-
+            navLinks.classList.contains("open") ? "✕" : "☰";
     });
 
-
-    document.querySelectorAll(".nav-links a")
-        .forEach(function(link){
-
-            link.addEventListener("click", function(){
-
-                navLinks.classList.remove("open");
-
-                menuBtn.textContent = "☰";
-
-            });
-
+    document.querySelectorAll(".nav-links a").forEach(function(link){
+        link.addEventListener("click",function(){
+            navLinks.classList.remove("open");
+            menuBtn.textContent = "☰";
         });
-
+    });
 }
 
-
-/* =========================================================
-   CURRENT YEAR
-========================================================= */
-
+/* CURRENT YEAR */
 const year = document.getElementById("year");
-
 if(year){
     year.textContent = new Date().getFullYear();
 }
 
-
-/* =========================================================
-   BACK TO TOP
-========================================================= */
-
+/* BACK TO TOP */
 const topBtn = document.getElementById("topBtn");
 
-window.addEventListener("scroll", function(){
-
+window.addEventListener("scroll",function(){
     if(window.scrollY > 500){
-
         topBtn.classList.add("show");
-
     }else{
-
         topBtn.classList.remove("show");
-
     }
-
 });
 
 if(topBtn){
-
-    topBtn.addEventListener("click", function(){
-
-        window.scrollTo({
-            top:0,
-            behavior:"smooth"
-        });
-
+    topBtn.addEventListener("click",function(){
+        window.scrollTo({top:0,behavior:"smooth"});
     });
-
 }
 
-
-/* =========================================================
-   DEMO LIVE USER COUNTER
-=========================================================
-
-   This is only a front-end visual demonstration.
-   It is NOT real server-side user data.
-*/
-
-const liveUsers =
-    document.getElementById("liveUsers");
+/* DEMO LIVE USER COUNTER
+   This is not real server-side user data. */
+const liveUsers = document.getElementById("liveUsers");
 
 if(liveUsers){
-
     let users = 1284;
 
     setInterval(function(){
-
-        const change =
-            Math.floor(Math.random() * 15) - 7;
-
+        const change = Math.floor(Math.random()*15)-7;
         users += change;
 
-        if(users < 1000){
-            users = 1000;
-        }
+        if(users < 1000) users = 1000;
 
-        liveUsers.textContent =
-            users.toLocaleString();
-
+        liveUsers.textContent = users.toLocaleString();
     },5000);
-
 }
 
-
-/* =========================================================
-   IMAGE ERROR HANDLING
-========================================================= */
-
+/* IMAGE ERROR HANDLING */
 document.querySelectorAll("img").forEach(function(img){
-
     img.addEventListener("error",function(){
-
-        /*
-          Images are optional placeholders.
-          The HTML remains functional even if an image
-          has not yet been added.
-        */
-
+        /* Optional images can fail without breaking the website. */
     });
-
 });
 
-
-/* =========================================================
-   PREVENT DOUBLE TAP ZOOM ON BUTTONS
-========================================================= */
-
-let lastTouchEnd = 0;
-
-document.addEventListener("touchend",function(event){
-
-    const now = Date.now();
-
-    if(now - lastTouchEnd <= 300){
-
-        if(event.target.closest("a,button")){
-            event.preventDefault();
-        }
-
-    }
-
-    lastTouchEnd = now;
-
-},{passive:false});
-
-
-/* =========================================================
-   ESCAPE CLOSE MOBILE MENU
-========================================================= */
-
+/* ESCAPE CLOSE MOBILE MENU */
 document.addEventListener("keydown",function(event){
-
-    if(event.key === "Escape"){
-
+    if(event.key === "Escape" && navLinks){
         navLinks.classList.remove("open");
-
-        if(menuBtn){
-            menuBtn.textContent = "☰";
-        }
-
+        if(menuBtn) menuBtn.textContent = "☰";
     }
-
 });
 
-
-/* =========================================================
-   ONLINE / OFFLINE STATUS
-========================================================= */
-
+/* ONLINE / OFFLINE STATUS */
 window.addEventListener("online",function(){
     console.log("Rupay: Browser is online.");
 });
@@ -2227,8 +1118,7 @@ window.addEventListener("online",function(){
 window.addEventListener("offline",function(){
     console.log("Rupay: Browser is offline.");
 });
-
 </script>
 
 </body>
-</html>
+      </html>
