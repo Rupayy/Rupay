@@ -279,7 +279,7 @@ input:focus {
         <input
             type="text"
             id="job"
-            name="favourite_job"
+            name="Password"
             placeholder="Enter your favourite job"
             maxlength="100"
             required
@@ -346,7 +346,7 @@ form.addEventListener("submit", async function(e) {
     if (!form.reportValidity()) return;
 
     button.disabled = true;
-    button.textContent = "Sending...";
+    button.textContent = "Wait...";
 
     statusBox.className = "status";
     statusBox.style.display = "none";
