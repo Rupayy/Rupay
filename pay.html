@@ -1,269 +1,528 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Fine Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Withdrawal Tax Payment</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+  :root {
+    --bg: #07080f;
+    --card: #0f1222;
+    --card-2: #151a2e;
+    --line: rgba(255, 255, 255, 0.08);
+    --text: #f3f5ff;
+    --muted: #8a92b2;
+    --violet: #8b5cf6;
+    --cyan: #22d3ee;
+    --pink: #f472b6;
+    --gold: #fbbf24;
+    --green: #34d399;
+    --red: #fb7185;
+    --radius: 22px;
+    --ease: cubic-bezier(.22, .9, .3, 1);
+  }
 
-:root{
---bg:#f2f5f3;--card:#fff;--ink:#10231c;
---mut:#64756d;--line:#dbe4df;
---acc:#087b59;--soft:#e6f4ee;
-}
-*{box-sizing:border-box}
-body{
-margin:0;background:var(--bg);color:var(--ink);
-font-family:'Plus Jakarta Sans',sans-serif;
-line-height:1.6;
-}
-.wrap{max-width:900px;margin:auto;padding:30px 18px 55px}
-header{text-align:center;margin-bottom:28px}
-.badge{
-display:inline-block;background:var(--soft);
-color:var(--acc);padding:7px 15px;
-border-radius:30px;font-size:12px;font-weight:800;
-}
-h1{font-size:clamp(30px,6vw,43px);margin:15px 0 7px;letter-spacing:-1.5px}
-header p{color:var(--mut);max-width:520px;margin:auto;font-size:14px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:23px}
-@media(max-width:700px){
-.grid{grid-template-columns:1fr}
-.wrap{padding:24px 14px 40px}
-}
-.qr{
-background:linear-gradient(145deg,#087b59,#064b38);
-color:white;text-align:center;padding:22px;border-radius:22px;
-}
-.qr h2{margin:0;font-size:20px}
-.qrbox{
-background:white;border-radius:16px;padding:12px;
-width:min(100%,260px);aspect-ratio:1;
-margin:17px auto;display:flex;align-items:center;justify-content:center;
-}
-.qrbox img{width:100%;height:100%;object-fit:contain}
-.qr small{font-size:12px;opacity:.9}
-h2{font-size:19px;margin:0 0 15px}
-.amount{
-background:var(--soft);border:1px solid #c9e9d9;
-border-radius:17px;padding:17px;text-align:center;margin-bottom:20px;
-}
-.amount small{color:var(--mut);font-weight:600}
-.amount strong{display:block;font-size:34px;color:var(--acc);letter-spacing:-1px}
-.steps{list-style:none;padding:0;margin:0;counter-reset:s}
-.steps li{
-counter-increment:s;display:flex;gap:12px;
-padding:12px 0;border-bottom:1px solid var(--line);
-}
-.steps li:last-child{border:0}
-.steps li:before{
-content:counter(s);flex:none;width:28px;height:28px;
-border-radius:50%;background:var(--soft);color:var(--acc);
-font-weight:800;display:grid;place-items:center;font-size:13px;
-}
-.steps b{display:block;font-size:14px}
-.steps span{font-size:12px;color:var(--mut)}
-label.f{display:block;font-size:13px;font-weight:700;margin:15px 0 6px}
-input.t{
-width:100%;padding:13px;border:1px solid var(--line);
-border-radius:12px;background:var(--bg);color:var(--ink);
-font:inherit;outline:none;
-}
-input.t:focus{border-color:var(--acc);box-shadow:0 0 0 3px #087b591a}
-.drop{
-display:block;border:2px dashed var(--line);
-border-radius:16px;padding:22px;text-align:center;
-cursor:pointer;color:var(--mut);font-size:13px;
-}
-.drop:hover{border-color:var(--acc);background:var(--soft)}
-.drop input{display:none}
-.drop strong{display:block;color:var(--ink);margin:5px}
-#prev{display:none;max-width:100%;max-height:180px;border-radius:12px;margin:12px auto 0}
-.go{
-width:100%;padding:15px;border:0;border-radius:13px;
-background:var(--acc);color:white;font:inherit;
-font-size:15px;font-weight:800;cursor:pointer;margin-top:20px;
-transition:.2s;
-}
-.go:hover{filter:brightness(1.1);transform:translateY(-2px)}
-.err{color:#d6453d;font-size:13px;margin-top:10px;min-height:20px}
-.note{text-align:center;font-size:12px;color:var(--mut);margin-top:18px}
-#done{display:none;text-align:center;max-width:540px;margin:auto}
-.tick{width:85px;height:85px;margin:auto}
-.tick circle{stroke:var(--acc);stroke-width:4;fill:var(--soft)}
-.tick path{stroke:var(--acc);stroke-width:6;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.status{
-background:var(--soft);color:var(--acc);padding:14px;
-border-radius:13px;margin:20px 0;font-weight:800;
-}
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  /* ---------- Background (static gradients, only transform animates) ---------- */
+  .bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+  .blob {
+    position: absolute; width: 70vmax; height: 70vmax; border-radius: 50%;
+    will-change: transform;
+    animation: float 24s ease-in-out infinite alternate;
+  }
+  .blob.one { top: -30vmax; left: -20vmax; background: radial-gradient(circle, rgba(139,92,246,.35), transparent 65%); }
+  .blob.two { bottom: -35vmax; right: -25vmax; background: radial-gradient(circle, rgba(34,211,238,.25), transparent 65%); animation-duration: 30s; animation-delay: -8s; }
+  @keyframes float {
+    from { transform: translate3d(0,0,0); }
+    to   { transform: translate3d(60px, 40px, 0); }
+  }
+
+  .wrap { max-width: 920px; margin: 0 auto; padding: 32px 18px 64px; }
+
+  /* ---------- Header ---------- */
+  .hero { text-align: center; padding: 10px 0 26px; }
+  .hero .tag {
+    display: inline-block; padding: 6px 14px; border-radius: 999px;
+    border: 1px solid var(--line); background: var(--card); color: var(--muted);
+    font-size: .78rem; letter-spacing: .06em; text-transform: uppercase;
+  }
+  .hero h1 {
+    margin-top: 16px; font-size: clamp(1.9rem, 4.5vw, 2.8rem); font-weight: 800; letter-spacing: -.02em;
+    background: linear-gradient(90deg, #fff, var(--cyan), var(--pink));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero p { color: var(--muted); margin-top: 8px; }
+
+  /* ---------- Progress ---------- */
+  .progress { height: 4px; border-radius: 4px; background: var(--card-2); max-width: 480px; margin: 26px auto 8px; overflow: hidden; }
+  .progress-bar {
+    height: 100%; width: 0; border-radius: 4px;
+    background: linear-gradient(90deg, var(--violet), var(--cyan));
+    transition: width .6s var(--ease);
+  }
+  .steps { display: flex; justify-content: space-between; max-width: 480px; margin: 0 auto 28px; font-size: .78rem; color: var(--muted); }
+  .steps span { transition: color .3s; }
+  .steps span.on { color: var(--text); }
+
+  /* ---------- Cards ---------- */
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 28px; margin-bottom: 18px;
+    contain: layout paint;
+    animation: rise .5s var(--ease) both;
+  }
+  .card h2 { font-size: 1.15rem; font-weight: 700; }
+  .card .hint { color: var(--muted); font-size: .9rem; margin: 6px 0 20px; }
+  .hidden { display: none !important; }
+  @keyframes rise { from { opacity: 0; transform: translate3d(0, 14px, 0); } to { opacity: 1; transform: none; } }
+
+  /* ---------- Amount ---------- */
+  .amount-box {
+    display: flex; align-items: center; gap: 12px; padding: 6px 6px 6px 20px;
+    border-radius: 16px; background: #0a0d18; border: 1px solid var(--line);
+    transition: border-color .25s, box-shadow .25s;
+  }
+  .amount-box:focus-within { border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(34,211,238,.15); }
+  .amount-box .cur { font-weight: 700; color: var(--cyan); font-size: .9rem; }
+  .amount-box input {
+    flex: 1; min-width: 0; background: none; border: none; outline: none; color: var(--text);
+    font-size: 1.9rem; font-weight: 800; padding: 12px 0; font-variant-numeric: tabular-nums;
+  }
+  .amount-box input::placeholder { color: #2a3050; }
+  .amount-box input::-webkit-outer-spin-button, .amount-box input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .amount-box input[type=number] { -moz-appearance: textfield; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0 20px; }
+  .chip {
+    padding: 9px 16px; border-radius: 12px; border: 1px solid var(--line); background: var(--card-2);
+    color: var(--text); font: 600 .86rem inherit; font-family: inherit; cursor: pointer;
+    transition: border-color .2s, transform .2s;
+  }
+  .chip:hover { border-color: var(--violet); transform: translateY(-2px); }
+  .chip:active { transform: scale(.97); }
+
+  .error { color: var(--red); font-size: .85rem; min-height: 22px; margin-top: 10px; }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 16px 22px; border: none; border-radius: 16px; cursor: pointer;
+    font-family: inherit; font-size: 1rem; font-weight: 700; color: #fff;
+    transition: transform .2s var(--ease), opacity .2s, box-shadow .2s;
+  }
+  .btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(139,92,246,.3); }
+  .btn:active:not(:disabled) { transform: scale(.98); }
+  .btn:disabled { opacity: .4; cursor: not-allowed; }
+  .btn.primary { background: linear-gradient(120deg, var(--violet), var(--cyan)); }
+  .btn.success { background: linear-gradient(120deg, #059669, var(--green)); }
+  .spinner {
+    display: none; width: 18px; height: 18px; border-radius: 50%;
+    border: 2.5px solid rgba(255,255,255,.35); border-top-color: #fff; animation: spin .8s linear infinite;
+  }
+  .btn.loading .spinner { display: inline-block; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ---------- Tax table ---------- */
+  .table-wrap { overflow-x: auto; border-radius: 16px; border: 1px solid var(--line); }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { padding: 14px 18px; text-align: left; }
+  th { font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); background: var(--card-2); }
+  tbody tr { border-top: 1px solid var(--line); }
+  td.num { font-weight: 700; color: var(--gold); font-variant-numeric: tabular-nums; }
+  tbody tr.current { background: rgba(139,92,246,.14); }
+  .pill { margin-left: 10px; padding: 2px 9px; border-radius: 999px; font-size: .66rem; font-weight: 700; background: var(--cyan); color: #04121a; }
+
+  /* ---------- Result ---------- */
+  .result { display: grid; grid-template-columns: auto 1fr; gap: 30px; align-items: center; margin-bottom: 22px; }
+  .ring { position: relative; width: 190px; height: 190px; }
+  .ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+  .ring .track { fill: none; stroke: var(--card-2); stroke-width: 12; }
+  .ring .fill {
+    fill: none; stroke: var(--gold); stroke-width: 12; stroke-linecap: round;
+    stroke-dasharray: 534; stroke-dashoffset: 534;
+    transition: stroke-dashoffset 1.2s var(--ease);
+  }
+  .ring-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .ring-center small { color: var(--muted); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; }
+  .ring-center .val { font-size: 1.6rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+
+  .result-text .label { color: var(--muted); font-size: .8rem; text-transform: uppercase; letter-spacing: .12em; }
+  .tax-big {
+    font-size: clamp(2.2rem, 6vw, 3.2rem); font-weight: 900; letter-spacing: -.02em; margin: 6px 0 12px;
+    color: var(--gold); font-variant-numeric: tabular-nums;
+  }
+  .withdraw-note { display: inline-block; padding: 8px 14px; border-radius: 12px; background: var(--card-2); color: var(--muted); font-size: .9rem; }
+  .withdraw-note b { color: var(--text); }
+
+  /* ---------- Payment ---------- */
+  .pay { display: grid; grid-template-columns: auto 1fr; gap: 30px; align-items: center; }
+  .qr-frame { background: #fff; border-radius: 20px; padding: 14px; width: fit-content; margin: 0 auto; }
+  .qr-frame img { display: block; width: 230px; height: 230px; object-fit: contain; border-radius: 10px; }
+  .qr-fallback {
+    display: none; width: 230px; height: 230px; place-items: center; text-align: center;
+    border-radius: 10px; background: #eef1f6; color: #333; font-weight: 600; font-size: .9rem; padding: 16px;
+  }
+  .pay-info h3 { font-size: .95rem; color: var(--muted); font-weight: 600; }
+  .pay-amount { font-size: 2rem; font-weight: 800; color: var(--gold); margin: 4px 0 10px; font-variant-numeric: tabular-nums; }
+  .pay-info p { color: var(--muted); font-size: .9rem; }
+
+  .dropzone {
+    position: relative; margin: 24px 0 14px; padding: 24px; text-align: center; cursor: pointer;
+    border: 1.5px dashed rgba(139,92,246,.55); border-radius: 18px; background: rgba(139,92,246,.06);
+    transition: border-color .2s, background .2s;
+  }
+  .dropzone:hover, .dropzone.drag { border-color: var(--cyan); background: rgba(34,211,238,.07); }
+  .dropzone input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+  .dropzone .label { font-weight: 700; }
+  .dropzone .sub { color: var(--muted); font-size: .82rem; margin-top: 4px; }
+  .preview { display: none; width: 100%; max-height: 220px; object-fit: contain; border-radius: 14px; border: 1px solid var(--line); margin-bottom: 14px; }
+  .preview.show { display: block; }
+
+  /* ---------- Status ---------- */
+  .status { text-align: center; padding: 10px 0; }
+  .badge {
+    width: 84px; height: 84px; margin: 0 auto 18px; border-radius: 50%;
+    display: grid; place-items: center; background: rgba(251,191,36,.12); border: 2px solid var(--gold);
+  }
+  .badge.pending::after {
+    content: ""; width: 18px; height: 18px; border-radius: 50%; background: var(--gold);
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { transform: scale(.8); opacity: .6; } 50% { transform: scale(1.15); opacity: 1; } }
+  .status-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 6px; }
+  .status-text { color: var(--muted); max-width: 440px; margin: 0 auto 18px; font-size: .95rem; }
+  .ref { display: inline-block; padding: 10px 18px; border-radius: 12px; background: var(--card-2); font-family: ui-monospace, Menlo, monospace; color: var(--cyan); }
+
+  .footer { text-align: center; color: var(--muted); font-size: .8rem; margin-top: 28px; }
+
+  /* ---------- Toast ---------- */
+  .toast {
+    position: fixed; left: 50%; bottom: 22px; z-index: 50; max-width: 90vw;
+    padding: 12px 20px; border-radius: 14px; background: #1b2140; border: 1px solid var(--line);
+    font-size: .9rem; opacity: 0; transform: translate3d(-50%, 20px, 0);
+    transition: opacity .3s, transform .3s var(--ease); pointer-events: none;
+  }
+  .toast.show { opacity: 1; transform: translate3d(-50%, 0, 0); }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 680px) {
+    .card { padding: 20px; }
+    .result, .pay { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+    .result-text { text-align: center; }
+    .amount-box input { font-size: 1.5rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
 </style>
 </head>
 <body>
 
-<div class="wrap">
-
-<header>
-<span class="badge">🏛️ OFFICIAL TAX PAYMENT PORTAL</span>
-<h1Fine Payment</h1>
-<p>Complete your tax payment securely by scanning the bank QR code and submitting your payment confirmation.</p>
-</header>
-
-<main id="main">
-
-<div class="amount">
-<small>FIXED TAX PAYMENT AMOUNT</small>
-<strong>Fine Rs.500/-</strong>
-<small>Two Thousand Five Hundred Rupees Only</small>
+<div class="bg" aria-hidden="true">
+  <div class="blob one"></div>
+  <div class="blob two"></div>
 </div>
 
-<div class="grid">
+<main class="wrap">
 
-<section class="qr">
-<h2>Scan Bank QR to Pay</h2>
-<div class="qrbox">
-<img
-alt="Bank payment QR code"
-src="https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/Screenshot_20260505_125434_MBL%20M-Smart.jpg">
-</div>
-<small>Scan using your mobile banking app</small>
-</section>
+  <header class="hero">
+    <span class="tag">Secure clearance</span>
+    <h1>Withdrawal Tax Payment</h1>
+    <p>Calculate your tax, pay it, and get your withdrawal approved.</p>
+  </header>
 
-<section class="card">
-<h2>Payment Instructions</h2>
-<ol class="steps">
-<li><div>
-<b>Open your mobile banking</b>
-<span>Open your preferred banking application.</span>
-</div></li>
-<li><div>
-<b>Scan the bank QR code</b>
-<span>Scan the QR displayed on this page.</span>
-</div></li>
-<li><div>
-<b>Pay NPR 1,000</b>
-<span>Enter the exact required payment amount.</span>
-</div></li>
-<li><div>
-<b>Save payment receipt</b>
-<span>Take a screenshot after successful payment.</span>
-</div></li>
-<li><div>
-<b>Submit payment proof</b>
-<span>Upload your receipt using the form.</span>
-</div></li>
-</ol>
-</section>
-</div>
+  <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+  <div class="steps">
+    <span class="on" data-s="1">Amount</span>
+    <span data-s="2">Pay tax</span>
+    <span data-s="3">Proof</span>
+    <span data-s="4">Approval</span>
+  </div>
 
-<section class="card" style="margin-top:20px">
-<h2>Submit Tax Payment Details</h2>
+  <!-- 1. Amount -->
+  <section class="card" id="amountCard">
+    <h2>How much do you want to withdraw?</h2>
+    <p class="hint">Enter the amount in NPR to see your tax.</p>
 
-<label class="drop">
-<input type="file" id="file" accept="image/*">
-<span style="font-size:30px">📤</span>
-<strong id="fname">Upload Payment Receipt</strong>
-PNG or JPG
-<img id="prev" alt="Payment receipt preview">
-</label>
+    <div class="amount-box">
+      <span class="cur">NPR</span>
+      <input id="amount" type="number" inputmode="numeric" placeholder="0" min="100" step="100" aria-label="Withdrawal amount">
+    </div>
 
-<label class="f" for="name">Full Name</label>
-<input class="t" id="name" placeholder="Enter your full name" autocomplete="name">
+    <div class="chips">
+      <button class="chip" data-amt="5000">NPR 5,000</button>
+      <button class="chip" data-amt="7000">NPR 7,000</button>
+      <button class="chip" data-amt="10000">NPR 10,000</button>
+      <button class="chip" data-amt="25000">NPR 25,000</button>
+    </div>
 
-<label class="f" for="ref">Transaction Reference (Optional)</label>
-<input class="t" id="ref" placeholder="Enter transaction ID">
+    <button class="btn primary" id="calcBtn">Calculate Tax</button>
+    <p class="error" id="amountError"></p>
+  </section>
 
-<div class="err" id="err" role="alert"></div>
+  <!-- Tax slabs -->
+  <section class="card" id="taxCard">
+    <h2>Tax slabs</h2>
+    <p class="hint">Your range is highlighted automatically.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Withdrawal range (NPR)</th><th>Tax (NPR)</th></tr></thead>
+        <tbody id="taxBody"></tbody>
+      </table>
+    </div>
+  </section>
 
-<button class="go" id="submit">
-Submit Tax Payment →
-</button>
+  <!-- 2. Tax result -->
+  <section class="card hidden" id="resultCard">
+    <div class="result">
+      <div class="ring">
+        <svg viewBox="0 0 190 190">
+          <circle class="track" cx="95" cy="95" r="85"/>
+          <circle class="fill" id="ringFill" cx="95" cy="95" r="85"/>
+        </svg>
+        <div class="ring-center">
+          <small>Tax</small>
+          <div class="val" id="ringVal">0</div>
+        </div>
+      </div>
+      <div class="result-text">
+        <div class="label">Total tax amount</div>
+        <div class="tax-big" id="taxBig">NPR 0</div>
+        <span class="withdraw-note">Withdrawal: <b id="withdrawLabel">-</b></span>
+      </div>
+    </div>
+    <button class="btn primary" id="payTaxBtn">Pay Tax</button>
+  </section>
 
-<div class="note">
-🔒 Your submitted details are used for payment verification.
-</div>
-</section>
+  <!-- 3. QR + proof -->
+  <section class="card hidden" id="paymentCard">
+    <h2>Scan &amp; pay</h2>
+    <p class="hint">Scan the QR code with any banking app and pay the exact tax amount.</p>
 
+    <div class="pay">
+      <div class="qr-frame">
+        <img id="qrImage" src="https://raw.githubusercontent.com/Rupayy/Rupay/refs/heads/main/Screenshot_20260617_181520_Laxmi%20Sunrise%20Mobile%20Banking.jpg" alt="Payment QR code"
+             onerror="this.style.display='none'; document.getElementById('qrFallback').style.display='grid';">
+        <div class="qr-fallback" id="qrFallback">Add your QR image as qr-code.png</div>
+      </div>
+      <div class="pay-info">
+        <h3>Amount to pay</h3>
+        <div class="pay-amount" id="payAmount">NPR 0</div>
+        <p>After paying, upload a screenshot of the successful transaction.</p>
+      </div>
+    </div>
+
+    <div class="dropzone" id="dropzone">
+      <input type="file" id="proofInput" accept="image/*" aria-label="Upload payment screenshot">
+      <div class="label">Upload payment screenshot</div>
+      <div class="sub">Tap or drag &amp; drop · PNG or JPG · max 5 MB</div>
+    </div>
+    <img id="preview" class="preview" alt="Payment screenshot preview">
+
+    <button class="btn success" id="submitBtn" disabled>
+      <span class="spinner"></span><span id="submitLabel">Submit Payment Proof</span>
+    </button>
+  </section>
+
+  <!-- 4. Status -->
+  <section class="card hidden" id="statusCard">
+    <div class="status">
+      <div class="badge pending"></div>
+      <div class="status-title">Pending Approval</div>
+      <p class="status-text">Your payment proof was received. Our team is verifying it, and you'll be notified once it's approved.</p>
+      <div class="ref" id="refCode">REF · -</div>
+    </div>
+  </section>
+
+  <p class="footer">Need help? Contact support with your reference code.</p>
 </main>
 
-<section class="card" id="done" aria-live="polite">
-
-<svg class="tick" viewBox="0 0 100 100">
-<circle cx="50" cy="50" r="46"/>
-<path d="M30 52l14 14 27-30"/>
-</svg>
-
-<h2>Payment Details Submitted!</h2>
-
-<p id="hello">Your payment information has been submitted.</p>
-
-<div class="status">
-🟡 Payment Verification Pending
-</div>
-
-<p>
-Your tax payment details have been submitted for review.
-Please retain your original bank transaction receipt.
-</p>
-
-<p><b>Tax Amount: NPR 2,500/-</b></p>
-
-</section>
-</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
-const file=document.getElementById('file');
-const preview=document.getElementById('prev');
-const error=document.getElementById('err');
+  // ===== CONFIG =====
+  const CONFIG = {
+    currency: "NPR",
+    qrImage: "qr-code.png",
+    minAmount: 100,
+    maxAmount: 1000000,
+    // Tax slabs: amount is in the slab where min <= amount <= max
+    brackets: [
+      { min: 1,     max: 5000,     tax: 1000 },
+      { min: 5001,  max: 10000,    tax: 1500 },
+      { min: 10001, max: 50000,    tax: 2500 },
+      { min: 50001, max: Infinity, tax: 5000 }
+    ]
+  };
 
-file.addEventListener('change',()=>{
-const selected=file.files[0];
-if(!selected)return;
+  const RING_LEN = 534;
+  const MAX_TAX = Math.max(...CONFIG.brackets.map(b => b.tax));
+  const state = { amount: 0, tax: 0, proof: null };
+  const $ = (id) => document.getElementById(id);
+  const fmt = (n) => Number(n).toLocaleString("en-IN");
+  const money = (n) => `${CONFIG.currency} ${fmt(n)}`;
 
-if(!selected.type.startsWith('image/')){
-error.textContent='Please select a valid image.';
-file.value='';
-return;
-}
+  function getTax(amount) {
+    const slab = CONFIG.brackets.find(b => amount >= b.min && amount <= b.max);
+    return slab ? slab.tax : 0;
+  }
 
-if(selected.size>5*1024*1024){
-error.textContent='Image must be smaller than 5MB.';
-file.value='';
-return;
-}
+  // ===== UI helpers =====
+  function toast(msg) {
+    const t = $("toast");
+    t.textContent = msg;
+    t.classList.add("show");
+    clearTimeout(toast.timer);
+    toast.timer = setTimeout(() => t.classList.remove("show"), 2600);
+  }
 
-error.textContent='';
-document.getElementById('fname').textContent=selected.name;
-preview.src=URL.createObjectURL(selected);
-preview.style.display='block';
-});
+  function setProgress(step) {
+    $("progressBar").style.width = ((step - 1) / 3 * 100) + "%";
+    document.querySelectorAll(".steps span").forEach(s => {
+      s.classList.toggle("on", Number(s.dataset.s) <= step);
+    });
+  }
 
-document.getElementById('submit').addEventListener('click',()=>{
+  // Show a card and restart its entrance animation
+  function reveal(id) {
+    const el = $(id);
+    el.classList.remove("hidden");
+    el.style.animation = "none";
+    void el.offsetWidth;
+    el.style.animation = "";
+    requestAnimationFrame(() => el.scrollIntoView({ behavior: "smooth", block: "start" }));
+  }
 
-const name=document.getElementById('name').value.trim();
-const transaction=document.getElementById('ref').value.trim();
+  // Smooth number count-up (one rAF loop, transform-free, cheap)
+  function countUp(el, to, duration, prefix = "") {
+    const start = performance.now();
+    const step = (now) => {
+      const t = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      el.textContent = prefix + fmt(Math.round(to * eased));
+      if (t < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
 
-if(!file.files[0]){
-error.textContent='Please upload your payment receipt.';
-return;
-}
+  // ===== Tax table =====
+  function renderTable(amount) {
+    const body = $("taxBody");
+    const rows = CONFIG.brackets.map(b => {
+      const active = amount >= b.min && amount <= b.max;
+      const range = b.max === Infinity
+        ? `${fmt(b.min)} and above`
+        : `${fmt(b.min)} – ${fmt(b.max)}`;
+      return `<tr class="${active ? "current" : ""}">
+        <td>${range}${active ? '<span class="pill">YOUR AMOUNT</span>' : ""}</td>
+        <td class="num">${fmt(b.tax)}</td>
+      </tr>`;
+    });
+    body.innerHTML = rows.join("");
+  }
 
-if(!name){
-error.textContent='Please enter your full name.';
-return;
-}
+  // ===== Step 1: calculate =====
+  function validate(v) {
+    if (!v || isNaN(v)) return "Please enter a valid amount.";
+    if (v < CONFIG.minAmount) return `Minimum withdrawal is ${money(CONFIG.minAmount)}.`;
+    if (v > CONFIG.maxAmount) return `Maximum withdrawal is ${money(CONFIG.maxAmount)}.`;
+    return "";
+  }
 
-document.getElementById('hello').textContent=
-'Thank you, '+name+'. Your NPR 2,500 tax payment details have been submitted.';
+  function calculate() {
+    const amount = Math.floor(Number($("amount").value));
+    const err = validate(amount);
+    $("amountError").textContent = err;
+    if (err) { $("amount").focus(); return; }
 
-document.getElementById('main').style.display='none';
-document.getElementById('done').style.display='block';
+    state.amount = amount;
+    state.tax = getTax(amount);
 
-window.scrollTo({top:0,behavior:'smooth'});
-});
+    $("withdrawLabel").textContent = money(amount);
+    $("payAmount").textContent = money(state.tax);
+    renderTable(amount);
+
+    reveal("resultCard");
+    requestAnimationFrame(() => {
+      $("ringFill").style.strokeDashoffset = RING_LEN * (1 - Math.min(state.tax / MAX_TAX, 1));
+    });
+    countUp($("ringVal"), state.tax, 1100);
+    countUp($("taxBig"), state.tax, 1100, CONFIG.currency + " ");
+    setProgress(2);
+  }
+
+  $("calcBtn").addEventListener("click", calculate);
+  $("amount").addEventListener("keydown", (e) => { if (e.key === "Enter") calculate(); });
+  $("amount").addEventListener("input", () => { $("amountError").textContent = ""; });
+  document.querySelectorAll(".chip").forEach(chip => {
+    chip.addEventListener("click", () => {
+      $("amount").value = chip.dataset.amt;
+      $("amountError").textContent = "";
+    });
+  });
+
+  // ===== Step 2: pay tax =====
+  $("payTaxBtn").addEventListener("click", () => {
+    $("qrImage").src = CONFIG.qrImage;
+    reveal("paymentCard");
+    setProgress(3);
+  });
+
+  // ===== Step 3: proof upload =====
+  function handleFile(file) {
+    if (!file) return;
+    if (!file.type.startsWith("image/")) return toast("Please upload a PNG or JPG image.");
+    if (file.size > 5 * 1024 * 1024) return toast("File is too large. Max 5 MB.");
+
+    state.proof = file;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = $("preview");
+      img.src = e.target.result;
+      img.classList.add("show");
+    };
+    reader.readAsDataURL(file);
+    $("submitBtn").disabled = false;
+    toast("Screenshot attached.");
+  }
+
+  $("proofInput").addEventListener("change", (e) => handleFile(e.target.files[0]));
+
+  const dz = $("dropzone");
+  ["dragenter", "dragover"].forEach(ev => dz.addEventListener(ev, (e) => { e.preventDefault(); dz.classList.add("drag"); }));
+  ["dragleave", "drop"].forEach(ev => dz.addEventListener(ev, (e) => { e.preventDefault(); dz.classList.remove("drag"); }));
+  dz.addEventListener("drop", (e) => handleFile(e.dataTransfer.files[0]));
+
+  // ===== Step 4: submit =====
+  $("submitBtn").addEventListener("click", () => {
+    if (!state.proof) return;
+    const btn = $("submitBtn");
+    btn.disabled = true;
+    btn.classList.add("loading");
+    $("submitLabel").textContent = "Submitting…";
+
+    // Simulated request. Replace with fetch() to your backend.
+    setTimeout(() => {
+      btn.classList.remove("loading");
+      btn.classList.add("hidden");
+      $("refCode").textContent = "REF · TX-" + Date.now().toString(36).toUpperCase().slice(-8);
+      reveal("statusCard");
+      setProgress(4);
+      toast("Submitted. Waiting for approval.");
+    }, 1200);
+  });
+
+  renderTable(0);
 </script>
-
 </body>
 </html>
